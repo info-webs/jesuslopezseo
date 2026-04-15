@@ -7,9 +7,9 @@
  *   NOTION_DATABASE_ID  — the blog posts database ID
  */
 
-const NOTION_TOKEN = import.meta.env.NOTION_TOKEN;
+const NOTION_TOKEN = process.env.NOTION_TOKEN ?? import.meta.env.NOTION_TOKEN;
 const NOTION_DATABASE_ID =
-  import.meta.env.NOTION_DATABASE_ID || '819b3c45-d080-497b-915c-72ec68ccf633';
+  process.env.NOTION_DATABASE_ID ?? import.meta.env.NOTION_DATABASE_ID ?? '819b3c45-d080-497b-915c-72ec68ccf633';
 
 const BASE_URL = 'https://api.notion.com/v1';
 
