@@ -5,9 +5,9 @@ import Footer from '../../components/Footer.astro';
 import { getPostBySlug, getPageContent, getPosts } from '../../lib/notion';
 import type { NotionPost } from '../../lib/notion';
 
-const { slug } = Astro.params;
+const { slug } = Astro.params;h
 
-// Fetch the post
+// Fetch the posth
 let post: NotionPost | null = null;
 let content = '';
 let relatedPosts: NotionPost[] = [];
@@ -27,7 +27,7 @@ try {
   console.error('Error fetching post:', e);
 }
 
-if (!post) {
+if (!post || !content) {
   return Astro.redirect('/blog');
 }
 
