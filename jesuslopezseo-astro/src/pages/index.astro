@@ -1,0 +1,841 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`,
+    title: 'Posicionamiento SEO',
+    desc: 'Analizamos la competencia, optimizamos tu web y construimos autoridad con link building de calidad para posicionarte en los primeros resultados de Google.',
+    href: '/posicionamiento-web',
+    badge: 'Servicio principal',
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+    title: 'Diseño Web',
+    desc: 'Webs profesionales, autogestionables, adaptadas a todos los dispositivos y optimizadas para vender. Diseños que convierten visitantes en clientes.',
+    href: '/servicios/diseno-web',
+    badge: null,
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: 'Community Manager',
+    desc: 'Estrategia de redes sociales, creación de contenido diario e interacción con tu comunidad para impulsar tu marca en todas las plataformas.',
+    href: '/servicios/community-manager',
+    badge: null,
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    title: 'Redacción de contenido',
+    desc: 'Contenido 100% original, optimizado para SEO y adaptado a tu audiencia. Posts, notas de prensa, fichas de producto y páginas de servicio.',
+    href: '/servicios/redaccion-contenido',
+    badge: null,
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>`,
+    title: 'Diseño gráfico',
+    desc: 'Identidad visual, logotipos, materiales publicitarios y conceptos visuales que refuerzan el branding y diferencias tu marca de la competencia.',
+    href: '/servicios/diseno-grafico',
+    badge: null,
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+    title: 'Posicionamiento ASO',
+    desc: 'Optimizamos tu app para aparecer en los primeros resultados de Google Play y App Store, aumentando descargas de forma orgánica.',
+    href: '/servicios/posicionamiento-aso',
+    badge: null,
+  },
+];
+
+const stats = [
+  { value: '+10', label: 'Años de experiencia' },
+  { value: '+150', label: 'Clientes satisfechos' },
+  { value: '+500', label: 'Proyectos completados' },
+  { value: '95%', label: 'Tasa de retención' },
+];
+
+const processSteps = [
+  { num: '01', title: 'Auditoría gratuita', desc: 'Analizamos tu web y la competencia sin coste y sin compromiso para entender el punto de partida.' },
+  { num: '02', title: 'Estrategia SEO', desc: 'Diseñamos un plan personalizado con objetivos claros, palabras clave y acciones priorizadas.' },
+  { num: '03', title: 'Ejecución', desc: 'Implementamos las acciones on-page, off-page y técnicas con total transparencia.' },
+  { num: '04', title: 'Resultados & reporting', desc: 'Informes mensuales con métricas reales: posiciones, tráfico, conversiones y ROI.' },
+];
+---
+
+<Layout
+  title="JesusLopezSEO — Consultor SEO en Salamanca | Posicionamiento Web"
+  description="Jesús López, Consultor SEO experto en Salamanca. Posicionamiento web, diseño web y marketing digital para empresas que quieren crecer en Google."
+>
+  <Header />
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+      <div class="hero-bg-pattern" aria-hidden="true"></div>
+      <div class="container hero-inner">
+
+        <div class="hero-content animate-fade-up">
+          <div class="section-label">Consultor SEO · Salamanca</div>
+
+          <h1 class="hero-title">
+            Tu empresa en la<br/>
+            <span class="hero-highlight">primera página</span><br/>
+            de Google
+          </h1>
+
+          <p class="hero-desc">
+            Soy Jesús López, consultor SEO con más de 10 años posicionando webs en los primeros
+            resultados de búsqueda. Análisis, estrategia y ejecución para que tu negocio consiga
+            más tráfico, más clientes y más ventas.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/pedir-presupuesto" class="btn btn-primary btn-lg">
+              Analizar mi web gratis
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#servicios" class="btn btn-outline btn-lg">Ver servicios</a>
+          </div>
+
+          <div class="hero-trust">
+            <div class="trust-avatars" aria-hidden="true">
+              <span class="avatar">JL</span>
+              <span class="avatar">MS</span>
+              <span class="avatar">AR</span>
+              <span class="avatar">+</span>
+            </div>
+            <p class="trust-text">
+              <strong>+150 clientes</strong> confían en nosotros para crecer en Google
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-visual animate-fade-up delay-300" aria-hidden="true">
+          <div class="hero-card hero-card--main">
+            <div class="hcard-header">
+              <span class="hcard-dot green"></span>
+              <span class="hcard-dot amber"></span>
+              <span class="hcard-dot red"></span>
+              <span class="hcard-label">Posiciones en Google</span>
+            </div>
+            <div class="hcard-body">
+              {[
+                { kw: 'consultor seo salamanca', pos: 1, up: true },
+                { kw: 'posicionamiento web salamanca', pos: 2, up: true },
+                { kw: 'seo salamanca', pos: 1, up: true },
+                { kw: 'agencia seo salamanca', pos: 3, up: false },
+                { kw: 'diseño web salamanca', pos: 2, up: true },
+              ].map(r => (
+                <div class="rank-row">
+                  <span class={`rank-pos rank-pos--${r.pos <= 1 ? 'gold' : r.pos <= 3 ? 'silver' : 'normal'}`}>#{r.pos}</span>
+                  <span class="rank-kw">{r.kw}</span>
+                  <span class={`rank-trend ${r.up ? 'up' : 'neutral'}`}>
+                    {r.up ? '↑' : '→'}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="hero-card hero-card--stat animate-float">
+            <span class="stat-icon">📈</span>
+            <div>
+              <strong class="stat-value">+340%</strong>
+              <span class="stat-label">tráfico orgánico</span>
+            </div>
+          </div>
+
+          <div class="hero-card hero-card--badge animate-float delay-200">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Auditoría SEO gratuita</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ STATS ═══ -->
+    <section class="stats-bar">
+      <div class="container stats-inner">
+        {stats.map(s => (
+          <div class="stat-item">
+            <strong class="stat-num">{s.value}</strong>
+            <span class="stat-lbl">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section class="about section-pad">
+      <div class="container about-grid">
+
+        <div class="about-visual">
+          <div class="about-img-wrap">
+            <!-- Placeholder: replace src with real photo -->
+            <div class="about-img-placeholder">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Foto de Jesús López</span>
+            </div>
+          </div>
+          <div class="about-badge">
+            <span class="about-badge-icon">🏆</span>
+            <div>
+              <strong>+10 años</strong>
+              <span>en SEO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="section-label">Sobre mí</div>
+          <h2>Soy Jesús López, <span class="serif">Consultor SEO</span> y CEO en JesusLopezSEO</h2>
+          <p>
+            Apasionado del posicionamiento web desde hace más de una década. Ayudo a empresas y negocios
+            de todo tipo a mejorar su visibilidad en Google y conseguir resultados reales: más tráfico,
+            más leads y más ventas.
+          </p>
+          <p>
+            Si tienes una web, blog o tienda online, te conviene estar en la primera página de Google
+            por encima de tu competencia. Para eso combino estrategias SEO on-page y off-page,
+            manteniéndome al día con cada actualización del algoritmo.
+          </p>
+          <ul class="about-list">
+            <li>
+              <span class="list-check">✓</span>
+              Auditoría web inicial gratuita y sin compromiso
+            </li>
+            <li>
+              <span class="list-check">✓</span>
+              Planes adaptados a cada presupuesto y sector
+            </li>
+            <li>
+              <span class="list-check">✓</span>
+              Reporting mensual con métricas reales
+            </li>
+            <li>
+              <span class="list-check">✓</span>
+              Equipo multidisciplinar (SEO, diseño, contenidos, RRSS)
+            </li>
+          </ul>
+          <a href="/contactar" class="btn btn-outline">Conoce más sobre mí →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ SERVICIOS ═══ -->
+    <section class="services section-pad bg-subtle" id="servicios">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label" style="justify-content:center">Qué hacemos</div>
+          <h2>Servicios de marketing digital<br/><span class="serif">que generan resultados</span></h2>
+          <p class="section-desc">
+            Desde posicionamiento SEO hasta diseño gráfico, ofrecemos todos los servicios
+            de marketing digital que tu negocio necesita para crecer online.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          {services.map((s, i) => (
+            <a href={s.href} class={`service-card ${i === 0 ? 'service-card--featured' : ''}`}>
+              {s.badge && <span class="badge badge-amber service-badge">{s.badge}</span>}
+              <div class="service-icon">{s.icon}</div>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <span class="service-link">
+                Ver servicio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROCESO ═══ -->
+    <section class="process section-pad">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label" style="justify-content:center">Cómo trabajamos</div>
+          <h2>Un proceso claro<br/><span class="serif">orientado a resultados</span></h2>
+        </div>
+
+        <div class="process-grid">
+          {processSteps.map(step => (
+            <div class="process-step">
+              <span class="process-num">{step.num}</span>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA BANNER ═══ -->
+    <section class="cta-banner section-pad">
+      <div class="container">
+        <div class="cta-inner">
+          <div class="cta-content">
+            <div class="section-label">Sin compromiso</div>
+            <h2>¿Quieres saber cómo está<br/>posicionada tu web?</h2>
+            <p>
+              Te hacemos una auditoría SEO gratuita. Analizamos tu web, la competencia y
+              te decimos exactamente qué debes mejorar para crecer en Google.
+            </p>
+            <div class="cta-actions">
+              <a href="/pedir-presupuesto" class="btn btn-primary btn-lg">Solicitar auditoría gratis</a>
+              <a href="tel:+34618015995" class="btn btn-outline btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Llamar ahora
+              </a>
+            </div>
+          </div>
+          <div class="cta-visual" aria-hidden="true">
+            <div class="cta-glyph">📊</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 7rem 0 6rem;
+  overflow: hidden;
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(245,158,11,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 0% 100%, rgba(245,158,11,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.hero-content { max-width: 560px; }
+
+.hero-title {
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--primary-dark);
+}
+.hero-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--amber-200));
+  border-radius: 2px;
+}
+
+.hero-desc {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 2.25rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.trust-avatars {
+  display: flex;
+}
+.avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--cream-200);
+  border: 2px solid var(--surface-card);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-left: -8px;
+}
+.avatar:first-child { margin-left: 0; }
+.avatar:last-child { background: var(--primary); color: #fff; }
+
+.trust-text {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.trust-text strong { color: var(--text-primary); }
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.hero-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.hero-card--main {
+  width: 100%;
+  max-width: 380px;
+}
+
+.hcard-header {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+.hcard-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.hcard-dot.green  { background: #34d399; }
+.hcard-dot.amber  { background: var(--primary); }
+.hcard-dot.red    { background: #f87171; }
+.hcard-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 0.25rem;
+  letter-spacing: 0.03em;
+}
+
+.hcard-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius-sm);
+  background: var(--cream-50);
+}
+.rank-pos {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  min-width: 28px;
+  text-align: center;
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+}
+.rank-pos--gold   { background: var(--amber-100); color: var(--amber-700); }
+.rank-pos--silver { background: var(--cream-200); color: var(--text-secondary); }
+.rank-pos--normal { background: var(--cream-200); color: var(--text-muted); }
+.rank-kw {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+.rank-trend {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.rank-trend.up { color: #10b981; }
+.rank-trend.neutral { color: var(--text-muted); }
+
+.hero-card--stat {
+  position: absolute;
+  bottom: 3rem;
+  right: -1.5rem;
+  padding: 0.875rem 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+.stat-icon { font-size: 1.5rem; }
+.stat-value { display: block; font-size: 1.25rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+.stat-label { font-size: 0.75rem; color: var(--text-muted); }
+
+.hero-card--badge {
+  position: absolute;
+  top: 2rem;
+  right: -1rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--text-primary);
+  padding: 2.5rem 0;
+}
+.stats-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  divide-x: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item {
+  text-align: center;
+  padding: 0 1rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  display: block;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.375rem;
+}
+.stat-lbl {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual { position: relative; }
+
+.about-img-placeholder {
+  aspect-ratio: 3/4;
+  background: var(--cream-200);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  border: 2px dashed var(--surface-border);
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 2rem;
+  right: -1.5rem;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.about-badge-icon { font-size: 1.75rem; }
+.about-badge strong { display: block; font-size: 1.125rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+.about-badge span { font-size: 0.8125rem; color: var(--text-muted); }
+
+.about-content { display: flex; flex-direction: column; gap: 1rem; }
+.about-content h2 { margin-bottom: 0.25rem; }
+.about-content p { color: var(--text-secondary); line-height: 1.75; }
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin: 0.5rem 0;
+}
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+.list-check {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  background: var(--amber-100);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem;
+  color: var(--amber-700);
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+/* ── SERVICES ── */
+.section-pad { padding: 6rem 0; }
+.bg-subtle { background: var(--surface-subtle); }
+
+.section-header { margin-bottom: 3.5rem; }
+.section-header h2 { margin-bottom: 1rem; }
+.section-desc {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  position: relative;
+}
+.service-card:hover {
+  border-color: var(--amber-200);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.service-card--featured {
+  background: linear-gradient(135deg, var(--amber-50) 0%, #fff 60%);
+  border-color: var(--amber-200);
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 2rem;
+  align-items: start;
+}
+.service-card--featured .service-badge { grid-row: 1; grid-column: 3; justify-self: end; }
+.service-card--featured .service-icon { grid-row: 1; grid-column: 1; align-self: center; }
+.service-card--featured h3 { grid-row: 1; grid-column: 2; }
+.service-card--featured p { grid-row: 2; grid-column: 2; }
+.service-card--featured .service-link { grid-row: 2; grid-column: 3; align-self: end; }
+
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--amber-50);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary-dark);
+  border: 1px solid var(--amber-200);
+  flex-shrink: 0;
+}
+
+.service-card h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  flex: 1;
+}
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-top: auto;
+  transition: gap 200ms;
+}
+.service-card:hover .service-link { gap: 0.625rem; }
+
+.service-badge { margin-bottom: 0.5rem; }
+
+/* ── PROCESS ── */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+.process-grid::before {
+  content: '';
+  position: absolute;
+  top: 2.5rem;
+  left: 4rem;
+  right: 4rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--amber-200), var(--amber-100), var(--amber-200));
+  z-index: 0;
+}
+
+.process-step {
+  position: relative;
+  z-index: 1;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+.process-step:hover {
+  border-color: var(--amber-200);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.process-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+}
+
+.process-step h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.process-step p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── CTA BANNER ── */
+.cta-inner {
+  background: linear-gradient(135deg, var(--text-primary) 0%, #2d2720 100%);
+  border-radius: var(--radius-xl);
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.cta-inner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-content .section-label { color: var(--primary); }
+.cta-content .section-label::before { background: var(--primary); }
+
+.cta-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: #fff;
+  margin: 1rem 0;
+}
+.cta-content p {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+.cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.cta-actions .btn-outline {
+  border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.8);
+}
+.cta-actions .btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+
+.cta-visual { position: relative; z-index: 1; }
+.cta-glyph {
+  font-size: 6rem;
+  opacity: 0.25;
+  filter: grayscale(1);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-visual { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card--featured {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .service-card--featured .service-badge { grid-column: 1; grid-row: auto; }
+  .service-card--featured .service-icon { grid-column: 1; grid-row: auto; }
+  .service-card--featured h3 { grid-column: 1; grid-row: auto; }
+  .service-card--featured p { grid-column: 1; grid-row: auto; }
+  .service-card--featured .service-link { grid-column: 1; grid-row: auto; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid::before { display: none; }
+  .cta-inner { grid-template-columns: 1fr; }
+  .cta-visual { display: none; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; }
+  .stat-item:nth-child(3), .stat-item:last-child { border-bottom: none; }
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 5rem 0 4rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .cta-inner { padding: 2.5rem 1.5rem; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+}
+</style>

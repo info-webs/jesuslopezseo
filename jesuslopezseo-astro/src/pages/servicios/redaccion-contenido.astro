@@ -1,0 +1,47 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const features = [
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`, title: 'Posts y artículos de blog', desc: 'Artículos de distintas extensiones, bien investigados y optimizados para posicionar en Google.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/></svg>`, title: 'Contenido SEO optimizado', desc: 'Todos los textos incluyen palabras clave, estructura correcta y elementos on-page para posicionar.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>`, title: 'Fichas de producto', desc: 'Descripciones únicas y persuasivas que ayudan a vender y a posicionar en buscadores.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>`, title: 'Páginas de servicio', desc: 'Textos para tus páginas de servicios o categorías orientados a conversión y SEO.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>`, title: 'Notas de prensa', desc: 'Comunicados profesionales para medios de comunicación y plataformas de distribución.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`, title: 'Copywriting', desc: 'Textos persuasivos para anuncios, emails y páginas de venta que convierten lectores en clientes.' },
+];
+
+const benefits = [
+  'Redactores especializados en distintas temáticas y sectores',
+  'Contenido 100% original y con revisión antiplagio',
+  'Textos optimizados para SEO sin sacrificar la legibilidad',
+  'Revisión gramatical y de estilo incluida',
+  'Entrega en los plazos acordados, siempre',
+  'Posibilidad de revisiones y ajustes incluidos',
+];
+
+const faq = [
+  { q: '¿Los textos están optimizados para SEO?', a: 'Sí. Todos nuestros textos incluyen la keyword principal, keywords secundarias, estructura correcta de encabezados, meta descripción y elementos on-page para facilitar el posicionamiento en Google.' },
+  { q: '¿Podéis redactar sobre cualquier temática?', a: 'Contamos con redactores especializados en distintos sectores: tecnología, salud, legal, gastronomía, viajes, ecommerce y más. Siempre nos aseguramos de asignar el redactor adecuado para cada proyecto.' },
+  { q: '¿Qué extensión tienen los artículos?', a: 'La extensión óptima depende del tipo de contenido y la competencia de la keyword. Redactamos desde 500 hasta más de 3.000 palabras. Te asesoramos sobre la longitud más adecuada para cada pieza.' },
+];
+---
+<ServiceLayout
+  title="Redacción de contenido Salamanca"
+  metaTitle="Redacción de Contenido en Salamanca — JesusLopezSEO"
+  metaDescription="Servicio de redacción de contenido en Salamanca. Textos originales, optimizados para SEO y adaptados a tu audiencia para tu web, blog o redes sociales."
+  canonical="https://www.jesuslopezseo.com/servicios/redaccion-contenido"
+  hero={{
+    badge: 'Redacción de contenido · Salamanca',
+    headline: 'Contenido que posiciona<br/>y <span class="hero-highlight">convierte</span>',
+    description: 'Creamos distintos tipos de contenido, bien escritos y originales para tu web o redes sociales. Textos optimizados para SEO que consiguen engagement de tu audiencia y posicionan en Google.',
+    cta: 'Solicitar presupuesto',
+  }}
+  features={features}
+  benefits={benefits}
+  faq={faq}
+>
+  <div></div>
+</ServiceLayout>
+<style>
+.hero-highlight { color: var(--primary-dark); }
+</style>

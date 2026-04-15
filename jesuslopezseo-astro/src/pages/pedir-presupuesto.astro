@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Pedir Presupuesto SEO — JesusLopezSEO"
+  description="Solicita tu presupuesto SEO gratuito y sin compromiso. Analizamos tu web y te presentamos un plan personalizado para mejorar tu posicionamiento en Google."
+  canonical="https://www.jesuslopezseo.com/pedir-presupuesto"
+>
+  <Header />
+  <main>
+    <section class="budget-hero">
+      <div class="budget-hero-bg" aria-hidden="true"></div>
+      <div class="container budget-hero-inner">
+        <div class="budget-hero-text animate-fade-up">
+          <div class="section-label">Presupuesto gratuito</div>
+          <h1>Solicita tu auditoría<br/><span style="color:var(--primary-dark)">SEO gratuita</span></h1>
+          <p>
+            Sin coste y sin compromiso. Analizamos tu web, la competencia y te presentamos
+            un plan personalizado con lo que necesitas para crecer en Google.
+          </p>
+          <ul class="budget-perks">
+            {['Análisis de posiciones actuales', 'Revisión técnica básica', 'Análisis de competencia', 'Oportunidades de mejora identificadas', 'Propuesta de plan con precios'].map(p => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="budget-form-wrap animate-fade-up delay-200">
+          <div class="budget-form-header">
+            <h2>Cuéntanos tu proyecto</h2>
+            <p>Te respondemos en menos de 24 horas laborables</p>
+          </div>
+          <form class="budget-form" id="budget-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="b-nombre">Nombre *</label>
+              <input class="form-input" type="text" id="b-nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-email">Email *</label>
+              <input class="form-input" type="email" id="b-email" name="email" placeholder="tu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-web">URL de tu web *</label>
+              <input class="form-input" type="url" id="b-web" name="web" placeholder="https://tuweb.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-telefono">Teléfono de contacto</label>
+              <input class="form-input" type="tel" id="b-telefono" name="telefono" placeholder="+34 600 000 000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-servicio">Servicio de interés</label>
+              <select class="form-input form-select" id="b-servicio" name="servicio">
+                <option value="">Selecciona un servicio</option>
+                <option>Posicionamiento SEO</option>
+                <option>Diseño web</option>
+                <option>Community Manager</option>
+                <option>Redacción de contenido</option>
+                <option>Diseño gráfico</option>
+                <option>Hosting SEO</option>
+                <option>Paquete completo</option>
+                <option>No sé todavía, asesórame</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-presupuesto">Presupuesto mensual aproximado</label>
+              <select class="form-input form-select" id="b-presupuesto" name="presupuesto">
+                <option value="">Selecciona una opción</option>
+                <option>Menos de 300€/mes</option>
+                <option>300€ – 600€/mes</option>
+                <option>600€ – 1.000€/mes</option>
+                <option>Más de 1.000€/mes</option>
+                <option>No tengo claro el presupuesto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-info">Información adicional</label>
+              <textarea class="form-input form-textarea" id="b-info" name="info" rows="4" placeholder="Cuéntanos sobre tu negocio, objetivos, sector y cualquier detalle relevante..."></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="b-privacidad" name="privacidad" required />
+              <label for="b-privacidad">
+                Acepto la <a href="/politica-de-cookies" target="_blank">política de privacidad</a>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+              Solicitar auditoría gratuita
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="form-success" id="budget-success" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <strong>¡Solicitud recibida!</strong>
+              <p>Te contactaremos en menos de 24 horas laborables con tu análisis personalizado.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.budget-hero {
+  position: relative;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+.budget-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(245,158,11,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.budget-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.budget-hero-text h1 { margin: 0.75rem 0 1rem; }
+.budget-hero-text p { font-size: 1.0625rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 2rem; }
+.budget-perks { display: flex; flex-direction: column; gap: 0.75rem; }
+.budget-perks li { display: flex; align-items: center; gap: 0.625rem; font-size: 0.9375rem; color: var(--text-secondary); }
+
+.budget-form-wrap {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+}
+.budget-form-header {
+  background: linear-gradient(135deg, var(--amber-50), #fff);
+  border-bottom: 1px solid var(--surface-border);
+  padding: 1.75rem 2rem;
+}
+.budget-form-header h2 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+.budget-form-header p { font-size: 0.875rem; color: var(--text-muted); }
+
+.budget-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+.form-label { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); }
+.form-input {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--cream-50);
+  transition: border-color 200ms, box-shadow 200ms;
+  width: 100%;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.1);
+}
+.form-input::placeholder { color: var(--text-light); }
+.form-select { cursor: pointer; }
+.form-textarea { resize: vertical; min-height: 100px; }
+
+.form-check {
+  display: flex; align-items: flex-start; gap: 0.625rem;
+  font-size: 0.875rem; color: var(--text-muted);
+}
+.form-check a { color: var(--primary-dark); text-decoration: underline; }
+.form-check input[type="checkbox"] { margin-top: 3px; accent-color: var(--primary); }
+
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  background: var(--amber-50);
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.form-success.visible { display: flex; }
+.form-success strong { font-size: 1.125rem; }
+.form-success p { font-size: 0.9rem; color: var(--text-muted); }
+
+@media (max-width: 1024px) {
+  .budget-hero-inner { grid-template-columns: 1fr; }
+  .budget-hero { padding: 4rem 0 4rem; }
+}
+@media (max-width: 640px) {
+  .budget-form { padding: 1.5rem; }
+}
+</style>
+
+<script>
+const form = document.getElementById('budget-form') as HTMLFormElement;
+const success = document.getElementById('budget-success');
+form?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  success?.classList.add('visible');
+  success?.setAttribute('aria-hidden', 'false');
+  const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+  if (btn) btn.style.display = 'none';
+});
+</script>

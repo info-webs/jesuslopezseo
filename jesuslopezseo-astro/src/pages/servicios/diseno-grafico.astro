@@ -1,0 +1,46 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const features = [
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>`, title: 'Logotipos', desc: 'Diseño de logotipos únicos que representan la esencia de tu marca y la hacen reconocible.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`, title: 'Identidad visual', desc: 'Paleta de colores, tipografías y elementos gráficos que dan coherencia a toda tu comunicación.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>`, title: 'Materiales publicitarios', desc: 'Banners, folletos, carteles y piezas para campañas online y offline adaptadas a tu marca.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22V12M4.93 4.93l4.24 4.24M12 2v4M19.07 4.93l-4.24 4.24M22 12h-4M19.07 19.07l-4.24-4.24M12 22v-4M4.93 19.07l4.24-4.24M2 12h4"/></svg>`, title: 'Diseño para redes sociales', desc: 'Plantillas y piezas gráficas para tus publicaciones en Instagram, Facebook y LinkedIn.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`, title: 'Elementos web', desc: 'Iconos, ilustraciones e imágenes personalizadas para tu sitio web con coherencia de marca.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`, title: 'Packaging y merchandising', desc: 'Diseño de embalajes, tarjetas de visita y material corporativo de alta calidad.' },
+];
+
+const benefits = [
+  'Diseños únicos y originales, adaptados a tu estilo y sector',
+  'Trabajo colaborativo: te acompañamos en cada decisión',
+  'Herramientas profesionales de diseño (Adobe CC, Figma)',
+  'Entrega en todos los formatos necesarios (web, impresión, RRSS)',
+  'Revisiones incluidas hasta que estés satisfecho',
+  'Experiencia en múltiples sectores y tipos de empresa',
+];
+
+const faq = [
+  { q: '¿Recibiré los archivos editables?', a: 'Sí. Al finalizar el proyecto te entregamos todos los archivos en los formatos acordados, incluyendo los archivos editables (AI, PSD, Figma) para que puedas hacer ajustes en el futuro.' },
+  { q: '¿Cuánto tiempo tarda un diseño de logotipo?', a: 'Habitualmente entre 1 y 2 semanas, incluyendo las revisiones. Empezamos con un briefing detallado para entender tu visión y entregamos varias propuestas iniciales entre las que elegir.' },
+];
+---
+<ServiceLayout
+  title="Diseño gráfico Salamanca"
+  metaTitle="Diseño Gráfico en Salamanca — JesusLopezSEO"
+  metaDescription="Servicio de diseño gráfico en Salamanca. Logotipos, identidad visual, materiales publicitarios y diseño para redes sociales adaptados a tu marca."
+  canonical="https://www.jesuslopezseo.com/servicios/diseno-grafico"
+  hero={{
+    badge: 'Diseño Gráfico · Salamanca',
+    headline: 'Identidad visual que<br/>hace <span class="hero-highlight">memorable</span> tu marca',
+    description: 'Los elementos visuales son parte importante de la identidad de tu marca. Contamos con profesionales que trabajan de forma eficiente para crear elementos optimizados y adecuados a las necesidades de cada cliente.',
+    cta: 'Solicitar presupuesto',
+  }}
+  features={features}
+  benefits={benefits}
+  faq={faq}
+>
+  <div></div>
+</ServiceLayout>
+<style>
+.hero-highlight { color: var(--primary-dark); }
+</style>

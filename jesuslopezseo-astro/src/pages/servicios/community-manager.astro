@@ -1,0 +1,47 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const features = [
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>`, title: 'Estrategia de redes sociales', desc: 'Diseñamos una estrategia de Social Media adaptada a tu marca y a los objetivos de tu negocio.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`, title: 'Creación de contenido diario', desc: 'Publicaciones diseñadas para cada plataforma con los formatos, hashtags y horarios óptimos.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`, title: 'Gestión de la comunidad', desc: 'Respondemos comentarios, mensajes y fomentamos la interacción con tus seguidores.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>`, title: 'Alta en redes sociales', desc: 'Si no tienes perfiles, te damos de alta y optimizamos los existentes para mayor visibilidad.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`, title: 'Publicidad en redes', desc: 'Campañas de paid social en Facebook, Instagram y LinkedIn para ampliar tu alcance.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>`, title: 'Informes de resultados', desc: 'Reporting mensual con métricas de alcance, engagement y crecimiento de tu comunidad.' },
+];
+
+const benefits = [
+  'Estrategia adaptada a cada plataforma y a tu público objetivo',
+  'Equipo experto en tendencias y algoritmos de redes sociales',
+  'Contenido de calidad que refleja la voz y valores de tu marca',
+  'Gestión profesional de crisis reputacionales',
+  'Calendario editorial mensual con total transparencia',
+  'Informes claros y métricas orientadas a negocio',
+];
+
+const faq = [
+  { q: '¿En qué redes sociales trabajáis?', a: 'Gestionamos todas las plataformas principales: Facebook, Instagram, LinkedIn, Twitter/X, TikTok, YouTube y Pinterest. La selección depende de dónde está tu público objetivo.' },
+  { q: '¿Con qué frecuencia publicáis?', a: 'La frecuencia se define en la estrategia según cada plataforma y tus objetivos. Generalmente publicamos a diario en Instagram y Facebook, y de 3 a 5 veces por semana en otras redes.' },
+  { q: '¿Puedo aprobar el contenido antes de publicarlo?', a: 'Sí. Trabajamos con un calendario editorial mensual que te enviamos para revisión y aprobación antes de programar las publicaciones. Siempre tienes el control.' },
+];
+---
+<ServiceLayout
+  title="Community Manager Salamanca"
+  metaTitle="Community Manager en Salamanca — JesusLopezSEO"
+  metaDescription="Servicio de Community Manager en Salamanca. Gestión profesional de redes sociales, estrategia de contenidos e interacción con tu comunidad para hacer crecer tu marca."
+  canonical="https://www.jesuslopezseo.com/servicios/community-manager"
+  hero={{
+    badge: 'Community Manager · Salamanca',
+    headline: 'Impulsa tu marca en<br/><span class="hero-highlight">redes sociales</span>',
+    description: 'Contamos con el servicio de Community Manager en Salamanca para que puedas impulsar tu negocio o marca a través de las distintas redes sociales con una estrategia profesional y medible.',
+    cta: 'Solicitar presupuesto',
+  }}
+  features={features}
+  benefits={benefits}
+  faq={faq}
+>
+  <div></div>
+</ServiceLayout>
+<style>
+.hero-highlight { color: var(--primary-dark); }
+</style>

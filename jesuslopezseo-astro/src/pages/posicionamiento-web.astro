@@ -1,0 +1,152 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const features = [
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`, title: 'Análisis web y competencia', desc: 'Auditamos tu web y la de tus competidores para encontrar oportunidades de posicionamiento rápido.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>`, title: 'SEO on-page y técnico', desc: 'Optimizamos estructura, velocidad, metadatos, schema markup y todos los factores internos de tu web.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`, title: 'Link building de calidad', desc: 'Conseguimos enlaces de sitios de autoridad relevantes para tu sector que impulsan tu posicionamiento.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`, title: 'Contenido SEO', desc: 'Creamos y optimizamos contenidos orientados a keywords con alta intención de búsqueda y conversión.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`, title: 'SEO local', desc: 'Optimizamos tu presencia en Google My Business y búsquedas locales para atraer clientes de tu zona.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`, title: 'Reporting mensual', desc: 'Informes claros con evolución de posiciones, tráfico orgánico y retorno de la inversión cada mes.' },
+];
+
+const benefits = [
+  'Auditoría SEO inicial gratuita y sin compromiso',
+  'Planes personalizados adaptados a tu presupuesto y sector',
+  'Equipo experto actualizado con cada cambio de algoritmo de Google',
+  'Resultados medibles: más tráfico, más leads, más ventas',
+  'Transparencia total: sabes en qué se invierte cada euro',
+  'Soporte continuo y comunicación directa con el consultor',
+];
+
+const faq = [
+  { q: '¿Cuánto tiempo tarda en verse resultados del SEO?', a: 'Los primeros resultados suelen verse entre 3 y 6 meses, dependiendo del sector, la competencia y el punto de partida de tu web. El SEO es una estrategia a medio-largo plazo con resultados sostenibles y acumulativos.' },
+  { q: '¿Cuánto cuesta el servicio de posicionamiento SEO?', a: 'Cada proyecto es diferente. Hacemos una auditoría gratuita para entender tu situación y presentarte un presupuesto adaptado a tus objetivos y posibilidades. No hay tarifas fijas porque cada web y sector es único.' },
+  { q: '¿El SEO funciona para cualquier tipo de negocio?', a: 'Sí. Tanto si tienes un negocio local como una tienda online o una empresa de servicios, el SEO puede ayudarte a atraer clientes que ya están buscando lo que ofreces. El enfoque varía según el tipo de negocio.' },
+  { q: '¿Qué diferencia hay entre SEO on-page y off-page?', a: 'El SEO on-page incluye todas las optimizaciones dentro de tu propia web: velocidad, estructura, contenido, metadatos, etc. El SEO off-page se refiere a acciones externas como conseguir enlaces de calidad (link building) que aumentan la autoridad de tu dominio.' },
+];
+---
+
+<ServiceLayout
+  title="Posicionamiento Web SEO"
+  metaTitle="Posicionamiento Web en Salamanca — JesusLopezSEO"
+  metaDescription="Servicio de posicionamiento web y SEO en Salamanca. Analizamos tu web, la competencia y diseñamos una estrategia para llevar tu negocio a la primera página de Google."
+  canonical="https://www.jesuslopezseo.com/posicionamiento-web"
+  hero={{
+    badge: 'Servicio principal',
+    headline: 'Posicionamiento Web <span class="hero-highlight">SEO</span><br/>en Salamanca',
+    description: 'El posicionamiento web es clave para cualquier negocio hoy en día. Combinamos estrategias SEO on-page y off-page para llevarte a los primeros resultados de Google y conseguirte un flujo constante de nuevos clientes.',
+    cta: 'Analizar mi web gratis',
+  }}
+  features={features}
+  benefits={benefits}
+  faq={faq}
+>
+  <!-- Body extra content -->
+  <section class="svc-body section-pad">
+    <div class="container svc-body-grid">
+      <div class="svc-body-content">
+        <div class="section-label">Cómo funciona</div>
+        <h2>¿Cómo el SEO ayuda a <span class="serif">tu empresa</span>?</h2>
+        <p>
+          En Google se hacen billones de búsquedas al día. La mayoría de personas no pasa de la primera página.
+          Por eso querrás que tu empresa esté en esos primeros diez puestos que son los que consiguen más clics y tráfico.
+        </p>
+        <p>
+          El posicionamiento SEO está cambiando constantemente. Nuestro trabajo es mantenernos al día con las
+          tendencias y las actualizaciones del algoritmo de Google. Solo así podemos ofrecer a nuestros clientes
+          los mejores servicios al precio correcto, para conseguir un buen retorno de su inversión (ROI).
+        </p>
+
+        <div class="svc-steps">
+          {[
+            { n: '1', t: 'Analizamos tu sitio web', d: 'Lo primero que hacemos cuando pides un presupuesto es analizar tu sitio web y la competencia. Gratis y sin ningún compromiso.' },
+            { n: '2', t: 'Diseñamos tu plan SEO', d: 'Planes adaptados a las necesidades de cada cliente. Trabajamos de la mano para lograr los objetivos planteados.' },
+            { n: '3', t: 'Ejecutamos y medimos', d: 'Implementamos todas las acciones y monitorizamos los resultados mes a mes para ajustar la estrategia.' },
+          ].map(s => (
+            <div class="svc-step-item">
+              <span class="svc-step-num">{s.n}</span>
+              <div>
+                <h4>{s.t}</h4>
+                <p>{s.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="svc-body-aside">
+        <div class="aside-box">
+          <h4>Solicita tu auditoría gratuita</h4>
+          <p>Sin compromiso. Te analizamos la web y te decimos exactamente qué puedes mejorar.</p>
+          <a href="/pedir-presupuesto" class="btn btn-primary" style="width:100%;justify-content:center;">Pedir auditoría gratis</a>
+          <div class="aside-divider"></div>
+          <ul class="aside-list">
+            <li>✓ Análisis de posiciones actuales</li>
+            <li>✓ Revisión técnica básica</li>
+            <li>✓ Análisis de competencia</li>
+            <li>✓ Oportunidades de mejora</li>
+            <li>✓ Sin coste, sin compromiso</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+.svc-body-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.svc-body-content h2 { margin: 0.75rem 0 1rem; }
+.svc-body-content p { color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
+
+.svc-steps { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+.svc-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.svc-step-num {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 10px rgba(245,158,11,0.3);
+}
+.svc-step-item h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+.svc-step-item p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+.aside-box {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  position: sticky;
+  top: 6rem;
+  box-shadow: var(--shadow-md);
+}
+.aside-box h4 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.aside-box p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+.aside-divider { height: 1px; background: var(--surface-border); margin: 1.25rem 0; }
+.aside-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.aside-list li { font-size: 0.875rem; color: var(--text-secondary); }
+
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--primary-dark);
+}
+
+@media (max-width: 1024px) {
+  .svc-body-grid { grid-template-columns: 1fr; }
+  .aside-box { position: static; }
+}
+</style>

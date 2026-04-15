@@ -1,0 +1,231 @@
+---
+const currentYear = new Date().getFullYear();
+
+const services = [
+  { label: 'Posicionamiento SEO', href: '/posicionamiento-web' },
+  { label: 'Diseño Web', href: '/servicios/diseno-web' },
+  { label: 'Community Manager', href: '/servicios/community-manager' },
+  { label: 'Redacción de contenido', href: '/servicios/redaccion-contenido' },
+  { label: 'Diseño gráfico', href: '/servicios/diseno-grafico' },
+  { label: 'Posicionamiento ASO', href: '/servicios/posicionamiento-aso' },
+  { label: 'Hosting SEO', href: '/servicios/hosting-seo' },
+];
+---
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="JesusLopezSEO">
+          <span class="footer-logo-icon">J</span>
+          <span class="footer-logo-name">JesusLopez<strong>SEO</strong></span>
+        </a>
+        <p class="footer-desc">
+          Consultor SEO en Salamanca con más de 10 años de experiencia ayudando a empresas a crecer en Google.
+        </p>
+        <div class="footer-contact">
+          <a href="tel:+34618015995" class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            618 015 995
+          </a>
+          <a href="mailto:jesus@jesuslopezseo.com" class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            jesus@jesuslopezseo.com
+          </a>
+          <span class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Cortinas 14, Salamanca
+          </span>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Servicios</h4>
+        <ul class="footer-links">
+          {services.map(s => (
+            <li><a href={s.href}>{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Quick links -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/blog">Blog SEO</a></li>
+          <li><a href="/contactar">Contacto</a></li>
+          <li><a href="/pedir-presupuesto">Pedir presupuesto</a></li>
+          <li><a href="/politica-de-cookies">Política de cookies</a></li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="footer-col footer-cta-col">
+        <h4 class="footer-heading">¿Hablamos?</h4>
+        <p class="footer-cta-text">Cuéntanos tu proyecto y te preparamos un presupuesto sin compromiso.</p>
+        <a href="/pedir-presupuesto" class="btn btn-primary">Solicitar presupuesto →</a>
+        <div class="footer-hours">
+          <strong>Horario de atención</strong>
+          <span>Lun–Vie · 9:00–18:00</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">© {currentYear} JesusLopezSEO. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="/politica-de-cookies">Cookies</a>
+        <span>·</span>
+        <a href="/contactar">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer { margin-top: auto; }
+
+/* Top */
+.footer-top {
+  background: var(--text-primary);
+  padding: 5rem 0 4rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: 3rem;
+}
+
+/* Brand */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.footer-logo-icon {
+  width: 36px; height: 36px;
+  background: var(--primary);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.footer-logo-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.footer-logo-name strong { color: var(--primary); }
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.footer-contact { display: flex; flex-direction: column; gap: 0.625rem; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.65);
+  transition: color 200ms;
+}
+.contact-item:hover { color: var(--primary); }
+
+/* Columns */
+.footer-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.25rem;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: 0.625rem; }
+.footer-links a {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  transition: color 200ms;
+}
+.footer-links a:hover { color: var(--primary); }
+
+/* CTA col */
+.footer-cta-text {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.footer-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+}
+.footer-hours strong {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.8);
+}
+.footer-hours span {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* Bottom */
+.footer-bottom {
+  background: rgba(0,0,0,0.25);
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.3);
+}
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.3);
+}
+.footer-bottom-links a { color: rgba(255,255,255,0.4); transition: color 200ms; }
+.footer-bottom-links a:hover { color: var(--primary); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-top { padding: 3rem 0 2.5rem; }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+}
+</style>

@@ -1,0 +1,94 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const features = [
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`, title: 'Diseño responsive', desc: 'Webs adaptadas a móvil, tablet y escritorio. Óptimas en cualquier pantalla y dispositivo.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`, title: 'Optimizadas para SEO', desc: 'Código limpio, velocidad de carga alta y estructura técnica correcta desde el primer día.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, title: 'Autogestionable', desc: 'Puedes actualizar contenidos, añadir productos y gestionar tu web sin conocimientos técnicos.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`, title: 'Tiendas online', desc: 'Ecommerce diseñado para convertir: fichas de producto, carrito, pagos y gestión de pedidos.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`, title: 'Integración con redes sociales', desc: 'Conectamos tu web con tus perfiles sociales para una presencia digital cohesionada.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`, title: 'Alta velocidad', desc: 'Optimización de imágenes, caché y código para que tu web cargue rápido y Google te premie.' },
+];
+
+const benefits = [
+  'Diseños profesionales únicos, adaptados a tu marca y sector',
+  'Webs autogestionables que no dependen de nosotros para actualizar contenido',
+  'Optimización técnica SEO desde el diseño, no como añadido posterior',
+  'Tiendas online diseñadas para convertir visitantes en compradores',
+  'Integración con Google Analytics, Search Console y herramientas de marketing',
+  'Soporte técnico post-lanzamiento incluido',
+];
+
+const faq = [
+  { q: '¿Cuánto tarda en realizarse una web?', a: 'Depende de la complejidad del proyecto. Una web corporativa estándar suele estar lista en 3-4 semanas. Una tienda online puede llevar entre 4-8 semanas. Siempre pactamos plazos realistas antes de empezar.' },
+  { q: '¿Podré gestionar la web yo mismo?', a: 'Sí. Diseñamos webs autogestionables con paneles de administración sencillos. Te formamos para que puedas actualizar contenidos, añadir noticias o gestionar productos sin necesitar conocimientos técnicos.' },
+  { q: '¿Incluye el diseño hosting y dominio?', a: 'El hosting y dominio se contratan por separado, aunque te asesoramos en la elección y podemos gestionarlos nosotros si lo prefieres. También ofrecemos nuestro servicio de Hosting SEO optimizado.' },
+  { q: '¿Hacéis también tiendas online?', a: 'Sí, diseñamos ecommerce completos con fichas de producto optimizadas, carrito de compra, pasarelas de pago y gestión de pedidos. Adaptados para vender desde el primer día.' },
+];
+---
+
+<ServiceLayout
+  title="Diseño Web Salamanca"
+  metaTitle="Diseño Web en Salamanca — JesusLopezSEO"
+  metaDescription="Diseño web profesional en Salamanca. Webs autogestionables, responsive, optimizadas para SEO y diseñadas para convertir visitantes en clientes."
+  canonical="https://www.jesuslopezseo.com/servicios/diseno-web"
+  hero={{
+    badge: 'Diseño Web · Salamanca',
+    headline: '¿Necesitas una web profesional<br/>para tu <span class="hero-highlight">negocio</span>?',
+    description: 'En JesusLopezSEO diseñamos webs profesionales, atractivas y autogestionables. Adaptadas a tus necesidades, optimizadas para SEO y diseñadas para dar resultados desde el primer día.',
+    cta: 'Solicitar presupuesto web',
+  }}
+  features={features}
+  benefits={benefits}
+  faq={faq}
+>
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-label" style="justify-content:center">Por qué importa</div>
+        <h2>La importancia de una web<br/><span class="serif">bien diseñada</span></h2>
+      </div>
+      <div class="importance-grid">
+        <div class="importance-card">
+          <p>A pesar de que existen plataformas para crear webs de forma sencilla, estas poseen muchas limitaciones y debes adaptarte a diseños prefabricados. Un sitio sin la estructura, organización y optimización adecuadas no será relevante para los buscadores ni atractivo para tu público objetivo.</p>
+          <p>El sitio web de una marca es un elemento indispensable que debe ser desarrollado por expertos para llamar la atención de los usuarios, brindar una buena experiencia y obtener buen reconocimiento en los buscadores.</p>
+        </div>
+        <div class="importance-highlights">
+          {['Estructura y usabilidad profesional', 'Velocidad de carga optimizada', 'Diseño adaptado a tu público objetivo', 'Código limpio y mantenible', 'Seguridad y actualizaciones incluidas'].map(item => (
+            <div class="highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+.hero-highlight { color: var(--primary-dark); }
+.importance-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.importance-card p { color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
+.importance-highlights { display: flex; flex-direction: column; gap: 0.875rem; }
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--amber-50);
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+@media (max-width: 768px) {
+  .importance-grid { grid-template-columns: 1fr; }
+}
+</style>

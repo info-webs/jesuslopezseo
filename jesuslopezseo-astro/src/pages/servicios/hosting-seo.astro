@@ -1,0 +1,47 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const features = [
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`, title: 'IP dedicada', desc: 'Dirección IP exclusiva para tu web. No compartes recursos con otros sitios.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`, title: 'Alta velocidad de carga', desc: 'Servidores optimizados para que tu web cargue rápido y Google te valore positivamente.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, title: 'Seguridad SSL', desc: 'Certificado SSL incluido para proteger los datos de tus usuarios y mejorar el SEO.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, title: 'Asistencia 24/7', desc: 'Soporte remoto disponible las 24 horas para atender cualquier incidencia.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`, title: 'Copias de seguridad', desc: 'Backups automáticos periódicos para que nunca pierdas el trabajo de tu web.' },
+  { icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`, title: 'Optimizado para SEO', desc: 'Configuración técnica orientada a mejorar el rendimiento SEO de tu sitio web.' },
+];
+
+const benefits = [
+  'IP dedicada exclusiva para tu dominio',
+  'Tiempos de carga bajos gracias a servidores SSD de alta velocidad',
+  'Monitorización continua del estado de tu web',
+  'Copias de seguridad automáticas y restauración fácil',
+  'Soporte técnico personalizado 24/7',
+  'Planes flexibles adaptados a cualquier presupuesto',
+];
+
+const faq = [
+  { q: '¿Por qué necesito un hosting especial para SEO?', a: 'Un hosting SEO garantiza tiempos de carga bajos, alta disponibilidad y configuración técnica correcta. Estos factores influyen directamente en el posicionamiento en Google. Un hosting lento puede penalizar tu SEO aunque hagas todo lo demás bien.' },
+  { q: '¿Puedo migrar mi web actual a vuestro hosting?', a: 'Sí. Nos encargamos de toda la migración sin que tu web tenga tiempo de inactividad. Trasladamos archivos, base de datos y configuraciones manteniendo el SEO actual.' },
+  { q: '¿Qué planes de hosting ofrecéis?', a: 'Tenemos varios planes adaptados a diferentes necesidades: desde webs corporativas hasta tiendas online con alto tráfico. Consúltanos y te recomendamos el plan más adecuado según tu proyecto.' },
+];
+---
+<ServiceLayout
+  title="Hosting SEO"
+  metaTitle="Hosting SEO — JesusLopezSEO"
+  metaDescription="Servicio de Hosting SEO en JesusLopezSEO. Alojamiento web rápido, seguro y optimizado para posicionamiento en buscadores con IP dedicada y soporte 24/7."
+  canonical="https://www.jesuslopezseo.com/servicios/hosting-seo"
+  hero={{
+    badge: 'Hosting SEO',
+    headline: 'Alojamiento web<br/><span class="hero-highlight">optimizado para SEO</span>',
+    description: 'Un buen hosting es la base de tu estrategia SEO. Te ofrecemos un hosting de calidad, rápido y seguro con IP dedicada, soporte 24/7 y configuración optimizada para que Google valore tu web.',
+    cta: 'Solicitar información',
+  }}
+  features={features}
+  benefits={benefits}
+  faq={faq}
+>
+  <div></div>
+</ServiceLayout>
+<style>
+.hero-highlight { color: var(--primary-dark); }
+</style>
