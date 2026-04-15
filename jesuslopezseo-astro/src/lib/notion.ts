@@ -158,8 +158,16 @@ export async function getPosts(options?: {
 export async function getPostBySlug(slug: string): Promise<NotionPost | null> {
   const body = {
     filter: {
-      property: 'Slug',
-      rich_text: { equals: slug },
+      and: [
+        {
+          property: 'Slug',
+          rich_text: { equals: slug },
+        },
+        {
+          property: 'Status',
+          select: { equals: 'Published' },
+        },
+      ],
     },
     page_size: 1,
   };
