@@ -17,7 +17,7 @@ try {
 
   if (post) {
     // Fetch content blocks
-    content = await getPageContent(post.id);
+    content = await getPageContent(post.id, post.slug);
 
     // Fetch related posts (same category, exclude current)
     const related = await getPosts({ category: post.category, limit: 4 });
@@ -27,7 +27,7 @@ try {
   console.error('Error fetching post:', e);
 }
 
-if (!post || !content) {
+if (!post) {
   return Astro.redirect('/blog');
 }
 
