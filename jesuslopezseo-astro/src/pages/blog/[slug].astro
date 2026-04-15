@@ -5,9 +5,9 @@ import Footer from '../../components/Footer.astro';
 import { getPostBySlug, getPageContent, getPosts } from '../../lib/notion';
 import type { NotionPost } from '../../lib/notion';
 
-const { slug } = Astro.params;h
+const { slug } = Astro.params;
 
-// Fetch the posth
+// Fetch the post
 let post: NotionPost | null = null;
 let content = '';
 let relatedPosts: NotionPost[] = [];
