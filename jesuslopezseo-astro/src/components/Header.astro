@@ -109,8 +109,10 @@ const currentPath = Astro.url.pathname;
 .header-inner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 2rem;
   height: 72px;
+  min-width: 0;
 }
 
 /* ── Logo ── */
@@ -118,7 +120,8 @@ const currentPath = Astro.url.pathname;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
   transition: opacity 200ms;
 }
 .logo:hover { opacity: 0.85; }
@@ -328,9 +331,18 @@ const currentPath = Astro.url.pathname;
   .btn-phone { display: none; }
   .btn-mobile-menu { display: flex; }
   .nav-mobile { display: block; }
+  .header-inner { gap: 1rem; }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .logo-tagline { display: none; }
+  .header-inner { gap: 0.75rem; }
+  .header-actions { gap: 0.5rem; }
+  .header-actions .btn-sm { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+  .logo-name { font-size: 0.95rem; }
+  .logo-icon { width: 34px; height: 34px; font-size: 1.125rem; }
+}
+@media (max-width: 380px) {
+  .logo-name { display: none; }
 }
 </style>
 
