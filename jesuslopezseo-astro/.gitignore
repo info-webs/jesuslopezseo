@@ -1,0 +1,19 @@
+# build output
+dist/
+.output/
+.astro/
+.vercel/
+
+# dependencies
+node_modules/
+package-lock.json
+
+# auto-generated Astro types
+src/env.d.ts
+
+# environment variables
+.env
+.env.production
+
+# editor / OS
+.DS_Store
