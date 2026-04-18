@@ -4,6 +4,9 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getPostBySlug, getPageContent, getPosts } from '../../lib/notion';
 import type { NotionPost } from '../../lib/notion';
+import featuredImages from '../../lib/featured-images.json';
+
+const featuredImagesMap: Record<string, string> = featuredImages as Record<string, string>;
 
 const { slug } = Astro.params;
 
@@ -83,8 +86,12 @@ function buildSchema(p: NonNullable<typeof post>, html: string, url: string): st
 
 const defaultOgImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/01/jesus-lopez-seo.jpg';
 const postUrl = `https://www.jesuslopezseo.com/blog/${post.slug}`;
-const featuredImage = post.coverImage || extractFirstImage(content);
-const ogImage = featuredImage || defaultOgImage;
+// Priority: 1) local downloaded image, 2) Notion cover, 3) first image in content, 4) default
+const localImage = featuredImagesMap[post.slug] || null;
+const featuredImage = localImage || post.coverImage || extractFirstImage(content);
+const ogImage = featuredImage
+  ? (featuredImage.startsWith('/') ? `https://www.jesuslopezseo.com${featuredImage}` : featuredImage)
+  : defaultOgImage;
 const schema = buildSchema(post, content, postUrl);
 
 const catColors: Record<string, string> = {
