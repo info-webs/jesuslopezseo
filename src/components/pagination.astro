@@ -1,26 +1,187 @@
 ---
-const { url } = Astro.props;
+import type { Page } from "astro";
+
+interface Props {
+  page: Page;
+  baseUrl?: string;
+}
+
+const { page, baseUrl = "/blog" } = Astro.props as Props;
+
+const { currentPage, lastPage, total, size, start, end } = page;
+
+const hrefFor = (n: number) =>
+  n <= 1 ? `${baseUrl}/` : `${baseUrl}/${n}`;
+
+type Item = { type: "page"; n: number } | { type: "ellipsis"; key: string };
+
+function buildPageItems(cur: number, last: number): Item[] {
+  if (last <= 7) {
+    return Array.from({ length: last }, (_, i) => ({
+      type: "page" as const,
+      n: i + 1,
+    }));
+  }
+
+  const items: Item[] = [{ type: "page", n: 1 }];
+  const windowStart = Math.max(2, cur - 1);
+  const windowEnd = Math.min(last - 1, cur + 1);
+
+  if (windowStart > 2) items.push({ type: "ellipsis", key: "left" });
+  for (let n = windowStart; n <= windowEnd; n++) items.push({ type: "page", n });
+  if (windowEnd < last - 1) items.push({ type: "ellipsis", key: "right" });
+
+  items.push({ type: "page", n: last });
+  return items;
+}
+
+const items = buildPageItems(currentPage, lastPage);
+const rangeStart = start + 1;
+const rangeEnd = end + 1;
 ---
 
-<div class="flex justify-center items-center mt-10 gap-4">
-  {
-    url.prev && (
-      <a
-        class="bg-gray-100 px-5 py-2 rounded-md hover:bg-gray-200 transition"
-        href={url.prev}
-        title="Go to Previous">
-        &larr; Prev
-      </a>
-    )
-  }
-  {
-    url.next && (
-      <a
-        class="bg-gray-100 px-5 py-2 rounded-md hover:bg-gray-200 transition"
-        href={url.next}
-        title="Go to Next">
-        Next &rarr;
-      </a>
-    )
-  }
-</div>
+{
+  lastPage > 1 && (
+    <nav
+      aria-label="Blog pagination"
+      class="mt-16 flex flex-col items-center gap-5 border-t border-muted-strong/60 pt-10 sm:flex-row sm:justify-between">
+      <p class="text-sm text-default-soft">
+        Mostrando{" "}
+        <span class="font-semibold text-default">{rangeStart}</span>
+        {"–"}
+        <span class="font-semibold text-default">{rangeEnd}</span>
+        {" de "}
+        <span class="font-semibold text-default">{total}</span>
+        {" artículos"}
+      </p>
+
+      <ul class="flex items-center gap-1.5">
+        <li>
+          {page.url.prev ? (
+            <a
+              href={page.url.prev}
+              rel="prev"
+              aria-label="Ir a la página anterior"
+              class="group inline-flex h-10 items-center gap-1.5 rounded-lg border border-muted-strong bg-white px-3.5 text-sm font-medium text-default shadow-sm transition-all hover:-translate-y-px hover:border-primary/40 hover:text-primary hover:shadow-md active:translate-y-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform group-hover:-translate-x-0.5">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              <span class="hidden sm:inline">Anterior</span>
+            </a>
+          ) : (
+            <span
+              aria-hidden="true"
+              class="inline-flex h-10 items-center gap-1.5 rounded-lg border border-muted-strong/60 bg-muted-soft px-3.5 text-sm font-medium text-default-soft/50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              <span class="hidden sm:inline">Anterior</span>
+            </span>
+          )}
+        </li>
+
+        {items.map((item) =>
+          item.type === "ellipsis" ? (
+            <li
+              aria-hidden="true"
+              class="inline-flex h-10 w-10 items-center justify-center text-default-soft">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="5" cy="12" r="1" />
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+              </svg>
+            </li>
+          ) : item.n === currentPage ? (
+            <li>
+              <span
+                aria-current="page"
+                class="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-lg bg-primary px-3 text-sm font-semibold text-white shadow-md shadow-primary/25 ring-1 ring-primary">
+                {item.n}
+              </span>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={hrefFor(item.n)}
+                aria-label={`Ir a la página ${item.n}`}
+                class="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-lg border border-transparent px-3 text-sm font-medium text-default transition-all hover:-translate-y-px hover:border-primary/30 hover:bg-primary-soft hover:text-primary-strong">
+                {item.n}
+              </a>
+            </li>
+          )
+        )}
+
+        <li>
+          {page.url.next ? (
+            <a
+              href={page.url.next}
+              rel="next"
+              aria-label="Ir a la página siguiente"
+              class="group inline-flex h-10 items-center gap-1.5 rounded-lg bg-default px-3.5 text-sm font-medium text-white shadow-sm transition-all hover:-translate-y-px hover:bg-primary hover:shadow-md active:translate-y-0">
+              <span class="hidden sm:inline">Siguiente</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform group-hover:translate-x-0.5">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          ) : (
+            <span
+              aria-hidden="true"
+              class="inline-flex h-10 items-center gap-1.5 rounded-lg border border-muted-strong/60 bg-muted-soft px-3.5 text-sm font-medium text-default-soft/50">
+              <span class="hidden sm:inline">Siguiente</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </span>
+          )}
+        </li>
+      </ul>
+    </nav>
+  )
+}
