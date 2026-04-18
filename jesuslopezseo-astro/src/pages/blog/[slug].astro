@@ -766,6 +766,10 @@ const breadcrumb = [
 }
 .read-more { font-size: 0.875rem; font-weight: 600; color: var(--primary-dark); margin-top: auto; }
 
+/* Full-width variant when the article has no TOC to show */
+.post-layout.post-layout--no-toc { grid-template-columns: 1fr; max-width: 780px; margin-left: auto; margin-right: auto; }
+.post-layout.post-layout--no-toc .post-sidebar { display: none; }
+
 /* Responsive */
 @media (max-width: 1024px) {
   .post-layout { grid-template-columns: 1fr; }
@@ -815,6 +819,24 @@ const breadcrumb = [
 
       if (!articleBody) return;
 
+      // Promote WP-style pseudo-headings to real <h3> so legacy imported
+      // posts (where section titles were saved as <p><strong>Title</strong></p>)
+      // still produce a TOC.
+      Array.prototype.forEach.call(articleBody.querySelectorAll('p'), function (p) {
+        var strong = p.querySelector('strong');
+        if (!strong) return;
+        // Only promote if the paragraph's entire visible content is one <strong>.
+        var onlyStrong = p.children.length === 1 && p.children[0] === strong;
+        var rest = (p.textContent || '').replace(strong.textContent || '', '').trim();
+        var text = (strong.textContent || '').trim();
+        if (!onlyStrong || rest.length > 0) return;
+        if (text.length < 3 || text.length > 160) return;
+        var h = document.createElement('h3');
+        h.textContent = text;
+        h.className = 'post-body__h-promoted';
+        p.replaceWith(h);
+      });
+
       var headings = Array.from(articleBody.querySelectorAll('h2, h3, h4'));
       var usedIds = {};
       headings.forEach(function (h, i) {
@@ -830,10 +852,12 @@ const breadcrumb = [
         usedIds[h.id] = true;
       });
 
+      var postLayout = document.querySelector('.post-layout');
       if (headings.length === 0) {
         if (tocList) tocList.hidden = true;
         if (tocEmpty) tocEmpty.hidden = false;
         if (mobileTocBtn) mobileTocBtn.style.display = 'none';
+        if (postLayout) postLayout.classList.add('post-layout--no-toc');
         // Still keep progress bar functional
       }
 
