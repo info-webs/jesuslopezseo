@@ -148,6 +148,7 @@ const catColors: Record<string, string> = {
                         loading={i < 3 ? 'eager' : 'lazy'}
                         decoding="async"
                         class="post-card-thumb-img"
+                        onerror="this.closest('.post-card-thumb').style.display='none'"
                       />
                     </a>
                   ) : null;
