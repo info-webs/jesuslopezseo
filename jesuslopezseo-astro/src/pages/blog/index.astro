@@ -2,28 +2,38 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { getPosts } from '../../lib/notion';
+import Pagination from '../../components/Pagination.astro';
+import { getAllPosts } from '../../lib/notion';
 
 const CATEGORIES = ['SEO', 'Diseño Web', 'Marketing Digital', 'Redes Sociales', 'Noticias', 'Google'];
+const PAGE_SIZE = 12;
 
-// Get active category from URL query param
+// Get active category and page from URL query params
 const url = new URL(Astro.request.url);
 const activeCategory = url.searchParams.get('categoria') || '';
+const rawPage = parseInt(url.searchParams.get('page') || '1', 10);
+const requestedPage = Number.isFinite(rawPage) && rawPage > 0 ? rawPage : 1;
 
-// Fetch posts from Notion
-let posts = [];
+// Fetch all matching posts from Notion, then paginate server-side
+let allPosts = [];
 let error = false;
 
 try {
-  const result = await getPosts({
-    category: activeCategory || undefined,
-    limit: 24,
-  });
-  posts = result.posts;
+  allPosts = await getAllPosts(activeCategory || undefined);
 } catch (e) {
   console.error('Failed to fetch posts from Notion:', e);
   error = true;
 }
+
+const total = allPosts.length;
+const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
+const currentPage = Math.min(requestedPage, lastPage);
+const startIdx = (currentPage - 1) * PAGE_SIZE;
+const endIdx = Math.min(startIdx + PAGE_SIZE, total);
+const posts = allPosts.slice(startIdx, endIdx);
+const rangeStart = total === 0 ? 0 : startIdx + 1;
+const rangeEnd = endIdx;
+const isFirstPage = currentPage === 1;
 
 // Format date helper
 function formatDate(dateStr: string | null): string {
@@ -120,7 +130,7 @@ const catColors: Record<string, string> = {
         {!error && posts.length > 0 && (
           <div class="posts-grid">
             {posts.map((post, i) => (
-              <article class={`post-card ${i === 0 && !activeCategory ? 'post-card--featured' : ''}`}>
+              <article class={`post-card ${i === 0 && !activeCategory && isFirstPage ? 'post-card--featured' : ''}`}>
                 <div class="post-card-inner">
                   <div class="post-card-meta">
                     <span class={`post-badge ${catColors[post.category] || 'badge-default'}`}>
@@ -156,6 +166,18 @@ const catColors: Record<string, string> = {
               </article>
             ))}
           </div>
+        )}
+
+        {!error && posts.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            lastPage={lastPage}
+            total={total}
+            rangeStart={rangeStart}
+            rangeEnd={rangeEnd}
+            category={activeCategory || undefined}
+            basePath="/blog"
+          />
         )}
       </div>
     </section>
