@@ -3,12 +3,22 @@ export interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  publishedDate?: string;
+  author?: string;
+  schema?: string;
 }
 
 const {
   title = 'JesusLopezSEO — Consultor SEO en Salamanca',
   description = 'Jesús López, Consultor SEO experto en Salamanca. Posicionamiento web, diseño web y marketing digital para empresas que quieren crecer en Google.',
-  canonical = 'https://www.jesuslopezseo.com'
+  canonical = 'https://www.jesuslopezseo.com',
+  ogImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/09/jesus-lopez-seo-consultor.jpg',
+  ogType = 'website',
+  publishedDate,
+  author = 'Jesús López',
+  schema,
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -23,15 +33,36 @@ const {
   <!-- Preconnect fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
 
-  <!-- Favicon placeholder -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:locale" content="es_ES" />
+  <meta property="og:url" content={canonical} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  {ogImage && <meta property="og:image:width" content="1200" />}
+  {ogImage && <meta property="og:image:height" content="630" />}
+  {ogType === 'article' && publishedDate && (
+    <meta property="article:published_time" content={publishedDate} />
+  )}
+  {ogType === 'article' && (
+    <meta property="article:author" content={author} />
+  )}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+  <meta name="twitter:site" content="@jesuslopezseo" />
+
+  <!-- Schema.org JSON-LD -->
+  {schema && <script type="application/ld+json" set:html={schema} />}
 
   <!-- Global styles -->
   <link rel="stylesheet" href="/styles/global.css" />

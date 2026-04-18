@@ -45,10 +45,46 @@ function formatDate(dateStr: string | null): string {
   }
 }
 
-function readingTime(wordCount: number): string {
-  const mins = Math.max(1, Math.round(wordCount / 200));
+// Reading time from actual HTML content (accurate)
+function readingTime(html: string): string {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const words = text.split(' ').filter(w => w.length > 0).length;
+  const mins = Math.max(1, Math.round(words / 200));
   return `${mins} min de lectura`;
 }
+
+// Extract first image from HTML for og:image
+function extractFirstImage(html: string): string | null {
+  const m = html.match(/src="(https?:\/\/[^"\s]+\.(jpg|jpeg|png|webp|gif)[^"\s]*)"/i);
+  return m ? m[1] : null;
+}
+
+// Build Schema.org Article JSON-LD
+function buildSchema(p: NonNullable<typeof post>, html: string, url: string): string {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const words = text.split(' ').filter(w => w.length > 0).length;
+  const img = extractFirstImage(html) || defaultOgImage;
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": p.title,
+    "description": p.excerpt || p.title,
+    "image": img,
+    "author": { "@type": "Person", "name": p.author || "Jesús López", "url": "https://www.jesuslopezseo.com" },
+    "publisher": { "@type": "Organization", "name": "JesusLopezSEO", "logo": { "@type": "ImageObject", "url": "https://www.jesuslopezseo.com/favicon.svg" } },
+    "datePublished": p.publishedDate,
+    "dateModified": p.publishedDate,
+    "url": url,
+    "wordCount": words,
+    "articleSection": p.category,
+    "inLanguage": "es-ES"
+  });
+}
+
+const defaultOgImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/01/jesus-lopez-seo.jpg';
+const postUrl = `https://www.jesuslopezseo.com/blog/${post.slug}`;
+const ogImage = extractFirstImage(content) || post.originalUrl || defaultOgImage;
+const schema = buildSchema(post, content, postUrl);
 
 const catColors: Record<string, string> = {
   'SEO': 'badge-seo',
@@ -69,7 +105,12 @@ const breadcrumb = [
 <Layout
   title={`${post.title} — JesusLopezSEO`}
   description={post.excerpt || post.title}
-  canonical={`https://www.jesuslopezseo.com/blog/${post.slug}`}
+  canonical={postUrl}
+  ogImage={ogImage}
+  ogType="article"
+  publishedDate={post.publishedDate || undefined}
+  author={post.author || 'Jesús López'}
+  schema={schema}
 >
   <Header />
 
@@ -109,7 +150,7 @@ const breadcrumb = [
               >
                 {post.category}
               </a>
-              <span class="post-reading-time">{readingTime(post.wordCount)}</span>
+              <span class="post-reading-time">{readingTime(content)}</span>
             </div>
 
             <h1 class="post-title">{post.title}</h1>
