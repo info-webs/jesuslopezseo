@@ -19,6 +19,13 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
+  <!-- Reading progress bar -->
+  <div
+    id="progress-bar"
+    class="fixed top-0 left-0 h-[3px] z-50 bg-gradient-to-r from-primary to-primary-strong"
+    style="width: 0%;">
+  </div>
+
   <Container>
     <div class="mx-auto max-w-3xl mt-14 text-center">
       <span class="text-primary uppercase tracking-wider text-sm font-medium">
@@ -131,23 +138,366 @@ const { Content } = await entry.render();
       </div>
     </div>
 
-    <div
-      class="mx-auto prose prose-lg mt-12 max-w-3xl prose-blockquote:bg-primary-soft prose-blockquote:px-10 prose-blockquote:py-6 prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:border prose-blockquote:border-primary-accent prose-blockquote:rounded-md">
-      <Content />
-    </div>
-    <div class="max-w-3xl mx-auto flex flex-wrap gap-3 mt-6">
-      {
-        entry.data.tags.map((tag) => (
-          <span class="text-sm text-gray-500">#{tag}</span>
-        ))
-      }
-    </div>
-    <div class="text-center mt-8 mb-16">
-      <a
-        href="/blog"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition">
-        ← Back to Blog
-      </a>
+    <div class="max-w-6xl mx-auto mt-12 lg:flex lg:gap-10">
+      <!-- Main content column -->
+      <div class="max-w-3xl mx-auto lg:mx-0 flex-1 min-w-0">
+        <div
+          id="article-content"
+          class="prose prose-lg prose-blockquote:bg-primary-soft prose-blockquote:px-10 prose-blockquote:py-6 prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:border prose-blockquote:border-primary-accent prose-blockquote:rounded-md">
+          <Content />
+        </div>
+        <div class="flex flex-wrap gap-3 mt-6">
+          {
+            entry.data.tags.map((tag) => (
+              <span class="text-sm text-gray-500">#{tag}</span>
+            ))
+          }
+        </div>
+        <div class="text-center mt-8 mb-16">
+          <a
+            href="/blog"
+            class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition">
+            ← Back to Blog
+          </a>
+        </div>
+      </div>
+
+      <!-- Desktop TOC sidebar -->
+      <aside class="hidden lg:block w-64 flex-shrink-0">
+        <div
+          id="toc-sidebar"
+          class="sticky top-24 opacity-0 transition-opacity duration-300">
+          <div
+            class="bg-white border border-muted-strong rounded-2xl p-5 shadow-sm">
+            <button
+              id="toc-toggle"
+              class="flex items-center justify-between w-full text-left mb-3"
+              aria-expanded="true">
+              <span class="text-sm font-semibold text-default">
+                En este artículo
+              </span>
+              <svg
+                id="toc-toggle-icon"
+                class="w-4 h-4 text-default-soft transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </button>
+            <div class="mb-4 pb-3 border-b border-muted-strong">
+              <div class="flex items-center justify-between">
+                <span class="text-default-soft text-xs">Progreso</span>
+                <span
+                  id="toc-progress-text"
+                  class="text-primary text-xs font-medium">0%</span>
+              </div>
+              <div class="mt-2 h-1 bg-muted rounded-full overflow-hidden">
+                <div
+                  id="toc-progress-bar"
+                  class="h-full bg-gradient-to-r from-primary to-primary-strong rounded-full transition-all duration-150"
+                  style="width: 0%;">
+                </div>
+              </div>
+            </div>
+            <nav
+              id="toc-list"
+              class="space-y-1"
+              aria-label="Tabla de contenidos">
+            </nav>
+          </div>
+        </div>
+      </aside>
     </div>
   </Container>
+
+  <!-- Mobile TOC button -->
+  <button
+    id="mobile-toc-btn"
+    class="lg:hidden fixed bottom-6 right-6 z-40 bg-white border border-muted-strong text-default px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 transition-all duration-300 hover:border-primary"
+    aria-label="Abrir tabla de contenidos">
+    <svg
+      class="w-4 h-4 text-primary"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+      />
+    </svg>
+    <span class="text-xs font-medium">Contenido</span>
+  </button>
+
+  <!-- Mobile TOC drawer -->
+  <div
+    id="mobile-toc-overlay"
+    class="lg:hidden fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div
+      class="absolute inset-0 bg-default/60 backdrop-blur-sm"
+      id="mobile-toc-backdrop">
+    </div>
+    <div
+      id="mobile-toc-drawer"
+      class="absolute bottom-0 left-0 right-0 bg-white border-t border-muted-strong rounded-t-2xl transform translate-y-full transition-transform duration-300 max-h-[70vh] flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between p-5 border-b border-muted-strong">
+        <span class="text-sm font-semibold text-default">En este artículo</span>
+        <button
+          id="mobile-toc-close"
+          class="text-default-soft hover:text-default transition-colors p-1"
+          aria-label="Cerrar tabla de contenidos">
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="px-5 pt-4 pb-2">
+        <div class="flex items-center justify-between">
+          <span class="text-default-soft text-xs">Progreso</span>
+          <span
+            id="mobile-toc-progress-text"
+            class="text-primary text-xs font-medium">0%</span>
+        </div>
+        <div class="mt-2 h-1 bg-muted rounded-full overflow-hidden">
+          <div
+            id="mobile-toc-progress-bar"
+            class="h-full bg-gradient-to-r from-primary to-primary-strong rounded-full transition-all duration-150"
+            style="width: 0%;">
+          </div>
+        </div>
+      </div>
+      <nav
+        id="mobile-toc-list"
+        class="p-5 pt-3 overflow-y-auto space-y-1"
+        aria-label="Tabla de contenidos móvil">
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const articleContent = document.getElementById("article-content");
+      const progressBar = document.getElementById("progress-bar");
+      const tocSidebar = document.getElementById("toc-sidebar");
+      const tocList = document.getElementById("toc-list");
+      const mobileTocList = document.getElementById("mobile-toc-list");
+      const tocToggle = document.getElementById("toc-toggle");
+      const tocToggleIcon = document.getElementById("toc-toggle-icon");
+      const tocProgressBar = document.getElementById("toc-progress-bar");
+      const tocProgressText = document.getElementById("toc-progress-text");
+      const mobileTocProgressBar = document.getElementById(
+        "mobile-toc-progress-bar",
+      );
+      const mobileTocProgressText = document.getElementById(
+        "mobile-toc-progress-text",
+      );
+      const mobileTocBtn = document.getElementById("mobile-toc-btn");
+      const mobileTocOverlay = document.getElementById("mobile-toc-overlay");
+      const mobileTocDrawer = document.getElementById("mobile-toc-drawer");
+      const mobileTocClose = document.getElementById("mobile-toc-close");
+      const mobileTocBackdrop = document.getElementById("mobile-toc-backdrop");
+
+      if (!articleContent) return;
+
+      const headings = Array.from(
+        articleContent.querySelectorAll("h2, h3"),
+      ) as HTMLElement[];
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id = "heading-" + index;
+        }
+      });
+
+      function itemClasses(
+        isH3: boolean,
+        state: "idle" | "hover-mobile" | "active-desktop" | "active-mobile",
+      ): string {
+        const indent = isH3 ? "pl-6" : "pl-3";
+        const base =
+          "block text-sm py-1.5 pr-3 transition-all duration-200 rounded-md " +
+          indent;
+        if (state === "active-desktop") {
+          return (
+            base +
+            " text-primary font-medium border-l-2 border-primary bg-primary-soft"
+          );
+        }
+        if (state === "active-mobile") {
+          return base + " text-primary font-medium bg-primary-soft";
+        }
+        if (state === "hover-mobile") {
+          return (
+            base + " text-default-soft hover:text-default hover:bg-muted"
+          );
+        }
+        return (
+          base +
+          " text-default-soft hover:text-default border-l-2 border-transparent"
+        );
+      }
+
+      function createTocItem(
+        heading: HTMLElement,
+        index: number,
+        isMobile: boolean,
+      ): HTMLAnchorElement {
+        const link = document.createElement("a");
+        link.href = "#" + heading.id;
+        link.textContent = heading.textContent || "";
+        link.dataset.index = String(index);
+        const isH3 = heading.tagName === "H3";
+        link.className = itemClasses(
+          isH3,
+          isMobile ? "hover-mobile" : "idle",
+        );
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.getElementById(heading.id);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (isMobile) closeMobileDrawer();
+          }
+        });
+        return link;
+      }
+
+      if (headings.length > 0) {
+        headings.forEach((heading, index) => {
+          if (tocList) tocList.appendChild(createTocItem(heading, index, false));
+          if (mobileTocList)
+            mobileTocList.appendChild(createTocItem(heading, index, true));
+        });
+      } else {
+        if (tocSidebar) tocSidebar.style.display = "none";
+        if (mobileTocBtn) mobileTocBtn.style.display = "none";
+      }
+
+      // TOC toggle (collapse/expand)
+      let tocExpanded = true;
+      if (tocToggle && tocList) {
+        tocToggle.addEventListener("click", () => {
+          tocExpanded = !tocExpanded;
+          tocList.style.display = tocExpanded ? "block" : "none";
+          if (tocToggleIcon) {
+            tocToggleIcon.style.transform = tocExpanded
+              ? ""
+              : "rotate(-90deg)";
+          }
+          tocToggle.setAttribute("aria-expanded", String(tocExpanded));
+        });
+      }
+
+      // IntersectionObserver for active heading
+      let activeIndex = -1;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const idx = headings.indexOf(entry.target as HTMLElement);
+              if (idx !== -1) activeIndex = idx;
+            }
+          });
+          updateActiveItem();
+        },
+        { rootMargin: "-80px 0px -70% 0px", threshold: 0 },
+      );
+
+      headings.forEach((h) => observer.observe(h));
+
+      function updateActiveItem() {
+        if (tocList) {
+          const items = tocList.querySelectorAll("a");
+          items.forEach((item, i) => {
+            const heading = headings[i];
+            const isH3 = !!heading && heading.tagName === "H3";
+            item.className = itemClasses(
+              isH3,
+              i === activeIndex ? "active-desktop" : "idle",
+            );
+          });
+        }
+        if (mobileTocList) {
+          const items = mobileTocList.querySelectorAll("a");
+          items.forEach((item, i) => {
+            const heading = headings[i];
+            const isH3 = !!heading && heading.tagName === "H3";
+            item.className = itemClasses(
+              isH3,
+              i === activeIndex ? "active-mobile" : "hover-mobile",
+            );
+          });
+        }
+      }
+
+      function onScroll() {
+        const article = articleContent!;
+        const articleTop = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        const progress = Math.min(
+          Math.max(
+            (scrollY - articleTop + windowHeight * 0.3) / articleHeight,
+            0,
+          ),
+          1,
+        );
+        const pct = Math.round(progress * 100);
+
+        if (progressBar) progressBar.style.width = pct + "%";
+        if (tocProgressBar) tocProgressBar.style.width = pct + "%";
+        if (tocProgressText) tocProgressText.textContent = pct + "%";
+        if (mobileTocProgressBar)
+          mobileTocProgressBar.style.width = pct + "%";
+        if (mobileTocProgressText)
+          mobileTocProgressText.textContent = pct + "%";
+
+        if (tocSidebar) {
+          tocSidebar.style.opacity = scrollY > 300 ? "1" : "0";
+        }
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      function openMobileDrawer() {
+        if (!mobileTocOverlay || !mobileTocDrawer) return;
+        mobileTocOverlay.style.pointerEvents = "auto";
+        mobileTocOverlay.style.opacity = "1";
+        mobileTocDrawer.style.transform = "translateY(0)";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileDrawer() {
+        if (!mobileTocOverlay || !mobileTocDrawer) return;
+        mobileTocOverlay.style.opacity = "0";
+        mobileTocDrawer.style.transform = "translateY(100%)";
+        mobileTocOverlay.style.pointerEvents = "none";
+        document.body.style.overflow = "";
+      }
+
+      if (mobileTocBtn) mobileTocBtn.addEventListener("click", openMobileDrawer);
+      if (mobileTocClose)
+        mobileTocClose.addEventListener("click", closeMobileDrawer);
+      if (mobileTocBackdrop)
+        mobileTocBackdrop.addEventListener("click", closeMobileDrawer);
+    });
+  </script>
 </Layout>
