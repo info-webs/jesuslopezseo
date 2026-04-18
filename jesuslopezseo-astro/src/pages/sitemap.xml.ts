@@ -5,17 +5,18 @@ const BASE = 'https://www.jesuslopezseo.com';
 
 // Static pages with their priorities and change frequencies
 const staticPages = [
-  { url: '/',                              priority: '1.0', changefreq: 'weekly'  },
-  { url: '/posicionamiento-web',           priority: '0.9', changefreq: 'monthly' },
-  { url: '/servicios/diseno-web',          priority: '0.8', changefreq: 'monthly' },
-  { url: '/servicios/community-manager',   priority: '0.7', changefreq: 'monthly' },
-  { url: '/servicios/redaccion-contenido', priority: '0.7', changefreq: 'monthly' },
-  { url: '/servicios/diseno-grafico',      priority: '0.7', changefreq: 'monthly' },
-  { url: '/servicios/posicionamiento-aso', priority: '0.7', changefreq: 'monthly' },
-  { url: '/servicios/hosting-seo',         priority: '0.7', changefreq: 'monthly' },
-  { url: '/blog',                          priority: '0.8', changefreq: 'daily'   },
-  { url: '/contactar',                     priority: '0.6', changefreq: 'yearly'  },
-  { url: '/pedir-presupuesto',             priority: '0.6', changefreq: 'yearly'  },
+  { url: '/',                                            priority: '1.0', changefreq: 'weekly'  },
+  { url: '/posicionamiento-web',                         priority: '0.9', changefreq: 'monthly' },
+  { url: '/servicios/posicionamiento-geo-salamanca',     priority: '0.9', changefreq: 'monthly' },
+  { url: '/servicios/diseno-web',                        priority: '0.8', changefreq: 'monthly' },
+  { url: '/servicios/community-manager',                 priority: '0.7', changefreq: 'monthly' },
+  { url: '/servicios/redaccion-contenido',               priority: '0.7', changefreq: 'monthly' },
+  { url: '/servicios/diseno-grafico',                    priority: '0.7', changefreq: 'monthly' },
+  { url: '/servicios/posicionamiento-aso',               priority: '0.7', changefreq: 'monthly' },
+  { url: '/servicios/hosting-seo',                       priority: '0.7', changefreq: 'monthly' },
+  { url: '/blog',                                        priority: '0.8', changefreq: 'daily'   },
+  { url: '/contactar',                                   priority: '0.6', changefreq: 'yearly'  },
+  { url: '/pedir-presupuesto',                           priority: '0.6', changefreq: 'yearly'  },
 ];
 
 export const GET: APIRoute = async () => {
