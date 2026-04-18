@@ -156,6 +156,30 @@ const breadcrumb = [
             </div>
           )}
 
+          <!-- Inline related posts: data + template (consumed by inline-related script) -->
+          {relatedPosts.length > 0 && (
+            <script
+              id="inline-related-data"
+              type="application/json"
+              set:html={JSON.stringify(
+                relatedPosts.map(rp => ({
+                  slug: rp.slug,
+                  title: rp.title,
+                  category: rp.category,
+                }))
+              )}
+            />
+          )}
+          <template id="inline-related-template">
+            <aside class="inline-related" role="complementary">
+              <span class="inline-related__label">Leer también</span>
+              <a class="inline-related__link" href="">
+                <span class="inline-related__title"></span>
+                <span class="inline-related__arrow" aria-hidden="true">→</span>
+              </a>
+            </aside>
+          </template>
+
           <!-- Tags footer -->
           {post.tags?.length > 0 && (
             <div class="post-tags-footer">
@@ -786,6 +810,56 @@ const breadcrumb = [
 
 /* Scroll offset so anchor jumps don't hide under sticky header */
 .post-body :where(h2, h3, h4)[id] { scroll-margin-top: 6rem; }
+
+/* Inline related posts (WP "Inline Related Posts" plugin style) */
+.inline-related {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 2rem 0;
+  padding: 1.1rem 1.25rem 1.1rem 1.4rem;
+  background: var(--amber-50);
+  border: 1px solid var(--amber-200);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow: var(--shadow-xs);
+  transition: all 200ms ease;
+}
+.inline-related:hover {
+  background: var(--cream-50);
+  border-left-color: var(--primary-dark);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+}
+.inline-related__label {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+}
+.inline-related__link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--text-primary);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none !important;
+}
+.inline-related__link:hover { color: var(--primary-dark); }
+.inline-related__arrow {
+  display: inline-block;
+  transition: transform 200ms ease;
+  color: var(--primary);
+}
+.inline-related__link:hover .inline-related__arrow { transform: translateX(3px); }
+@media (max-width: 640px) {
+  .inline-related { margin: 1.5rem 0; padding: 0.9rem 1rem 0.9rem 1.1rem; }
+  .inline-related__link { font-size: 0.9375rem; }
+}
 </style>
 
 <script is:inline>
@@ -818,6 +892,64 @@ const breadcrumb = [
       var mobileTocBackdrop = document.getElementById('mobile-toc-backdrop');
 
       if (!articleBody) return;
+
+      // Inject inline related posts (WP "Inline Related Posts" plugin style).
+      // Inserts a small "Leer también" card after specific paragraphs to
+      // surface related content mid-article without breaking reading flow.
+      (function injectInlineRelated() {
+        var dataEl = document.getElementById('inline-related-data');
+        var tpl = document.getElementById('inline-related-template');
+        if (!dataEl || !tpl || !articleBody) return;
+        var related;
+        try { related = JSON.parse(dataEl.textContent || '[]'); } catch (e) { return; }
+        if (!Array.isArray(related) || related.length === 0) return;
+
+        var paragraphs = Array.prototype.filter.call(
+          articleBody.children,
+          function (el) {
+            if (el.tagName !== 'P') return false;
+            var text = (el.textContent || '').trim();
+            return text.length > 40;
+          }
+        );
+        if (paragraphs.length < 4) return;
+
+        var total = paragraphs.length;
+        var slots = [];
+        slots.push(Math.min(2, total - 1));
+        if (total >= 9 && related.length >= 2) {
+          slots.push(Math.min(Math.floor(total / 2) + 1, total - 1));
+        }
+        if (total >= 16 && related.length >= 3) {
+          slots.push(Math.min(total - 3, total - 1));
+        }
+
+        var seen = {};
+        var insertions = [];
+        var ri = 0;
+        for (var s = 0; s < slots.length; s++) {
+          var idx = slots[s];
+          if (seen[idx] || ri >= related.length) continue;
+          seen[idx] = true;
+          insertions.push({ index: idx, rel: related[ri] });
+          ri++;
+        }
+
+        // Insert from last to first so earlier indexes stay valid.
+        for (var i = insertions.length - 1; i >= 0; i--) {
+          var ins = insertions[i];
+          var node = tpl.content.cloneNode(true);
+          var link = node.querySelector('.inline-related__link');
+          var titleEl = node.querySelector('.inline-related__title');
+          if (!link || !titleEl) continue;
+          link.setAttribute('href', '/blog/' + ins.rel.slug);
+          titleEl.textContent = ins.rel.title;
+          var anchor = paragraphs[ins.index];
+          if (anchor && anchor.parentNode) {
+            anchor.parentNode.insertBefore(node, anchor.nextSibling);
+          }
+        }
+      })();
 
       // Promote WP-style pseudo-headings to real <h3> so legacy imported
       // posts (where section titles were saved as <p><strong>Title</strong></p>)
