@@ -35,29 +35,38 @@ const {
 <Layout title={metaTitle || title + ' — JesusLopezSEO'} description={metaDescription} canonical={canonical}>
   <Header />
 
-  <main>
+  <main class="svc">
 
-    <!-- Hero del servicio -->
+    <!-- ═══ Hero ═══ -->
     <section class="svc-hero">
-      <div class="svc-hero-bg" aria-hidden="true"></div>
+      <div class="svc-grid" aria-hidden="true"></div>
+      <div class="svc-glow" aria-hidden="true"></div>
+
       <div class="container svc-hero-inner">
-        <div class="svc-hero-content animate-fade-up">
-          <div class="section-label">{hero.badge}</div>
-          <h1 set:html={hero.headline} />
+        <div class="svc-hero-content">
+          <div class="svc-eyebrow">
+            <span class="svc-dot"></span>
+            {hero.badge}
+          </div>
+
+          <h1 class="svc-hero-title" set:html={hero.headline} />
+
           {hero.subheadline && <p class="svc-hero-sub">{hero.subheadline}</p>}
           <p class="svc-hero-desc">{hero.description}</p>
+
           <div class="svc-hero-actions">
-            <a href="/pedir-presupuesto" class="btn btn-primary btn-lg">
+            <a href="/pedir-presupuesto" class="svc-btn">
               {hero.cta || 'Solicitar presupuesto'}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="tel:+34618015995" class="btn btn-outline btn-lg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Llamar ahora
+            <a href="tel:+34618015995" class="svc-btn svc-btn--ghost">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Llamar
             </a>
           </div>
         </div>
-        <div class="svc-hero-aside animate-fade-up delay-300">
+
+        <div class="svc-hero-aside">
           <slot name="hero-aside" />
         </div>
       </div>
@@ -66,18 +75,19 @@ const {
     <!-- Main content slot -->
     <slot />
 
-    <!-- Features grid (if provided) -->
+    <!-- ═══ Features ═══ -->
     {features.length > 0 && (
-      <section class="svc-features section-pad bg-subtle">
+      <section class="svc-features">
         <div class="container">
-          <div class="section-header text-center">
-            <div class="section-label" style="justify-content:center">Qué incluye</div>
-            <h2>Todo lo que necesitas<br/><span class="serif">en un solo servicio</span></h2>
-          </div>
-          <div class="features-grid">
+          <div class="svc-pill">Qué incluye</div>
+          <h2 class="svc-h2">
+            Todo lo que necesitas,<br/>
+            <em>en un solo servicio.</em>
+          </h2>
+          <div class="svc-features-grid">
             {features.map(f => (
-              <div class="feature-card">
-                <div class="feature-icon" set:html={f.icon} />
+              <div class="svc-feature">
+                <div class="svc-feature-icon" set:html={f.icon} />
                 <h3>{f.title}</h3>
                 <p>{f.desc}</p>
               </div>
@@ -87,40 +97,49 @@ const {
       </section>
     )}
 
-    <!-- Benefits -->
+    <!-- ═══ Benefits ═══ -->
     {benefits.length > 0 && (
-      <section class="svc-benefits section-pad">
+      <section class="svc-benefits">
         <div class="container svc-benefits-grid">
-          <div class="benefits-content">
-            <div class="section-label">Por qué elegirnos</div>
-            <h2>Ventajas de trabajar<br/>con <span class="serif">JesusLopezSEO</span></h2>
-            <ul class="benefits-list">
+          <div class="svc-benefits-content">
+            <div class="svc-pill svc-pill--ink">Por qué elegirnos</div>
+            <h2 class="svc-h2">
+              Ventajas de trabajar con<br/>
+              <em>JesusLopezSEO.</em>
+            </h2>
+            <ul class="svc-benefits-list">
               {benefits.map(b => (
                 <li>
-                  <span class="benefit-check">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span class="svc-check">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                   </span>
                   {b}
                 </li>
               ))}
             </ul>
-            <a href="/pedir-presupuesto" class="btn btn-primary" style="margin-top:1.5rem">Solicitar presupuesto sin compromiso</a>
+            <a href="/pedir-presupuesto" class="svc-btn" style="margin-top:2rem">
+              Solicitar presupuesto sin compromiso
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
-          <div class="benefits-cta-box">
+
+          <div class="svc-contact-card">
+            <div class="svc-contact-bg" aria-hidden="true"></div>
+            <div class="svc-contact-eyebrow">
+              <span class="live-dot-s"></span>
+              Atención directa
+            </div>
             <h3>¿Tienes dudas?</h3>
-            <p>Contáctanos ahora y te asesoramos sin compromiso. Analizamos tu proyecto y te explicamos cómo podemos ayudarte.</p>
-            <div class="contact-options">
-              <a href="mailto:jesus@jesuslopezseo.com" class="contact-opt">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                jesus@jesuslopezseo.com
+            <p>Hablas directamente conmigo. Sin intermediarios, sin comerciales, sin rodeos. Analizo tu proyecto y te digo si encaja o no.</p>
+
+            <div class="svc-contact-list">
+              <a href="mailto:jesus@jesuslopezseo.com" class="svc-contact-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>jesus@jesuslopezseo.com</span>
               </a>
-              <a href="tel:+34618015995" class="contact-opt">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                618 015 995
-              </a>
-              <a href="tel:+34923161866" class="contact-opt">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                923 16 18 66
+              <a href="tel:+34618015995" class="svc-contact-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+34 618 015 995</span>
               </a>
             </div>
           </div>
@@ -128,23 +147,24 @@ const {
       </section>
     )}
 
-    <!-- FAQ -->
+    <!-- ═══ FAQ ═══ -->
     {faq.length > 0 && (
-      <section class="svc-faq section-pad bg-subtle">
-        <div class="container" style="max-width:780px">
-          <div class="section-header text-center">
-            <div class="section-label" style="justify-content:center">FAQ</div>
-            <h2>Preguntas frecuentes</h2>
-          </div>
-          <div class="faq-list">
+      <section class="svc-faq">
+        <div class="container" style="max-width:820px">
+          <div class="svc-pill">Preguntas frecuentes</div>
+          <h2 class="svc-h2">
+            Todo lo que nos preguntan<br/>
+            <em>antes de empezar.</em>
+          </h2>
+          <div class="svc-faq-list">
             {faq.map(item => (
-              <details class="faq-item">
-                <summary class="faq-question">
-                  {item.q}
-                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              <details class="svc-faq-item">
+                <summary>
+                  <span>{item.q}</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <div class="faq-answer">
-                  <p>{item.a}</p>
+                <div class="svc-faq-answer">
+                  <p set:html={item.a} />
                 </div>
               </details>
             ))}
@@ -153,14 +173,24 @@ const {
       </section>
     )}
 
-    <!-- Bottom CTA -->
-    <section class="section-pad">
-      <div class="container">
-        <div class="bottom-cta">
-          <div class="section-label" style="justify-content:center">Sin compromiso</div>
-          <h2>¿Listo para mejorar tu presencia online?</h2>
-          <p>Pide tu presupuesto gratuito ahora. Te respondemos en menos de 24 horas.</p>
-          <a href="/pedir-presupuesto" class="btn btn-primary btn-lg">Solicitar presupuesto gratis →</a>
+    <!-- ═══ Bottom CTA ═══ -->
+    <section class="svc-cta">
+      <div class="svc-cta-grid" aria-hidden="true"></div>
+      <div class="container svc-cta-inner">
+        <div class="svc-pill svc-pill--mint">Sin compromiso</div>
+        <h2 class="svc-cta-h2">
+          ¿Listo para mejorar<br/>tu presencia online?
+        </h2>
+        <p>Pide tu presupuesto gratis. Te respondo en menos de 24 horas con una propuesta concreta.</p>
+        <div class="svc-cta-actions">
+          <a href="/pedir-presupuesto" class="svc-btn svc-btn--mint">
+            Solicitar presupuesto gratis
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="tel:+34618015995" class="svc-btn svc-btn--ghost-light">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            618 015 995
+          </a>
         </div>
       </div>
     </section>
@@ -171,192 +201,462 @@ const {
 </Layout>
 
 <style>
-/* Hero */
-.svc-hero {
-  position: relative;
-  padding: 6rem 0 5rem;
-  overflow: hidden;
-}
-.svc-hero-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(245,158,11,0.07) 0%, transparent 60%);
-  pointer-events: none;
-}
-.svc-hero-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.svc-hero-content { max-width: 580px; }
-.svc-hero-content h1 { margin: 0.75rem 0 1rem; }
-.svc-hero-sub {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 0.75rem;
-}
-.svc-hero-desc {
-  font-size: 1.0625rem;
-  color: var(--text-muted);
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-.svc-hero-actions { display: flex; gap: 0.875rem; flex-wrap: wrap; }
+  .svc {
+    --s-ink: #0f0e0c;
+    --s-ink-soft: #2a2622;
+    --s-mid: #5a524a;
+    --s-mute: #8a8078;
+    --s-paper: #faf9f7;
+    --s-cream: #f3efe7;
+    --s-border: rgba(15,14,12,0.08);
+    --s-border-strong: rgba(15,14,12,0.14);
+    --s-amber: #f59e0b;
+    --s-amber-dark: #b45309;
+    --s-mint: #00d57b;
+    --s-display: 'Instrument Serif', Georgia, serif;
+    --s-mono: 'JetBrains Mono', monospace;
+  }
 
-/* Features */
-.section-pad { padding: 6rem 0; }
-.bg-subtle { background: var(--surface-subtle); }
-.section-header { margin-bottom: 3rem; }
-.section-header h2 { margin-bottom: 0.5rem; }
+  .svc .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.feature-card {
-  background: var(--surface-card);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  transition: all var(--transition-base);
-}
-.feature-card:hover {
-  border-color: var(--amber-200);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-.feature-icon {
-  width: 44px; height: 44px;
-  background: var(--amber-50);
-  border: 1px solid var(--amber-200);
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--primary-dark);
-  margin-bottom: 1rem;
-}
-.feature-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-.feature-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+  /* ═══════ HERO ═══════ */
+  .svc-hero {
+    position: relative;
+    padding: 6rem 0 4.5rem;
+    overflow: hidden;
+    background: var(--s-paper);
+  }
+  .svc-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--s-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--s-border) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 30% 40%, black 10%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 10%, transparent 65%);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .svc-glow {
+    position: absolute;
+    top: -150px; right: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 60%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .svc-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .svc-hero-content { max-width: 620px; }
+  .svc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--s-border-strong);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+    font-family: var(--s-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--s-ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .svc-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--s-amber);
+  }
+  .svc-hero-title {
+    font-family: var(--s-display);
+    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.25rem;
+    color: var(--s-ink);
+  }
+  .svc-hero-title :global(em) {
+    font-style: italic;
+    color: var(--s-amber-dark);
+  }
+  .svc-hero-sub {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--s-ink-soft);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+  .svc-hero-desc {
+    font-size: 1.0625rem;
+    color: var(--s-mid);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    max-width: 560px;
+  }
+  .svc-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-/* Benefits */
-.svc-benefits-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.benefits-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  margin-top: 1.5rem;
-}
-.benefits-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.9375rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-.benefit-check {
-  flex-shrink: 0;
-  width: 22px; height: 22px;
-  background: var(--primary);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  margin-top: 1px;
-}
+  .svc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border: 1px solid var(--s-ink);
+  }
+  .svc-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(15,14,12,0.25); }
+  .svc-btn--ghost {
+    background: transparent;
+    color: var(--s-ink);
+    border-color: var(--s-border-strong);
+  }
+  .svc-btn--ghost:hover { background: rgba(15,14,12,0.04); border-color: var(--s-ink); }
+  .svc-btn--mint {
+    background: var(--s-mint);
+    color: var(--s-ink);
+    border-color: var(--s-mint);
+    box-shadow: 0 0 40px rgba(0,213,123,0.25);
+  }
+  .svc-btn--mint:hover { box-shadow: 0 0 60px rgba(0,213,123,0.35), 0 12px 32px rgba(0,0,0,0.3); }
+  .svc-btn--ghost-light {
+    background: transparent;
+    color: var(--s-paper);
+    border: 1px solid rgba(250,249,247,0.25);
+  }
+  .svc-btn--ghost-light:hover { border-color: var(--s-paper); background: rgba(250,249,247,0.06); }
 
-.benefits-cta-box {
-  background: var(--surface-card);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem;
-  box-shadow: var(--shadow-md);
-}
-.benefits-cta-box h3 { margin-bottom: 0.75rem; }
-.benefits-cta-box p { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+  /* ═══════ SHARED H2 ═══════ */
+  .svc-h2 {
+    font-family: var(--s-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 1rem 0 3rem;
+    color: var(--s-ink);
+  }
+  .svc-h2 em { font-style: italic; color: var(--s-amber-dark); }
 
-.contact-options { display: flex; flex-direction: column; gap: 0.75rem; }
-.contact-opt {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.875rem 1rem;
-  background: var(--cream-50);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: all 200ms;
-}
-.contact-opt:hover {
-  border-color: var(--amber-200);
-  color: var(--primary-dark);
-  background: var(--amber-50);
-}
+  .svc-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(245,158,11,0.10);
+    color: var(--s-amber-dark);
+    border: 1px solid rgba(245,158,11,0.22);
+  }
+  .svc-pill--ink {
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border-color: var(--s-ink);
+  }
+  .svc-pill--mint {
+    background: rgba(0,213,123,0.12);
+    color: var(--s-mint);
+    border-color: rgba(0,213,123,0.3);
+  }
 
-/* FAQ */
-.faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
-.faq-item {
-  background: var(--surface-card);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: border-color 200ms;
-}
-.faq-item[open] { border-color: var(--amber-300); }
-.faq-question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--text-primary);
-  cursor: pointer;
-  list-style: none;
-}
-.faq-question::-webkit-details-marker { display: none; }
-.faq-question:hover { color: var(--primary-dark); }
-.faq-icon { flex-shrink: 0; transition: transform 200ms; color: var(--primary); }
-.faq-item[open] .faq-icon { transform: rotate(180deg); }
-.faq-answer {
-  padding: 0 1.5rem 1.25rem;
-}
-.faq-answer p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+  /* ═══════ FEATURES ═══════ */
+  .svc-features {
+    background: var(--s-cream);
+    padding: 6rem 0;
+  }
+  .svc-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .svc-feature {
+    background: var(--s-paper);
+    border: 1px solid var(--s-border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .svc-feature:hover {
+    border-color: var(--s-ink);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px -10px rgba(15,14,12,0.12);
+  }
+  .svc-feature-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: all 200ms;
+  }
+  .svc-feature-icon :global(svg) { width: 20px; height: 20px; }
+  .svc-feature:hover .svc-feature-icon { background: var(--s-amber); color: var(--s-ink); }
+  .svc-feature h3 {
+    font-family: var(--s-display);
+    font-size: 1.375rem;
+    font-weight: 400;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+    color: var(--s-ink);
+  }
+  .svc-feature p {
+    font-size: 0.9375rem;
+    color: var(--s-mid);
+    line-height: 1.6;
+    margin: 0;
+  }
 
-/* Bottom CTA */
-.bottom-cta {
-  background: linear-gradient(135deg, var(--amber-50) 0%, #fff 100%);
-  border: 1px solid var(--amber-200);
-  border-radius: var(--radius-xl);
-  padding: 4rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.bottom-cta h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
-.bottom-cta p { color: var(--text-muted); max-width: 440px; line-height: 1.7; }
+  /* ═══════ BENEFITS ═══════ */
+  .svc-benefits {
+    padding: 6rem 0;
+    background: var(--s-paper);
+  }
+  .svc-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .svc-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .svc-benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--s-ink-soft);
+    line-height: 1.55;
+  }
+  .svc-check {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .svc-hero-inner { grid-template-columns: 1fr; }
-  .svc-hero-aside { display: none; }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .svc-benefits-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 640px) {
-  .svc-hero { padding: 4rem 0 3rem; }
-  .features-grid { grid-template-columns: 1fr; }
-  .bottom-cta { padding: 2.5rem 1.5rem; }
-}
+  .svc-contact-card {
+    position: relative;
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border-radius: 16px;
+    padding: 2.5rem;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -20px rgba(15,14,12,0.3);
+  }
+  .svc-contact-bg {
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,213,123,0.2), transparent 60%);
+    filter: blur(30px);
+  }
+  .svc-contact-eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--s-mono);
+    font-size: 0.7rem;
+    color: rgba(250,249,247,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .live-dot-s {
+    width: 6px;
+    height: 6px;
+    background: var(--s-mint);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--s-mint);
+    animation: live-pulse 2s ease-in-out infinite;
+  }
+  @keyframes live-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .svc-contact-card h3 {
+    position: relative;
+    font-family: var(--s-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+  .svc-contact-card p {
+    position: relative;
+    color: rgba(250,249,247,0.72);
+    line-height: 1.6;
+    font-size: 0.9375rem;
+    margin: 0 0 1.5rem;
+  }
+  .svc-contact-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .svc-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: rgba(250,249,247,0.04);
+    border: 1px solid rgba(250,249,247,0.08);
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    color: var(--s-paper);
+    text-decoration: none;
+    transition: all 200ms;
+  }
+  .svc-contact-row:hover {
+    background: rgba(0,213,123,0.1);
+    border-color: rgba(0,213,123,0.3);
+  }
+  .svc-contact-row svg { color: var(--s-mint); flex-shrink: 0; }
+
+  /* ═══════ FAQ ═══════ */
+  .svc-faq {
+    padding: 6rem 0;
+    background: var(--s-cream);
+  }
+  .svc-faq-list {
+    margin-top: 3rem;
+    border-top: 1px solid var(--s-border-strong);
+  }
+  .svc-faq-item {
+    border-bottom: 1px solid var(--s-border-strong);
+  }
+  .svc-faq-item summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    font-family: var(--s-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--s-ink);
+    transition: color 200ms;
+  }
+  .svc-faq-item summary::-webkit-details-marker { display: none; }
+  .svc-faq-item summary:hover { color: var(--s-amber-dark); }
+  .svc-faq-item summary svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 300ms ease;
+  }
+  .svc-faq-item[open] summary svg { transform: rotate(180deg); }
+  .svc-faq-answer {
+    padding: 0 0 1.5rem;
+    color: var(--s-mid);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+  .svc-faq-answer p { margin: 0; }
+
+  /* ═══════ BOTTOM CTA ═══════ */
+  .svc-cta {
+    position: relative;
+    background: var(--s-ink);
+    color: var(--s-paper);
+    overflow: hidden;
+    padding: 6rem 0;
+  }
+  .svc-cta-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(250,249,247,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250,249,247,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 10%, transparent 60%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 10%, transparent 60%);
+    pointer-events: none;
+  }
+  .svc-cta::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(0,213,123,0.2), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .svc-cta-inner { position: relative; z-index: 2; text-align: center; max-width: 720px; }
+  .svc-cta-h2 {
+    font-family: var(--s-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 1rem 0 1.25rem;
+  }
+  .svc-cta p {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: rgba(250,249,247,0.72);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .svc-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* ═══════ RESPONSIVE ═══════ */
+  @media (max-width: 1024px) {
+    .svc-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .svc-hero-aside { display: none; }
+    .svc-features-grid { grid-template-columns: repeat(2, 1fr); }
+    .svc-benefits-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 640px) {
+    .svc-hero { padding: 4rem 0 3rem; }
+    .svc-features, .svc-benefits, .svc-faq, .svc-cta { padding: 4rem 0; }
+    .svc-features-grid { grid-template-columns: 1fr; }
+    .svc-contact-card { padding: 1.75rem; }
+    .svc-h2, .svc-cta-h2 { font-size: 2.25rem; }
+    .svc-hero-title { font-size: 2.5rem; }
+    .svc-faq-item summary { font-size: 1.0625rem; }
+  }
 </style>
