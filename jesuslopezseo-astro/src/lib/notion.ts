@@ -160,7 +160,14 @@ export async function getPostBySlug(slug: string): Promise<NotionPost | null> {
 import wpContent from './wp-content.json';
 const wpContentMap: Record<string, string> = wpContent as Record<string, string>;
 
-export async function getPageContent(pageId: string, wpSlug?: string): Promise<string> {
+function extractWpSlugFromUrl(url?: string): string | null {
+  if (!url) return null;
+  // Match https://www.jesuslopezseo.com/some-slug/ or similar
+  const m = url.match(/\/([^/]+)\/?$/);
+  return m ? m[1] : null;
+}
+
+export async function getPageContent(pageId: string, wpSlug?: string, originalUrl?: string): Promise<string> {
   // 1. Try Notion blocks first
   const res = await fetch(`${BASE_URL}/blocks/${pageId}/children?page_size=100`, { headers });
   if (res.ok) {
@@ -170,9 +177,13 @@ export async function getPageContent(pageId: string, wpSlug?: string): Promise<s
       return html;
     }
   }
-  // 2. Fallback to static WordPress content (exported from XML)
-  if (wpSlug && wpContentMap[wpSlug]) {
-    return wpContentMap[wpSlug];
+  // 2. Fallback: try multiple slug candidates against the static WP content map
+  const candidates: string[] = [];
+  if (wpSlug) candidates.push(wpSlug);
+  const originalSlug = extractWpSlugFromUrl(originalUrl);
+  if (originalSlug && originalSlug !== wpSlug) candidates.push(originalSlug);
+  for (const c of candidates) {
+    if (wpContentMap[c]) return wpContentMap[c];
   }
   return '';
 }

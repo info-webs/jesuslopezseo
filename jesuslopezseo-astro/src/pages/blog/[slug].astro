@@ -17,7 +17,7 @@ try {
 
   if (post) {
     // Fetch content blocks
-    content = await getPageContent(post.id, post.slug);
+    content = await getPageContent(post.id, post.slug, post.originalUrl);
 
     // Fetch related posts (same category, exclude current)
     const related = await getPosts({ category: post.category, limit: 4 });
