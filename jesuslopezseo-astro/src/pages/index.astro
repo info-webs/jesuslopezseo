@@ -12,6 +12,13 @@ const services = [
     badge: 'Servicio principal',
   },
   {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l8 2"/><circle cx="12" cy="12" r="3"/></svg>`,
+    title: 'Posicionamiento GEO',
+    desc: 'Que ChatGPT, Perplexity, Gemini y Google AI citen tu negocio. Optimización para motores generativos con medición real mediante LLMFY.ai, nuestra herramienta propia.',
+    href: '/servicios/posicionamiento-geo-salamanca',
+    badge: 'NUEVO',
+  },
+  {
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
     title: 'Diseño Web',
     desc: 'Webs profesionales, autogestionables, adaptadas a todos los dispositivos y optimizadas para vender. Diseños que convierten visitantes en clientes.',
@@ -125,51 +132,44 @@ const processSteps = [
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <div class="hero-card hero-card--main">
-            <div class="hcard-header">
-              <span class="hcard-dot green"></span>
-              <span class="hcard-dot amber"></span>
-              <span class="hcard-dot red"></span>
-              <span class="hcard-label">SEO · Posiciones en Google</span>
-            </div>
-            <div class="hcard-body">
-              {[
-                { kw: 'consultor seo salamanca', pos: 1, up: true },
-                { kw: 'posicionamiento web salamanca', pos: 2, up: true },
-                { kw: 'seo salamanca', pos: 1, up: true },
-                { kw: 'diseño web salamanca', pos: 2, up: true },
-              ].map(r => (
-                <div class="rank-row">
-                  <span class={`rank-pos rank-pos--${r.pos <= 1 ? 'gold' : r.pos <= 3 ? 'silver' : 'normal'}`}>#{r.pos}</span>
-                  <span class="rank-kw">{r.kw}</span>
-                  <span class={`rank-trend ${r.up ? 'up' : 'neutral'}`}>{r.up ? '↑' : '→'}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <div class="hero-card hero-card--ai">
             <div class="hcard-header hcard-header--dark">
               <span class="hcard-dot-mini"></span>
-              <span class="hcard-label-dark">GEO · Citaciones en IA</span>
+              <span class="hcard-label-dark">LLMFY · Brand tracking</span>
             </div>
             <div class="hcard-body-dark">
+              <div class="ai-query">
+                <span class="ai-q-prompt">›</span>
+                <span class="ai-q-text">"consultor seo salamanca"</span>
+              </div>
               <div class="ai-row">
                 <span class="ai-model">ChatGPT</span>
-                <span class="ai-badge ai-badge--good">Citado</span>
+                <span class="ai-badge ai-badge--good">Citado #1</span>
               </div>
               <div class="ai-row">
                 <span class="ai-model">Perplexity</span>
-                <span class="ai-badge ai-badge--good">Citado</span>
+                <span class="ai-badge ai-badge--good">Citado #2</span>
               </div>
               <div class="ai-row">
                 <span class="ai-model">Claude</span>
-                <span class="ai-badge ai-badge--good">Citado</span>
+                <span class="ai-badge ai-badge--good">Citado #1</span>
               </div>
               <div class="ai-row">
                 <span class="ai-model">Gemini</span>
                 <span class="ai-badge ai-badge--good">Citado</span>
               </div>
+              <div class="ai-summary">
+                <span class="ai-summary-dot"></span>
+                <span>Sentiment: <strong>positivo</strong> · 18 años · experto local</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-float-badge">
+            <span class="hero-float-icon">⚡</span>
+            <div>
+              <div class="hero-float-num">+340%</div>
+              <div class="hero-float-cap">tráfico orgánico</div>
             </div>
           </div>
         </div>
@@ -262,7 +262,7 @@ const processSteps = [
         <div class="services-grid">
           {services.map((s, i) => (
             <a href={s.href} class={`service-card ${i === 0 ? 'service-card--featured' : ''}`}>
-              {s.badge && <span class="badge badge-amber service-badge">{s.badge}</span>}
+              {s.badge && <span class={`badge ${s.badge === 'NUEVO' ? 'badge-mint' : 'badge-amber'} service-badge`}>{s.badge}</span>}
               <div class="service-icon"><Fragment set:html={s.icon} /></div>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
@@ -516,42 +516,45 @@ const processSteps = [
   background: rgba(15,14,12,0.14);
 }
 
-/* ═══ Hero Visual ═══ */
+/* ═══ Hero Visual (single AI card centered) ═══ */
 .hero-visual {
   position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
 }
 
 .hero-card {
   background: #ffffff;
   border: 1px solid rgba(15,14,12,0.08);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow:
-    0 2px 4px rgba(15,14,12,0.04),
-    0 24px 48px -20px rgba(15,14,12,0.14);
 }
 
-.hero-card--main { transform: rotate(-0.5deg); }
 .hero-card--ai {
+  width: 100%;
+  max-width: 440px;
   background: #0f0e0c;
   color: #faf9f7;
   border-color: rgba(250,249,247,0.08);
-  transform: rotate(0.5deg);
+  transform: rotate(-0.8deg);
   box-shadow:
-    0 0 0 1px rgba(0,213,123,0.1),
-    0 24px 48px -20px rgba(0,0,0,0.25),
-    0 0 40px rgba(0,213,123,0.08);
+    0 0 0 1px rgba(0,213,123,0.15),
+    0 40px 80px -25px rgba(0,0,0,0.35),
+    0 0 80px rgba(0,213,123,0.12);
+  animation: hero-float-card 6s ease-in-out infinite;
+}
+@keyframes hero-float-card {
+  0%,100% { transform: rotate(-0.8deg) translateY(0); }
+  50%     { transform: rotate(-0.5deg) translateY(-10px); }
 }
 
 .hcard-header {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.75rem 0.9rem;
+  padding: 0.85rem 1rem;
   border-bottom: 1px solid rgba(15,14,12,0.08);
   background: #fafafa;
 }
@@ -559,97 +562,76 @@ const processSteps = [
   background: #121212;
   border-bottom-color: rgba(250,249,247,0.06);
 }
-.hcard-dot { width: 9px; height: 9px; border-radius: 50%; }
-.hcard-dot.green { background: #28c840; }
-.hcard-dot.amber { background: #febc2e; }
-.hcard-dot.red   { background: #ff5f57; }
 .hcard-dot-mini {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   background: #00d57b;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00d57b;
+  box-shadow: 0 0 10px #00d57b;
   animation: hero-pulse 2s infinite;
-}
-.hcard-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6875rem;
-  color: var(--text-muted);
-  margin-left: auto;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 .hcard-label-dark {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6875rem;
+  font-size: 0.7rem;
   color: rgba(250,249,247,0.5);
   margin-left: 0.375rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.hcard-body {
-  padding: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
 .hcard-body-dark {
-  padding: 0.75rem;
+  padding: 1.1rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
-.rank-row {
+.ai-query {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.45rem 0.65rem;
-  border-radius: 6px;
-  background: #f7f3eb;
-}
-.rank-pos {
+  gap: 0.55rem;
+  padding: 0.55rem 0.8rem;
+  background: rgba(250,249,247,0.03);
+  border: 1px solid rgba(250,249,247,0.06);
+  border-radius: 7px;
+  margin-bottom: 0.5rem;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  min-width: 26px;
-  text-align: center;
-  padding: 0.2rem 0.35rem;
-  border-radius: 4px;
-}
-.rank-pos--gold   { background: rgba(245,158,11,0.15); color: #b45309; }
-.rank-pos--silver { background: rgba(15,14,12,0.08); color: var(--text-secondary); }
-.rank-pos--normal { background: rgba(15,14,12,0.06); color: var(--text-muted); }
-.rank-kw {
-  flex: 1;
   font-size: 0.8125rem;
-  color: var(--text-secondary);
-  font-weight: 500;
 }
-.rank-trend { font-size: 0.875rem; font-weight: 700; }
-.rank-trend.up { color: #10b981; }
-.rank-trend.neutral { color: var(--text-muted); }
+.ai-q-prompt { color: #00d57b; font-weight: 700; }
+.ai-q-text { color: rgba(250,249,247,0.85); }
 
 .ai-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.45rem 0.75rem;
+  padding: 0.55rem 0.8rem;
   border-radius: 6px;
   background: rgba(250,249,247,0.04);
   font-family: 'JetBrains Mono', monospace;
+  opacity: 0;
+  transform: translateX(-8px);
+  animation: ai-slide-in 0.6s ease-out forwards;
 }
+.ai-row:nth-of-type(1) { animation-delay: 0.2s; }
+.ai-row:nth-of-type(2) { animation-delay: 0.4s; }
+.ai-row:nth-of-type(3) { animation-delay: 0.6s; }
+.ai-row:nth-of-type(4) { animation-delay: 0.8s; }
+.ai-row:nth-of-type(5) { animation-delay: 1.0s; }
+@keyframes ai-slide-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
 .ai-model {
-  font-size: 0.8125rem;
-  color: rgba(250,249,247,0.85);
+  font-size: 0.875rem;
+  color: rgba(250,249,247,0.9);
   font-weight: 500;
 }
 .ai-badge {
-  font-size: 0.6875rem;
-  padding: 0.18rem 0.5rem;
+  font-size: 0.7rem;
+  padding: 0.22rem 0.6rem;
   border-radius: 999px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   font-weight: 600;
 }
 .ai-badge--good {
@@ -657,6 +639,75 @@ const processSteps = [
   color: #00d57b;
   border: 1px solid rgba(0,213,123,0.35);
 }
+
+.ai-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(0,213,123,0.06);
+  border-left: 2px solid #00d57b;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.8125rem;
+  color: rgba(250,249,247,0.75);
+  opacity: 0;
+  animation: ai-slide-in 0.6s ease-out 1.2s forwards;
+}
+.ai-summary strong { color: #00d57b; font-weight: 600; }
+.ai-summary-dot {
+  width: 6px;
+  height: 6px;
+  background: #00d57b;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00d57b;
+  animation: hero-pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+/* Floating stat badge */
+.hero-float-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  background: #ffffff;
+  border: 1px solid rgba(15,14,12,0.08);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px -10px rgba(15,14,12,0.25);
+  animation: hero-float-badge 5s ease-in-out infinite;
+}
+@keyframes hero-float-badge {
+  0%,100% { transform: translateY(0) rotate(2deg); }
+  50%     { transform: translateY(-6px) rotate(0deg); }
+}
+.hero-float-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  color: #fff;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.hero-float-num {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.hero-float-cap {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
 
 
 /* ── STATS BAR ── */
@@ -846,6 +897,14 @@ const processSteps = [
 .service-card:hover .service-link { gap: 0.625rem; }
 
 .service-badge { margin-bottom: 0.5rem; }
+.badge-mint {
+  background: rgba(0,213,123,0.15);
+  color: #047857;
+  border: 1px solid rgba(0,213,123,0.35);
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+}
 
 /* ── PROCESS ── */
 .process-grid {

@@ -15,6 +15,7 @@ export interface Props {
     description: string;
     cta?: string;
   };
+  heroVisual?: 'web' | 'aso' | 'hosting' | 'content' | 'graphic' | 'social' | 'seo';
   features?: Array<{ icon: string; title: string; desc: string }>;
   benefits?: Array<string>;
   faq?: Array<{ q: string; a: string }>;
@@ -26,6 +27,7 @@ const {
   metaDescription,
   canonical,
   hero,
+  heroVisual = 'web',
   features = [],
   benefits = [],
   faq = [],
@@ -66,8 +68,312 @@ const {
           </div>
         </div>
 
-        <div class="svc-hero-aside">
-          <slot name="hero-aside" />
+        <div class="svc-hero-aside" aria-hidden="true">
+          <slot name="hero-aside">
+
+            {heroVisual === 'web' && (
+              <div class="viz-stack">
+                <div class="viz-card viz-browser viz-tilt-1">
+                  <div class="viz-browser-head">
+                    <span class="viz-dot viz-dot--r"></span>
+                    <span class="viz-dot viz-dot--y"></span>
+                    <span class="viz-dot viz-dot--g"></span>
+                    <div class="viz-url">tu-web.es</div>
+                  </div>
+                  <div class="viz-browser-body">
+                    <div class="viz-nav">
+                      <div class="viz-logo-bar"></div>
+                      <div class="viz-nav-items">
+                        <span></span><span></span><span></span>
+                        <div class="viz-cta-mini"></div>
+                      </div>
+                    </div>
+                    <div class="viz-hero-mock">
+                      <div class="viz-h1-line viz-h1-line--lg"></div>
+                      <div class="viz-h1-line viz-h1-line--md"></div>
+                      <div class="viz-p-line"></div>
+                      <div class="viz-p-line viz-p-line--short"></div>
+                      <div class="viz-btn-mock"></div>
+                    </div>
+                    <div class="viz-grid-mock">
+                      <div class="viz-box viz-shimmer"></div>
+                      <div class="viz-box viz-shimmer" style="animation-delay:.3s"></div>
+                      <div class="viz-box viz-shimmer" style="animation-delay:.6s"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle">✨</span>
+                  <div>
+                    <div class="viz-badge-num">98</div>
+                    <div class="viz-badge-cap">PageSpeed</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {heroVisual === 'seo' && (
+              <div class="viz-stack">
+                <div class="viz-card viz-rank-card viz-tilt-1">
+                  <div class="viz-browser-head">
+                    <span class="viz-dot viz-dot--r"></span>
+                    <span class="viz-dot viz-dot--y"></span>
+                    <span class="viz-dot viz-dot--g"></span>
+                    <div class="viz-url">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                      google.com
+                    </div>
+                  </div>
+                  <div class="viz-rank-body">
+                    <div class="viz-query">
+                      <span class="viz-q-label">Buscando:</span>
+                      <span class="viz-q-kw">consultor seo salamanca<span class="viz-cursor">|</span></span>
+                    </div>
+                    <div class="viz-rank-row viz-rank-row--1 viz-slide-in">
+                      <span class="viz-rank-pos">#1</span>
+                      <div class="viz-rank-info">
+                        <div class="viz-rank-title"></div>
+                        <div class="viz-rank-url">jesuslopezseo.com</div>
+                      </div>
+                      <span class="viz-arrow viz-arrow--up">↑</span>
+                    </div>
+                    <div class="viz-rank-row viz-rank-row--2 viz-slide-in" style="animation-delay:.2s">
+                      <span class="viz-rank-pos viz-rank-pos--2">#2</span>
+                      <div class="viz-rank-info">
+                        <div class="viz-rank-title viz-rank-title--short"></div>
+                        <div class="viz-rank-url viz-rank-url--muted"></div>
+                      </div>
+                      <span class="viz-arrow viz-arrow--up">↑</span>
+                    </div>
+                    <div class="viz-rank-row viz-slide-in" style="animation-delay:.4s">
+                      <span class="viz-rank-pos viz-rank-pos--3">#3</span>
+                      <div class="viz-rank-info">
+                        <div class="viz-rank-title viz-rank-title--md"></div>
+                        <div class="viz-rank-url viz-rank-url--muted"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle viz-sparkle--amber">↗</span>
+                  <div>
+                    <div class="viz-badge-num">+340%</div>
+                    <div class="viz-badge-cap">tráfico</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {heroVisual === 'aso' && (
+              <div class="viz-stack">
+                <div class="viz-phone viz-float-slow">
+                  <div class="viz-phone-notch"></div>
+                  <div class="viz-phone-screen">
+                    <div class="viz-phone-top">
+                      <div class="viz-search-bar">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                        <span>tu app</span>
+                      </div>
+                    </div>
+                    <div class="viz-app-row viz-slide-in">
+                      <div class="viz-app-icon viz-app-icon--1"></div>
+                      <div class="viz-app-info">
+                        <div class="viz-app-name"></div>
+                        <div class="viz-stars">★★★★★</div>
+                      </div>
+                      <div class="viz-app-cta">GET</div>
+                    </div>
+                    <div class="viz-app-row viz-slide-in" style="animation-delay:.15s">
+                      <div class="viz-app-icon viz-app-icon--2"></div>
+                      <div class="viz-app-info">
+                        <div class="viz-app-name viz-app-name--short"></div>
+                        <div class="viz-stars">★★★★☆</div>
+                      </div>
+                      <div class="viz-app-cta viz-app-cta--ghost">GET</div>
+                    </div>
+                    <div class="viz-app-row viz-slide-in" style="animation-delay:.3s">
+                      <div class="viz-app-icon viz-app-icon--3"></div>
+                      <div class="viz-app-info">
+                        <div class="viz-app-name viz-app-name--mid"></div>
+                        <div class="viz-stars">★★★★☆</div>
+                      </div>
+                      <div class="viz-app-cta viz-app-cta--ghost">GET</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle">📲</span>
+                  <div>
+                    <div class="viz-badge-num">#1</div>
+                    <div class="viz-badge-cap">App Store</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {heroVisual === 'hosting' && (
+              <div class="viz-stack">
+                <div class="viz-card viz-terminal viz-tilt-1">
+                  <div class="viz-browser-head viz-browser-head--dark">
+                    <span class="viz-dot viz-dot--r"></span>
+                    <span class="viz-dot viz-dot--y"></span>
+                    <span class="viz-dot viz-dot--g"></span>
+                    <div class="viz-term-title">server.log</div>
+                  </div>
+                  <div class="viz-term-body">
+                    <div class="viz-term-line">
+                      <span class="viz-prompt">›</span>
+                      <span class="viz-cmd">curl</span>
+                      <span class="viz-arg">-I tu-web.es</span>
+                    </div>
+                    <div class="viz-term-out viz-fade-in">HTTP/2 200 OK</div>
+                    <div class="viz-term-out viz-fade-in" style="animation-delay:.3s">server: nginx/1.27</div>
+                    <div class="viz-term-out viz-fade-in" style="animation-delay:.5s">x-cache: HIT</div>
+                    <div class="viz-metric-grid viz-fade-in" style="animation-delay:.8s">
+                      <div class="viz-metric">
+                        <div class="viz-metric-val viz-metric-val--good">0.18s</div>
+                        <div class="viz-metric-cap">TTFB</div>
+                      </div>
+                      <div class="viz-metric">
+                        <div class="viz-metric-val viz-metric-val--good">99.9%</div>
+                        <div class="viz-metric-cap">Uptime</div>
+                      </div>
+                      <div class="viz-metric">
+                        <div class="viz-metric-val viz-metric-val--good">A+</div>
+                        <div class="viz-metric-cap">SSL</div>
+                      </div>
+                    </div>
+                    <div class="viz-term-line">
+                      <span class="viz-prompt">›</span>
+                      <span class="viz-cursor viz-cursor--block">▊</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle viz-sparkle--mint">⚡</span>
+                  <div>
+                    <div class="viz-badge-num">180ms</div>
+                    <div class="viz-badge-cap">respuesta</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {heroVisual === 'content' && (
+              <div class="viz-stack">
+                <div class="viz-card viz-editor viz-tilt-1">
+                  <div class="viz-browser-head">
+                    <span class="viz-dot viz-dot--r"></span>
+                    <span class="viz-dot viz-dot--y"></span>
+                    <span class="viz-dot viz-dot--g"></span>
+                    <div class="viz-url">editor · post SEO</div>
+                  </div>
+                  <div class="viz-editor-body">
+                    <div class="viz-editor-h1 viz-type"></div>
+                    <div class="viz-editor-meta">
+                      <span class="viz-chip viz-chip--amber">H1</span>
+                      <span class="viz-chip">KW density 2.1%</span>
+                      <span class="viz-chip viz-chip--green">SEO 94</span>
+                    </div>
+                    <div class="viz-editor-par">
+                      <div class="viz-par-line"></div>
+                      <div class="viz-par-line viz-par-line--short"></div>
+                      <div class="viz-par-line"></div>
+                    </div>
+                    <div class="viz-editor-hl viz-fade-in" style="animation-delay:.5s">
+                      <span class="viz-hl-icon">✓</span>
+                      <span>Legibilidad: Muy buena</span>
+                    </div>
+                    <div class="viz-editor-hl viz-fade-in" style="animation-delay:.8s">
+                      <span class="viz-hl-icon">✓</span>
+                      <span>Keyword en H1, H2, primer párrafo</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle viz-sparkle--amber">✎</span>
+                  <div>
+                    <div class="viz-badge-num">+1,2K</div>
+                    <div class="viz-badge-cap">palabras</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {heroVisual === 'graphic' && (
+              <div class="viz-stack">
+                <div class="viz-card viz-design viz-tilt-1">
+                  <div class="viz-browser-head">
+                    <span class="viz-dot viz-dot--r"></span>
+                    <span class="viz-dot viz-dot--y"></span>
+                    <span class="viz-dot viz-dot--g"></span>
+                    <div class="viz-url">identity.fig</div>
+                  </div>
+                  <div class="viz-design-body">
+                    <div class="viz-swatches">
+                      <div class="viz-swatch viz-swatch--1 viz-fade-in"></div>
+                      <div class="viz-swatch viz-swatch--2 viz-fade-in" style="animation-delay:.15s"></div>
+                      <div class="viz-swatch viz-swatch--3 viz-fade-in" style="animation-delay:.3s"></div>
+                      <div class="viz-swatch viz-swatch--4 viz-fade-in" style="animation-delay:.45s"></div>
+                    </div>
+                    <div class="viz-type-sample viz-fade-in" style="animation-delay:.5s">
+                      <div class="viz-type-display">Aa</div>
+                      <div class="viz-type-info">
+                        <div class="viz-type-name">Instrument Serif</div>
+                        <div class="viz-type-meta">Display · 48pt</div>
+                      </div>
+                    </div>
+                    <div class="viz-logo-grid">
+                      <div class="viz-logo-mark viz-fade-in" style="animation-delay:.7s">J</div>
+                      <div class="viz-logo-mark viz-logo-mark--2 viz-fade-in" style="animation-delay:.85s">✦</div>
+                      <div class="viz-logo-mark viz-logo-mark--3 viz-fade-in" style="animation-delay:1s">◈</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle viz-sparkle--amber">🎨</span>
+                  <div>
+                    <div class="viz-badge-num">∞</div>
+                    <div class="viz-badge-cap">iteraciones</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {heroVisual === 'social' && (
+              <div class="viz-stack">
+                <div class="viz-phone viz-phone--social viz-float-slow">
+                  <div class="viz-phone-notch"></div>
+                  <div class="viz-phone-screen viz-phone-screen--light">
+                    <div class="viz-post">
+                      <div class="viz-post-head">
+                        <div class="viz-avatar"></div>
+                        <div class="viz-post-meta">
+                          <div class="viz-post-user"></div>
+                          <div class="viz-post-time"></div>
+                        </div>
+                      </div>
+                      <div class="viz-post-img"></div>
+                      <div class="viz-post-actions">
+                        <span class="viz-icon-heart viz-pulse">♥</span>
+                        <span class="viz-icon">💬</span>
+                        <span class="viz-icon">↗</span>
+                      </div>
+                      <div class="viz-post-likes">2.4K me&nbsp;gusta</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="viz-card viz-badge viz-float">
+                  <span class="viz-sparkle">💬</span>
+                  <div>
+                    <div class="viz-badge-num">+847%</div>
+                    <div class="viz-badge-cap">engagement</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </slot>
         </div>
       </div>
     </section>
@@ -643,10 +949,627 @@ const {
     flex-wrap: wrap;
   }
 
-  /* ═══════ RESPONSIVE ═══════ */
+  /* ═══════════ HERO VISUALS (RIGHT SIDE) ═══════════ */
+  .svc-hero-aside {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+  }
+  .viz-stack {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+  }
+  .viz-card {
+    background: #ffffff;
+    border: 1px solid var(--s-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 2px 4px rgba(15,14,12,0.04),
+      0 30px 60px -25px rgba(15,14,12,0.25);
+  }
+  .viz-tilt-1 { transform: rotate(-0.8deg); }
+  .viz-float { animation: viz-float 4s ease-in-out infinite; }
+  .viz-float-slow { animation: viz-float 5s ease-in-out infinite; }
+  @keyframes viz-float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%     { transform: translateY(-8px) rotate(0.5deg); }
+  }
+
+  /* Browser chrome */
+  .viz-browser-head {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 0.85rem;
+    background: #fafafa;
+    border-bottom: 1px solid var(--s-border);
+  }
+  .viz-browser-head--dark { background: #121212; border-bottom-color: rgba(250,249,247,0.06); }
+  .viz-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .viz-dot--r { background: #ff5f57; }
+  .viz-dot--y { background: #febc2e; }
+  .viz-dot--g { background: #28c840; }
+  .viz-url {
+    flex: 1;
+    text-align: center;
+    font-family: var(--s-mono);
+    font-size: 0.7rem;
+    color: var(--s-mute);
+    background: rgba(15,14,12,0.04);
+    padding: 0.2rem 0.65rem;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  .viz-term-title {
+    flex: 1;
+    text-align: center;
+    font-family: var(--s-mono);
+    font-size: 0.7rem;
+    color: rgba(250,249,247,0.4);
+  }
+
+  /* ══ Floating Badge ══ */
+  .viz-badge {
+    position: absolute;
+    bottom: -16px;
+    right: -14px;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1rem;
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border-radius: 12px;
+    box-shadow: 0 16px 32px -8px rgba(15,14,12,0.3);
+    border: none;
+  }
+  .viz-sparkle {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    background: var(--s-amber);
+    color: var(--s-ink);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .viz-sparkle--amber { background: var(--s-amber); }
+  .viz-sparkle--mint { background: var(--s-mint); color: var(--s-ink); }
+  .viz-badge-num {
+    font-family: var(--s-display);
+    font-size: 1.25rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .viz-badge-cap {
+    font-size: 0.7rem;
+    color: rgba(250,249,247,0.6);
+    margin-top: 2px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ══════ WEB VISUAL ══════ */
+  .viz-browser-body { padding: 0.9rem; }
+  .viz-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--s-border);
+    margin-bottom: 1rem;
+  }
+  .viz-logo-bar {
+    width: 56px;
+    height: 12px;
+    background: var(--s-ink);
+    border-radius: 3px;
+  }
+  .viz-nav-items {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .viz-nav-items span {
+    width: 26px;
+    height: 6px;
+    background: rgba(15,14,12,0.15);
+    border-radius: 2px;
+  }
+  .viz-cta-mini {
+    width: 50px;
+    height: 20px;
+    background: var(--s-amber);
+    border-radius: 4px;
+    margin-left: 0.3rem;
+  }
+  .viz-hero-mock { padding: 0.5rem 0 1rem; }
+  .viz-h1-line {
+    height: 14px;
+    background: var(--s-ink);
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+  }
+  .viz-h1-line--lg { width: 90%; }
+  .viz-h1-line--md { width: 65%; }
+  .viz-p-line {
+    height: 6px;
+    background: rgba(15,14,12,0.12);
+    border-radius: 3px;
+    margin-bottom: 0.3rem;
+    margin-top: 0.6rem;
+  }
+  .viz-p-line--short { width: 70%; }
+  .viz-btn-mock {
+    width: 100px;
+    height: 26px;
+    background: var(--s-ink);
+    border-radius: 5px;
+    margin-top: 0.9rem;
+  }
+  .viz-grid-mock {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .viz-box {
+    height: 50px;
+    background: linear-gradient(90deg, rgba(15,14,12,0.06) 0%, rgba(245,158,11,0.15) 50%, rgba(15,14,12,0.06) 100%);
+    background-size: 200% 100%;
+    border-radius: 6px;
+  }
+  .viz-shimmer { animation: shimmer 2.5s infinite linear; }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ══════ SEO VISUAL ══════ */
+  .viz-rank-body { padding: 1rem 0.85rem; }
+  .viz-query {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(15,14,12,0.04);
+    border-radius: 6px;
+    margin-bottom: 0.85rem;
+    font-family: var(--s-mono);
+    font-size: 0.75rem;
+  }
+  .viz-q-label { color: var(--s-mute); }
+  .viz-q-kw { color: var(--s-ink); font-weight: 500; }
+  .viz-cursor {
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+    color: var(--s-amber);
+    font-weight: 700;
+  }
+  @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
+
+  .viz-rank-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 6px;
+    background: #f7f3eb;
+    margin-bottom: 0.35rem;
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  .viz-slide-in { animation: viz-slide-in 0.6s ease-out forwards; }
+  @keyframes viz-slide-in {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .viz-rank-row--1 {
+    background: linear-gradient(90deg, rgba(245,158,11,0.18), rgba(245,158,11,0.05));
+    border: 1px solid rgba(245,158,11,0.3);
+  }
+  .viz-rank-pos {
+    font-family: var(--s-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    min-width: 26px;
+    text-align: center;
+    padding: 0.2rem 0.35rem;
+    border-radius: 4px;
+    background: rgba(245,158,11,0.2);
+    color: var(--s-amber-dark);
+  }
+  .viz-rank-pos--2 { background: rgba(15,14,12,0.08); color: var(--s-ink-soft); }
+  .viz-rank-pos--3 { background: rgba(15,14,12,0.06); color: var(--s-mute); }
+  .viz-rank-info { flex: 1; min-width: 0; }
+  .viz-rank-title {
+    height: 8px;
+    width: 80%;
+    background: var(--s-ink);
+    border-radius: 3px;
+    margin-bottom: 4px;
+  }
+  .viz-rank-title--short { width: 60%; background: var(--s-ink-soft); }
+  .viz-rank-title--md { width: 70%; background: var(--s-ink-soft); }
+  .viz-rank-url {
+    font-family: var(--s-mono);
+    font-size: 0.65rem;
+    color: var(--s-amber-dark);
+  }
+  .viz-rank-url--muted { color: var(--s-mute); }
+  .viz-arrow { font-size: 0.95rem; font-weight: 800; }
+  .viz-arrow--up { color: #10b981; }
+
+  /* ══════ ASO / PHONE VISUAL ══════ */
+  .viz-phone {
+    width: 240px;
+    margin: 0 auto;
+    background: #0f0e0c;
+    border-radius: 32px;
+    padding: 10px;
+    border: 1.5px solid #2a2622;
+    box-shadow:
+      0 2px 0 rgba(255,255,255,0.05) inset,
+      0 30px 60px -20px rgba(15,14,12,0.35);
+    position: relative;
+  }
+  .viz-phone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 18px;
+    background: #0f0e0c;
+    border-radius: 0 0 12px 12px;
+    z-index: 2;
+  }
+  .viz-phone-screen {
+    background: #fafafa;
+    border-radius: 24px;
+    padding: 32px 12px 16px;
+    min-height: 340px;
+  }
+  .viz-phone-screen--light { padding: 32px 0 0; }
+  .viz-phone-top { padding-bottom: 0.75rem; }
+  .viz-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.65rem;
+    background: rgba(15,14,12,0.06);
+    border-radius: 8px;
+    font-family: var(--s-mono);
+    font-size: 0.7rem;
+    color: var(--s-mute);
+  }
+  .viz-app-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 0.25rem;
+    border-bottom: 1px solid rgba(15,14,12,0.06);
+    opacity: 0;
+    transform: translateX(-8px);
+    animation: viz-slide-in 0.5s ease-out forwards;
+  }
+  .viz-app-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    flex-shrink: 0;
+  }
+  .viz-app-icon--1 { background: linear-gradient(135deg, #f59e0b, #b45309); }
+  .viz-app-icon--2 { background: linear-gradient(135deg, #00d57b, #047857); }
+  .viz-app-icon--3 { background: linear-gradient(135deg, #0f0e0c, #444); }
+  .viz-app-info { flex: 1; min-width: 0; }
+  .viz-app-name {
+    height: 9px;
+    width: 85%;
+    background: var(--s-ink);
+    border-radius: 3px;
+    margin-bottom: 6px;
+  }
+  .viz-app-name--short { width: 60%; }
+  .viz-app-name--mid { width: 72%; }
+  .viz-stars { font-size: 0.65rem; color: #f59e0b; letter-spacing: -0.05em; }
+  .viz-app-cta {
+    padding: 0.25rem 0.65rem;
+    background: #0070e4;
+    color: #fff;
+    border-radius: 999px;
+    font-family: var(--s-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .viz-app-cta--ghost { background: rgba(15,14,12,0.06); color: var(--s-ink); }
+
+  /* ══════ HOSTING / TERMINAL ══════ */
+  .viz-terminal { background: #0a0a0a; border-color: rgba(250,249,247,0.08); }
+  .viz-term-body {
+    padding: 1.1rem 1rem;
+    font-family: var(--s-mono);
+    font-size: 0.78rem;
+    color: rgba(250,249,247,0.85);
+    line-height: 1.8;
+  }
+  .viz-term-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .viz-prompt { color: var(--s-mint); font-weight: 700; }
+  .viz-cmd { color: #7dd3fc; }
+  .viz-arg { color: #fbbf24; }
+  .viz-term-out {
+    padding-left: 1.25rem;
+    color: rgba(250,249,247,0.55);
+    opacity: 0;
+    animation: viz-fade 0.5s ease-out forwards;
+  }
+  .viz-fade-in { opacity: 0; animation: viz-fade 0.7s ease-out forwards; }
+  @keyframes viz-fade { to { opacity: 1; } }
+  .viz-cursor--block {
+    color: var(--s-mint);
+    animation: blink 1s step-end infinite;
+  }
+  .viz-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background: rgba(250,249,247,0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(250,249,247,0.06);
+  }
+  .viz-metric { text-align: center; }
+  .viz-metric-val {
+    font-family: var(--s-display);
+    font-size: 1.15rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--s-paper);
+  }
+  .viz-metric-val--good { color: var(--s-mint); }
+  .viz-metric-cap {
+    font-size: 0.65rem;
+    color: rgba(250,249,247,0.4);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════ CONTENT / EDITOR ══════ */
+  .viz-editor-body { padding: 1.1rem 1rem; }
+  .viz-editor-h1 {
+    font-family: var(--s-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--s-ink);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    min-height: 1.5em;
+  }
+  .viz-editor-h1::after {
+    content: 'Cómo posicionar tu web en Google|';
+    animation: typewriter 4s steps(34) 0.3s forwards;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    vertical-align: top;
+    max-width: 100%;
+  }
+  @keyframes typewriter {
+    0% { width: 0; }
+    60% { width: 100%; }
+    70% { width: 100%; }
+    100% { width: 100%; }
+  }
+  .viz-type::after {
+    content: '';
+    animation: none;
+  }
+  .viz-editor-meta {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .viz-chip {
+    padding: 0.2rem 0.5rem;
+    background: rgba(15,14,12,0.06);
+    border-radius: 999px;
+    font-family: var(--s-mono);
+    font-size: 0.6rem;
+    color: var(--s-mid);
+  }
+  .viz-chip--amber { background: rgba(245,158,11,0.15); color: var(--s-amber-dark); }
+  .viz-chip--green { background: rgba(16,185,129,0.15); color: #047857; }
+  .viz-editor-par { margin-bottom: 0.85rem; }
+  .viz-par-line {
+    height: 6px;
+    background: rgba(15,14,12,0.12);
+    border-radius: 3px;
+    margin-bottom: 0.35rem;
+  }
+  .viz-par-line--short { width: 72%; }
+  .viz-editor-hl {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    background: rgba(16,185,129,0.08);
+    border-left: 2px solid #10b981;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--s-ink-soft);
+  }
+  .viz-hl-icon {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    background: #10b981;
+    color: #fff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ══════ GRAPHIC DESIGN ══════ */
+  .viz-design-body { padding: 1.2rem; }
+  .viz-swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .viz-swatch {
+    height: 48px;
+    border-radius: 8px;
+    opacity: 0;
+    animation: viz-fade 0.5s ease-out forwards;
+  }
+  .viz-swatch--1 { background: #0f0e0c; }
+  .viz-swatch--2 { background: #f59e0b; }
+  .viz-swatch--3 { background: #f3efe7; border: 1px solid var(--s-border); }
+  .viz-swatch--4 { background: #00d57b; }
+  .viz-type-sample {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem;
+    background: var(--s-cream);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: viz-fade 0.6s ease-out forwards;
+  }
+  .viz-type-display {
+    font-family: var(--s-display);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--s-ink);
+    letter-spacing: -0.02em;
+  }
+  .viz-type-name {
+    font-family: var(--s-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--s-ink);
+  }
+  .viz-type-meta {
+    font-family: var(--s-mono);
+    font-size: 0.7rem;
+    color: var(--s-mute);
+    margin-top: 2px;
+  }
+  .viz-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .viz-logo-mark {
+    aspect-ratio: 1;
+    background: var(--s-ink);
+    color: var(--s-paper);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--s-display);
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: viz-fade 0.5s ease-out forwards;
+  }
+  .viz-logo-mark--2 { background: var(--s-amber); color: var(--s-ink); }
+  .viz-logo-mark--3 { background: var(--s-cream); color: var(--s-ink); border: 1px solid var(--s-border); }
+
+  /* ══════ SOCIAL / INSTAGRAM POST ══════ */
+  .viz-phone--social .viz-phone-screen--light { padding: 32px 0 0; }
+  .viz-post { padding: 0 0.9rem 0.9rem; }
+  .viz-post-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 0;
+  }
+  .viz-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #00d57b);
+    border: 2px solid #fff;
+    outline: 1.5px solid #f59e0b;
+    flex-shrink: 0;
+  }
+  .viz-post-meta { flex: 1; }
+  .viz-post-user {
+    height: 9px;
+    width: 60%;
+    background: var(--s-ink);
+    border-radius: 3px;
+    margin-bottom: 4px;
+  }
+  .viz-post-time {
+    height: 6px;
+    width: 35%;
+    background: rgba(15,14,12,0.15);
+    border-radius: 3px;
+  }
+  .viz-post-img {
+    width: calc(100% + 1.8rem);
+    margin: 0 -0.9rem;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #f59e0b 0%, #00d57b 50%, #0f0e0c 100%);
+    position: relative;
+  }
+  .viz-post-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(0,0,0,0.2), transparent 50%);
+  }
+  .viz-post-actions {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.8rem 0 0.5rem;
+    font-size: 1.3rem;
+  }
+  .viz-icon-heart { color: #ed4956; }
+  .viz-pulse { animation: heart-pulse 1.5s ease-in-out infinite; }
+  @keyframes heart-pulse {
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.2); }
+  }
+  .viz-post-likes {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--s-ink);
+  }
+
+
   @media (max-width: 1024px) {
     .svc-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .svc-hero-aside { display: none; }
+    .svc-hero-aside { min-height: 360px; max-width: 420px; margin: 0 auto; width: 100%; }
     .svc-features-grid { grid-template-columns: repeat(2, 1fr); }
     .svc-benefits-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   }
@@ -658,5 +1581,10 @@ const {
     .svc-h2, .svc-cta-h2 { font-size: 2.25rem; }
     .svc-hero-title { font-size: 2.5rem; }
     .svc-faq-item summary { font-size: 1.0625rem; }
+    .svc-hero-aside { min-height: 320px; }
+    .viz-phone { width: 200px; }
+    .viz-phone-screen { min-height: 280px; }
+    .viz-badge { bottom: -12px; right: -10px; padding: 0.6rem 0.85rem; }
+    .viz-badge-num { font-size: 1.05rem; }
   }
 </style>
