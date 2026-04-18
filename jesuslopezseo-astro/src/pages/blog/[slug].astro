@@ -73,6 +73,9 @@ const breadcrumb = [
 >
   <Header />
 
+  <!-- Reading progress bar (fixed at top) -->
+  <div id="progress-bar" class="reading-progress" style="width: 0%;"></div>
+
   <main>
     <!-- Breadcrumb -->
     <div class="breadcrumb-bar">
@@ -203,49 +206,59 @@ const breadcrumb = [
           </div>
         </div>
 
-        <!-- Sidebar -->
+        <!-- Sidebar (TOC only) -->
         <aside class="post-sidebar">
-          <!-- CTA box -->
-          <div class="sidebar-box sidebar-cta">
-            <div class="sidebar-cta-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <div id="toc-sidebar" class="toc-box">
+            <div class="toc-header">
+              <button id="toc-toggle" class="toc-toggle" aria-expanded="true" aria-controls="toc-list">
+                <span class="toc-title">En este artículo</span>
+                <svg id="toc-toggle-icon" class="toc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+                </svg>
+              </button>
             </div>
-            <h3>¿Necesitas una auditoría SEO?</h3>
-            <p>Analizamos tu web y te presentamos un plan personalizado. Sin coste y sin compromiso.</p>
-            <a href="/pedir-presupuesto" class="btn btn-primary" style="width:100%;justify-content:center;">Solicitar gratis</a>
-          </div>
-
-          <!-- Related posts -->
-          {relatedPosts.length > 0 && (
-            <div class="sidebar-box">
-              <h4 class="sidebar-title">Artículos relacionados</h4>
-              <div class="related-list">
-                {relatedPosts.map(rp => (
-                  <a href={`/blog/${rp.slug}`} class="related-item">
-                    <span class="related-cat">{rp.category}</span>
-                    <span class="related-title">{rp.title}</span>
-                  </a>
-                ))}
+            <nav id="toc-list" class="toc-list" aria-label="Tabla de contenidos"></nav>
+            <div class="toc-empty" id="toc-empty" hidden>Este artículo no tiene secciones.</div>
+            <div class="toc-progress">
+              <div class="toc-progress-row">
+                <span class="toc-progress-label">Progreso</span>
+                <span id="toc-progress-text" class="toc-progress-pct">0%</span>
+              </div>
+              <div class="toc-progress-track">
+                <div id="toc-progress-bar" class="toc-progress-fill" style="width: 0%;"></div>
               </div>
             </div>
-          )}
-
-          <!-- Contact box -->
-          <div class="sidebar-box sidebar-contact">
-            <h4 class="sidebar-title">Contacta con nosotros</h4>
-            <a href="tel:+34618015995" class="contact-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.29h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              618 015 995
-            </a>
-            <a href="mailto:jesus@jesuslopezseo.com" class="contact-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              jesus@jesuslopezseo.com
-            </a>
           </div>
         </aside>
 
       </div>
     </article>
+
+    <!-- Mobile TOC floating button -->
+    <button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="Abrir tabla de contenidos" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+      </svg>
+      <span>Contenido</span>
+      <span id="mobile-toc-pct" class="mobile-toc-pct">0%</span>
+    </button>
+
+    <!-- Mobile TOC drawer -->
+    <div id="mobile-toc-overlay" class="mobile-toc-overlay" aria-hidden="true">
+      <div class="mobile-toc-backdrop" id="mobile-toc-backdrop"></div>
+      <div class="mobile-toc-drawer" id="mobile-toc-drawer" role="dialog" aria-label="Tabla de contenidos">
+        <div class="mobile-toc-handle"></div>
+        <div class="mobile-toc-head">
+          <span class="toc-title">En este artículo</span>
+          <button id="mobile-toc-close" class="mobile-toc-close" aria-label="Cerrar tabla de contenidos">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <nav id="mobile-toc-list" class="mobile-toc-list" aria-label="Tabla de contenidos móvil"></nav>
+      </div>
+    </div>
 
     <!-- Related posts full section -->
     {relatedPosts.length > 0 && (
@@ -499,60 +512,218 @@ const breadcrumb = [
 .author-box-content p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
 .author-box-content a { color: var(--primary-dark); text-decoration: underline; }
 
-/* Sidebar */
-.post-sidebar { position: sticky; top: 6rem; display: flex; flex-direction: column; gap: 1.25rem; }
-.sidebar-box {
+/* Reading progress bar (top of viewport) */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  z-index: 60;
+  transition: width 100ms linear;
+  pointer-events: none;
+}
+
+/* Sidebar — TOC only */
+.post-sidebar { position: sticky; top: 6rem; align-self: start; }
+.toc-box {
   background: var(--surface-card);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-xl);
-  padding: 1.5rem;
-}
-.sidebar-title { font-size: 0.9375rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); }
-
-.sidebar-cta { background: linear-gradient(135deg, var(--amber-50), #fff); border-color: var(--amber-200); }
-.sidebar-cta-icon {
-  width: 44px; height: 44px;
-  background: var(--primary);
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  margin-bottom: 0.875rem;
-}
-.sidebar-cta h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-.sidebar-cta p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
-
-.related-list { display: flex; flex-direction: column; gap: 0.75rem; }
-.related-item {
+  padding: 1.25rem;
+  box-shadow: var(--shadow-xs);
+  max-height: calc(100vh - 8rem);
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  text-decoration: none;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
-  background: var(--cream-50);
-  border: 1px solid var(--surface-border);
-  transition: all 150ms;
 }
-.related-item:hover { border-color: var(--amber-200); background: var(--amber-50); }
-.related-cat { font-size: 0.6875rem; font-weight: 700; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.05em; }
-.related-title { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
-
-.sidebar-contact { display: flex; flex-direction: column; gap: 0.625rem; }
-.contact-item {
+.toc-header {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.625rem 0.875rem;
-  background: var(--cream-50);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-md);
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 150ms;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
 }
-.contact-item:hover { border-color: var(--amber-200); color: var(--primary-dark); background: var(--amber-50); }
+.toc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+.toc-title { font-size: 0.9375rem; font-weight: 700; color: var(--text-primary); }
+.toc-chevron { color: var(--text-muted); transition: transform 200ms ease; flex-shrink: 0; }
+.toc-toggle[aria-expanded="false"] .toc-chevron { transform: rotate(-90deg); }
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  scrollbar-width: thin;
+}
+.toc-list::-webkit-scrollbar { width: 4px; }
+.toc-list::-webkit-scrollbar-track { background: transparent; }
+.toc-list::-webkit-scrollbar-thumb { background: var(--surface-border); border-radius: 2px; }
+
+.toc-link {
+  display: block;
+  padding: 0.45rem 0.625rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+.toc-link:hover { color: var(--text-primary); background: var(--cream-50); }
+.toc-link--h3 { padding-left: 1.25rem; font-size: 0.78125rem; }
+.toc-link--h4 { padding-left: 1.75rem; font-size: 0.75rem; }
+.toc-link--active {
+  color: var(--primary-dark);
+  font-weight: 600;
+  border-left-color: var(--primary);
+  background: var(--amber-50);
+}
+
+.toc-empty { font-size: 0.8125rem; color: var(--text-muted); padding: 0.5rem 0; }
+
+.toc-progress {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface-border);
+}
+.toc-progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.toc-progress-label { font-size: 0.75rem; color: var(--text-muted); }
+.toc-progress-pct { font-size: 0.75rem; font-weight: 600; color: var(--primary-dark); }
+.toc-progress-track {
+  height: 4px;
+  background: var(--cream-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.toc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: var(--radius-full);
+  transition: width 150ms linear;
+  width: 0%;
+}
+
+/* Mobile TOC button */
+.mobile-toc-btn {
+  display: none;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 45;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.mobile-toc-btn:hover { border-color: var(--amber-200); }
+.mobile-toc-btn svg { color: var(--primary); }
+.mobile-toc-pct {
+  padding: 0.125rem 0.4rem;
+  border-radius: var(--radius-full);
+  background: var(--amber-50);
+  color: var(--primary-dark);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+/* Mobile TOC drawer */
+.mobile-toc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.mobile-toc-overlay.is-open { opacity: 1; pointer-events: auto; }
+.mobile-toc-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 24, 20, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.mobile-toc-drawer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 75vh;
+  background: var(--surface-card);
+  border-top: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-toc-overlay.is-open .mobile-toc-drawer { transform: translateY(0); }
+.mobile-toc-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--surface-border);
+  border-radius: var(--radius-full);
+  margin: 0.5rem auto 0;
+}
+.mobile-toc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+.mobile-toc-close {
+  background: transparent;
+  border: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all 150ms ease;
+}
+.mobile-toc-close:hover { color: var(--text-primary); background: var(--cream-50); }
+.mobile-toc-list {
+  overflow-y: auto;
+  padding: 0.75rem 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.mobile-toc-list .toc-link { border-left: 0; border-radius: var(--radius-sm); }
+.mobile-toc-list .toc-link--active {
+  background: var(--amber-50);
+  color: var(--primary-dark);
+  border-left: 0;
+}
 
 /* Related section */
 .related-section {
@@ -598,12 +769,199 @@ const breadcrumb = [
 /* Responsive */
 @media (max-width: 1024px) {
   .post-layout { grid-template-columns: 1fr; }
-  .post-sidebar { position: static; }
+  .post-sidebar { display: none; }
+  .mobile-toc-btn { display: inline-flex; }
   .related-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .post-wrap { padding: 2rem 0 4rem; }
   .related-grid { grid-template-columns: 1fr; }
   .post-byline { flex-direction: column; align-items: flex-start; }
+  .mobile-toc-btn { bottom: 1rem; right: 1rem; padding: 0.5rem 0.875rem; font-size: 0.75rem; }
 }
+
+/* Scroll offset so anchor jumps don't hide under sticky header */
+.post-body :where(h2, h3, h4)[id] { scroll-margin-top: 6rem; }
 </style>
+
+<script is:inline>
+  (function () {
+    function slugify(text) {
+      return String(text || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+    }
+
+    function init() {
+      var articleBody = document.querySelector('.post-body');
+      var progressBar = document.getElementById('progress-bar');
+      var tocSidebar = document.getElementById('toc-sidebar');
+      var tocList = document.getElementById('toc-list');
+      var tocEmpty = document.getElementById('toc-empty');
+      var tocToggle = document.getElementById('toc-toggle');
+      var tocProgressBar = document.getElementById('toc-progress-bar');
+      var tocProgressText = document.getElementById('toc-progress-text');
+      var mobileTocBtn = document.getElementById('mobile-toc-btn');
+      var mobileTocPct = document.getElementById('mobile-toc-pct');
+      var mobileTocOverlay = document.getElementById('mobile-toc-overlay');
+      var mobileTocList = document.getElementById('mobile-toc-list');
+      var mobileTocClose = document.getElementById('mobile-toc-close');
+      var mobileTocBackdrop = document.getElementById('mobile-toc-backdrop');
+
+      if (!articleBody) return;
+
+      var headings = Array.from(articleBody.querySelectorAll('h2, h3, h4'));
+      var usedIds = {};
+      headings.forEach(function (h, i) {
+        if (!h.id) {
+          var base = slugify(h.textContent) || 'seccion-' + (i + 1);
+          var id = base;
+          var n = 2;
+          while (usedIds[id] || document.getElementById(id)) {
+            id = base + '-' + n++;
+          }
+          h.id = id;
+        }
+        usedIds[h.id] = true;
+      });
+
+      if (headings.length === 0) {
+        if (tocList) tocList.hidden = true;
+        if (tocEmpty) tocEmpty.hidden = false;
+        if (mobileTocBtn) mobileTocBtn.style.display = 'none';
+        // Still keep progress bar functional
+      }
+
+      function buildLink(h, i, isMobile) {
+        var level = h.tagName.toLowerCase();
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent || '';
+        a.className = 'toc-link toc-link--' + level;
+        a.dataset.index = String(i);
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = document.getElementById(h.id);
+          if (!target) return;
+          var top = target.getBoundingClientRect().top + window.scrollY - 96;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+          history.replaceState(null, '', '#' + h.id);
+          if (isMobile) closeDrawer();
+        });
+        return a;
+      }
+
+      headings.forEach(function (h, i) {
+        if (tocList) tocList.appendChild(buildLink(h, i, false));
+        if (mobileTocList) mobileTocList.appendChild(buildLink(h, i, true));
+      });
+
+      // Toggle collapse
+      var expanded = true;
+      if (tocToggle && tocList) {
+        tocToggle.addEventListener('click', function () {
+          expanded = !expanded;
+          tocList.style.display = expanded ? '' : 'none';
+          tocToggle.setAttribute('aria-expanded', String(expanded));
+        });
+      }
+
+      // Active heading via IntersectionObserver
+      var activeIndex = -1;
+      function setActive(idx) {
+        if (idx === activeIndex) return;
+        activeIndex = idx;
+        [tocList, mobileTocList].forEach(function (list) {
+          if (!list) return;
+          var items = list.querySelectorAll('.toc-link');
+          items.forEach(function (item, i) {
+            item.classList.toggle('toc-link--active', i === idx);
+          });
+        });
+      }
+
+      if (headings.length > 0 && 'IntersectionObserver' in window) {
+        var visible = new Set();
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+          });
+          if (visible.size > 0) {
+            var topmost = -1;
+            var topY = Infinity;
+            headings.forEach(function (h, i) {
+              if (visible.has(h)) {
+                var y = h.getBoundingClientRect().top;
+                if (y < topY) { topY = y; topmost = i; }
+              }
+            });
+            if (topmost !== -1) setActive(topmost);
+          } else {
+            // Fall back: highlight nearest heading above viewport top
+            var best = -1;
+            for (var i = 0; i < headings.length; i++) {
+              if (headings[i].getBoundingClientRect().top - 120 <= 0) best = i;
+              else break;
+            }
+            if (best !== -1) setActive(best);
+          }
+        }, { rootMargin: '-96px 0px -60% 0px', threshold: [0, 1] });
+        headings.forEach(function (h) { io.observe(h); });
+      }
+
+      // Reading progress
+      function onScroll() {
+        var rect = articleBody.getBoundingClientRect();
+        var articleTop = rect.top + window.scrollY;
+        var articleHeight = articleBody.offsetHeight;
+        var vh = window.innerHeight;
+        var scrollY = window.scrollY;
+        var raw = (scrollY - articleTop + vh * 0.35) / Math.max(articleHeight - vh * 0.35, 1);
+        var progress = Math.min(Math.max(raw, 0), 1);
+        var pct = Math.round(progress * 100);
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (tocProgressBar) tocProgressBar.style.width = pct + '%';
+        if (tocProgressText) tocProgressText.textContent = pct + '%';
+        if (mobileTocPct) mobileTocPct.textContent = pct + '%';
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+
+      // Mobile drawer
+      function openDrawer() {
+        if (!mobileTocOverlay) return;
+        mobileTocOverlay.classList.add('is-open');
+        mobileTocOverlay.setAttribute('aria-hidden', 'false');
+        if (mobileTocBtn) mobileTocBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        if (!mobileTocOverlay) return;
+        mobileTocOverlay.classList.remove('is-open');
+        mobileTocOverlay.setAttribute('aria-hidden', 'true');
+        if (mobileTocBtn) mobileTocBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      if (mobileTocBtn) mobileTocBtn.addEventListener('click', openDrawer);
+      if (mobileTocClose) mobileTocClose.addEventListener('click', closeDrawer);
+      if (mobileTocBackdrop) mobileTocBackdrop.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeDrawer();
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
