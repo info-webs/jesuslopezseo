@@ -87,6 +87,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -95,6 +96,7 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--surface-bg);
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; height: auto; display: block; }
