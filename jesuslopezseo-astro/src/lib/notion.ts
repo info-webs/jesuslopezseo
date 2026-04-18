@@ -35,6 +35,7 @@ export interface NotionPost {
   wordCount: number;
   originalUrl: string;
   url: string;
+  coverImage: string | null;
 }
 
 function extractTitle(prop: any): string {
@@ -65,6 +66,9 @@ function extractUrl(prop: any): string {
 
 function mapPage(page: any): NotionPost {
   const p = page.properties;
+  // Extract cover image from page.cover (external URL or file)
+  const cover = page.cover;
+  const coverImage = cover?.external?.url ?? cover?.file?.url ?? null;
   return {
     id: page.id,
     title: extractTitle(p['Title']),
@@ -79,6 +83,7 @@ function mapPage(page: any): NotionPost {
     wordCount: extractNumber(p['Word Count']),
     originalUrl: extractUrl(p['Original URL']),
     url: page.url,
+    coverImage,
   };
 }
 
@@ -182,6 +187,11 @@ export async function getPageContent(pageId: string, wpSlug?: string, originalUr
   if (wpSlug) candidates.push(wpSlug);
   const originalSlug = extractWpSlugFromUrl(originalUrl);
   if (originalSlug && originalSlug !== wpSlug) candidates.push(originalSlug);
+  // Also try stripping year/edition suffixes like -2018, -2022, -2023, -2024
+  for (const c of [...candidates]) {
+    const stripped = c.replace(/-\d{4}$/, '');
+    if (stripped !== c && !candidates.includes(stripped)) candidates.push(stripped);
+  }
   for (const c of candidates) {
     if (wpContentMap[c]) return wpContentMap[c];
   }

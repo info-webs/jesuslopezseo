@@ -83,7 +83,8 @@ function buildSchema(p: NonNullable<typeof post>, html: string, url: string): st
 
 const defaultOgImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/01/jesus-lopez-seo.jpg';
 const postUrl = `https://www.jesuslopezseo.com/blog/${post.slug}`;
-const ogImage = extractFirstImage(content) || post.originalUrl || defaultOgImage;
+const featuredImage = post.coverImage || extractFirstImage(content);
+const ogImage = featuredImage || defaultOgImage;
 const schema = buildSchema(post, content, postUrl);
 
 const catColors: Record<string, string> = {
@@ -180,6 +181,20 @@ const breadcrumb = [
               )}
             </div>
           </header>
+
+          <!-- Featured image -->
+          {featuredImage && (
+            <div class="post-featured-image">
+              <img
+                src={featuredImage}
+                alt={post.title}
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                class="post-featured-img"
+              />
+            </div>
+          )}
 
           <!-- Divider -->
           <hr class="post-divider"/>
@@ -387,6 +402,8 @@ const breadcrumb = [
 
 /* Header */
 .post-header { margin-bottom: 2rem; }
+.post-featured-image { margin: 1.5rem 0 0; border-radius: var(--radius-lg, 0.75rem); overflow: hidden; }
+.post-featured-img { width: 100%; height: auto; max-height: 480px; object-fit: cover; display: block; border-radius: var(--radius-lg, 0.75rem); }
 .post-header-meta {
   display: flex;
   align-items: center;
