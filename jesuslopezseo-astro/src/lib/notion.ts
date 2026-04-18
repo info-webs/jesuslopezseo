@@ -109,6 +109,34 @@ export async function getPosts(options?: {
   return { posts: data.results.map(mapPage), nextCursor: data.next_cursor ?? null, hasMore: data.has_more ?? false };
 }
 
+export async function getAllPosts(category?: string): Promise<NotionPost[]> {
+  const filter: any = {
+    and: [{ property: 'Status', select: { equals: 'Published' } }],
+  };
+  if (category) {
+    filter.and.push({ property: 'Category', select: { equals: category } });
+  }
+  const posts: NotionPost[] = [];
+  let cursor: string | undefined;
+  while (true) {
+    const body: any = {
+      filter,
+      sorts: [{ property: 'Published Date', direction: 'descending' }],
+      page_size: 100,
+    };
+    if (cursor) body.start_cursor = cursor;
+    const res = await fetch(`${BASE_URL}/databases/${NOTION_DATABASE_ID}/query`, {
+      method: 'POST', headers, body: JSON.stringify(body),
+    });
+    if (!res.ok) throw new Error(`Notion API error: ${res.status} ${await res.text()}`);
+    const data = await res.json();
+    for (const page of data.results) posts.push(mapPage(page));
+    if (!data.has_more) break;
+    cursor = data.next_cursor;
+  }
+  return posts;
+}
+
 export async function getPostBySlug(slug: string): Promise<NotionPost | null> {
   const body = {
     filter: {
