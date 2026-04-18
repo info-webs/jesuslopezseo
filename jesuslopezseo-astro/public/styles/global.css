@@ -97,6 +97,7 @@ body {
   color: var(--text-primary);
   background-color: var(--surface-bg);
   overflow-x: hidden;
+  padding-top: 72px; /* offset for fixed header */
 }
 
 img { max-width: 100%; height: auto; display: block; }
