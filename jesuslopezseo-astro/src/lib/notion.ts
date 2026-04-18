@@ -156,7 +156,12 @@ export async function getPostBySlug(slug: string): Promise<NotionPost | null> {
   return mapPage(data.results[0]);
 }
 
+// Static content map from WordPress XML export (imported at build time)
+import wpContent from './wp-content.json';
+const wpContentMap: Record<string, string> = wpContent as Record<string, string>;
+
 export async function getPageContent(pageId: string, wpSlug?: string): Promise<string> {
+  // 1. Try Notion blocks first
   const res = await fetch(`${BASE_URL}/blocks/${pageId}/children?page_size=100`, { headers });
   if (res.ok) {
     const data = await res.json();
@@ -165,17 +170,9 @@ export async function getPageContent(pageId: string, wpSlug?: string): Promise<s
       return html;
     }
   }
-  if (wpSlug) {
-    try {
-      const wpRes = await fetch(
-        `https://jesuslopezseo.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(wpSlug)}&_fields=content&per_page=1`,
-        { headers: { 'Accept': 'application/json' } }
-      );
-      if (wpRes.ok) {
-        const wpData = await wpRes.json();
-        if (wpData?.[0]?.content?.rendered) return wpData[0].content.rendered;
-      }
-    } catch {}
+  // 2. Fallback to static WordPress content (exported from XML)
+  if (wpSlug && wpContentMap[wpSlug]) {
+    return wpContentMap[wpSlug];
   }
   return '';
 }
