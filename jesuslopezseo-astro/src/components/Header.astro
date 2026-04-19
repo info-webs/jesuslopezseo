@@ -159,39 +159,39 @@ const designServices = [
       </button>
     </div>
   </div>
-
-  <div class="nav-mobile" id="mobile-nav" aria-hidden="true">
-    <nav>
-      <a href="/" class="mobile-nav-link">Inicio</a>
-      <details class="mobile-dropdown" open>
-        <summary class="mobile-nav-link">SEO & Visibilidad</summary>
-        <div class="mobile-submenu">
-          {seoServices.map(s => (
-            <a href={s.href} class="mobile-submenu-link">
-              {s.label}
-              {s.badge && <span class="mega-badge">{s.badge}</span>}
-            </a>
-          ))}
-        </div>
-      </details>
-      <details class="mobile-dropdown">
-        <summary class="mobile-nav-link">Diseño & Contenido</summary>
-        <div class="mobile-submenu">
-          {designServices.map(s => (
-            <a href={s.href} class="mobile-submenu-link">{s.label}</a>
-          ))}
-        </div>
-      </details>
-      <a href="/blog" class="mobile-nav-link">Blog</a>
-      <a href="/contactar" class="mobile-nav-link">Contacto</a>
-      <a href="https://llmfy.ai" target="_blank" rel="noopener" class="mobile-llmfy-card">
-        <strong>LLMFY<span>.ai</span></strong>
-        <span class="mobile-llmfy-desc">Mide tu visibilidad en ChatGPT, Perplexity y Gemini</span>
-      </a>
-      <a href="/pedir-presupuesto" class="btn btn-primary" style="margin-top:1rem;width:100%;justify-content:center;">Pedir presupuesto</a>
-    </nav>
-  </div>
 </header>
+
+<div class="nav-mobile" id="mobile-nav" aria-hidden="true">
+  <nav>
+    <a href="/" class="mobile-nav-link">Inicio</a>
+    <details class="mobile-dropdown" open>
+      <summary class="mobile-nav-link">SEO & Visibilidad</summary>
+      <div class="mobile-submenu">
+        {seoServices.map(s => (
+          <a href={s.href} class="mobile-submenu-link">
+            {s.label}
+            {s.badge && <span class="mega-badge">{s.badge}</span>}
+          </a>
+        ))}
+      </div>
+    </details>
+    <details class="mobile-dropdown">
+      <summary class="mobile-nav-link">Diseño & Contenido</summary>
+      <div class="mobile-submenu">
+        {designServices.map(s => (
+          <a href={s.href} class="mobile-submenu-link">{s.label}</a>
+        ))}
+      </div>
+    </details>
+    <a href="/blog" class="mobile-nav-link">Blog</a>
+    <a href="/contactar" class="mobile-nav-link">Contacto</a>
+    <a href="https://llmfy.ai" target="_blank" rel="noopener" class="mobile-llmfy-card">
+      <strong>LLMFY<span>.ai</span></strong>
+      <span class="mobile-llmfy-desc">Mide tu visibilidad en ChatGPT, Perplexity y Gemini</span>
+    </a>
+    <a href="/pedir-presupuesto" class="btn btn-primary" style="margin-top:1rem;width:100%;justify-content:center;">Pedir presupuesto</a>
+  </nav>
+</div>
 
 <style>
   .header {
