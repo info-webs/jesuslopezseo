@@ -132,11 +132,114 @@ const pricing = [
     ],
   },
 ];
+
+const homeSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.jesuslopezseo.com/#organization",
+      "name": "JesusLopezSEO",
+      "alternateName": "Jesús López — Consultor SEO Salamanca",
+      "description": "Consultor SEO en Salamanca con más de 18 años de experiencia en posicionamiento web, SEO local, diseño web y GEO (optimización para ChatGPT, Perplexity, Gemini).",
+      "url": "https://www.jesuslopezseo.com",
+      "telephone": "+34618015995",
+      "email": "jesus@jesuslopezseo.com",
+      "image": "https://www.jesuslopezseo.com/wp-content/uploads/2024/09/jesus-lopez-seo-consultor.jpg",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Plaza Mayor 11, Ático Derecha",
+        "addressLocality": "Salamanca",
+        "postalCode": "37002",
+        "addressRegion": "Castilla y León",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.9651,
+        "longitude": -5.6640
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Salamanca" },
+        { "@type": "AdministrativeArea", "name": "Castilla y León" },
+        { "@type": "Country", "name": "España" }
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Jesús López",
+        "jobTitle": "Consultor SEO"
+      },
+      "sameAs": [
+        "https://llmfy.ai"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.jesuslopezseo.com/#service",
+      "name": "Consultor SEO Salamanca",
+      "provider": { "@id": "https://www.jesuslopezseo.com/#organization" },
+      "areaServed": { "@type": "City", "name": "Salamanca" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios SEO y marketing digital",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Posicionamiento SEO" },
+            "price": "499",
+            "priceCurrency": "EUR",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "499", "priceCurrency": "EUR", "unitText": "MONTH" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Diseño Web" },
+            "price": "599",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Hosting SEO" },
+            "price": "99",
+            "priceCurrency": "EUR",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99", "priceCurrency": "EUR", "unitText": "ANN" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Posicionamiento GEO para IA" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Contenidos SEO" },
+            "price": "99",
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jesuslopezseo.com/#website",
+      "url": "https://www.jesuslopezseo.com",
+      "name": "JesusLopezSEO",
+      "description": "Consultor SEO Salamanca · Posicionamiento Web y GEO",
+      "publisher": { "@id": "https://www.jesuslopezseo.com/#organization" },
+      "inLanguage": "es-ES"
+    }
+  ]
+});
 ---
 
 <Layout
-  title="JesusLopezSEO — Consultor SEO en Salamanca | Posicionamiento Web"
-  description="Jesús López, Consultor SEO experto en Salamanca. Posicionamiento web, diseño web y marketing digital para empresas que quieren crecer en Google."
+  title="Consultor SEO Salamanca · Posicionamiento Web y GEO | JesusLopezSEO"
+  description="Consultor SEO en Salamanca con +18 años de experiencia. Posicionamiento web, SEO local, diseño web y GEO (ChatGPT, Perplexity, Gemini). Auditoría gratis. ☎ 618 015 995"
+  schema={homeSchema}
 >
   <Header />
 
@@ -155,13 +258,13 @@ const pricing = [
           </div>
 
           <h1 class="hero-title">
-            Que Google y la IA<br/>
-            <span class="hero-accent">recomienden</span><br/>
-            <em class="hero-italic">tu negocio</em>.
+            <span class="hero-kw">Consultor SEO</span> en <em class="hero-italic">Salamanca</em><br/>
+            para que Google y la IA<br/>
+            <span class="hero-accent">recomienden</span> tu negocio.
           </h1>
 
           <p class="hero-desc">
-            Posicionamiento <strong>SEO + GEO</strong> para empresas que quieren aparecer donde sus clientes ya están buscando: en Google, en ChatGPT, en Perplexity, en Gemini. Con medición real vía <a href="https://llmfy.ai" target="_blank" rel="noopener" class="hero-link">LLMFY.ai</a>.
+            <strong>Consultor SEO en Salamanca</strong> con más de 18 años de experiencia en posicionamiento web. Ayudo a empresas y negocios locales a aparecer en los primeros resultados de <strong>Google</strong> y también en <strong>ChatGPT, Perplexity y Gemini</strong>, con medición real vía <a href="https://llmfy.ai" target="_blank" rel="noopener" class="hero-link">LLMFY.ai</a>.
           </p>
 
           <div class="hero-actions">
@@ -386,7 +489,7 @@ const pricing = [
 
         <div class="about-content">
           <div class="section-label">Sobre mí</div>
-          <h2>Soy Jesús López, <span class="serif">Consultor SEO</span> y CEO en JesusLopezSEO</h2>
+          <h2>Soy Jesús López, <span class="serif">Consultor SEO en Salamanca</span> con más de 18 años posicionando webs</h2>
           <p>
             Apasionado del posicionamiento web desde hace más de 18 años. Ayudo a empresas y negocios
             de todo tipo a mejorar su visibilidad en Google y conseguir resultados reales: más tráfico,
@@ -426,7 +529,7 @@ const pricing = [
       <div class="container">
         <div class="section-header text-center">
           <div class="section-label" style="justify-content:center">Qué hacemos</div>
-          <h2>Servicios de marketing digital<br/><span class="serif">que generan resultados</span></h2>
+          <h2>Servicios de <strong>marketing digital en Salamanca</strong><br/><span class="serif">que generan resultados</span></h2>
           <p class="section-desc">
             Desde posicionamiento SEO hasta diseño gráfico, ofrecemos todos los servicios
             de marketing digital que tu negocio necesita para crecer online.
@@ -662,6 +765,10 @@ const pricing = [
   border-radius: 2px;
   opacity: 0.85;
   z-index: -1;
+}
+.hero-kw {
+  color: var(--text-primary);
+  font-weight: 400;
 }
 .hero-italic {
   font-style: italic;
