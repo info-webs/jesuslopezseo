@@ -262,30 +262,29 @@ const pricing = [
             <div class="about-avatar">
               <div class="avatar-glow" aria-hidden="true"></div>
               <svg class="avatar-svg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de Jesús López">
-                <!-- Background circle with subtle gradient -->
                 <defs>
                   <linearGradient id="bg-grad" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stop-color="#f7f3eb"/>
                     <stop offset="100%" stop-color="#f3efe7"/>
                   </linearGradient>
                   <linearGradient id="shirt-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#0f0e0c"/>
-                    <stop offset="100%" stop-color="#2a2622"/>
+                    <stop offset="0%" stop-color="#4a5568"/>
+                    <stop offset="100%" stop-color="#2d3748"/>
                   </linearGradient>
                   <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#f59e0b"/>
                     <stop offset="100%" stop-color="#b45309"/>
                   </linearGradient>
                   <radialGradient id="face-grad" cx="50%" cy="45%" r="55%">
-                    <stop offset="0%" stop-color="#fbe4cc"/>
-                    <stop offset="100%" stop-color="#e8c9a8"/>
+                    <stop offset="0%" stop-color="#f4d5b0"/>
+                    <stop offset="100%" stop-color="#d6a574"/>
                   </radialGradient>
                 </defs>
 
                 <!-- Backdrop -->
                 <circle cx="180" cy="180" r="180" fill="url(#bg-grad)"/>
 
-                <!-- Decorative floating dots -->
+                <!-- Decorative elements -->
                 <circle cx="60" cy="80" r="3" fill="#f59e0b" opacity="0.6"/>
                 <circle cx="310" cy="110" r="2.5" fill="#00d57b" opacity="0.7"/>
                 <circle cx="300" cy="240" r="3.5" fill="#f59e0b" opacity="0.4"/>
@@ -293,67 +292,79 @@ const pricing = [
                 <path d="M 320 60 L 328 60 M 324 56 L 324 64" stroke="#f59e0b" stroke-width="1.5" opacity="0.6"/>
                 <path d="M 40 160 L 48 160 M 44 156 L 44 164" stroke="#00d57b" stroke-width="1.5" opacity="0.5"/>
 
-                <!-- Shoulders / shirt (dark) -->
-                <path d="M 60 360 Q 60 280 130 260 Q 180 250 230 260 Q 300 280 300 360 Z" fill="url(#shirt-grad)"/>
-
-                <!-- Shirt collar detail -->
-                <path d="M 155 258 Q 180 275 205 258 L 200 290 L 180 298 L 160 290 Z" fill="#1a1612"/>
+                <!-- Shoulders / shirt (gray casual) -->
+                <path d="M 60 360 Q 60 285 125 265 Q 180 255 235 265 Q 300 285 300 360 Z" fill="url(#shirt-grad)"/>
+                
+                <!-- Collar -->
+                <path d="M 155 260 Q 180 275 205 260 L 200 290 L 180 298 L 160 290 Z" fill="#1a202c"/>
 
                 <!-- Neck -->
-                <path d="M 158 230 Q 180 245 202 230 L 205 260 Q 180 272 155 260 Z" fill="#e8c9a8"/>
-                <path d="M 160 245 Q 180 253 200 245" stroke="#c8a888" stroke-width="1.5" fill="none" opacity="0.4"/>
+                <path d="M 158 232 Q 180 247 202 232 L 205 262 Q 180 274 155 262 Z" fill="#d6a574"/>
+                <path d="M 162 248 Q 180 255 198 248" stroke="#c89060" stroke-width="1.5" fill="none" opacity="0.4"/>
 
-                <!-- Head / Face -->
-                <ellipse cx="180" cy="170" rx="75" ry="88" fill="url(#face-grad)"/>
+                <!-- Head / Face (tan skin tone) -->
+                <ellipse cx="180" cy="172" rx="72" ry="85" fill="url(#face-grad)"/>
 
-                <!-- Hair: dark short modern -->
-                <path d="M 110 155 Q 105 105 140 90 Q 160 75 180 78 Q 210 75 232 95 Q 258 110 252 158 Q 248 130 230 120 Q 215 138 200 135 Q 178 128 158 138 Q 140 130 128 138 Q 115 145 110 155 Z" fill="#1a1612"/>
-                <!-- Hair texture strands -->
-                <path d="M 130 110 Q 150 95 175 100" stroke="#0f0e0c" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 200 95 Q 220 95 238 115" stroke="#0f0e0c" stroke-width="1" fill="none" opacity="0.6"/>
+                <!-- Hair: short black modern style (memoji-like) -->
+                <path d="M 112 160 Q 108 115 135 95 Q 155 82 180 82 Q 205 82 225 95 Q 252 115 248 160 Q 245 135 230 125 Q 218 140 205 138 Q 180 135 160 138 Q 145 135 130 140 Q 115 148 112 160 Z" fill="#1a1a1a"/>
+                
+                <!-- Hair front detail -->
+                <path d="M 140 110 Q 160 95 180 95 Q 200 95 220 110" stroke="#0d0d0d" stroke-width="1.2" fill="none" opacity="0.7"/>
 
                 <!-- Ears -->
-                <ellipse cx="108" cy="175" rx="9" ry="14" fill="#e8c9a8"/>
-                <ellipse cx="252" cy="175" rx="9" ry="14" fill="#e8c9a8"/>
-                <path d="M 106 172 Q 110 178 106 184" stroke="#c8a888" stroke-width="1" fill="none"/>
-                <path d="M 254 172 Q 250 178 254 184" stroke="#c8a888" stroke-width="1" fill="none"/>
+                <ellipse cx="110" cy="178" rx="8" ry="13" fill="#d6a574"/>
+                <ellipse cx="250" cy="178" rx="8" ry="13" fill="#d6a574"/>
+                <path d="M 108 175 Q 112 180 108 185" stroke="#c89060" stroke-width="1" fill="none"/>
+                <path d="M 252 175 Q 248 180 252 185" stroke="#c89060" stroke-width="1" fill="none"/>
 
-                <!-- Eyebrows -->
-                <path d="M 138 160 Q 152 154 168 160" stroke="#1a1612" stroke-width="4" stroke-linecap="round" fill="none"/>
-                <path d="M 192 160 Q 208 154 222 160" stroke="#1a1612" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <!-- Eyebrows (thick dark) -->
+                <path d="M 140 162 Q 153 157 165 162" stroke="#1a1a1a" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+                <path d="M 195 162 Q 207 157 220 162" stroke="#1a1a1a" stroke-width="4.5" stroke-linecap="round" fill="none"/>
 
-                <!-- Glasses (subtle rounded frames — developer vibe) -->
-                <circle cx="150" cy="180" r="20" fill="none" stroke="#0f0e0c" stroke-width="2.5"/>
-                <circle cx="210" cy="180" r="20" fill="none" stroke="#0f0e0c" stroke-width="2.5"/>
-                <line x1="170" y1="180" x2="190" y2="180" stroke="#0f0e0c" stroke-width="2.5"/>
+                <!-- Glasses (modern rounded rectangular frames) -->
+                <rect x="132" y="172" width="36" height="26" rx="6" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+                <rect x="192" y="172" width="36" height="26" rx="6" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+                <line x1="168" y1="185" x2="192" y2="185" stroke="#1a1a1a" stroke-width="3"/>
+                
                 <!-- Lens reflection -->
-                <path d="M 140 172 Q 145 168 152 170" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.7" fill="none"/>
-                <path d="M 200 172 Q 205 168 212 170" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.7" fill="none"/>
+                <path d="M 138 176 Q 143 173 150 175" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75" fill="none"/>
+                <path d="M 198 176 Q 203 173 210 175" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.75" fill="none"/>
 
-                <!-- Eyes (inside glasses) -->
-                <circle cx="150" cy="180" r="3" fill="#1a1612"/>
-                <circle cx="210" cy="180" r="3" fill="#1a1612"/>
-                <circle cx="151" cy="179" r="1" fill="#fff"/>
-                <circle cx="211" cy="179" r="1" fill="#fff"/>
+                <!-- Eyes (dark brown behind glasses) -->
+                <circle cx="150" cy="185" r="3.5" fill="#2d2013"/>
+                <circle cx="210" cy="185" r="3.5" fill="#2d2013"/>
+                <circle cx="151" cy="184" r="1.5" fill="#fff"/>
+                <circle cx="211" cy="184" r="1.5" fill="#fff"/>
 
                 <!-- Nose -->
-                <path d="M 180 188 Q 175 210 178 218 Q 183 222 186 218 Q 189 210 185 193" stroke="#c8a888" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <path d="M 180 190 Q 176 208 178 215 Q 182 219 184 215 Q 186 208 183 195" stroke="#c89060" stroke-width="2" fill="none" stroke-linecap="round"/>
 
-                <!-- Mouth — small confident smile -->
-                <path d="M 165 232 Q 180 242 198 232" stroke="#8b4a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Smile (wider friendly) -->
+                <path d="M 162 235 Q 180 245 198 235" stroke="#8b4a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Upper lip detail -->
+                <path d="M 178 234 Q 180 236 182 234" stroke="#8b4a3a" stroke-width="1.5" fill="none"/>
 
-                <!-- Beard stubble hint -->
-                <path d="M 145 215 Q 180 248 220 215" stroke="#3a3028" stroke-width="0.6" fill="none" opacity="0.3"/>
+                <!-- Beard (short trimmed, memoji style) -->
+                <!-- Chin area -->
+                <ellipse cx="180" cy="248" rx="18" ry="8" fill="#1a1a1a" opacity="0.85"/>
+                <path d="M 165 242 Q 172 246 180 248 Q 188 246 195 242" stroke="#1a1a1a" stroke-width="3.5" fill="none" opacity="0.75" stroke-linecap="round"/>
+                
+                <!-- Jawline shadow/stubble -->
+                <path d="M 125 205 Q 135 225 145 238" stroke="#2d2013" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/>
+                <path d="M 235 205 Q 225 225 215 238" stroke="#2d2013" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/>
+                
+                <!-- Mustache (short) -->
+                <path d="M 165 230 Q 172 233 180 233 Q 188 233 195 230" stroke="#1a1a1a" stroke-width="3" fill="none" opacity="0.8" stroke-linecap="round"/>
 
-                <!-- Cheeks -->
-                <ellipse cx="130" cy="212" rx="10" ry="5" fill="#e8a878" opacity="0.35"/>
-                <ellipse cx="230" cy="212" rx="10" ry="5" fill="#e8a878" opacity="0.35"/>
+                <!-- Cheeks (subtle blush) -->
+                <ellipse cx="132" cy="210" rx="12" ry="6" fill="#e8a878" opacity="0.3"/>
+                <ellipse cx="228" cy="210" rx="12" ry="6" fill="#e8a878" opacity="0.3"/>
 
-                <!-- Amber accent chip on shirt (nod to brand) -->
-                <rect x="165" y="310" width="30" height="4" rx="2" fill="url(#amber-grad)"/>
+                <!-- Amber accent chip on shirt -->
+                <rect x="165" y="315" width="30" height="5" rx="2.5" fill="url(#amber-grad)"/>
               </svg>
 
-              <!-- Code comment floating bubble -->
+              <!-- Code bubbles -->
               <div class="avatar-bubble avatar-bubble--1">
                 <span class="avatar-bubble-dot"></span>
                 <code>&lt;SEO /&gt;</code>
