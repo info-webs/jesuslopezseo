@@ -88,62 +88,19 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
-        <!-- Form -->
+        <!-- Form (Jotform embedded) -->
         <div class="contact-form-wrap animate-fade-up delay-200">
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label" for="nombre">Nombre *</label>
-                <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">Email *</label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="telefono">Teléfono</label>
-              <input class="form-input" type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="web">Tu web (si tienes)</label>
-              <input class="form-input" type="url" id="web" name="web" placeholder="https://tuweb.com" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="servicio">¿Qué necesitas?</label>
-              <select class="form-input form-select" id="servicio" name="servicio">
-                <option value="">Selecciona un servicio</option>
-                <option>Posicionamiento SEO</option>
-                <option>Diseño web</option>
-                <option>Community Manager</option>
-                <option>Redacción de contenido</option>
-                <option>Diseño gráfico</option>
-                <option>Posicionamiento ASO</option>
-                <option>Hosting SEO</option>
-                <option>Otro / No sé todavía</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="mensaje">Cuéntanos tu proyecto *</label>
-              <textarea class="form-input form-textarea" id="mensaje" name="mensaje" rows="5" placeholder="Describe brevemente tu proyecto, objetivos y cualquier información relevante..." required></textarea>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" id="privacidad" name="privacidad" required />
-              <label for="privacidad">
-                Acepto la <a href="/politica-de-cookies" target="_blank">política de privacidad</a>
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg form-submit">
-              Enviar mensaje
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-
-            <div class="form-success" id="form-success" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <strong>¡Mensaje enviado!</strong>
-              <p>Te responderemos en menos de 24 horas.</p>
-            </div>
-          </form>
+          <iframe
+            id="JotFormIFrame-261082646575059"
+            title="Pedir presupuesto - JesusLopezSEO"
+            onload="window.parent.scrollTo(0,0)"
+            allowtransparency="true"
+            allow="geolocation; microphone; camera; fullscreen; payment"
+            src="https://form.jotform.com/261082646575059"
+            frameborder="0"
+            class="jotform-iframe"
+            scrolling="no"
+          ></iframe>
         </div>
 
       </div>
@@ -249,7 +206,8 @@ import Footer from '../components/Footer.astro';
   background: var(--surface-card);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-xl);
-  padding: 2.5rem;
+  padding: 0;
+  overflow: hidden;
   box-shadow: var(--shadow-md);
 }
 .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
@@ -310,20 +268,29 @@ import Footer from '../components/Footer.astro';
 @media (max-width: 640px) {
   .form-grid { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 1.5rem; }
+  .jotform-iframe {
+    width: 1px;
+    min-width: 100%;
+    max-width: 100%;
+    height: 900px;
+    border: none;
+    display: block;
+  }
   .contact-hero { padding: 4rem 0 3rem; }
+}
+
+.jotform-iframe {
+  width: 1px;
+  min-width: 100%;
+  max-width: 100%;
+  height: 820px;
+  border: none;
+  display: block;
 }
 </style>
 
-<script>
-const form = document.getElementById('contact-form') as HTMLFormElement;
-const success = document.getElementById('form-success');
-
-form?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  // Simulate form submission
-  // Replace with actual form handler (Netlify, Formspree, Astro API route, etc.)
-  success?.classList.add('visible');
-  success?.setAttribute('aria-hidden', 'false');
-  form.style.display = 'none';
-});
+<script is:inline src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+<script is:inline>
+  window.jotformEmbedHandler &&
+    window.jotformEmbedHandler("iframe[id='JotFormIFrame-261082646575059']", "https://form.jotform.com/");
 </script>
