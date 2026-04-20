@@ -84,11 +84,12 @@ function buildSchema(p: NonNullable<typeof post>, html: string, url: string): st
   });
 }
 
-const defaultOgImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/01/jesus-lopez-seo.jpg';
+const defaultOgImage = 'https://www.jesuslopezseo.com/og-default.jpg';
 const postUrl = `https://www.jesuslopezseo.com/noticias/${post.slug}/`;
-// Priority: 1) local downloaded image, 2) Notion cover, 3) first image in content, 4) default
+// Priority: 1) local downloaded image, 2) Notion cover (only if not WP), 3) first image in content, 4) default
 const localImage = featuredImagesMap[post.slug] || null;
-const featuredImage = localImage || post.coverImage || extractFirstImage(content);
+const notionCover = (post.coverImage && !post.coverImage.includes('wp-content')) ? post.coverImage : null;
+const featuredImage = localImage || notionCover || extractFirstImage(content);
 const ogImage = featuredImage
   ? (featuredImage.startsWith('/') ? `https://www.jesuslopezseo.com${featuredImage}` : featuredImage)
   : defaultOgImage;

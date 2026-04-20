@@ -9,7 +9,9 @@ import featuredImages from '../../lib/featured-images.json';
 const featuredImagesMap: Record<string, string> = featuredImages as Record<string, string>;
 
 function getPostImage(slug: string, coverImage: string | null): string | null {
-  return featuredImagesMap[slug] || coverImage || null;
+  const localImg = featuredImagesMap[slug] || null;
+  const safeCover = (coverImage && !coverImage.includes('wp-content')) ? coverImage : null;
+  return localImg || safeCover || null;
 }
 
 const CATEGORIES = ['SEO', 'Diseño Web', 'Marketing Digital', 'Redes Sociales', 'Noticias', 'Google'];
