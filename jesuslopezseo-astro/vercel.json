@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/blog/:slug",
+      "destination": "/noticias/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/noticias",
+      "permanent": true
+    }
+  ]
+}

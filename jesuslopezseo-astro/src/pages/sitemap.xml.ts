@@ -14,7 +14,7 @@ const staticPages = [
   { url: '/servicios/diseno-grafico',                    priority: '0.7', changefreq: 'monthly' },
   { url: '/servicios/posicionamiento-aso',               priority: '0.7', changefreq: 'monthly' },
   { url: '/servicios/hosting-seo',                       priority: '0.7', changefreq: 'monthly' },
-  { url: '/blog',                                        priority: '0.8', changefreq: 'daily'   },
+  { url: '/noticias',                                        priority: '0.8', changefreq: 'daily'   },
   { url: '/contactar',                                   priority: '0.6', changefreq: 'yearly'  },
   { url: '/pedir-presupuesto',                           priority: '0.6', changefreq: 'yearly'  },
 ];
@@ -54,7 +54,7 @@ export const GET: APIRoute = async () => {
         : today;
       return `
   <url>
-    <loc>${BASE}/blog/${p.slug}</loc>
+    <loc>${BASE}/noticias/${p.slug}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

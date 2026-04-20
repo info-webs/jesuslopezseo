@@ -31,7 +31,7 @@ try {
 }
 
 if (!post) {
-  return Astro.redirect('/blog');
+  return Astro.redirect('/noticias');
 }
 
 // Format date helper
@@ -85,7 +85,7 @@ function buildSchema(p: NonNullable<typeof post>, html: string, url: string): st
 }
 
 const defaultOgImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/01/jesus-lopez-seo.jpg';
-const postUrl = `https://www.jesuslopezseo.com/blog/${post.slug}`;
+const postUrl = `https://www.jesuslopezseo.com/noticias/${post.slug}`;
 // Priority: 1) local downloaded image, 2) Notion cover, 3) first image in content, 4) default
 const localImage = featuredImagesMap[post.slug] || null;
 const featuredImage = localImage || post.coverImage || extractFirstImage(content);
@@ -105,8 +105,8 @@ const catColors: Record<string, string> = {
 
 const breadcrumb = [
   { label: 'Inicio', href: '/' },
-  { label: 'Blog', href: '/blog' },
-  { label: post.category, href: `/blog?categoria=${encodeURIComponent(post.category)}` },
+  { label: 'Blog', href: '/noticias' },
+  { label: post.category, href: `/noticias?categoria=${encodeURIComponent(post.category)}` },
 ];
 ---
 
@@ -153,7 +153,7 @@ const breadcrumb = [
           <header class="post-header">
             <div class="post-header-meta">
               <a
-                href={`/blog?categoria=${encodeURIComponent(post.category)}`}
+                href={`/noticias?categoria=${encodeURIComponent(post.category)}`}
                 class={`post-badge ${catColors[post.category] || 'badge-default'}`}
               >
                 {post.category}
@@ -258,7 +258,7 @@ const breadcrumb = [
           <div class="post-share">
             <span class="share-label">Compartir:</span>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://www.jesuslopezseo.com/blog/${post.slug}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://www.jesuslopezseo.com/noticias/${post.slug}`}
               target="_blank"
               rel="noopener"
               class="share-btn"
@@ -268,7 +268,7 @@ const breadcrumb = [
               Twitter/X
             </a>
             <a
-              href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.jesuslopezseo.com/blog/${post.slug}&title=${encodeURIComponent(post.title)}`}
+              href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.jesuslopezseo.com/noticias/${post.slug}&title=${encodeURIComponent(post.title)}`}
               target="_blank"
               rel="noopener"
               class="share-btn"
@@ -356,7 +356,7 @@ const breadcrumb = [
           <h2>Más artículos de <span class="serif">{post.category}</span></h2>
           <div class="related-grid">
             {relatedPosts.map(rp => (
-              <a href={`/blog/${rp.slug}`} class="related-card">
+              <a href={`/noticias/${rp.slug}`} class="related-card">
                 <span class={`post-badge ${catColors[rp.category] || 'badge-default'}`}>{rp.category}</span>
                 <h3>{rp.title}</h3>
                 {rp.excerpt && <p>{rp.excerpt}</p>}
@@ -1018,7 +1018,7 @@ const breadcrumb = [
           var link = node.querySelector('.inline-related__link');
           var titleEl = node.querySelector('.inline-related__title');
           if (!link || !titleEl) continue;
-          link.setAttribute('href', '/blog/' + ins.rel.slug);
+          link.setAttribute('href', '/noticias/' + ins.rel.slug);
           titleEl.textContent = ins.rel.title;
           var anchor = paragraphs[ins.index];
           if (anchor && anchor.parentNode) {

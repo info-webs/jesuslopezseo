@@ -76,7 +76,7 @@ const catColors: Record<string, string> = {
 <Layout
   title="Blog SEO — JesusLopezSEO"
   description="Artículos, guías y consejos de SEO, diseño web, marketing digital y redes sociales. Todo lo que necesitas para mejorar tu presencia online."
-  canonical="https://www.jesuslopezseo.com/blog"
+  canonical="https://www.jesuslopezseo.com/noticias"
 >
   <Header />
 
@@ -99,7 +99,7 @@ const catColors: Record<string, string> = {
       <div class="container">
         <div class="filter-tabs" role="tablist">
           <a
-            href="/blog"
+            href="/noticias"
             class={`filter-tab ${!activeCategory ? 'active' : ''}`}
             role="tab"
           >
@@ -107,7 +107,7 @@ const catColors: Record<string, string> = {
           </a>
           {CATEGORIES.map(cat => (
             <a
-              href={`/blog?categoria=${encodeURIComponent(cat)}`}
+              href={`/noticias?categoria=${encodeURIComponent(cat)}`}
               class={`filter-tab ${activeCategory === cat ? 'active' : ''}`}
               role="tab"
             >
@@ -130,7 +130,7 @@ const catColors: Record<string, string> = {
         {!error && posts.length === 0 && (
           <div class="blog-empty">
             <p>No hay artículos publicados en esta categoría todavía.</p>
-            <a href="/blog" class="btn btn-primary">Ver todos los artículos</a>
+            <a href="/noticias" class="btn btn-primary">Ver todos los artículos</a>
           </div>
         )}
 
@@ -141,7 +141,7 @@ const catColors: Record<string, string> = {
                 {(() => {
                   const img = getPostImage(post.slug, post.coverImage);
                   return img ? (
-                    <a href={`/blog/${post.slug}`} class="post-card-thumb" tabindex="-1" aria-hidden="true">
+                    <a href={`/noticias/${post.slug}`} class="post-card-thumb" tabindex="-1" aria-hidden="true">
                       <img
                         src={img}
                         alt={post.title}
@@ -161,7 +161,7 @@ const catColors: Record<string, string> = {
                     <span class="post-reading">{readingTime(post.wordCount)} lectura</span>
                   </div>
                   <h2 class="post-title">
-                    <a href={`/blog/${post.slug}`}>{post.title}</a>
+                    <a href={`/noticias/${post.slug}`}>{post.title}</a>
                   </h2>
                   {post.excerpt && (
                     <p class="post-excerpt">{post.excerpt}</p>
@@ -178,7 +178,7 @@ const catColors: Record<string, string> = {
                         )}
                       </div>
                     </div>
-                    <a href={`/blog/${post.slug}`} class="post-link" aria-label={`Leer: ${post.title}`}>
+                    <a href={`/noticias/${post.slug}`} class="post-link" aria-label={`Leer: ${post.title}`}>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>
@@ -198,7 +198,7 @@ const catColors: Record<string, string> = {
             rangeStart={rangeStart}
             rangeEnd={rangeEnd}
             category={activeCategory || undefined}
-            basePath="/blog"
+            basePath="/noticias"
           />
         )}
       </div>
