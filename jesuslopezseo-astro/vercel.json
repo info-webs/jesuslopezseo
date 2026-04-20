@@ -1,13 +1,19 @@
 {
+  "trailingSlash": true,
   "redirects": [
     {
+      "source": "/noticias/:slug",
+      "destination": "/noticias/:slug/",
+      "permanent": true
+    },
+    {
       "source": "/blog/:slug",
-      "destination": "/noticias/:slug",
+      "destination": "/noticias/:slug/",
       "permanent": true
     },
     {
       "source": "/blog",
-      "destination": "/noticias",
+      "destination": "/noticias/",
       "permanent": true
     }
   ]

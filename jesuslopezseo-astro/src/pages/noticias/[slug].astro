@@ -85,7 +85,7 @@ function buildSchema(p: NonNullable<typeof post>, html: string, url: string): st
 }
 
 const defaultOgImage = 'https://www.jesuslopezseo.com/wp-content/uploads/2024/01/jesus-lopez-seo.jpg';
-const postUrl = `https://www.jesuslopezseo.com/noticias/${post.slug}`;
+const postUrl = `https://www.jesuslopezseo.com/noticias/${post.slug}/`;
 // Priority: 1) local downloaded image, 2) Notion cover, 3) first image in content, 4) default
 const localImage = featuredImagesMap[post.slug] || null;
 const featuredImage = localImage || post.coverImage || extractFirstImage(content);
@@ -258,7 +258,7 @@ const breadcrumb = [
           <div class="post-share">
             <span class="share-label">Compartir:</span>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://www.jesuslopezseo.com/noticias/${post.slug}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://www.jesuslopezseo.com/noticias/${post.slug}/`}
               target="_blank"
               rel="noopener"
               class="share-btn"
