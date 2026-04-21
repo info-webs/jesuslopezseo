@@ -287,3 +287,16 @@ h4 { font-size: 1.125rem; }
 
 /* ── Selection ── */
 ::selection { background: var(--amber-200); color: var(--text-primary); }
+
+/* ── TOC Active Highlight (global, for JS-generated elements) ── */
+.toc-link--active {
+  color: var(--primary-dark) !important;
+  font-weight: 600 !important;
+  border-left-color: var(--primary) !important;
+  background: var(--amber-50) !important;
+}
+.mobile-toc-list .toc-link--active {
+  background: var(--amber-50) !important;
+  color: var(--primary-dark) !important;
+  border-left: 0 !important;
+}
