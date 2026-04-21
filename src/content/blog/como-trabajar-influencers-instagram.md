@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2018/06/Cómo-trabajar-con-influencers-en-Instagram.png)
+![](/blog/Cómo-trabajar-con-influencers-en-Instagram.png)
 Contar con personas adecuadas para impulsar tu marca es positivo y por eso muchas empresas apelan a figuras de este tipo para ser más conocidas. Como [Consultor SEO](http://www.jesuslopezseo.com/) guíamos tus pasos y te damos las herramientas para que sepas*** cómo trabajar con influencers en Instagram.***

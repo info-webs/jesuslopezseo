@@ -9,6 +9,6 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2024/06/Que-es-el-rebranding.jpg)
+![](/blog/Que-es-el-rebranding.jpg)
 
 ¿Buscas reposicionar tu marca, expandirla o diferenciarla de otras? Las circunstancias cambian, por lo que es necesario adaptarse y evolucionar con ellas. De ahí que sea importante entender ***qué es el rebranding*** y cómo aplicarlo.

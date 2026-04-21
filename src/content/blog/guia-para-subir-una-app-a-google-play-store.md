@@ -9,6 +9,4 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/07/guia-para-subir-una-app-a-google-play-store-1.jpg)
-
 Si estas en las fases de diseño desarrollo o pruebas de tu aplicación para dispositivos móviles es importante manejes una ***guía para subir una app a Google Play Store* **para el momento en que quieras lanzar al mercado tu producto y que empiecen a descargarlo. Desde [www.jesuslopezseo.com](https://www.jesuslopezseo.com/) te explicamos paso a paso como lograrlo y tener éxito.

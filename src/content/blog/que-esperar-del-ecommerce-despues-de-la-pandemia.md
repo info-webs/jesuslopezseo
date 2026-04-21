@@ -9,6 +9,4 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/09/Que-esperar-del-ecommerce-despues-de-la-pandemia.jpg)
-
 El comercio electrónico experimentó un crecimiento superior al que se esperaba durante los meses pasados. Ahora debemos tener claro ***qué esperar del ecommerce después de la pandemia*** y cómo hacer para destacar entre los demás. En [https://jesuslopezseo.com/](https://jesuslopezseo.com/) analizamos las estrategias que se deben implementar para ofrecer una mejor experiencia a los visitantes.

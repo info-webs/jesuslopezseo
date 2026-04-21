@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2018/04/BLOG_ecommerce-1-670x419-1.png)
+![](/blog/BLOG_ecommerce-1-670x419-1.png)
 

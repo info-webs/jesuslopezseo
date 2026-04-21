@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2019/11/como-hacer-una-auditoria-de-seguridad-en-tu-webb.jpg)
+![](/blog/como-hacer-una-auditoria-de-seguridad-en-tu-webb.jpg)
 En [Jesús López SEO](https://www.jesuslopezseo.com/) sabemos lo importante que es cuidar tu sitio de cualquier tipo de vulnerabilidades. Cada día surgen nuevas formas de hackear y poner en riesgo tus datos y los de tus clientes. Por lo que aquí te explicamos ***cómo hacer una auditoría de seguridad en tu web***. Conoce los puntos más importantes de este tema.

@@ -9,6 +9,4 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](http://www.jesuslopezseo.com/wp-content/uploads/2016/11/Cómo-analizar-la-competencia-en-tu-estrategia-de-marketing.jpg)
-
 En JesusLopezSEO queremos enseñarte en esta oportunidad ***cómo analizar la competencia en tu estrategia de marketing***. Estamos conscientes de que uno de los pilares fundamentales de cualquier estrategia de mercadeo es vigilar qué hacen nuestros competidores. Por ello, debes saber quiénes son, cuál es su estrategia, qué funciona y en qué se han equivocado.

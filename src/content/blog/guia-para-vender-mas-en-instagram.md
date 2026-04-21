@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2019/06/Guia-para-vender-más-en-Instagram.jpg)
+![](/blog/Guia-para-vender-más-en-Instagram.jpg)
 Estar en redes sociales no significa que tendrás un negocio exitoso. Para poder destacar, debes utilizar estrategias estructuradas. Como [Consultor SEO](https://jesuslopezseo.com/) te daremos la ***guía para vender más en Instagram***. Aprende todo lo necesario para incrementar tus ingresos.

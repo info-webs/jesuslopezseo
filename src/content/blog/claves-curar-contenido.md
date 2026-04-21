@@ -9,6 +9,6 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2016/05/Claves-para-curar-contenido-de-manera-adecuada.png)
+![](/blog/Claves-para-curar-contenido-de-manera-adecuada.png)
 
 Desde [JesúslopezSEO](https://www.jesuslopezseo.com/) queremos mostrarte cuáles son las ***claves para curar contenido de manera adecuada***. Una estrategia de marketing de contenidos no se trata únicamente de promocionar las publicaciones propias, pero tampoco de bombardear las redes sociales con cualquier tipo de información sin que antes haya sido estudiada y valorizada. Por eso hay que comprender lo que es el proceso de curación de contenidos.

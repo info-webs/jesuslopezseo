@@ -9,6 +9,4 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/09/como-funciona-el-marketing-de-afiliados.jpg)
-
 En [jesuslopezseo.com](https://www.jesuslopezseo.com/) te contaremos ***cómo funciona el marketing de afiliados***. Esta es una forma muy popular de conseguir ventas y aumentar tus ganancias con un negocio online. Se verán beneficiados tanto las marcas como los marketeros. Sigue leyendo para saber más sobre este concepto y su uso.

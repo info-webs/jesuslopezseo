@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2021/06/como-usar-pinterest-analytics.jpg)
+![](/blog/como-usar-pinterest-analytics.jpg)
 

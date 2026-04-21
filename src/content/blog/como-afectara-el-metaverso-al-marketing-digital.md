@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2022/02/como-afectara-el-metaverso-al-marketing-digital.jpg)
+![](/blog/como-afectara-el-metaverso-al-marketing-digital.jpg)
 

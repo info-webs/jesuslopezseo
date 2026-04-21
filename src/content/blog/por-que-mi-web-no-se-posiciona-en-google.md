@@ -9,6 +9,6 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2022/07/por-que-mi-web-no-se-ppsiciona-en-google.jpg)
+![](/blog/por-que-mi-web-no-se-ppsiciona-en-google.jpg)
 
 Hoy queremos darte una respuesta a la pregunta de ***por qué una web no se posiciona en Google***. Si consideras que tienes pocos leads, poco retorno de la inversión, que no ves resultados, puede ser debido a alguna de las razones que explicaremos a continuación.

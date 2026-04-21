@@ -9,6 +9,6 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/01/marketing-de-influencers-en-Tik-Tok.jpg)
+![](/blog/marketing-de-influencers-en-Tik-Tok.jpg)
 
 Los jóvenes tienen una nueva herramienta para divertirse y las empresas han encontrado la forma de usarla para su beneficio. Si tienes una marca es necesario que conozcas ***todo sobre el marketing de influencers en TikTok***. En [Jesús López SEO](https://www.jesuslopezseo.com/) te contamos acerca de esta red social china para que la aproveches al máximo.

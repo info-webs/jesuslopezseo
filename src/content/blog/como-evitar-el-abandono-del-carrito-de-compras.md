@@ -9,5 +9,5 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2021/07/Como-evitar-el-abandono-del-carrito-de-compras.jpg)
+![](/blog/Como-evitar-el-abandono-del-carrito-de-compras.jpg)
 Aumentar las ventas es el reto de cualquier tienda online y esto pasa por saber ***cómo evitar el abandono del carrito de compras***. Desconfianza, procesos de pago complicados o falta de claridad son algunos de los problemas frecuentes. En JesusLopezSEO te traemos algunos consejos.

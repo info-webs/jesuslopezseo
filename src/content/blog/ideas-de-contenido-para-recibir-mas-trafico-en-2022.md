@@ -9,5 +9,5 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2022/01/Ideas-de-contenido-para-recibir-mas-trafico-en-2022.jpg)
+![](/blog/Ideas-de-contenido-para-recibir-mas-trafico-en-2022.jpg)
 En el marketing encontrar ***ideas de contenido para recibir más tráfico en 2022*** es fundamental. Pero entendemos que también es una de las tareas más difíciles para los creadores. Por ello, te traemos algunos consejos para que te inspires.

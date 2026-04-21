@@ -9,5 +9,3 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/11/tipos-de-penalizaciones-de-google.jpg)
-

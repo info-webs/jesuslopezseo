@@ -9,6 +9,6 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2019/01/7-consejos-para-aumentar-el-alcance-de-tu-e-commerce-en-Facebook.png)
+![](/blog/7-consejos-para-aumentar-el-alcance-de-tu-e-commerce-en-Facebook.png)
 
 Como [consultor SEO](https://www.jesuslopezseo.com/) te daremos 7 ***consejos para aumentar el alcance de tu e-commerce en Facebook***. Sobre todo porque esta red social en los últimos tiempos se ha puesto bastante estricta. Ganar interacciones no es sencillo, pero con algunas prácticas simples se puede mejorar. Hay que reinventarse y trabajar a la par con los nuevos cambios de la plataforma.

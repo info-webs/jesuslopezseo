@@ -9,6 +9,6 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2021/09/SEO-para-principiantes.jpg)
+![](/blog/SEO-para-principiantes.jpg)
 
 Los sitios web hoy en día son parte vital de cualquier negocio, todos deben tener presencia online para ofrecer un mejor servicio, dar confianza y estar disponible 24/7. Pero no basta solo con tenerlo, es importante crear una estrategia ***SEO para principiantes***, así podrás posicionarla en buscadores. Sigue leyendo para saber más con tu Consultor SEO.

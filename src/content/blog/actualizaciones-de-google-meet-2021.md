@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2021/07/actualizaciones-de-google-meet-2021.jpg)
+![](/blog/actualizaciones-de-google-meet-2021.jpg)
 

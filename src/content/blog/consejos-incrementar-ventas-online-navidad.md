@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2018/12/10-consejos-para-incrementar-ventas-online-en-Navidad.jpg)
+![](/blog/10-consejos-para-incrementar-ventas-online-en-Navidad.jpg)
 Llegó diciembre y con este mes las ganas de comprar regalos y muchas otras cosas. Para que tu tienda virtual sea la favorita entre la competencia, como [consultor SEO](https://www.jesuslopezseo.com/) te daremos ***10 consejos para incrementar tus ventas online en Navidad***. Sigue leyendo.

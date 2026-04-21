@@ -10,4 +10,4 @@ tags: ["seo"]
 ---
 
 Actualmente hay muchas herramientas que permiten automatizar y brindar mejores experiencias a los usuarios en redes sociales. Como[ consultor SEO](https://www.jesuslopezseo.com/) te traemos este ***tutorial para crear un bot de Facebook***. Conoce cómo ofrecer respuestas rápidas a tus potenciales clientes en esta plataforma.
-![](https://www.jesuslopezseo.com/wp-content/uploads/2019/07/Tutorial-para-crear-un-bot-de-Facebook.png)
+![](/blog/Tutorial-para-crear-un-bot-de-Facebook.png)

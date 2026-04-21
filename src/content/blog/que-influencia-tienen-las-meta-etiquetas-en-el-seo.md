@@ -9,5 +9,4 @@ author: "marelystorres"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/06/Que-influencia-tienen-las-meta-etiquetas-en-el-SEO.jpg)
 En [https://www.jesuslopezseo.com/](https://www.jesuslopezseo.com/) queremos aclarar ***qué influencia tienen las meta etiquetas en el SEO***. Este tema ha generado muchas discusiones, por ello explicamos por qué hay que tenerlas en cuánto y qué impacto tienen.

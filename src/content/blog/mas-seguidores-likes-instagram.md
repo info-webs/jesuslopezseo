@@ -9,5 +9,5 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2016/08/tener-mas-seguidores-likes-instagram.jpg)
+![](/blog/tener-mas-seguidores-likes-instagram.jpg)
 ¿Quieres saber cómo ***tener más seguidores y likes en Instagram***? Sigue leyendo y en [JesusLopezSEO ](https://www.jesuslopezseo.com/) te mostramos cómo con algunos consejos. Esta red social ha ganado mucha popularidad en los últimos dos años, al punto que superó a Twitter en cantidad de usuarios y además fue comprada por Facebook. Los negocios descubrieron en esta plataforma una excelente herramienta para conectar con sus usuarios y conseguir mayor engagement.

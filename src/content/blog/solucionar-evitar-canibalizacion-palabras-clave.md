@@ -9,6 +9,6 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2022/11/canibalizacion-de-palabras-clave.jpg)
+![](/blog/canibalizacion-de-palabras-clave.jpg)
 
 La ***canibalización de palabras clave*** puede ser un problema para el posicionamiento web de tu sitio, por eso te decimos cómo puedes solucionarla. ¡Sigue leyendo para saber más!

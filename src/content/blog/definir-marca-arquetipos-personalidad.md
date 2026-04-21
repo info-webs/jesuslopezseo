@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2019/02/cómo-definir-tu-marca-según-los-arquetipos-de-personalidad.png)
+![](/blog/cómo-definir-tu-marca-según-los-arquetipos-de-personalidad.png)
 Cada persona es diferente, todas tienen características que las hacen destacarse entre la multitud. Lo mismo pasa con los negocios. Por eso como [consultor SEO](https://www.jesuslopezseo.com/) te explico ***cómo definir tu marca según los arquetipos de personalidad***. Para lograr que tu empresa sea reconocida y recordada por sus peculiaridades, necesitas construir una identidad fuerte.

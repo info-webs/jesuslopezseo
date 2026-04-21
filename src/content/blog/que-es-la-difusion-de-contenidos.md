@@ -9,6 +9,4 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/08/que-es-la-difusion-de-contenidos.jpg)
-
 Los blogs del post, infografías, entre otros, pueden ser muy buenos, pero si nadie los ve no servirán de nada y podrías estar perdiendo dinero. Por eso, en [jesuslopezseo.com](https://www.jesuslopezseo.com/) te explicamos ***qué es la difusión de contenidos** *y por qué es importante para el éxito de tus campañas.

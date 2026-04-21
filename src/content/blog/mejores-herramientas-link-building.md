@@ -9,6 +9,6 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2018/09/Las-mejores-herramientas-de-link-building.jpg)
+![](/blog/Las-mejores-herramientas-de-link-building.jpg)
 
 Cualquier [consultor SEO](https://www.jesuslopezseo.com) te dirá que para llevar a cabo todas las tareas de posicionamiento web necesitará usar ciertas herramientas que facilitarán su labor. Hoy te hablaremos de las ***mejores herramientas de link building*** que te ayudarán a conseguir enlaces de calidad para tu web.

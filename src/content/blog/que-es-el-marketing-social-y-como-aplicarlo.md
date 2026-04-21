@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2022/06/que-es-el-marketing-social.jpg)
+![](/blog/que-es-el-marketing-social.jpg)
 

@@ -9,6 +9,6 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2023/02/que-habilidades-necesitas-para-ser-administrador-de-redes-sociales.jpg)
+![](/blog/que-habilidades-necesitas-para-ser-administrador-de-redes-sociales.jpg)
 
 En la actualidad la mayoría de las empresas requieren un administrador de redes sociales. Si no conoces bien en qué consiste este trabajo, o crees que solo es necesario tener conocimientos del manejo de estos medios sociales.  Aquí te explicamos ***qué habilidades necesitas para ser administrador de redes sociales.***

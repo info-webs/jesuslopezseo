@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2021/06/Consejos-para-humanizar-tu-marca-en-redes-sociales.jpg)
+![](/blog/Consejos-para-humanizar-tu-marca-en-redes-sociales.jpg)
 

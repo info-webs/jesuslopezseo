@@ -9,6 +9,6 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2022/01/hacer-una-auditoria-de-enlaces-entrantes.png)
+![](/blog/hacer-una-auditoria-de-enlaces-entrantes.png)
 
 Los backlinks pueden ofrecerle muchos beneficios a tu web, pero también puede haber algunos que sean peligrosos. De ahí la importancia de saber ***cómo hacer una auditoría de enlaces entrantes***. Sigue leyendo para saber más.

@@ -9,6 +9,4 @@ author: "Arianna"
 tags: ["seo"]
 ---
 
-![](http://www.jesuslopezseo.com/wp-content/uploads/2018/06/Qué-es-la-canibalización-de-palabras-clave-y-cómo-solucionarla-1024x512.jpg)
-
 Si tienes mucho tiempo con un sitio web, es probable que hayas repetido algún tema. Si te sucedió esto has caído en el problema del que hablaremos en este post. Conoce con nuestro [consultor SEO](http://www.jesuslopezseo.com) ***qué es la canibalización de palabras clave*** y cómo solucionarla. Sigue leyendo y evita este problema en tu web.

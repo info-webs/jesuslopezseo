@@ -9,5 +9,4 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2020/06/razones-para-implementar-el-protocolo-HTTPS-en-tu-web.jpg)
 La seguridad en los sitios web es un elemento muy importante y ha ganado aún más relevancia para los buscadores en los últimos años. Por eso desde [www.jesuslopezseo.com](https://www.jesuslopezseo.com/) queremos contarte algunas ***razones para implementar el protocolo HTTPS en tu web*** para que empieces a cambiar el HTTP a su versión más segura.

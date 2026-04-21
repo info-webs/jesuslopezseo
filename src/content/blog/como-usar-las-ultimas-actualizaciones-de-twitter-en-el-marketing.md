@@ -9,5 +9,5 @@ author: "Redaccion JesusLopezSEO"
 tags: ["seo"]
 ---
 
-![](https://www.jesuslopezseo.com/wp-content/uploads/2021/11/como-usar-las-ultimas-actualizaciones-de-twitter.jpg)
+![](/blog/como-usar-las-ultimas-actualizaciones-de-twitter.jpg)
 
