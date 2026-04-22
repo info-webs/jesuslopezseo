@@ -2,6 +2,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/diseno-web-salamanca",
+      "destination": "/servicios/diseno-web/",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-web-salamanca/",
+      "destination": "/servicios/diseno-web/",
+      "permanent": true
+    },
+    {
       "source": "/noticias/:slug",
       "destination": "/noticias/:slug/",
       "permanent": true
