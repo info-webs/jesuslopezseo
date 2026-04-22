@@ -12,6 +12,66 @@
       "permanent": true
     },
     {
+      "source": "/community-manager-salamanca",
+      "destination": "/servicios/community-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/community-manager-salamanca/",
+      "destination": "/servicios/community-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-grafico-en-salamanca",
+      "destination": "/servicios/diseno-grafico/",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-grafico-en-salamanca/",
+      "destination": "/servicios/diseno-grafico/",
+      "permanent": true
+    },
+    {
+      "source": "/hosting-seo",
+      "destination": "/servicios/hosting-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/hosting-seo/",
+      "destination": "/servicios/hosting-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/posicionamiento-aso-en-salamanca",
+      "destination": "/servicios/posicionamiento-aso/",
+      "permanent": true
+    },
+    {
+      "source": "/posicionamiento-aso-en-salamanca/",
+      "destination": "/servicios/posicionamiento-aso/",
+      "permanent": true
+    },
+    {
+      "source": "/redaccion-de-post-en-salamanca",
+      "destination": "/servicios/redaccion-contenido/",
+      "permanent": true
+    },
+    {
+      "source": "/redaccion-de-post-en-salamanca/",
+      "destination": "/servicios/redaccion-contenido/",
+      "permanent": true
+    },
+    {
+      "source": "/posicionamiento-web",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/posicionamiento-web/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/noticias/:slug",
       "destination": "/noticias/:slug/",
       "permanent": true
