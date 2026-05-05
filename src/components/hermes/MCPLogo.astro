@@ -1,0 +1,49 @@
+---
+type Props = {
+  name: string;
+  class?: string;
+};
+
+const { name, class: className } = Astro.props;
+
+const slugMap: Record<string, string> = {
+  Slack: "slack",
+  Telegram: "telegram",
+  Notion: "notion",
+  Gmail: "gmail",
+  "Google Calendar": "googlecalendar",
+  "Google Drive": "googledrive",
+  GitHub: "github",
+  Linear: "linear",
+  Stripe: "stripe",
+  Supabase: "supabase",
+  Make: "make",
+  Semrush: "semrush",
+};
+
+const slug = slugMap[name] ?? name.toLowerCase().replace(/\s+/g, "");
+
+const svgs = import.meta.glob<string>("/src/assets/logos/mcps/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const raw = svgs[`/src/assets/logos/mcps/${slug}.svg`];
+const sizeClass = className ?? "h-12 w-12";
+
+const svg = raw
+  ? raw.replace(/<svg\b/, `<svg fill="currentColor" class="${sizeClass}"`)
+  : null;
+---
+
+{
+  svg ? (
+    <Fragment set:html={svg} />
+  ) : (
+    <span
+      class={`inline-flex items-center justify-center text-xs font-medium ${sizeClass}`}>
+      {name}
+    </span>
+  )
+}
