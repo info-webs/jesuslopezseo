@@ -1,0 +1,1150 @@
+---
+import Navbar from "@components/navbar/navbar.astro";
+import Footer from "@components/footer.astro";
+import Container from "@components/container.astro";
+import "@fontsource-variable/rethink-sans";
+
+const siteUrl = "https://jesuslopezseo.com";
+const pageUrl = `${siteUrl}/hermes`;
+const ogImage = `${siteUrl}/opengraph.jpg`;
+
+const pageTitle =
+  "Hermes Pro Setup — Tu agente IA personal instalado en 48h | Jesús López";
+const pageDescription =
+  "Instalación gestionada del agente IA Hermes en tu propio servidor. Conectado a Slack o Telegram, con tus herramientas (Notion, Gmail, Calendar...). 599€ + 59€/mes. Sin código, sin servidores que mantener.";
+
+const faqs = [
+  {
+    q: "¿Qué es Hermes exactamente?",
+    a: "Hermes es un agente IA open source desarrollado por Nous Research. Convierte modelos de lenguaje (Claude, GPT, Llama, etc.) en un asistente que ejecuta tareas reales: leer emails, buscar archivos, programar eventos, redactar respuestas. Lo controlas en lenguaje natural desde Slack o Telegram.",
+  },
+  {
+    q: "¿Cuánto cuesta el LLM aparte?",
+    a: "Tú pones tu API key de OpenRouter o Anthropic. Para uso normal (50-100 mensajes/día) suele costar entre 10-30€/mes en tokens. Si lo usas masivamente, puede subir. Te asesoro en el onboarding.",
+  },
+  {
+    q: "¿De quién es el VPS?",
+    a: "Tuyo. Lo contratas tú a tu nombre (te paso instrucciones), yo lo configuro con permisos delegados. Si dejas de trabajar conmigo, mantienes acceso completo.",
+  },
+  {
+    q: "¿Qué pasa si Hermes se rompe o sale una versión nueva?",
+    a: "Para eso está el mantenimiento mensual. Yo me ocupo de actualizaciones, parches de seguridad y arreglos. Si cancelas el mantenimiento, sigue funcionando pero tú decides cuándo actualizar.",
+  },
+  {
+    q: "¿Puedo añadir MCPs después de la instalación?",
+    a: "Sí, 49€ por MCP nuevo. Si están en mi catálogo es plug-and-play. Si es uno custom, te hago presupuesto.",
+  },
+  {
+    q: "¿Es legal/ético usar Hermes comercialmente?",
+    a: "Sí, su licencia Apache 2.0 lo permite explícitamente. Tu instalación es privada, solo para ti o tu equipo.",
+  },
+  {
+    q: "¿Funciona en español?",
+    a: "Perfectamente. El idioma del agente depende del modelo LLM que uses (Claude, GPT-4, etc.). Todos manejan español nativo.",
+  },
+  {
+    q: "¿Qué pasa si quiero cancelar?",
+    a: "Cancelas el mantenimiento cuando quieras desde el formulario o por email, sin permanencia. Tu Hermes sigue funcionando en tu VPS. Si quieres además darlo de baja del VPS, te ayudo con la migración o el apagado limpio.",
+  },
+];
+
+const mcps = [
+  { name: "Slack", cls: "bg-purple-50 text-purple-700 border-purple-200" },
+  { name: "Telegram", cls: "bg-blue-50 text-blue-700 border-blue-200" },
+  { name: "Notion", cls: "bg-gray-50 text-gray-700 border-gray-300" },
+  { name: "Gmail", cls: "bg-red-50 text-red-700 border-red-200" },
+  {
+    name: "Google Calendar",
+    cls: "bg-blue-50 text-blue-800 border-blue-200",
+  },
+  {
+    name: "Google Drive",
+    cls: "bg-yellow-50 text-yellow-700 border-yellow-200",
+  },
+  { name: "GitHub", cls: "bg-gray-50 text-gray-800 border-gray-300" },
+  { name: "Linear", cls: "bg-violet-50 text-violet-700 border-violet-200" },
+  { name: "Stripe", cls: "bg-indigo-50 text-indigo-700 border-indigo-200" },
+  {
+    name: "Supabase",
+    cls: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  },
+  { name: "Make", cls: "bg-orange-50 text-orange-700 border-orange-200" },
+  { name: "Semrush", cls: "bg-orange-50 text-orange-800 border-orange-300" },
+];
+
+const setupItems = [
+  "VPS provisionado a tu nombre (Hetzner o Contabo — 5-8€/mes que pagas tú directo al proveedor)",
+  "Hermes Agent instalado, securizado y con backups automáticos",
+  "Conexión a Slack o Telegram (a elegir)",
+  "Hasta 5 MCPs preconfigurados del catálogo",
+  "API key del LLM (OpenRouter o Anthropic) configurada con tu cuenta",
+  "Onboarding 1h en videollamada",
+  "Documentación PDF personalizada",
+];
+
+const maintItems = [
+  "Actualizaciones de Hermes cuando hay versión nueva",
+  "Monitorización 24/7 del VPS con alertas",
+  "1 cambio de configuración al mes (añadir MCP, cambiar modelo, etc.)",
+  "Soporte por email con respuesta en 48h",
+  "Backup semanal automático con retención de 30 días",
+];
+
+const diffPoints = [
+  {
+    title: "Tu agente, tu servidor, tus datos",
+    desc: "No son nuestros. Tu instalación es privada, en hardware que controlas tú directamente.",
+  },
+  {
+    title: "Pago único + mantenimiento opcional",
+    desc: "No SaaS con cuota por usuario. Pagas el setup y decides si quieres mantenimiento mensual.",
+  },
+  {
+    title: "Open source (Apache 2.0)",
+    desc: "Hermes es libre. Si dejas de pagarme, sigue tuyo y funcionando. Para siempre.",
+  },
+  {
+    title: "18+ años en infraestructura web",
+    desc: "No es mi primer rodeo. He montado servidores para sitios con millones de visitas.",
+  },
+];
+
+const schemaService = {
+  "@type": "Service",
+  name: "Hermes Pro Setup",
+  description: pageDescription,
+  provider: {
+    "@type": "Organization",
+    name: "Posicionamiento Web Systems SL",
+    url: siteUrl,
+  },
+  areaServed: ["España", "Europa"],
+  serviceType: "AI Agent Installation",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Setup inicial",
+      price: "599",
+      priceCurrency: "EUR",
+      description: "Instalación completa de Hermes Agent en tu VPS",
+    },
+    {
+      "@type": "Offer",
+      name: "Mantenimiento mensual",
+      price: "59",
+      priceCurrency: "EUR",
+      description: "Actualizaciones, monitorización y soporte mensual",
+    },
+  ],
+};
+
+const schemaFaq = {
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const schemaBreadcrumb = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Servicios",
+      item: `${siteUrl}/servicios`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Hermes Pro Setup",
+      item: pageUrl,
+    },
+  ],
+};
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [schemaService, schemaFaq, schemaBreadcrumb],
+});
+---
+
+<!doctype html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta
+      property="og:title"
+      content="Hermes Pro Setup — Tu agente IA personal instalado en 48h"
+    />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@jesuslopezseo" />
+    <meta
+      name="twitter:title"
+      content="Hermes Pro Setup — Tu agente IA personal instalado en 48h"
+    />
+    <meta name="twitter:description" content={pageDescription} />
+    <Fragment set:html={`<script type="application/ld+json">${schema}</script>`} />
+  </head>
+  <body class="font-sans antialiased min-h-full flex flex-col">
+    <Navbar />
+
+    <main class="flex-1">
+
+      <!-- ===== 1. HERO ===== -->
+      <section class="bg-primary-soft pt-16 pb-12 md:pt-24 md:pb-0 overflow-hidden">
+        <Container>
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Copy -->
+            <div class="py-4 md:py-12">
+              <p class="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
+                Hermes Pro Setup
+              </p>
+              <h1
+                class="text-4xl md:text-5xl font-bold text-primary-strong leading-tight">
+                Tu agente IA personal en Slack o Telegram.
+                <span class="text-primary block mt-2"
+                  >Instalado, listo y funcionando en 48 horas.</span
+                >
+              </h1>
+              <p class="mt-6 text-lg text-default leading-relaxed max-w-lg">
+                Te montamos Hermes (Nous Research) en tu propio servidor,
+                conectado a tus herramientas. Tú hablas con él como con un
+                asistente humano. Sin código, sin servidores que mantener, sin
+                curva de aprendizaje.
+              </p>
+              <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a
+                  href="#contacto"
+                  class="bg-primary text-white text-lg font-medium rounded-xl py-4 px-8 text-center transition hover:bg-primary-strong focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                  Reservar mi instalación
+                </a>
+                <a
+                  href="#incluye"
+                  class="bg-white text-primary-strong border-2 border-primary text-lg font-medium rounded-xl py-4 px-8 text-center transition hover:bg-primary-soft focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                  Ver qué incluye
+                </a>
+              </div>
+            </div>
+
+            <!-- Slack mockup -->
+            <div class="flex justify-center md:justify-end">
+              <div
+                class="bg-white rounded-2xl shadow-2xl p-5 w-full max-w-sm border border-gray-100"
+                aria-hidden="true">
+                <!-- Header -->
+                <div
+                  class="flex items-center gap-2 pb-3 border-b border-gray-100">
+                  <div
+                    class="w-5 h-5 rounded flex items-center justify-center text-white text-[9px] font-bold"
+                    style="background:#4A154B">
+                    #
+                  </div>
+                  <span class="font-semibold text-sm text-gray-700"
+                    >general</span
+                  >
+                </div>
+                <!-- Messages -->
+                <div class="pt-4 space-y-4">
+                  <!-- User msg -->
+                  <div class="flex items-start gap-2.5">
+                    <div
+                      class="w-8 h-8 rounded-lg bg-blue-500 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                      T
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-semibold text-sm text-gray-800"
+                          >Tú</span
+                        >
+                        <span class="text-[11px] text-gray-400">10:32</span>
+                      </div>
+                      <p class="text-sm text-gray-700 leading-relaxed">
+                        @hermes dame un resumen de los emails sin responder
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Hermes reply -->
+                  <div class="flex items-start gap-2.5">
+                    <div
+                      class="w-8 h-8 rounded-lg bg-primary flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                      H
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-semibold text-sm text-gray-800"
+                          >Hermes</span
+                        >
+                        <span
+                          class="text-[9px] bg-primary-soft text-primary-strong px-1.5 py-0.5 rounded font-medium"
+                          >App</span
+                        >
+                        <span class="text-[11px] text-gray-400">10:32</span>
+                      </div>
+                      <p class="text-sm text-gray-700">
+                        Tienes <strong>3 emails importantes</strong> sin
+                        responder:
+                      </p>
+                      <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-primary mt-0.5">→</span>Propuesta de
+                          Acme Corp (hace 2 días)
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-primary mt-0.5">→</span>Revisión
+                          contrato proveedor
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-primary mt-0.5">→</span>Factura
+                          #2847 pendiente
+                        </li>
+                      </ul>
+                      <p class="text-sm text-primary mt-2.5 font-medium">
+                        ¿Quieres que redacte respuesta para alguno?
+                      </p>
+                    </div>
+                  </div>
+                  <!-- User follow-up -->
+                  <div class="flex items-start gap-2.5">
+                    <div
+                      class="w-8 h-8 rounded-lg bg-blue-500 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                      T
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-semibold text-sm text-gray-800"
+                          >Tú</span
+                        >
+                        <span class="text-[11px] text-gray-400">10:33</span>
+                      </div>
+                      <p class="text-sm text-gray-700">sí, el primero</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Typing -->
+                <div
+                  class="flex items-center gap-2.5 mt-4 pt-3 border-t border-gray-100">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-primary flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                    H
+                  </div>
+                  <div class="flex gap-1 items-center">
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"
+                      style="animation-delay:0ms">
+                    </div>
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"
+                      style="animation-delay:150ms">
+                    </div>
+                    <div
+                      class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"
+                      style="animation-delay:300ms">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- ===== 2. PROBLEM ===== -->
+      <section class="py-20 bg-white">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              ¿Por qué no funciona lo de siempre?
+            </h2>
+            <p class="mt-4 text-default-soft text-lg">
+              Tres razones por las que los agentes IA comerciales no encajan en
+              empresas que trabajan en serio.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <div
+                class="w-12 h-12 bg-danger-soft rounded-xl flex items-center justify-center mb-5">
+                <svg
+                  class="w-6 h-6 text-danger"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-primary-strong mb-3">
+                Tu privacidad no es su prioridad
+              </h3>
+              <p class="text-default-soft leading-relaxed">
+                Los agentes IA comerciales son cajas negras. Tus datos viven en
+                su nube, sus servidores, sus modelos. Tú no controlas nada.
+              </p>
+            </div>
+            <!-- Card 2 -->
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <div
+                class="w-12 h-12 bg-warning-soft rounded-xl flex items-center justify-center mb-5">
+                <svg
+                  class="w-6 h-6 text-warning-strong"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-primary-strong mb-3">
+                Montarlo tú es una pesadilla
+              </h3>
+              <p class="text-default-soft leading-relaxed">
+                VPS, Linux, Python, YAMLs, claves API, proxies... y horas de
+                fricción antes de que funcione algo. No es tu trabajo.
+              </p>
+            </div>
+            <!-- Card 3 -->
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <div
+                class="w-12 h-12 bg-info-soft rounded-xl flex items-center justify-center mb-5">
+                <svg
+                  class="w-6 h-6 text-info"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-primary-strong mb-3">
+                SaaS que escala (tu factura)
+              </h3>
+              <p class="text-default-soft leading-relaxed">
+                Las suscripciones SaaS escalan con cada usuario. Tú quieres
+                pagar una vez y olvidarte. No 30€/mes por asiento.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- ===== 3. HOW IT WORKS ===== -->
+      <section class="py-20 bg-muted-soft">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              Cómo funciona
+            </h2>
+            <p class="mt-4 text-default-soft text-lg">
+              Tres pasos. Del formulario a un agente funcionando.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="bg-white rounded-2xl p-8 border border-muted-strong shadow-sm">
+              <div
+                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl mb-6">
+                1
+              </div>
+              <h3 class="text-xl font-bold text-primary-strong mb-3">
+                Reservas tu instalación
+              </h3>
+              <p class="text-default-soft leading-relaxed">
+                Rellenas el formulario con tu caso de uso. Te llamo en 24h para
+                confirmar requisitos y arrancar.
+              </p>
+            </div>
+            <div
+              class="bg-white rounded-2xl p-8 border border-muted-strong shadow-sm">
+              <div
+                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl mb-6">
+                2
+              </div>
+              <h3 class="text-xl font-bold text-primary-strong mb-3">
+                Provisionamos tu Hermes
+              </h3>
+              <p class="text-default-soft leading-relaxed">
+                Configuro un VPS a tu nombre, instalo Hermes, conecto Slack o
+                Telegram, integro tus MCPs. Todo en menos de 48h.
+              </p>
+            </div>
+            <div
+              class="bg-white rounded-2xl p-8 border border-muted-strong shadow-sm">
+              <div
+                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl mb-6">
+                3
+              </div>
+              <h3 class="text-xl font-bold text-primary-strong mb-3">
+                Lo usas como un humano
+              </h3>
+              <p class="text-default-soft leading-relaxed">
+                Le hablas en lenguaje natural desde tu móvil o escritorio. Lee
+                tu calendario, busca en Notion, redacta emails, ejecuta
+                automatizaciones.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- ===== 4. WHAT'S INCLUDED ===== -->
+      <section id="incluye" class="py-20 bg-white">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              Qué incluye tu instalación
+            </h2>
+            <p class="mt-4 text-default-soft text-lg">
+              Pago único para el setup. Mantenimiento mensual sin permanencia
+              si lo quieres.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Setup -->
+            <div
+              class="bg-primary-soft rounded-2xl p-8 border-2 border-primary-accent">
+              <div class="flex items-start justify-between mb-6 gap-4">
+                <h3 class="text-2xl font-bold text-primary-strong">
+                  Setup inicial
+                </h3>
+                <div class="text-right flex-shrink-0">
+                  <span class="text-3xl font-bold text-primary">599€</span>
+                  <span class="text-default-soft text-sm block">pago único</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3">
+                {
+                  setupItems.map((item) => (
+                    <li class="flex items-start gap-3">
+                      <svg
+                        class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2.5"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span class="text-default text-sm leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <!-- Maintenance -->
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <div class="flex items-start justify-between mb-6 gap-4">
+                <h3 class="text-2xl font-bold text-primary-strong">
+                  Mantenimiento
+                </h3>
+                <div class="text-right flex-shrink-0">
+                  <span class="text-3xl font-bold text-primary">59€</span>
+                  <span class="text-default-soft text-sm block">/mes</span>
+                </div>
+              </div>
+              <ul class="space-y-3">
+                {
+                  maintItems.map((item) => (
+                    <li class="flex items-start gap-3">
+                      <svg
+                        class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2.5"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span class="text-default text-sm leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+          <p class="text-center text-default-soft mt-8 max-w-xl mx-auto text-sm">
+            Sin permanencia. Cancelas el mantenimiento cuando quieras y te
+            quedas con tu Hermes funcionando.
+          </p>
+        </Container>
+      </section>
+
+      <!-- ===== 5. MCP CATALOG ===== -->
+      <section class="py-20 bg-muted-soft">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              MCPs disponibles en tu instalación
+            </h2>
+            <p class="mt-4 text-default-soft text-lg">
+              Hasta 5 incluidos en el setup. Elige los que mejor encajen con tu
+              flujo de trabajo.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+            {
+              mcps.map((mcp) => (
+                <div
+                  class={`flex items-center justify-center px-4 py-3 rounded-xl border font-medium text-sm text-center ${mcp.cls}`}>
+                  {/* TODO: añadir SVG del logo oficial de cada MCP */}
+                  {mcp.name}
+                </div>
+              ))
+            }
+          </div>
+          <p class="text-center text-default-soft mt-8 text-sm">
+            ¿Necesitas otro MCP? Lo añadimos por <strong
+              class="text-primary-strong">49€ extra</strong
+            >. Pídelo en el formulario.
+          </p>
+        </Container>
+      </section>
+
+      <!-- ===== 6. USE CASES ===== -->
+      <section class="py-20 bg-white">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              ¿Qué puedo pedirle a mi Hermes?
+            </h2>
+            <p class="mt-4 text-default-soft text-lg">
+              Tres ejemplos reales según tu perfil.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <p
+                class="text-primary font-semibold text-xs uppercase tracking-widest mb-4">
+                Agencias de marketing y SEO
+              </p>
+              <p class="text-default leading-relaxed">
+                Pídele a tu Hermes en Slack que extraiga las keywords con peor
+                CTR del último mes en Search Console y te las mande
+                priorizadas. Sin abrir GSC, sin filtros, sin exportar a Excel.
+              </p>
+            </div>
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <p
+                class="text-primary font-semibold text-xs uppercase tracking-widest mb-4">
+                Founders y consultores
+              </p>
+              <p class="text-default leading-relaxed">
+                Reenvíale un email a Hermes y dile "agéndame esto la próxima
+                semana". Lee el contexto, busca hueco en tu Calendar, te
+                propone tres opciones y crea el evento cuando confirmas.
+              </p>
+            </div>
+            <div
+              class="bg-muted-soft rounded-2xl p-8 border border-muted-strong">
+              <p
+                class="text-primary font-semibold text-xs uppercase tracking-widest mb-4">
+                Equipos pequeños
+              </p>
+              <p class="text-default leading-relaxed">
+                Tu equipo le pregunta a Hermes en Slack "¿cuándo vence la
+                factura de Acme?" y él busca en Notion, Stripe o Drive sin que
+                nadie tenga que abrir nada. Un solo punto de entrada para el
+                conocimiento de la empresa.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <!-- ===== 7. DIFFERENTIATION ===== -->
+      <section class="py-20 bg-primary-strong">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">
+              ¿Por qué este servicio y no otro?
+            </h2>
+            <p class="mt-4 text-primary-accent text-lg">
+              Puntos concretos, sin marketing-speak.
+            </p>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {
+              diffPoints.map((p) => (
+                <div class="flex items-start gap-4">
+                  <div class="w-9 h-9 bg-primary rounded-lg flex-shrink-0 flex items-center justify-center mt-0.5">
+                    <svg
+                      class="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.5"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-white text-lg">{p.title}</h3>
+                    <p class="text-primary-accent mt-1 leading-relaxed text-sm">
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </Container>
+      </section>
+
+      <!-- ===== 8. FAQ ===== -->
+      <section class="py-20 bg-white">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              Preguntas frecuentes
+            </h2>
+          </div>
+          <div class="max-w-3xl mx-auto" id="faq-accordion">
+            {
+              faqs.map((faq, i) => (
+                <div
+                  class={`faq-item ${i === 0 ? "border-t border-gray-200" : ""} border-b border-gray-200`}>
+                  <button
+                    class="faq-btn w-full text-left flex items-center justify-between py-5 font-semibold text-primary-strong hover:text-primary transition gap-4"
+                    aria-expanded="false"
+                    type="button">
+                    <span>{faq.q}</span>
+                    <svg
+                      class="faq-icon w-5 h-5 flex-shrink-0 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    class="faq-content overflow-hidden"
+                    style="max-height:0;transition:max-height 0.3s ease">
+                    <p class="pb-5 text-default-soft leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </Container>
+      </section>
+
+      <!-- ===== 9. CONTACT FORM ===== -->
+      <section id="contacto" class="py-20 bg-muted-soft">
+        <Container>
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary-strong">
+              Reserva tu instalación
+            </h2>
+            <p class="mt-4 text-default-soft text-lg">
+              Cuéntame tu caso. Te respondo en menos de 24h.
+            </p>
+          </div>
+
+          <form
+            id="hermes-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            novalidate
+            class="max-w-2xl mx-auto bg-white rounded-2xl p-8 md:p-10 border border-muted-strong shadow-sm">
+            <!--
+              TODO: Obtén tu access key gratuita en https://web3forms.com
+              y reemplaza el valor de abajo.
+            -->
+            <input
+              type="hidden"
+              name="access_key"
+              value="YOUR_WEB3FORMS_ACCESS_KEY"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="Nueva solicitud — Hermes Pro Setup"
+            />
+            <input
+              type="hidden"
+              name="from_name"
+              value="Jesús López SEO — Hermes Form"
+            />
+            <input
+              type="checkbox"
+              class="hidden"
+              style="display:none"
+              name="botcheck"
+            />
+
+            <div class="space-y-6">
+              <!-- Nombre -->
+              <div>
+                <label
+                  for="nombre"
+                  class="block text-sm font-medium text-default mb-1.5">
+                  Nombre completo <span class="text-danger" aria-hidden="true"
+                    >*</span
+                  >
+                </label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  autocomplete="name"
+                  placeholder="María García"
+                  class="peer w-full border-2 border-muted-strong rounded-xl py-3.5 px-4 placeholder:text-default-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition [.validated_&]:invalid:border-pink-500"
+                />
+                <p
+                  class="mt-1.5 hidden text-pink-600 text-sm [.validated_&]:peer-invalid:block">
+                  Por favor, introduce tu nombre completo.
+                </p>
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-default mb-1.5">
+                  Email <span class="text-danger" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="maria@empresa.com"
+                  class="peer w-full border-2 border-muted-strong rounded-xl py-3.5 px-4 placeholder:text-default-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition [.validated_&]:invalid:border-pink-500"
+                />
+                <p
+                  class="mt-1.5 hidden text-pink-600 text-sm [.validated_&]:peer-placeholder-shown:peer-invalid:block">
+                  El email es obligatorio.
+                </p>
+                <p
+                  class="mt-1.5 hidden text-pink-600 text-sm [.validated_&]:peer-[:not(:placeholder-shown)]:peer-invalid:block">
+                  Introduce un email válido.
+                </p>
+              </div>
+
+              <!-- Empresa -->
+              <div>
+                <label
+                  for="empresa"
+                  class="block text-sm font-medium text-default mb-1.5">
+                  Empresa / proyecto <span class="text-default-soft font-normal"
+                    >(opcional)</span
+                  >
+                </label>
+                <input
+                  type="text"
+                  id="empresa"
+                  name="empresa"
+                  autocomplete="organization"
+                  placeholder="Agencia SEO Madrid"
+                  class="w-full border-2 border-muted-strong rounded-xl py-3.5 px-4 placeholder:text-default-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition"
+                />
+              </div>
+
+              <!-- Plataforma -->
+              <fieldset>
+                <legend class="block text-sm font-medium text-default mb-3">
+                  Plataforma preferida <span
+                    class="text-danger"
+                    aria-hidden="true">*</span
+                  >
+                </legend>
+                <div class="flex gap-8">
+                  <label class="flex items-center gap-2.5 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="plataforma"
+                      value="Slack"
+                      required
+                      class="w-4 h-4 accent-primary"
+                    />
+                    <span class="text-default">Slack</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="plataforma"
+                      value="Telegram"
+                      class="w-4 h-4 accent-primary"
+                    />
+                    <span class="text-default">Telegram</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- MCPs -->
+              <fieldset>
+                <legend class="block text-sm font-medium text-default mb-3">
+                  MCPs de interés
+                  <span class="text-default-soft font-normal"
+                    >(selecciona todos los que te interesen)</span
+                  >
+                </legend>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                  {
+                    [
+                      "Slack",
+                      "Telegram",
+                      "Notion",
+                      "Gmail",
+                      "Google Calendar",
+                      "Google Drive",
+                      "GitHub",
+                      "Linear",
+                      "Stripe",
+                      "Supabase",
+                      "Make",
+                      "Semrush",
+                    ].map((mcp) => (
+                      <label class="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="mcps"
+                          value={mcp}
+                          class="w-4 h-4 accent-primary rounded"
+                        />
+                        <span class="text-sm text-default">{mcp}</span>
+                      </label>
+                    ))
+                  }
+                </div>
+                <div class="mt-3">
+                  <input
+                    type="text"
+                    name="mcps_otros"
+                    placeholder="Otros MCPs que necesites (separados por coma)"
+                    class="w-full border-2 border-muted-strong rounded-xl py-3 px-4 text-sm placeholder:text-default-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition"
+                  />
+                </div>
+              </fieldset>
+
+              <!-- Caso de uso -->
+              <div>
+                <label
+                  for="caso_uso"
+                  class="block text-sm font-medium text-default mb-1.5">
+                  Cuéntame tu caso de uso principal <span
+                    class="text-danger"
+                    aria-hidden="true">*</span
+                  >
+                </label>
+                <textarea
+                  id="caso_uso"
+                  name="caso_uso"
+                  required
+                  maxlength="500"
+                  rows="4"
+                  placeholder="Ej: Soy consultor SEO y quiero que Hermes me ayude a automatizar reportes de clientes, gestionar mi bandeja de entrada y agendar reuniones desde Slack..."
+                  class="peer w-full border-2 border-muted-strong rounded-xl py-3.5 px-4 placeholder:text-default-soft focus:border-primary focus:ring-1 focus:ring-primary outline-none transition resize-none [.validated_&]:invalid:border-pink-500"
+                ></textarea>
+                <div class="flex justify-between mt-1.5">
+                  <p
+                    class="hidden text-pink-600 text-sm [.validated_&]:peer-invalid:block">
+                    Cuéntame en qué puedo ayudarte.
+                  </p>
+                  <span class="text-xs text-default-soft ml-auto"
+                    >máx. 500 caracteres</span
+                  >
+                </div>
+              </div>
+
+              <!-- Fuente -->
+              <div>
+                <label
+                  for="fuente"
+                  class="block text-sm font-medium text-default mb-1.5">
+                  ¿Cómo me has conocido?
+                </label>
+                <select
+                  id="fuente"
+                  name="fuente"
+                  class="w-full border-2 border-muted-strong rounded-xl py-3.5 px-4 text-default bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition">
+                  <option value="">Selecciona una opción</option>
+                  <option value="Google">Google</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Twitter/X">Twitter / X</option>
+                  <option value="Recomendación">Recomendación</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+
+              <!-- Submit -->
+              <div class="pt-2">
+                <button
+                  id="submit-btn"
+                  type="submit"
+                  class="w-full bg-primary text-white text-lg font-semibold rounded-xl py-4 px-8 transition hover:bg-primary-strong focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed">
+                  Reservar mi instalación de Hermes
+                </button>
+                <p class="text-center text-default-soft text-sm mt-3">
+                  Te respondo en menos de 24h. Sin compromiso, sin venta
+                  agresiva.
+                </p>
+                <div id="form-result" class="mt-5 hidden"></div>
+              </div>
+            </div>
+          </form>
+        </Container>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      // ── FAQ accordion ──────────────────────────────────────────────
+      document.querySelectorAll(".faq-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var content = btn.nextElementSibling;
+          var icon = btn.querySelector(".faq-icon");
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+
+          // Close all items
+          document.querySelectorAll(".faq-btn").forEach(function (b) {
+            b.setAttribute("aria-expanded", "false");
+            b.nextElementSibling.style.maxHeight = "0";
+            b.querySelector(".faq-icon").style.transform = "";
+          });
+
+          // Open clicked item if it was closed
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.style.transform = "rotate(180deg)";
+          }
+        });
+      });
+
+      // ── Hermes lead form ───────────────────────────────────────────
+      var form = document.getElementById("hermes-form");
+      var result = document.getElementById("form-result");
+      var submitBtn = document.getElementById("submit-btn");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.classList.add("validated");
+
+        if (!form.checkValidity()) {
+          var firstInvalid = form.querySelector(":invalid");
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+
+        // Build payload — handle multi-select checkboxes
+        var formData = new FormData(form);
+        var object = {};
+        var mcpsSelected = [];
+
+        formData.forEach(function (value, key) {
+          if (key === "mcps") {
+            mcpsSelected.push(value);
+          } else {
+            object[key] = value;
+          }
+        });
+
+        if (mcpsSelected.length > 0) {
+          object["mcps_seleccionados"] = mcpsSelected.join(", ");
+        }
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(object),
+        })
+          .then(function (response) {
+            return response.json().then(function (data) {
+              return { ok: response.ok, data: data };
+            });
+          })
+          .then(function (res) {
+            result.classList.remove("hidden");
+            if (res.ok) {
+              result.innerHTML =
+                '<div class="bg-success-soft text-success-strong px-6 py-4 rounded-xl text-center font-medium">¡Recibido! Te contesto en menos de 24h.</div>';
+              form.reset();
+              form.classList.remove("validated");
+            } else {
+              result.innerHTML =
+                '<div class="bg-danger-soft text-danger-strong px-6 py-4 rounded-xl text-center">Algo fue mal. Escríbeme directamente a <a href="mailto:jesus@jesuslopezseo.com" class="underline">jesus@jesuslopezseo.com</a></div>';
+            }
+          })
+          .catch(function () {
+            result.classList.remove("hidden");
+            result.innerHTML =
+              '<div class="bg-danger-soft text-danger-strong px-6 py-4 rounded-xl text-center">Error de conexión. Escríbeme a <a href="mailto:jesus@jesuslopezseo.com" class="underline">jesus@jesuslopezseo.com</a></div>';
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Reservar mi instalación de Hermes";
+          });
+      });
+    </script>
+  </body>
+</html>
