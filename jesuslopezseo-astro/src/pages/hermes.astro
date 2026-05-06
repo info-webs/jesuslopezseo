@@ -1,0 +1,993 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const canonical = 'https://www.jesuslopezseo.com/hermes/';
+const pageTitle = 'Hermes Pro Setup — Tu agente IA personal instalado en 48h | Jesús López SEO';
+const pageDescription = 'Instalación gestionada del agente IA Hermes en tu propio servidor. Conectado a Slack o Telegram, con tus herramientas (Notion, Gmail, Calendar...). 599€ + 59€/mes. Sin código, sin servidores que mantener.';
+
+const faqs = [
+  {
+    q: '¿Qué es Hermes exactamente?',
+    a: 'Hermes es un agente IA open source desarrollado por Nous Research. Convierte modelos de lenguaje (Claude, GPT, Llama, etc.) en un asistente que ejecuta tareas reales: leer emails, buscar archivos, programar eventos, redactar respuestas. Lo controlas en lenguaje natural desde Slack o Telegram.',
+  },
+  {
+    q: '¿Cuánto cuesta el LLM aparte?',
+    a: 'Tú pones tu API key de OpenRouter o Anthropic. Para uso normal (50-100 mensajes/día) suele costar entre 10-30€/mes en tokens. Si lo usas masivamente, puede subir. Te asesoro en el onboarding.',
+  },
+  {
+    q: '¿De quién es el VPS?',
+    a: 'Tuyo. Lo contratas tú a tu nombre (te paso instrucciones), yo lo configuro con permisos delegados. Si dejas de trabajar conmigo, mantienes acceso completo.',
+  },
+  {
+    q: '¿Qué pasa si Hermes se rompe o sale una versión nueva?',
+    a: 'Para eso está el mantenimiento mensual. Yo me ocupo de actualizaciones, parches de seguridad y arreglos. Si cancelas el mantenimiento, sigue funcionando pero tú decides cuándo actualizar.',
+  },
+  {
+    q: '¿Puedo añadir MCPs después de la instalación?',
+    a: 'Sí, 49€ por MCP nuevo. Si están en mi catálogo es plug-and-play. Si es uno custom, te hago presupuesto.',
+  },
+  {
+    q: '¿Es legal/ético usar Hermes comercialmente?',
+    a: 'Sí, su licencia Apache 2.0 lo permite explícitamente. Tu instalación es privada, solo para ti o tu equipo.',
+  },
+  {
+    q: '¿Funciona en español?',
+    a: 'Perfectamente. El idioma del agente depende del modelo LLM que uses (Claude, GPT-4, etc.). Todos manejan español nativo.',
+  },
+  {
+    q: '¿Qué pasa si quiero cancelar?',
+    a: 'Cancelas el mantenimiento cuando quieras desde el formulario o por email, sin permanencia. Tu Hermes sigue funcionando en tu VPS. Si quieres darlo de baja del VPS, te ayudo con el apagado limpio.',
+  },
+];
+
+const mcps = [
+  'Slack', 'Telegram', 'Notion', 'Gmail',
+  'Google Calendar', 'Google Drive', 'GitHub', 'Linear',
+  'Stripe', 'Supabase', 'Make', 'Semrush',
+];
+
+const schemaService = {
+  '@type': 'Service',
+  name: 'Hermes Pro Setup',
+  description: pageDescription,
+  provider: {
+    '@type': 'Organization',
+    name: 'Posicionamiento Web Systems SL',
+    url: 'https://www.jesuslopezseo.com',
+  },
+  areaServed: ['España', 'Europa'],
+  serviceType: 'AI Agent Installation',
+  offers: [
+    { '@type': 'Offer', name: 'Setup inicial', price: '599', priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'Mantenimiento mensual', price: '59', priceCurrency: 'EUR' },
+  ],
+};
+
+const schemaFaq = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const schemaBreadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://www.jesuslopezseo.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://www.jesuslopezseo.com/servicios/' },
+    { '@type': 'ListItem', position: 3, name: 'Hermes Pro Setup', item: canonical },
+  ],
+};
+
+const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [schemaService, schemaFaq, schemaBreadcrumb] });
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}
+  schema={schema}
+>
+  <Header />
+
+  <main class="h-page">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="h-hero">
+      <div class="h-hero-grid" aria-hidden="true"></div>
+      <div class="h-hero-glow" aria-hidden="true"></div>
+      <div class="container h-hero-inner">
+        <div class="h-hero-copy">
+          <div class="h-eyebrow">
+            <span class="h-dot"></span>
+            Hermes Pro Setup · Agente IA gestionado
+          </div>
+          <h1 class="h-hero-title">
+            Tu agente IA personal<br/>
+            en <em>Slack o Telegram.</em><br/>
+            Instalado en <em>48 horas.</em>
+          </h1>
+          <p class="h-hero-desc">
+            Te montamos Hermes (Nous Research) en tu propio servidor, conectado a tus herramientas. Tú hablas con él como con un asistente humano. Sin código, sin servidores que mantener, sin curva de aprendizaje.
+          </p>
+          <div class="h-hero-actions">
+            <a href="#contacto" class="h-btn h-btn--amber">
+              Reservar mi instalación
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#incluye" class="h-btn h-btn--ghost">
+              Ver qué incluye
+            </a>
+          </div>
+        </div>
+
+        <!-- Slack mockup -->
+        <div class="h-hero-aside" aria-hidden="true">
+          <div class="h-mock">
+            <div class="h-mock-head">
+              <span class="h-slack-icon">#</span>
+              <span class="h-mock-channel">general</span>
+            </div>
+            <div class="h-mock-msgs">
+              <div class="h-msg">
+                <div class="h-avatar h-avatar--user">T</div>
+                <div>
+                  <div class="h-msg-meta"><span>Tú</span><span class="h-ts">10:32</span></div>
+                  <p>@hermes dame un resumen de los emails sin responder</p>
+                </div>
+              </div>
+              <div class="h-msg">
+                <div class="h-avatar h-avatar--bot">H</div>
+                <div>
+                  <div class="h-msg-meta">
+                    <span>Hermes</span>
+                    <span class="h-app-badge">App</span>
+                    <span class="h-ts">10:32</span>
+                  </div>
+                  <p>Tienes <strong>3 emails importantes</strong> sin responder:</p>
+                  <ul class="h-mock-list">
+                    <li><span>→</span>Propuesta de Acme Corp (hace 2 días)</li>
+                    <li><span>→</span>Revisión contrato proveedor</li>
+                    <li><span>→</span>Factura #2847 pendiente</li>
+                  </ul>
+                  <p class="h-bot-cta">¿Quieres que redacte respuesta para alguno?</p>
+                </div>
+              </div>
+              <div class="h-msg">
+                <div class="h-avatar h-avatar--user">T</div>
+                <div>
+                  <div class="h-msg-meta"><span>Tú</span><span class="h-ts">10:33</span></div>
+                  <p>sí, el primero</p>
+                </div>
+              </div>
+            </div>
+            <div class="h-mock-typing">
+              <div class="h-avatar h-avatar--bot">H</div>
+              <div class="h-dots">
+                <span style="animation-delay:0ms"></span>
+                <span style="animation-delay:150ms"></span>
+                <span style="animation-delay:300ms"></span>
+              </div>
+            </div>
+          </div>
+          <div class="h-mock-badge">
+            <span class="h-badge-icon">48h</span>
+            <div>
+              <div class="h-badge-num">Listo</div>
+              <div class="h-badge-cap">para usar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROBLEM ═══ -->
+    <section class="h-section h-section--cream">
+      <div class="container">
+        <div class="h-section-header">
+          <div class="h-pill">El problema</div>
+          <h2 class="h-h2">¿Por qué no funciona<br/><em>lo de siempre?</em></h2>
+        </div>
+        <div class="h-cards-3">
+          <div class="h-card">
+            <div class="h-card-icon h-card-icon--red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3>Tu privacidad no es su prioridad</h3>
+            <p>Los agentes IA comerciales son cajas negras. Tus datos viven en su nube, sus servidores, sus modelos. Tú no controlas nada.</p>
+          </div>
+          <div class="h-card">
+            <div class="h-card-icon h-card-icon--amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3>Montarlo tú es una pesadilla</h3>
+            <p>VPS, Linux, Python, YAMLs, claves API, proxies... y horas de fricción antes de que funcione algo. No es tu trabajo.</p>
+          </div>
+          <div class="h-card">
+            <div class="h-card-icon h-card-icon--blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>SaaS que escala (tu factura)</h3>
+            <p>Las suscripciones SaaS escalan con cada usuario. Tú quieres pagar una vez y olvidarte. No 30€/mes por asiento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="h-section">
+      <div class="container">
+        <div class="h-section-header">
+          <div class="h-pill">El proceso</div>
+          <h2 class="h-h2">Cómo funciona.<br/><em>Tres pasos.</em></h2>
+        </div>
+        <div class="h-steps">
+          <div class="h-step">
+            <div class="h-step-num">01</div>
+            <h3>Reservas tu instalación</h3>
+            <p>Rellenas el formulario con tu caso de uso. Te llamo en 24h para confirmar requisitos y arrancar.</p>
+          </div>
+          <div class="h-step-arrow" aria-hidden="true">→</div>
+          <div class="h-step">
+            <div class="h-step-num">02</div>
+            <h3>Provisionamos tu Hermes</h3>
+            <p>Configuro un VPS a tu nombre, instalo Hermes, conecto Slack o Telegram, integro tus MCPs. Todo en menos de 48h.</p>
+          </div>
+          <div class="h-step-arrow" aria-hidden="true">→</div>
+          <div class="h-step">
+            <div class="h-step-num">03</div>
+            <h3>Lo usas desde el día uno</h3>
+            <p>Le hablas en lenguaje natural desde tu móvil o escritorio. Lee tu calendario, busca en Notion, redacta emails, ejecuta automatizaciones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PRICING ═══ -->
+    <section id="incluye" class="h-section h-section--cream">
+      <div class="container">
+        <div class="h-section-header">
+          <div class="h-pill">Precios</div>
+          <h2 class="h-h2">Sin letra pequeña.<br/><em>Sin sorpresas.</em></h2>
+        </div>
+        <div class="h-pricing">
+          <div class="h-price-card h-price-card--featured">
+            <div class="h-price-top">
+              <div>
+                <div class="h-price-label">Setup inicial</div>
+                <div class="h-price-badge">Pago único</div>
+              </div>
+              <div class="h-price-amount">
+                <span class="h-price-num">599€</span>
+              </div>
+            </div>
+            <ul class="h-price-list">
+              {[
+                'VPS provisionado a tu nombre (Hetzner o Contabo — 5-8€/mes que pagas tú directo)',
+                'Hermes Agent instalado, securizado y con backups automáticos',
+                'Conexión a Slack o Telegram (a elegir)',
+                'Hasta 5 MCPs preconfigurados del catálogo',
+                'API key del LLM (OpenRouter o Anthropic) configurada con tu cuenta',
+                'Onboarding 1h en videollamada',
+                'Documentación PDF personalizada',
+              ].map(item => (
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#contacto" class="h-btn h-btn--amber" style="width:100%;justify-content:center;margin-top:auto">
+              Reservar ahora
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <div class="h-price-card">
+            <div class="h-price-top">
+              <div>
+                <div class="h-price-label">Mantenimiento</div>
+                <div class="h-price-badge h-price-badge--muted">Opcional · sin permanencia</div>
+              </div>
+              <div class="h-price-amount">
+                <span class="h-price-num">59€</span>
+                <span class="h-price-period">/mes</span>
+              </div>
+            </div>
+            <ul class="h-price-list">
+              {[
+                'Actualizaciones de Hermes cuando hay versión nueva',
+                'Monitorización 24/7 del VPS con alertas',
+                '1 cambio de configuración al mes (añadir MCP, cambiar modelo, etc.)',
+                'Soporte por email con respuesta en 48h',
+                'Backup semanal automático con retención de 30 días',
+              ].map(item => (
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p class="h-price-note">Sin permanencia. Cancelas cuando quieras y tu Hermes sigue funcionando.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MCP CATALOG ═══ -->
+    <section class="h-section">
+      <div class="container">
+        <div class="h-section-header">
+          <div class="h-pill">Integraciones</div>
+          <h2 class="h-h2">MCPs disponibles<br/><em>en tu instalación.</em></h2>
+          <p class="h-section-desc">Hasta 5 incluidos en el setup. Elige los que mejor encajen con tu flujo de trabajo.</p>
+        </div>
+        <div class="h-mcps">
+          {mcps.map(mcp => (
+            <div class="h-mcp">{mcp}</div>
+          ))}
+        </div>
+        <p class="h-mcps-note">
+          ¿Necesitas otro MCP? Lo añadimos por <strong>49€ extra</strong>. Pídelo en el formulario.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ USE CASES ═══ -->
+    <section class="h-section h-section--cream">
+      <div class="container">
+        <div class="h-section-header">
+          <div class="h-pill">Casos de uso</div>
+          <h2 class="h-h2">¿Qué le puedo<br/><em>pedir a mi Hermes?</em></h2>
+        </div>
+        <div class="h-cards-3">
+          <div class="h-card h-card--use">
+            <div class="h-use-label">Agencias de marketing y SEO</div>
+            <p>Pídele a tu Hermes en Slack que extraiga las keywords con peor CTR del último mes en Search Console y te las mande priorizadas. Sin abrir GSC, sin filtros, sin exportar a Excel.</p>
+          </div>
+          <div class="h-card h-card--use">
+            <div class="h-use-label">Founders y consultores</div>
+            <p>Reenvíale un email a Hermes y dile "agéndame esto la próxima semana". Lee el contexto, busca hueco en tu Calendar, te propone tres opciones y crea el evento cuando confirmas.</p>
+          </div>
+          <div class="h-card h-card--use">
+            <div class="h-use-label">Equipos pequeños</div>
+            <p>Tu equipo le pregunta a Hermes en Slack "¿cuándo vence la factura de Acme?" y él busca en Notion, Stripe o Drive sin que nadie tenga que abrir nada. Un solo punto de entrada para el conocimiento de la empresa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHY ═══ -->
+    <section class="h-section h-section--dark">
+      <div class="container">
+        <div class="h-section-header">
+          <div class="h-pill h-pill--light">Diferenciación</div>
+          <h2 class="h-h2 h-h2--light">¿Por qué este servicio<br/><em>y no otro?</em></h2>
+        </div>
+        <div class="h-why-grid">
+          {[
+            { title: 'Tu agente, tu servidor, tus datos', desc: 'No son nuestros. Tu instalación es privada, en hardware que controlas tú directamente.' },
+            { title: 'Pago único + mantenimiento opcional', desc: 'No SaaS con cuota por usuario. Pagas el setup y decides si quieres mantenimiento.' },
+            { title: 'Open source (Apache 2.0)', desc: 'Hermes es libre. Si dejas de pagarme, sigue tuyo y funcionando. Para siempre.' },
+            { title: '18+ años en infraestructura web', desc: 'No es mi primer rodeo. He montado servidores para sitios con millones de visitas.' },
+          ].map(p => (
+            <div class="h-why-item">
+              <div class="h-why-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="h-section">
+      <div class="container" style="max-width:820px">
+        <div class="h-section-header">
+          <div class="h-pill">FAQ</div>
+          <h2 class="h-h2">Todo lo que nos preguntan<br/><em>antes de empezar.</em></h2>
+        </div>
+        <div class="h-faq">
+          {faqs.map(item => (
+            <details class="h-faq-item">
+              <summary>
+                <span>{item.q}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="h-faq-ans"><p>{item.a}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT FORM ═══ -->
+    <section id="contacto" class="h-section h-section--dark">
+      <div class="container" style="max-width:700px">
+        <div class="h-section-header">
+          <div class="h-pill h-pill--light">Contacto</div>
+          <h2 class="h-h2 h-h2--light">Reserva tu<br/><em>instalación.</em></h2>
+          <p class="h-section-desc" style="color:rgba(250,249,247,0.65)">Cuéntame tu caso. Te respondo en menos de 24h.</p>
+        </div>
+
+        <form
+          id="hermes-form"
+          action="/api/hermes-lead"
+          method="POST"
+          novalidate
+          class="h-form"
+        >
+          <div class="h-form-row">
+            <div class="h-field">
+              <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+              <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="María García" />
+              <span class="h-err">Por favor, introduce tu nombre.</span>
+            </div>
+            <div class="h-field">
+              <label for="email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="maria@empresa.com" />
+              <span class="h-err">Email obligatorio o inválido.</span>
+            </div>
+          </div>
+
+          <div class="h-field">
+            <label for="empresa">Empresa / proyecto <span class="h-opt">(opcional)</span></label>
+            <input type="text" id="empresa" name="empresa" autocomplete="organization" placeholder="Agencia SEO Madrid" />
+          </div>
+
+          <fieldset class="h-fieldset">
+            <legend>Plataforma preferida <span aria-hidden="true">*</span></legend>
+            <div class="h-radios">
+              <label class="h-radio">
+                <input type="radio" name="plataforma" value="Slack" required />
+                <span>Slack</span>
+              </label>
+              <label class="h-radio">
+                <input type="radio" name="plataforma" value="Telegram" />
+                <span>Telegram</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="h-fieldset">
+            <legend>MCPs de interés <span class="h-opt">(selecciona todos los que te interesen)</span></legend>
+            <div class="h-checks">
+              {mcps.map(mcp => (
+                <label class="h-check">
+                  <input type="checkbox" name="mcps" value={mcp} />
+                  <span>{mcp}</span>
+                </label>
+              ))}
+            </div>
+            <input type="text" name="mcps_otros" placeholder="Otros MCPs (separados por coma)" class="h-input-otros" />
+          </fieldset>
+
+          <div class="h-field">
+            <label for="caso_uso">Cuéntame tu caso de uso principal <span aria-hidden="true">*</span></label>
+            <textarea
+              id="caso_uso"
+              name="caso_uso"
+              required
+              maxlength="500"
+              rows="4"
+              placeholder="Ej: Soy consultor SEO y quiero que Hermes me ayude a automatizar reportes de clientes, gestionar mi bandeja de entrada y agendar reuniones desde Slack..."
+            ></textarea>
+            <div class="h-field-foot">
+              <span class="h-err">Cuéntame en qué puedo ayudarte.</span>
+              <span class="h-chars">máx. 500 caracteres</span>
+            </div>
+          </div>
+
+          <div class="h-field">
+            <label for="fuente">¿Cómo me has conocido?</label>
+            <select id="fuente" name="fuente">
+              <option value="">Selecciona una opción</option>
+              <option value="Google">Google</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Twitter/X">Twitter / X</option>
+              <option value="Recomendación">Recomendación</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="h-form-submit">
+            <button id="hermes-submit" type="submit" class="h-btn h-btn--amber" style="width:100%;justify-content:center;font-size:1.0625rem;padding:1rem 2rem">
+              Reservar mi instalación de Hermes
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <p class="h-form-note">Te respondo en menos de 24h. Sin compromiso, sin venta agresiva.</p>
+            <div id="hermes-result" class="h-result" hidden></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ── Page tokens ── */
+  .h-page {
+    --h-ink:      #0f0e0c;
+    --h-ink-soft: #2a2622;
+    --h-mid:      #5a524a;
+    --h-mute:     #8a8078;
+    --h-paper:    #faf9f7;
+    --h-cream:    #f3efe7;
+    --h-border:   rgba(15,14,12,0.08);
+    --h-border-s: rgba(15,14,12,0.14);
+    --h-amber:    #f59e0b;
+    --h-amber-d:  #b45309;
+    --h-mint:     #00d57b;
+    --h-serif:    'Instrument Serif', Georgia, serif;
+    --h-mono:     'JetBrains Mono', monospace;
+  }
+
+  /* ── Shared ── */
+  .h-section { padding: 6rem 0; }
+  .h-section--cream { background: var(--h-cream); }
+  .h-section--dark  { background: var(--h-ink); }
+
+  .h-section-header { text-align: center; margin-bottom: 4rem; }
+  .h-section-desc { color: var(--h-mid); font-size: 1.0625rem; margin-top: 1rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  .h-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.35rem 0.85rem; border-radius: 999px;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    background: rgba(245,158,11,0.10); color: var(--h-amber-d);
+    border: 1px solid rgba(245,158,11,0.22);
+  }
+  .h-pill--light {
+    background: rgba(245,158,11,0.15); color: var(--h-amber);
+    border-color: rgba(245,158,11,0.3);
+  }
+
+  .h-h2 {
+    font-family: var(--h-serif);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    margin: 1rem 0 0; color: var(--h-ink);
+  }
+  .h-h2 em { font-style: italic; color: var(--h-amber-d); }
+  .h-h2--light { color: var(--h-paper); }
+  .h-h2--light em { color: var(--h-amber); }
+
+  .h-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.5rem; border-radius: 8px;
+    font-weight: 600; font-size: 0.9375rem; text-decoration: none;
+    transition: all 200ms cubic-bezier(0.16,1,0.3,1);
+    border: 1px solid transparent;
+  }
+  .h-btn--amber {
+    background: var(--h-amber); color: #fff;
+    box-shadow: 0 4px 14px rgba(245,158,11,0.35);
+  }
+  .h-btn--amber:hover {
+    background: var(--h-amber-d);
+    box-shadow: 0 8px 24px rgba(245,158,11,0.45);
+    transform: translateY(-2px);
+  }
+  .h-btn--ghost {
+    background: transparent; color: var(--h-ink);
+    border-color: var(--h-border-s);
+  }
+  .h-btn--ghost:hover { background: rgba(15,14,12,0.04); border-color: var(--h-ink); }
+
+  /* ── HERO ── */
+  .h-hero {
+    position: relative; padding: 6rem 0 4.5rem;
+    overflow: hidden; background: var(--h-paper);
+  }
+  .h-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--h-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--h-border) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 30% 40%, black 10%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 10%, transparent 65%);
+    opacity: 0.6; pointer-events: none;
+  }
+  .h-hero-glow {
+    position: absolute; top: -150px; right: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 60%);
+    filter: blur(40px); pointer-events: none;
+  }
+  .h-hero-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem; align-items: center;
+  }
+  .h-hero-copy { max-width: 620px; }
+
+  .h-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.4rem 0.85rem; border: 1px solid var(--h-border-s);
+    border-radius: 999px; background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+    font-family: var(--h-mono); font-size: 0.7rem;
+    letter-spacing: 0.06em; color: var(--h-ink-soft);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .h-dot {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--h-amber);
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.2);
+    animation: dot-pulse 2s ease-in-out infinite;
+  }
+  @keyframes dot-pulse { 0%,100%{box-shadow:0 0 0 3px rgba(245,158,11,0.2)} 50%{box-shadow:0 0 0 6px rgba(245,158,11,0)} }
+
+  .h-hero-title {
+    font-family: var(--h-serif);
+    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    font-weight: 400; line-height: 1.04; letter-spacing: -0.025em;
+    margin: 0 0 1.25rem; color: var(--h-ink);
+  }
+  .h-hero-title em { font-style: italic; color: var(--h-amber-d); }
+  .h-hero-desc { font-size: 1.0625rem; color: var(--h-mid); line-height: 1.65; margin: 0 0 2rem; max-width: 560px; }
+  .h-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  /* Slack mockup */
+  .h-hero-aside {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 400px;
+  }
+  .h-mock {
+    background: #fff; border: 1px solid var(--h-border);
+    border-radius: 14px; overflow: hidden; width: 100%; max-width: 360px;
+    box-shadow: 0 2px 4px rgba(15,14,12,0.04), 0 30px 60px -25px rgba(15,14,12,0.25);
+    transform: rotate(-0.5deg);
+  }
+  .h-mock-head {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1rem; background: #4a154b;
+  }
+  .h-slack-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; background: rgba(255,255,255,0.2);
+    border-radius: 4px; color: #fff; font-size: 0.75rem; font-weight: 700;
+  }
+  .h-mock-channel { color: #fff; font-weight: 600; font-size: 0.875rem; }
+
+  .h-mock-msgs { padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+  .h-msg { display: flex; gap: 0.625rem; align-items: flex-start; }
+  .h-avatar {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.75rem; color: #fff;
+  }
+  .h-avatar--user { background: #1264a3; }
+  .h-avatar--bot  { background: var(--h-amber); color: var(--h-ink); }
+  .h-msg-meta {
+    display: flex; align-items: center; gap: 0.375rem;
+    margin-bottom: 0.25rem; flex-wrap: wrap;
+  }
+  .h-msg-meta > span:first-child { font-weight: 700; font-size: 0.8125rem; color: var(--h-ink); }
+  .h-ts { font-size: 0.6875rem; color: var(--h-mute); }
+  .h-app-badge {
+    font-size: 0.625rem; font-weight: 600; background: rgba(245,158,11,0.15);
+    color: var(--h-amber-d); padding: 0.1rem 0.35rem; border-radius: 3px;
+  }
+  .h-msg p { font-size: 0.8125rem; color: var(--h-ink-soft); line-height: 1.5; margin: 0; }
+  .h-mock-list {
+    list-style: none; padding: 0; margin: 0.375rem 0 0;
+    display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .h-mock-list li {
+    display: flex; gap: 0.375rem; font-size: 0.8125rem; color: var(--h-mid); align-items: flex-start;
+  }
+  .h-mock-list li span { color: var(--h-amber); font-weight: 700; }
+  .h-bot-cta { color: var(--h-amber-d) !important; font-weight: 600 !important; margin-top: 0.5rem !important; }
+
+  .h-mock-typing {
+    display: flex; align-items: center; gap: 0.625rem;
+    padding: 0.75rem 1rem; border-top: 1px solid var(--h-border);
+  }
+  .h-dots { display: flex; gap: 3px; align-items: center; }
+  .h-dots span {
+    display: block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--h-mute);
+    animation: dot-bounce 1.2s ease-in-out infinite;
+  }
+  @keyframes dot-bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-5px)} }
+
+  .h-mock-badge {
+    position: absolute; bottom: -12px; right: -12px;
+    display: flex; align-items: center; gap: 0.625rem;
+    padding: 0.625rem 0.875rem;
+    background: var(--h-ink); color: var(--h-paper);
+    border-radius: 10px;
+    box-shadow: 0 16px 32px -8px rgba(15,14,12,0.3);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .h-badge-icon {
+    font-family: var(--h-serif); font-size: 1.1rem; font-weight: 400;
+    background: var(--h-amber); color: var(--h-ink);
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.875rem; font-weight: 700; letter-spacing: -0.02em;
+  }
+  .h-badge-num { font-family: var(--h-serif); font-size: 1.125rem; line-height: 1; letter-spacing: -0.02em; }
+  .h-badge-cap { font-size: 0.65rem; color: rgba(250,249,247,0.6); margin-top: 2px; }
+
+  /* ── Cards 3-col ── */
+  .h-cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .h-card {
+    background: var(--h-paper); border: 1px solid var(--h-border-s);
+    border-radius: 14px; padding: 1.75rem;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .h-card:hover { border-color: var(--h-ink); transform: translateY(-3px); box-shadow: 0 16px 40px -10px rgba(15,14,12,0.12); }
+  .h-card h3 {
+    font-family: var(--h-serif); font-size: 1.375rem; font-weight: 400;
+    margin: 0 0 0.5rem; line-height: 1.2; color: var(--h-ink);
+  }
+  .h-card p { font-size: 0.9375rem; color: var(--h-mid); line-height: 1.65; margin: 0; }
+  .h-card-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; transition: all 200ms;
+  }
+  .h-card-icon svg { width: 22px; height: 22px; }
+  .h-card-icon--red  { background: #fef2f2; color: #ef4444; }
+  .h-card-icon--amber { background: rgba(245,158,11,0.12); color: var(--h-amber-d); }
+  .h-card-icon--blue { background: #eff6ff; color: #3b82f6; }
+
+  .h-card--use .h-use-label {
+    font-family: var(--h-mono); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--h-amber-d); margin-bottom: 0.875rem;
+  }
+
+  /* ── Steps ── */
+  .h-steps {
+    display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 1.5rem; align-items: center;
+  }
+  .h-step {
+    background: var(--h-cream); border: 1px solid var(--h-border);
+    border-radius: 14px; padding: 2rem;
+  }
+  .h-step-num {
+    font-family: var(--h-serif); font-size: 3rem; font-weight: 400;
+    line-height: 1; color: var(--h-amber); margin-bottom: 1rem; opacity: 0.8;
+  }
+  .h-step h3 {
+    font-family: var(--h-serif); font-size: 1.375rem; font-weight: 400;
+    margin: 0 0 0.5rem; color: var(--h-ink);
+  }
+  .h-step p { font-size: 0.9375rem; color: var(--h-mid); line-height: 1.65; margin: 0; }
+  .h-step-arrow { font-size: 1.5rem; color: var(--h-amber); font-weight: 700; }
+
+  /* ── Pricing ── */
+  .h-pricing { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+  .h-price-card {
+    background: var(--h-paper); border: 1px solid var(--h-border-s);
+    border-radius: 16px; padding: 2rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .h-price-card--featured { border-color: var(--h-amber); border-width: 2px; }
+  .h-price-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .h-price-label { font-size: 1.25rem; font-weight: 700; color: var(--h-ink); margin-bottom: 0.375rem; }
+  .h-price-badge {
+    display: inline-block; padding: 0.2rem 0.65rem; border-radius: 999px;
+    background: rgba(245,158,11,0.12); color: var(--h-amber-d);
+    font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(245,158,11,0.25);
+  }
+  .h-price-badge--muted { background: rgba(15,14,12,0.06); color: var(--h-mute); border-color: var(--h-border); }
+  .h-price-amount { text-align: right; }
+  .h-price-num { font-family: var(--h-serif); font-size: 2.5rem; line-height: 1; letter-spacing: -0.03em; color: var(--h-ink); }
+  .h-price-period { font-size: 1rem; color: var(--h-mute); }
+  .h-price-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+  .h-price-list li {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    font-size: 0.875rem; color: var(--h-ink-soft); line-height: 1.5;
+  }
+  .h-price-list svg { width: 14px; height: 14px; color: var(--h-amber); flex-shrink: 0; margin-top: 3px; }
+  .h-price-note { font-size: 0.8125rem; color: var(--h-mute); font-style: italic; margin: 0; }
+
+  /* ── MCPs ── */
+  .h-mcps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+    max-width: 800px; margin: 0 auto;
+  }
+  .h-mcp {
+    padding: 0.875rem 1rem; border-radius: 10px;
+    border: 1px solid var(--h-border-s); background: var(--h-paper);
+    text-align: center; font-size: 0.875rem; font-weight: 500; color: var(--h-ink-soft);
+    transition: all 200ms ease;
+  }
+  .h-mcp:hover { border-color: var(--h-amber); color: var(--h-amber-d); background: rgba(245,158,11,0.04); }
+  .h-mcps-note { text-align: center; color: var(--h-mute); font-size: 0.9rem; margin-top: 1.5rem; }
+  .h-mcps-note strong { color: var(--h-ink); }
+
+  /* ── Why ── */
+  .h-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 780px; margin: 0 auto; }
+  .h-why-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .h-why-check {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    background: rgba(245,158,11,0.15); color: var(--h-amber);
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .h-why-check svg { width: 14px; height: 14px; }
+  .h-why-item h3 { font-weight: 700; font-size: 1rem; color: var(--h-paper); margin: 0 0 0.375rem; }
+  .h-why-item p { font-size: 0.9rem; color: rgba(250,249,247,0.65); line-height: 1.6; margin: 0; }
+
+  /* ── FAQ ── */
+  .h-faq { border-top: 1px solid var(--h-border-s); margin-top: 3rem; }
+  .h-faq-item { border-bottom: 1px solid var(--h-border-s); }
+  .h-faq-item summary {
+    list-style: none; display: flex; align-items: center;
+    justify-content: space-between; gap: 2rem;
+    padding: 1.5rem 0; cursor: pointer;
+    font-family: var(--h-serif); font-size: 1.25rem; font-weight: 400;
+    color: var(--h-ink); transition: color 200ms;
+  }
+  .h-faq-item summary::-webkit-details-marker { display: none; }
+  .h-faq-item summary:hover { color: var(--h-amber-d); }
+  .h-faq-item summary svg { width: 20px; height: 20px; flex-shrink: 0; transition: transform 300ms ease; }
+  .h-faq-item[open] summary svg { transform: rotate(180deg); }
+  .h-faq-ans { padding: 0 0 1.5rem; color: var(--h-mid); font-size: 0.9375rem; line-height: 1.7; max-width: 680px; }
+  .h-faq-ans p { margin: 0; }
+
+  /* ── Form ── */
+  .h-form {
+    background: rgba(250,249,247,0.04); border: 1px solid rgba(250,249,247,0.1);
+    border-radius: 16px; padding: 2.5rem;
+  }
+  .h-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .h-field { display: flex; flex-direction: column; gap: 0.375rem; }
+  .h-field label {
+    font-size: 0.875rem; font-weight: 600;
+    color: rgba(250,249,247,0.85);
+  }
+  .h-field label span[aria-hidden] { color: var(--h-amber); }
+  .h-opt { font-weight: 400; color: rgba(250,249,247,0.45); font-size: 0.8125rem; }
+  .h-field input, .h-field textarea, .h-field select, .h-input-otros {
+    padding: 0.75rem 1rem; border-radius: 8px;
+    border: 1px solid rgba(250,249,247,0.12);
+    background: rgba(250,249,247,0.06); color: var(--h-paper);
+    font-family: inherit; font-size: 0.9375rem;
+    transition: border-color 200ms;
+    width: 100%;
+  }
+  .h-field input::placeholder, .h-field textarea::placeholder { color: rgba(250,249,247,0.3); }
+  .h-field input:focus, .h-field textarea:focus, .h-field select:focus, .h-input-otros:focus {
+    outline: none; border-color: var(--h-amber);
+  }
+  .h-field textarea { resize: none; }
+  .h-field select { cursor: pointer; }
+  .h-field select option { background: #1a1814; color: var(--h-paper); }
+  .h-err { font-size: 0.8125rem; color: #f87171; display: none; }
+  .h-field-foot { display: flex; justify-content: space-between; align-items: center; }
+  .h-chars { font-size: 0.75rem; color: rgba(250,249,247,0.35); margin-left: auto; }
+
+  .h-fieldset {
+    border: 1px solid rgba(250,249,247,0.12); border-radius: 8px;
+    padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .h-fieldset legend {
+    padding: 0 0.375rem; font-size: 0.875rem; font-weight: 600;
+    color: rgba(250,249,247,0.85); float: left; margin-bottom: 0.5rem;
+  }
+  .h-fieldset legend span[aria-hidden] { color: var(--h-amber); }
+  .h-radios { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .h-radio { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+  .h-radio input { width: 16px; height: 16px; accent-color: var(--h-amber); }
+  .h-radio span { font-size: 0.9375rem; color: rgba(250,249,247,0.85); }
+  .h-checks {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;
+  }
+  .h-check { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+  .h-check input { width: 15px; height: 15px; accent-color: var(--h-amber); flex-shrink: 0; }
+  .h-check span { font-size: 0.8125rem; color: rgba(250,249,247,0.75); }
+  .h-input-otros {
+    margin-top: 0.25rem; color: rgba(250,249,247,0.85);
+    border: 1px solid rgba(250,249,247,0.12);
+  }
+  .h-input-otros::placeholder { color: rgba(250,249,247,0.3); }
+
+  .h-form-submit { display: flex; flex-direction: column; gap: 0.625rem; }
+  .h-form-note { text-align: center; font-size: 0.8125rem; color: rgba(250,249,247,0.45); margin: 0; }
+  .h-result { padding: 1rem 1.25rem; border-radius: 8px; text-align: center; font-size: 0.9375rem; font-weight: 500; }
+  .h-result.ok { background: rgba(0,213,123,0.12); color: var(--h-mint); border: 1px solid rgba(0,213,123,0.25); }
+  .h-result.err { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .h-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .h-hero-aside { min-height: auto; order: -1; }
+    .h-mock { max-width: 380px; margin: 0 auto; }
+    .h-steps { grid-template-columns: 1fr; }
+    .h-step-arrow { display: none; }
+    .h-cards-3 { grid-template-columns: 1fr 1fr; }
+    .h-pricing { grid-template-columns: 1fr; max-width: 520px; }
+    .h-why-grid { grid-template-columns: 1fr; }
+    .h-form-row { grid-template-columns: 1fr; }
+    .h-checks { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .h-section { padding: 4rem 0; }
+    .h-hero { padding: 4rem 0 3rem; }
+    .h-cards-3 { grid-template-columns: 1fr; }
+    .h-mcps { grid-template-columns: repeat(2, 1fr); }
+    .h-form { padding: 1.5rem; }
+    .h-checks { grid-template-columns: repeat(2, 1fr); }
+    .h-faq-item summary { font-size: 1.0625rem; gap: 1rem; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('hermes-form');
+    var btn  = document.getElementById('hermes-submit');
+    var res  = document.getElementById('hermes-result');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.classList.add('validated');
+
+      if (!form.checkValidity()) {
+        var first = form.querySelector(':invalid');
+        if (first) first.focus();
+        // Show inline error spans for required fields
+        form.querySelectorAll('[required]').forEach(function(el) {
+          var parent = el.closest('.h-field') || el.closest('fieldset');
+          if (parent) {
+            var errSpan = parent.querySelector('.h-err');
+            if (errSpan) errSpan.style.display = el.validity.valid ? 'none' : 'block';
+          }
+        });
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+
+      var data = new FormData(form);
+
+      fetch('/api/hermes-lead', { method: 'POST', body: data })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          res.removeAttribute('hidden');
+          if (json.ok) {
+            res.className = 'h-result ok';
+            res.textContent = '¡Recibido! Te contesto en menos de 24h.';
+            form.reset();
+            form.classList.remove('validated');
+          } else {
+            res.className = 'h-result err';
+            res.textContent = 'Algo fue mal. Escríbeme a jesus@jesuslopezseo.com';
+          }
+        })
+        .catch(function () {
+          res.removeAttribute('hidden');
+          res.className = 'h-result err';
+          res.textContent = 'Error de conexión. Escríbeme a jesus@jesuslopezseo.com';
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Reservar mi instalación de Hermes';
+          res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    });
+  })();
+</script>

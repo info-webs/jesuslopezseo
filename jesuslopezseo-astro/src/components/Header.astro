@@ -144,6 +144,10 @@ const designServices = [
         </div>
       </div>
 
+      <a href="/hermes" class={`nav-link nav-link--hermes ${currentPath.startsWith('/hermes') ? 'nav-link--active' : ''}`}>
+        Hermes Pro
+        <span class="nav-badge-nuevo">NUEVO</span>
+      </a>
       <a href="/noticias" class={`nav-link ${currentPath.startsWith('/noticias') ? 'nav-link--active' : ''}`}>Blog</a>
       <a href="/contactar" class={`nav-link ${currentPath === '/contactar' ? 'nav-link--active' : ''}`}>Contacto</a>
     </nav>
@@ -183,6 +187,10 @@ const designServices = [
         ))}
       </div>
     </details>
+    <a href="/hermes" class="mobile-nav-link">
+      Hermes Pro
+      <span class="mega-badge" style="font-size:0.6rem;">NUEVO</span>
+    </a>
     <a href="/noticias" class="mobile-nav-link">Blog</a>
     <a href="/contactar" class="mobile-nav-link">Contacto</a>
     <a href="https://llmfy.ai" target="_blank" rel="noopener" class="mobile-llmfy-card">
@@ -628,6 +636,20 @@ const designServices = [
     margin-top: 0.25rem;
     font-size: 0.8125rem;
     color: rgba(250,249,247,0.65);
+  }
+
+  .nav-badge-nuevo {
+    display: inline-block;
+    padding: 0.1rem 0.45rem;
+    background: #f59e0b;
+    color: #0f0e0c;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+    line-height: 1.5;
   }
 
   body.menu-open { overflow: hidden; }
