@@ -2,6 +2,7 @@
 import Navbar from "@components/navbar/navbar.astro";
 import Footer from "@components/footer.astro";
 import Container from "@components/container.astro";
+import MCPLogo from "@components/hermes/MCPLogo.astro";
 import "@fontsource-variable/rethink-sans";
 
 const siteUrl = "https://jesuslopezseo.com";
@@ -49,27 +50,18 @@ const faqs = [
 ];
 
 const mcps = [
-  { name: "Slack", cls: "bg-purple-50 text-purple-700 border-purple-200" },
-  { name: "Telegram", cls: "bg-blue-50 text-blue-700 border-blue-200" },
-  { name: "Notion", cls: "bg-gray-50 text-gray-700 border-gray-300" },
-  { name: "Gmail", cls: "bg-red-50 text-red-700 border-red-200" },
-  {
-    name: "Google Calendar",
-    cls: "bg-blue-50 text-blue-800 border-blue-200",
-  },
-  {
-    name: "Google Drive",
-    cls: "bg-yellow-50 text-yellow-700 border-yellow-200",
-  },
-  { name: "GitHub", cls: "bg-gray-50 text-gray-800 border-gray-300" },
-  { name: "Linear", cls: "bg-violet-50 text-violet-700 border-violet-200" },
-  { name: "Stripe", cls: "bg-indigo-50 text-indigo-700 border-indigo-200" },
-  {
-    name: "Supabase",
-    cls: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  },
-  { name: "Make", cls: "bg-orange-50 text-orange-700 border-orange-200" },
-  { name: "Semrush", cls: "bg-orange-50 text-orange-800 border-orange-300" },
+  { name: "Slack", color: "text-purple-600 dark:text-purple-400" },
+  { name: "Telegram", color: "text-sky-500 dark:text-sky-400" },
+  { name: "Notion", color: "text-gray-900 dark:text-gray-100" },
+  { name: "Gmail", color: "text-red-500 dark:text-red-400" },
+  { name: "Google Calendar", color: "text-blue-600 dark:text-blue-400" },
+  { name: "Google Drive", color: "text-yellow-500 dark:text-yellow-400" },
+  { name: "GitHub", color: "text-gray-900 dark:text-gray-100" },
+  { name: "Linear", color: "text-violet-600 dark:text-violet-400" },
+  { name: "Stripe", color: "text-indigo-600 dark:text-indigo-400" },
+  { name: "Supabase", color: "text-emerald-600 dark:text-emerald-400" },
+  { name: "Make", color: "text-fuchsia-600 dark:text-fuchsia-400" },
+  { name: "Semrush", color: "text-orange-600 dark:text-orange-400" },
 ];
 
 const setupItems = [
@@ -627,13 +619,14 @@ const schema = JSON.stringify({
             </p>
           </div>
           <div
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {
               mcps.map((mcp) => (
-                <div
-                  class={`flex items-center justify-center px-4 py-3 rounded-xl border font-medium text-sm text-center ${mcp.cls}`}>
-                  {/* TODO: añadir SVG del logo oficial de cada MCP */}
-                  {mcp.name}
+                <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-muted-strong bg-white p-6 transition duration-200 ease-out hover:scale-105 hover:shadow-md">
+                  <MCPLogo name={mcp.name} class={`h-12 w-12 ${mcp.color}`} />
+                  <span class="text-xs font-medium text-default-soft text-center leading-tight">
+                    {mcp.name}
+                  </span>
                 </div>
               ))
             }
