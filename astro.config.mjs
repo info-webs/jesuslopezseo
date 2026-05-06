@@ -5,6 +5,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bsaas-astro.web3templates.com/",
+  site: "https://jesuslopezseo.com/",
   integrations: [tailwind(), mdx(), sitemap()],
 });

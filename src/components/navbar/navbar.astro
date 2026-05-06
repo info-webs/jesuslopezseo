@@ -14,6 +14,11 @@ const menuitems = [
     path: "/pricing",
   },
   {
+    title: "Hermes Pro",
+    path: "/hermes",
+    badge: "Nuevo",
+  },
+  {
     title: "Pages",
     path: "#",
     children: [
@@ -79,8 +84,13 @@ const menuitems = [
                     <li>
                       <a
                         href={item.path}
-                        class="flex lg:px-3 py-2 items-center text-primary-strong font-medium hover:text-primary">
-                        <span> {item.title}</span>
+                        class="flex lg:px-3 py-2 items-center gap-1.5 text-primary-strong font-medium hover:text-primary">
+                        <span>{item.title}</span>
+                        {item.badge && (
+                          <span class="text-[10px] font-semibold bg-primary text-white px-1.5 py-0.5 rounded-full leading-none">
+                            {item.badge}
+                          </span>
+                        )}
                       </a>
                     </li>
                   )}
