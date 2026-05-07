@@ -1,0 +1,1663 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = 'https://www.jesuslopezseo.com/plugins/ai-merchant-pro/';
+const pageTitle = 'AI Merchant Pro — Plugin WordPress y módulo PrestaShop con IA | Jesús López';
+const pageDescription = 'Genera fichas de producto, SEO, traducciones y categorías con IA en WooCommerce y PrestaShop. Ahorra cientos de horas y multiplica tu catálogo. Compatible con OpenAI, Claude y Gemini. Prueba gratis.';
+
+const platforms = [
+  {
+    key: 'wp',
+    name: 'WordPress + WooCommerce',
+    sub: 'Plugin oficial · WP 6.0+ · WooCommerce 7+',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2.5 12h19M12 2.5c2.7 3 4.2 6.2 4.2 9.5s-1.5 6.5-4.2 9.5C9.3 18.5 7.8 15.3 7.8 12s1.5-6.5 4.2-9.5z"/></svg>`,
+  },
+  {
+    key: 'ps',
+    name: 'PrestaShop',
+    sub: 'Módulo oficial · PrestaShop 1.7+ y 8.x',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>`,
+  },
+];
+
+const features = [
+  {
+    iconColor: 'amber',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>`,
+    title: 'Fichas de producto en segundos',
+    desc: 'Genera descripciones únicas, persuasivas y orientadas a conversión a partir del nombre, atributos o una simple imagen. Reescribe miles de fichas en lote con un clic.',
+  },
+  {
+    iconColor: 'blue',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 7v4l2.5 2.5"/></svg>`,
+    title: 'SEO on-page automatizado',
+    desc: 'Title tags, meta descriptions, H1 y datos estructurados Product/Offer optimizados para tus keywords objetivo. Sin canibalizar, sin duplicados, listo para Google.',
+  },
+  {
+    iconColor: 'green',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 8h14M5 12h14M5 16h9"/><path d="M3 4h18v16H3z"/></svg>`,
+    title: 'Traducciones nativas multi-idioma',
+    desc: 'Traduce todo tu catálogo a 40+ idiomas conservando tono, terminología técnica y SEO. Compatible con WPML, Polylang y la multi-tienda nativa de PrestaShop.',
+  },
+  {
+    iconColor: 'pink',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m9 12 2 2 4-4"/></svg>`,
+    title: 'Categorización inteligente',
+    desc: 'Asigna categorías, subcategorías, etiquetas y atributos analizando el producto. Limpia jerarquías heredadas y elimina duplicados sin romper tu navegación.',
+  },
+  {
+    iconColor: 'violet',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.5-3.5a2 2 0 0 0-2.8 0L4 22"/></svg>`,
+    title: 'ALT-text y reescritura de imágenes',
+    desc: 'Genera ALT descriptivo para cada imagen, optimiza el peso, renombra ficheros con slug-keyword y mejora la accesibilidad WCAG. Mejora tu SEO de imágenes en automático.',
+  },
+  {
+    iconColor: 'cyan',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>`,
+    title: 'Asistente de soporte en tu tienda',
+    desc: 'Chatbot embebido entrenado con tu catálogo y tus FAQs. Responde dudas de talla, envío o disponibilidad y deriva al humano cuando hace falta. 24/7.',
+  },
+  {
+    iconColor: 'amber',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>`,
+    title: 'Insights y oportunidades',
+    desc: 'La IA detecta productos con baja conversión, fichas pobres, categorías vacías y oportunidades de cross-selling. Te entrega un plan accionable cada semana.',
+  },
+  {
+    iconColor: 'red',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>`,
+    title: 'Procesamiento masivo en lote',
+    desc: 'Procesa 10.000 productos sin bloquear tu tienda. Cola en segundo plano, control de tokens, reintentos automáticos y exportación CSV antes de aplicar cambios.',
+  },
+  {
+    iconColor: 'green',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'Privacidad y control total',
+    desc: 'Tu API key, tu modelo, tus datos. Sin enviar tu catálogo a terceros, sin scraping, sin telemetría oculta. RGPD-friendly y registro de todas las acciones.',
+  },
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Instala el plugin o módulo',
+    desc: 'Sube el ZIP a WordPress o PrestaShop, activa con tu licencia y conecta tu API key de OpenAI, Anthropic o Google. Listo en 3 minutos.',
+  },
+  {
+    num: '02',
+    title: 'Elige qué quieres mejorar',
+    desc: 'Selecciona productos por categoría, marca, stock o filtro custom. Define tono de voz, idiomas, estructura SEO y plantillas reutilizables.',
+  },
+  {
+    num: '03',
+    title: 'Revisa y publica con un clic',
+    desc: 'Previsualiza los cambios en una pantalla diff, edita lo que quieras y publica. Todo queda versionado: vuelves al original cuando quieras.',
+  },
+];
+
+const integrations = [
+  'OpenAI',
+  'Anthropic Claude',
+  'Google Gemini',
+  'Mistral',
+  'WooCommerce',
+  'PrestaShop',
+  'WPML',
+  'Polylang',
+  'Yoast SEO',
+  'Rank Math',
+  'Google Merchant',
+  'Meta Catalog',
+];
+
+const useCases = [
+  {
+    label: 'Tiendas de moda',
+    title: 'Catálogos masivos sin pereza',
+    desc: '5.000 referencias con ficha vacía heredadas del proveedor. AI Merchant Pro las reescribe respetando tu tono de marca y genera variantes SEO por talla y color en menos de una tarde.',
+  },
+  {
+    label: 'Marketplaces y dropshippers',
+    title: 'Diferenciación frente al feed',
+    desc: 'Si vendes lo mismo que otros 200 vendedores, copiar la descripción del proveedor te hunde en Google. Genera fichas únicas y optimizadas en cada importación automática.',
+  },
+  {
+    label: 'Tiendas multi-idioma',
+    title: 'Traducir 40 idiomas sin agencia',
+    desc: 'Localización profesional con terminología y fichas adaptadas a cada mercado. Olvídate de presupuestos de traducción y plazos de 6 semanas por cada nueva campaña.',
+  },
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    badge: 'Para tiendas pequeñas',
+    price: '49€',
+    period: '/año',
+    cta: 'Empezar con Starter',
+    featured: false,
+    items: [
+      '1 dominio · WordPress o PrestaShop',
+      'Hasta 500 productos procesados/mes',
+      'SEO on-page + traducciones (5 idiomas)',
+      'Modelos OpenAI / Claude / Gemini',
+      'Soporte por email · 48h',
+      'Actualizaciones durante 1 año',
+    ],
+  },
+  {
+    name: 'Pro',
+    badge: 'El más vendido',
+    price: '129€',
+    period: '/año',
+    cta: 'Probar Pro 14 días gratis',
+    featured: true,
+    items: [
+      '3 dominios · WP + PrestaShop',
+      'Hasta 10.000 productos/mes',
+      'Idiomas ilimitados + WPML/Polylang',
+      'Asistente de soporte embebido',
+      'Insights semanales accionables',
+      'Soporte prioritario · 12h',
+      'Actualizaciones de por vida',
+    ],
+  },
+  {
+    name: 'Agency',
+    badge: 'Para agencias y marketplaces',
+    price: '349€',
+    period: '/año',
+    cta: 'Hablar con ventas',
+    featured: false,
+    items: [
+      'Hasta 25 dominios cliente',
+      'Productos ilimitados · API directa',
+      'White-label opcional (logo y dominio)',
+      'Workflows automatizados (n8n / Make)',
+      'Gestor de cuenta dedicado',
+      'SLA 4h · onboarding 1:1',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: '¿Necesito saber programar para usarlo?',
+    a: 'No. AI Merchant Pro es plug-and-play: subes el ZIP, activas la licencia y trabajas desde un panel visual integrado en tu admin de WordPress o PrestaShop. Si sabes editar un producto, sabes usarlo.',
+  },
+  {
+    q: '¿Quién paga el coste de los modelos de IA?',
+    a: 'Tú, con tu propia API key (OpenAI, Anthropic o Google). Esto te da control total: usas el modelo que prefieras, ves el coste exacto y no hay margen oculto. Para una tienda media, el coste suele ser de 5-20€/mes en tokens.',
+  },
+  {
+    q: '¿Funciona con mi versión de WooCommerce o PrestaShop?',
+    a: 'Sí: WordPress 6.0+ con WooCommerce 7+, y PrestaShop 1.7.6+ y toda la rama 8.x. Si tienes una versión más antigua, te ayudamos a actualizar antes de instalar.',
+  },
+  {
+    q: '¿Puede romper mi tienda en producción?',
+    a: 'No. Todo cambio se previsualiza primero en una pantalla diff, queda versionado y se puede revertir con un clic. Para procesos masivos exportamos un CSV antes para que revises offline si lo necesitas.',
+  },
+  {
+    q: '¿Es compatible con Yoast, Rank Math o el SEO nativo de PrestaShop?',
+    a: 'Totalmente. Detectamos el plugin SEO instalado y rellenamos los campos correctos (focus keyword, meta description, schema). En PrestaShop usamos los campos nativos de meta título, meta descripción y URL amigable.',
+  },
+  {
+    q: '¿Mis datos viajan a OpenAI/Anthropic/Google?',
+    a: 'Solo el contenido estrictamente necesario para generar la respuesta (nombre, atributos, descripción origen). Nunca enviamos clientes, pedidos ni precios sensibles. Tienes una whitelist clara y un log de todo lo enviado.',
+  },
+  {
+    q: '¿Puedo reescribir todo mi catálogo de golpe?',
+    a: 'Sí. El motor de procesamiento masivo soporta hasta 10.000 productos por job en Pro y catálogo ilimitado en Agency. Funciona en cola en segundo plano, así que tu tienda no se ralentiza durante el proceso.',
+  },
+  {
+    q: '¿Qué pasa cuando se acaba la licencia anual?',
+    a: 'El plugin sigue funcionando con la última versión. Solo dejas de recibir actualizaciones y soporte. Puedes renovar con un 30% de descuento durante los 30 días posteriores al vencimiento.',
+  },
+  {
+    q: '¿Tenéis política de devolución?',
+    a: 'Sí. 14 días de garantía de devolución sin preguntas. Si en dos semanas no notas un antes y un después en tu catálogo, te devolvemos el dinero íntegro.',
+  },
+];
+
+const schemaProduct = {
+  '@type': 'SoftwareApplication',
+  name: 'AI Merchant Pro',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'WordPress, WooCommerce, PrestaShop',
+  description: pageDescription,
+  url: 'https://aimerchantpro.com',
+  offers: [
+    { '@type': 'Offer', name: 'Starter',  price: '49',  priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'Pro',      price: '129', priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'Agency',   price: '349', priceCurrency: 'EUR' },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '127',
+  },
+};
+
+const schemaFaq = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const schemaBreadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio',   item: 'https://www.jesuslopezseo.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Plugins',  item: 'https://www.jesuslopezseo.com/plugins/' },
+    { '@type': 'ListItem', position: 3, name: 'AI Merchant Pro', item: canonical },
+  ],
+};
+
+const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [schemaProduct, schemaFaq, schemaBreadcrumb] });
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}
+  schema={schema}
+>
+  <Header />
+
+  <main class="amp-page">
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO — premium · NO above-the-fold (sigue scrolleando)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="amp-hero">
+      <div class="amp-hero-grid"   aria-hidden="true"></div>
+      <div class="amp-hero-glow-a" aria-hidden="true"></div>
+      <div class="amp-hero-glow-b" aria-hidden="true"></div>
+      <div class="amp-orbit"       aria-hidden="true">
+        <span class="amp-orb amp-orb--1"></span>
+        <span class="amp-orb amp-orb--2"></span>
+        <span class="amp-orb amp-orb--3"></span>
+      </div>
+
+      <div class="container amp-hero-inner">
+        <div class="amp-hero-copy">
+          <div class="amp-eyebrow">
+            <span class="amp-dot"></span>
+            AI Merchant Pro · v3.4 disponible
+          </div>
+
+          <h1 class="amp-hero-title">
+            La IA que escribe<br/>
+            <em>tu catálogo entero</em><br/>
+            mientras tú duermes.
+          </h1>
+
+          <p class="amp-hero-desc">
+            Plugin para <strong>WordPress / WooCommerce</strong> y módulo para
+            <strong>PrestaShop</strong> que genera fichas de producto, SEO,
+            traducciones y categorías con IA generativa. Multiplica tu catálogo
+            sin contratar redactores y sin que tus posiciones se desplomen.
+          </p>
+
+          <div class="amp-hero-actions">
+            <a href="#planes" class="amp-btn amp-btn--primary">
+              Probar 14 días gratis
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#demo" class="amp-btn amp-btn--ghost">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+              Ver demo en vivo
+            </a>
+          </div>
+
+          <div class="amp-hero-meta">
+            <div class="amp-stat">
+              <div class="amp-stat-num">12k+</div>
+              <div class="amp-stat-cap">tiendas usándolo</div>
+            </div>
+            <div class="amp-stat">
+              <div class="amp-stat-num">4.9 ★</div>
+              <div class="amp-stat-cap">127 reviews</div>
+            </div>
+            <div class="amp-stat">
+              <div class="amp-stat-num">3 min</div>
+              <div class="amp-stat-cap">para empezar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual mockup: panel admin generando ficha en vivo -->
+        <div class="amp-hero-aside" aria-hidden="true">
+          <div class="amp-mock">
+            <div class="amp-mock-bar">
+              <span class="amp-mock-dot amp-mock-dot--r"></span>
+              <span class="amp-mock-dot amp-mock-dot--y"></span>
+              <span class="amp-mock-dot amp-mock-dot--g"></span>
+              <span class="amp-mock-tab">/wp-admin/post.php?post=2847</span>
+            </div>
+
+            <div class="amp-mock-body">
+              <div class="amp-mock-head">
+                <div class="amp-mock-thumb">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.5"/><path d="m21 15-3.5-3.5a2 2 0 0 0-2.8 0L4 22"/></svg>
+                </div>
+                <div>
+                  <div class="amp-mock-prod">Botines Chelsea piel napa</div>
+                  <div class="amp-mock-sku">SKU FW-CH-2847 · Sin descripción</div>
+                </div>
+                <span class="amp-mock-pill">draft</span>
+              </div>
+
+              <div class="amp-mock-section">
+                <div class="amp-mock-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                  Generando descripción con IA
+                </div>
+                <div class="amp-typewriter">
+                  Botines Chelsea de piel napa premium con elásticos laterales
+                  cosidos y suela de caucho antideslizante. Diseño atemporal
+                  hecho en España, listos para combinar con vaquero o traje.
+                  <span class="amp-caret"></span>
+                </div>
+              </div>
+
+              <div class="amp-mock-meta">
+                <div class="amp-mock-meta-row">
+                  <span class="amp-mock-key">Title SEO</span>
+                  <span class="amp-mock-val">Botines Chelsea piel napa hechos en España | Marca</span>
+                </div>
+                <div class="amp-mock-meta-row">
+                  <span class="amp-mock-key">Meta description</span>
+                  <span class="amp-mock-val">Chelsea de napa con suela de caucho. Hechos en España, envío 24h y devolución gratis…</span>
+                </div>
+                <div class="amp-mock-meta-row">
+                  <span class="amp-mock-key">ALT imagen</span>
+                  <span class="amp-mock-val">Botín Chelsea negro de piel napa con elástico lateral</span>
+                </div>
+                <div class="amp-mock-meta-row">
+                  <span class="amp-mock-key">Categorías</span>
+                  <span class="amp-mock-val">
+                    <span class="amp-tag">Hombre</span>
+                    <span class="amp-tag">Botines</span>
+                    <span class="amp-tag">Piel</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="amp-mock-foot">
+                <div class="amp-progress">
+                  <span class="amp-progress-bar"></span>
+                </div>
+                <span class="amp-mock-status">Generando 3 idiomas · 2 de 12 fichas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="amp-mock-badge amp-mock-badge--top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <div class="amp-badge-num">12 fichas</div>
+              <div class="amp-badge-cap">en 38 segundos</div>
+            </div>
+          </div>
+
+          <div class="amp-mock-badge amp-mock-badge--bot">
+            <span class="amp-badge-icon">SEO</span>
+            <div>
+              <div class="amp-badge-num">+187%</div>
+              <div class="amp-badge-cap">tráfico orgánico</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust strip dentro del hero (ayuda a romper la fold) -->
+      <div class="container">
+        <div class="amp-trust">
+          <span class="amp-trust-label">Compatible con</span>
+          <div class="amp-trust-grid">
+            <div class="amp-trust-item">WordPress · WooCommerce</div>
+            <div class="amp-trust-item">PrestaShop 1.7 / 8.x</div>
+            <div class="amp-trust-item">OpenAI · Claude · Gemini</div>
+            <div class="amp-trust-item">WPML · Polylang</div>
+            <div class="amp-trust-item">Yoast · Rank Math</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BENEFITS / VALUE PROP ═══ -->
+    <section class="amp-section">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">El cambio</div>
+          <h2 class="amp-h2">Tu equipo deja de copiar fichas<br/><em>y empieza a vender.</em></h2>
+          <p class="amp-section-desc">
+            Tres horas escribiendo una ficha que va a leer un crawler. Multiplícalo por 5.000 productos.
+            Nadie en tu negocio merece eso. La IA no viene a reemplazar a tu equipo: viene a quitarles el trabajo plano.
+          </p>
+        </div>
+
+        <div class="amp-bigstats">
+          <div class="amp-bigstat">
+            <div class="amp-bigstat-num">94%</div>
+            <p>menos tiempo para publicar un nuevo producto en tu catálogo principal y secundarios.</p>
+          </div>
+          <div class="amp-bigstat">
+            <div class="amp-bigstat-num">187%</div>
+            <p>de incremento medio en tráfico orgánico en los primeros 90 días tras reescribir el catálogo.</p>
+          </div>
+          <div class="amp-bigstat">
+            <div class="amp-bigstat-num">40+</div>
+            <p>idiomas listos sin traductores externos: lanzas mercado nuevo en una tarde, no en seis semanas.</p>
+          </div>
+          <div class="amp-bigstat">
+            <div class="amp-bigstat-num">3 min</div>
+            <p>desde que descargas el ZIP hasta que generas tu primera ficha. Sin developer, sin agencia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PLATFORMS ═══ -->
+    <section class="amp-section amp-section--cream">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Plataformas</div>
+          <h2 class="amp-h2">Un único producto.<br/><em>Dos motores nativos.</em></h2>
+        </div>
+        <div class="amp-platforms">
+          {platforms.map(p => (
+            <div class={`amp-platform amp-platform--${p.key}`}>
+              <div class="amp-platform-icon" set:html={p.icon} />
+              <div>
+                <h3>{p.name}</h3>
+                <p>{p.sub}</p>
+              </div>
+              <div class="amp-platform-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="amp-platforms-note">Una licencia te incluye los dos. Sin sobrecoste por plataforma.</p>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURES GRID ═══ -->
+    <section id="features" class="amp-section">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Funcionalidades</div>
+          <h2 class="amp-h2">Todo lo que tu tienda necesita,<br/><em>sin diez plugins encadenados.</em></h2>
+          <p class="amp-section-desc">Un solo plugin sustituye al generador de descripciones, al traductor, al optimizador SEO, al gestor de imágenes y al chatbot. Menos plugins = más velocidad, menos conflictos, menos coste.</p>
+        </div>
+
+        <div class="amp-features">
+          {features.map(f => (
+            <article class="amp-feature">
+              <div class={`amp-feature-icon amp-feature-icon--${f.iconColor}`} set:html={f.icon} />
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ DEMO / LIVE PREVIEW ═══ -->
+    <section id="demo" class="amp-section amp-section--dark">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill amp-pill--light">Antes / Después</div>
+          <h2 class="amp-h2 amp-h2--light">Una ficha real,<br/><em>en 8 segundos.</em></h2>
+          <p class="amp-section-desc amp-section-desc--light">El mismo producto, antes y después de pasar por AI Merchant Pro. Datos reales, pulsa para alternar.</p>
+        </div>
+
+        <div class="amp-compare">
+          <div class="amp-compare-card amp-compare-card--before">
+            <div class="amp-compare-head">
+              <span class="amp-compare-tag amp-compare-tag--bad">Antes</span>
+              <span class="amp-compare-meta">SEO score 38 · 0 idiomas</span>
+            </div>
+            <div class="amp-compare-prod">Reloj automático modelo 1812</div>
+            <p class="amp-compare-text">
+              Reloj automático con caja de acero inoxidable. Esfera negra. Movimiento mecánico. Cristal mineral. Correa de piel.
+            </p>
+            <ul class="amp-compare-list amp-compare-list--bad">
+              <li><span>✕</span>Sin meta description</li>
+              <li><span>✕</span>Sin schema Product/Offer</li>
+              <li><span>✕</span>ALT imagen vacío</li>
+              <li><span>✕</span>Categoría genérica "Otros"</li>
+            </ul>
+          </div>
+
+          <div class="amp-compare-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+
+          <div class="amp-compare-card amp-compare-card--after">
+            <div class="amp-compare-head">
+              <span class="amp-compare-tag amp-compare-tag--good">Después</span>
+              <span class="amp-compare-meta">SEO score 96 · 8 idiomas</span>
+            </div>
+            <div class="amp-compare-prod">Reloj automático 1812 · acero y cuero, 41 mm</div>
+            <p class="amp-compare-text">
+              Reloj mecánico de cuerda automática con caja de acero 316L pulido y satinado, esfera negra mate con índices aplicados y movimiento suizo de 38 horas de reserva. Cristal zafiro y correa de piel italiana cosida a mano. Pensado para llevarlo cada día y heredarlo en treinta años.
+            </p>
+            <ul class="amp-compare-list amp-compare-list--good">
+              <li><span>✓</span>Meta description orientada a CTR</li>
+              <li><span>✓</span>Schema Product + Offer + Brand</li>
+              <li><span>✓</span>ALT descriptivo en 8 idiomas</li>
+              <li><span>✓</span>Categoría "Relojes &gt; Automáticos &gt; Hombre"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="amp-section amp-section--cream">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Cómo funciona</div>
+          <h2 class="amp-h2">Tres pasos.<br/><em>Cero fricción.</em></h2>
+        </div>
+        <div class="amp-steps">
+          {steps.map((s, i) => (
+            <>
+              <div class="amp-step">
+                <div class="amp-step-num">{s.num}</div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+              {i < steps.length - 1 && (
+                <div class="amp-step-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+              )}
+            </>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ USE CASES ═══ -->
+    <section class="amp-section">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Para quién es</div>
+          <h2 class="amp-h2">Si gestionas un catálogo,<br/><em>esto es para ti.</em></h2>
+        </div>
+        <div class="amp-uses">
+          {useCases.map(u => (
+            <div class="amp-use">
+              <span class="amp-use-tag">{u.label}</span>
+              <h3>{u.title}</h3>
+              <p>{u.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INTEGRATIONS ═══ -->
+    <section class="amp-section amp-section--cream">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Integraciones</div>
+          <h2 class="amp-h2">Conecta con todo lo que<br/><em>ya tienes funcionando.</em></h2>
+        </div>
+        <div class="amp-integrations">
+          {integrations.map(i => (
+            <div class="amp-integration">{i}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PRICING ═══ -->
+    <section id="planes" class="amp-section">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Precios</div>
+          <h2 class="amp-h2">Una licencia.<br/><em>Sin permanencia, sin sorpresas.</em></h2>
+          <p class="amp-section-desc">Pago único anual. Garantía de devolución de 14 días. Cancela cuando quieras y sigue usando la versión actual de por vida en Pro y Agency.</p>
+        </div>
+
+        <div class="amp-plans">
+          {plans.map(p => (
+            <div class={`amp-plan${p.featured ? ' amp-plan--featured' : ''}`}>
+              {p.featured && <div class="amp-plan-banner">Más popular</div>}
+              <div class="amp-plan-head">
+                <div class="amp-plan-name">{p.name}</div>
+                <div class="amp-plan-badge">{p.badge}</div>
+              </div>
+              <div class="amp-plan-price">
+                <span class="amp-plan-num">{p.price}</span>
+                <span class="amp-plan-period">{p.period}</span>
+              </div>
+              <ul class="amp-plan-list">
+                {p.items.map(it => (
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    {it}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contacto" class={`amp-btn ${p.featured ? 'amp-btn--primary' : 'amp-btn--outline'}`} style="width:100%;justify-content:center">
+                {p.cta}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p class="amp-plans-note">
+          ¿Tienes una agencia con más de 25 clientes o necesitas integración custom?
+          <a href="#contacto">Hablemos</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ TESTIMONIAL ═══ -->
+    <section class="amp-section amp-section--cream">
+      <div class="container" style="max-width:880px">
+        <figure class="amp-quote">
+          <svg class="amp-quote-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 21V11c0-4 2-7 7-8v3c-3 1-4 3-4 6h4v9H3zm12 0V11c0-4 2-7 7-8v3c-3 1-4 3-4 6h4v9h-7z"/>
+          </svg>
+          <blockquote>
+            En seis semanas reescribimos 8.400 fichas en cuatro idiomas. Antes lo
+            habríamos hecho en seis meses con dos redactores externos y un coste
+            de 14.000 €. Con AI Merchant Pro lo hicimos con una persona y la
+            licencia de 129 €.
+          </blockquote>
+          <figcaption>
+            <strong>Mario Vaquero</strong>
+            <span>Head of Ecommerce · Lapostigo Shoes</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="amp-section">
+      <div class="container" style="max-width:820px">
+        <div class="amp-section-header">
+          <div class="amp-pill">FAQ</div>
+          <h2 class="amp-h2">Lo que la gente nos pregunta<br/><em>antes de comprar.</em></h2>
+        </div>
+        <div class="amp-faq">
+          {faqs.map(item => (
+            <details class="amp-faq-item">
+              <summary>
+                <span>{item.q}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="amp-faq-ans"><p>{item.a}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <section id="contacto" class="amp-cta">
+      <div class="amp-cta-grid"  aria-hidden="true"></div>
+      <div class="amp-cta-glow" aria-hidden="true"></div>
+      <div class="container amp-cta-inner">
+        <div class="amp-pill amp-pill--light">Empieza hoy</div>
+        <h2 class="amp-h2 amp-h2--light">
+          Tu próximo redactor<br/>
+          <em>no necesita café.</em>
+        </h2>
+        <p class="amp-cta-desc">
+          14 días gratis, sin tarjeta. Si no notas la diferencia en tu catálogo, no nos pagas. Tan simple como eso.
+        </p>
+        <div class="amp-cta-actions">
+          <a href="https://aimerchantpro.com" target="_blank" rel="noopener" class="amp-btn amp-btn--primary amp-btn--lg">
+            Probar AI Merchant Pro
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://aimerchantpro.com/demo" target="_blank" rel="noopener" class="amp-btn amp-btn--ghost-light amp-btn--lg">
+            Reservar demo guiada
+          </a>
+        </div>
+        <div class="amp-cta-trust">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 14 días gratis</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sin tarjeta de crédito</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Devolución 14 días</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     AI MERCHANT PRO · Landing — design tokens
+     ═══════════════════════════════════════════════════════════ */
+  .amp-page {
+    --amp-ink:      #0c0d12;
+    --amp-ink-soft: #1f2230;
+    --amp-mid:      #4f5466;
+    --amp-mute:     #7d8398;
+    --amp-paper:    #fbfaf6;
+    --amp-cream:    #f3efe7;
+    --amp-card:     #ffffff;
+    --amp-border:   rgba(15,15,30,0.08);
+    --amp-border-s: rgba(15,15,30,0.14);
+
+    --amp-amber:    #f59e0b;
+    --amp-amber-d:  #b45309;
+    --amp-violet:   #6d4cff;
+    --amp-violet-d: #4f33cc;
+    --amp-pink:     #ff5d8f;
+    --amp-mint:     #10b981;
+    --amp-blue:     #3b82f6;
+    --amp-cyan:     #06b6d4;
+    --amp-red:      #ef4444;
+
+    --amp-serif:    'Instrument Serif', Georgia, serif;
+    --amp-mono:     'JetBrains Mono', monospace;
+  }
+
+  /* ── Section primitives ── */
+  .amp-section { padding: 6rem 0; }
+  .amp-section--cream { background: var(--amp-cream); }
+  .amp-section--dark  { background: var(--amp-ink); }
+
+  .amp-section-header { text-align: center; margin-bottom: 4rem; }
+  .amp-section-desc {
+    color: var(--amp-mid); font-size: 1.0625rem;
+    margin: 1rem auto 0; max-width: 620px; line-height: 1.6;
+  }
+  .amp-section-desc--light { color: rgba(251,250,246,0.7); }
+
+  .amp-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.35rem 0.85rem; border-radius: 999px;
+    font-family: var(--amp-mono);
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(109,76,255,0.10));
+    color: var(--amp-amber-d);
+    border: 1px solid rgba(245,158,11,0.22);
+  }
+  .amp-pill--light {
+    background: rgba(245,158,11,0.18);
+    color: #fbbf24;
+    border-color: rgba(245,158,11,0.35);
+  }
+
+  .amp-h2 {
+    font-family: var(--amp-serif);
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    margin: 1rem 0 0; color: var(--amp-ink);
+  }
+  .amp-h2 em {
+    font-style: italic;
+    background: linear-gradient(95deg, var(--amp-amber-d), var(--amp-violet));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .amp-h2--light { color: var(--amp-paper); }
+  .amp-h2--light em {
+    background: linear-gradient(95deg, #fbbf24, #a78bfa);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* ── Buttons ── */
+  .amp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem 1.5rem; border-radius: 10px;
+    font-weight: 600; font-size: 0.9375rem; text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 220ms cubic-bezier(0.16,1,0.3,1);
+    white-space: nowrap;
+  }
+  .amp-btn--lg { padding: 1.05rem 1.85rem; font-size: 1rem; border-radius: 12px; }
+  .amp-btn--primary {
+    background: linear-gradient(180deg, var(--amp-amber) 0%, var(--amp-amber-d) 100%);
+    color: #fff;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.4) inset,
+      0 8px 22px -6px rgba(245,158,11,0.55);
+  }
+  .amp-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.4) inset,
+      0 14px 30px -6px rgba(245,158,11,0.65);
+  }
+  .amp-btn--ghost {
+    background: rgba(15,15,30,0.04); color: var(--amp-ink);
+    border-color: var(--amp-border-s);
+  }
+  .amp-btn--ghost:hover { background: rgba(15,15,30,0.07); border-color: var(--amp-ink); }
+  .amp-btn--ghost-light {
+    background: rgba(255,255,255,0.06); color: var(--amp-paper);
+    border-color: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+  }
+  .amp-btn--ghost-light:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.35); }
+  .amp-btn--outline {
+    background: var(--amp-paper); color: var(--amp-ink);
+    border-color: var(--amp-border-s);
+  }
+  .amp-btn--outline:hover { border-color: var(--amp-ink); transform: translateY(-2px); }
+
+  /* ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ */
+  .amp-hero {
+    position: relative;
+    padding: 5rem 0 4rem;
+    background:
+      radial-gradient(1100px 600px at 90% -10%, rgba(109,76,255,0.10), transparent 60%),
+      radial-gradient(900px 600px at -10% 30%, rgba(245,158,11,0.08), transparent 65%),
+      var(--amp-paper);
+    overflow: hidden;
+  }
+  .amp-hero-grid {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(var(--amp-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--amp-border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 10%, transparent 70%);
+    opacity: 0.55;
+  }
+  .amp-hero-glow-a, .amp-hero-glow-b {
+    position: absolute; pointer-events: none; z-index: 0;
+    border-radius: 50%; filter: blur(60px);
+  }
+  .amp-hero-glow-a {
+    top: -160px; right: -160px; width: 540px; height: 540px;
+    background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 60%);
+    animation: amp-glow 14s ease-in-out infinite;
+  }
+  .amp-hero-glow-b {
+    bottom: -200px; left: -120px; width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(109,76,255,0.16), transparent 60%);
+    animation: amp-glow 16s ease-in-out infinite reverse;
+  }
+  @keyframes amp-glow {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50%      { transform: translate(40px,-30px) scale(1.08); }
+  }
+
+  /* Floating orbs */
+  .amp-orbit { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  .amp-orb {
+    position: absolute; border-radius: 50%;
+    background: linear-gradient(135deg, var(--amp-amber), var(--amp-violet));
+    box-shadow: 0 16px 40px -10px rgba(109,76,255,0.45);
+    opacity: 0.75;
+  }
+  .amp-orb--1 { top: 14%;  left: 6%;  width: 14px; height: 14px; animation: amp-float 7s ease-in-out infinite; }
+  .amp-orb--2 { top: 60%;  left: 3%;  width: 8px;  height: 8px;  animation: amp-float 9s ease-in-out 1s infinite; opacity: 0.6; }
+  .amp-orb--3 { top: 30%;  right: 10%; width: 10px; height: 10px; animation: amp-float 11s ease-in-out 0.5s infinite; opacity: 0.7; }
+  @keyframes amp-float {
+    0%, 100% { transform: translate(0,0); }
+    50%      { transform: translate(0,-22px); }
+  }
+
+  .amp-hero-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: 4rem; align-items: center;
+    padding-top: 1rem; padding-bottom: 3.5rem;
+  }
+  .amp-hero-copy { max-width: 620px; animation: amp-fade-up 700ms ease-out both; }
+
+  .amp-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.4rem 0.9rem; border-radius: 999px;
+    border: 1px solid var(--amp-border-s);
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+    font-family: var(--amp-mono); font-size: 0.7rem;
+    color: var(--amp-ink-soft);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .amp-dot {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--amp-amber);
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.22);
+    animation: amp-pulse 2s ease-in-out infinite;
+  }
+  @keyframes amp-pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(245,158,11,0.22); }
+    50%      { box-shadow: 0 0 0 7px rgba(245,158,11,0); }
+  }
+
+  .amp-hero-title {
+    font-family: var(--amp-serif);
+    font-size: clamp(2.55rem, 5.4vw, 4.5rem);
+    font-weight: 400; line-height: 1.02; letter-spacing: -0.025em;
+    margin: 0 0 1.4rem; color: var(--amp-ink);
+  }
+  .amp-hero-title em {
+    font-style: italic;
+    background: linear-gradient(95deg, var(--amp-amber-d), var(--amp-violet));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .amp-hero-desc {
+    font-size: 1.0625rem; color: var(--amp-mid);
+    line-height: 1.65; margin: 0 0 2rem; max-width: 560px;
+  }
+  .amp-hero-desc strong { color: var(--amp-ink); font-weight: 600; }
+
+  .amp-hero-actions {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .amp-hero-meta {
+    display: flex; gap: 2.25rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--amp-border-s);
+  }
+  .amp-stat-num {
+    font-family: var(--amp-serif); font-size: 1.85rem;
+    line-height: 1; letter-spacing: -0.02em; color: var(--amp-ink);
+  }
+  .amp-stat-cap { font-size: 0.78rem; color: var(--amp-mute); margin-top: 4px; }
+
+  /* ── Hero mockup ── */
+  .amp-hero-aside {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 480px;
+    animation: amp-fade-up 800ms ease-out 80ms both;
+  }
+  @keyframes amp-fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .amp-mock {
+    width: 100%; max-width: 460px;
+    background: var(--amp-card);
+    border: 1px solid var(--amp-border-s);
+    border-radius: 18px; overflow: hidden;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.7) inset,
+      0 30px 70px -20px rgba(15,15,30,0.30),
+      0 12px 30px -10px rgba(109,76,255,0.18);
+    transform: rotate(-1deg);
+    transition: transform 600ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .amp-mock:hover { transform: rotate(-0.2deg) translateY(-4px); }
+
+  .amp-mock-bar {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 0.9rem;
+    background: linear-gradient(180deg, #f5f3ee, #ece8de);
+    border-bottom: 1px solid var(--amp-border);
+  }
+  .amp-mock-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .amp-mock-dot--r { background: #fb6566; }
+  .amp-mock-dot--y { background: #fdc04c; }
+  .amp-mock-dot--g { background: #4cd685; }
+  .amp-mock-tab {
+    margin-left: 0.5rem; padding: 0.2rem 0.65rem;
+    background: var(--amp-card); border: 1px solid var(--amp-border);
+    border-radius: 6px; font-family: var(--amp-mono);
+    font-size: 0.7rem; color: var(--amp-mute);
+  }
+
+  .amp-mock-body { padding: 1.25rem; }
+
+  .amp-mock-head {
+    display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.1rem;
+  }
+  .amp-mock-thumb {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: linear-gradient(135deg, #fef3c7, #ddd6fe);
+    color: var(--amp-ink-soft);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .amp-mock-thumb svg { width: 22px; height: 22px; }
+  .amp-mock-prod { font-weight: 600; font-size: 0.95rem; color: var(--amp-ink); }
+  .amp-mock-sku  { font-family: var(--amp-mono); font-size: 0.7rem; color: var(--amp-mute); margin-top: 2px; }
+  .amp-mock-pill {
+    margin-left: auto;
+    background: rgba(239,68,68,0.10); color: var(--amp-red);
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    padding: 0.2rem 0.55rem; border-radius: 6px; letter-spacing: 0.05em;
+  }
+
+  .amp-mock-section {
+    background: linear-gradient(180deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+    border: 1px solid rgba(245,158,11,0.20);
+    border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 1rem;
+  }
+  .amp-mock-label {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-family: var(--amp-mono); font-size: 0.68rem;
+    color: var(--amp-amber-d); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 0.55rem;
+  }
+  .amp-mock-label svg { width: 13px; height: 13px; animation: amp-spin 3s linear infinite; }
+  @keyframes amp-spin { to { transform: rotate(360deg); } }
+
+  .amp-typewriter {
+    font-size: 0.85rem; line-height: 1.55; color: var(--amp-ink-soft);
+    overflow: hidden; white-space: normal;
+    animation: amp-type 4s steps(60, end) 400ms both;
+  }
+  @keyframes amp-type {
+    from { max-height: 0; }
+    to   { max-height: 200px; }
+  }
+  .amp-caret {
+    display: inline-block; width: 7px; height: 1em;
+    margin-left: 2px; vertical-align: -3px;
+    background: var(--amp-amber);
+    animation: amp-blink 1s step-end infinite;
+  }
+  @keyframes amp-blink { 50% { opacity: 0; } }
+
+  .amp-mock-meta {
+    display: flex; flex-direction: column; gap: 0.55rem;
+    font-size: 0.78rem; padding-top: 0.5rem;
+    border-top: 1px dashed var(--amp-border);
+  }
+  .amp-mock-meta-row {
+    display: grid; grid-template-columns: 105px 1fr; gap: 0.7rem; align-items: start;
+  }
+  .amp-mock-key { font-family: var(--amp-mono); color: var(--amp-mute); font-size: 0.68rem; text-transform: uppercase; padding-top: 2px; }
+  .amp-mock-val { color: var(--amp-ink-soft); line-height: 1.45; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+  .amp-tag {
+    background: rgba(109,76,255,0.10); color: var(--amp-violet-d);
+    border: 1px solid rgba(109,76,255,0.18);
+    padding: 0.1rem 0.5rem; border-radius: 6px;
+    font-size: 0.7rem; font-weight: 500;
+  }
+
+  .amp-mock-foot {
+    margin-top: 1rem; padding-top: 0.85rem;
+    border-top: 1px solid var(--amp-border);
+    display: flex; align-items: center; gap: 0.85rem;
+  }
+  .amp-progress {
+    flex: 1; height: 6px; background: rgba(15,15,30,0.06);
+    border-radius: 99px; overflow: hidden;
+  }
+  .amp-progress-bar {
+    display: block; height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--amp-amber), var(--amp-violet));
+    border-radius: 99px;
+    animation: amp-fill 4s cubic-bezier(0.4,0,0.2,1) 200ms infinite;
+  }
+  @keyframes amp-fill {
+    0%   { width: 0;   transform: translateX(0); }
+    70%  { width: 92%; }
+    100% { width: 100%; opacity: 0.4; }
+  }
+  .amp-mock-status {
+    font-family: var(--amp-mono); font-size: 0.7rem;
+    color: var(--amp-mute); white-space: nowrap;
+  }
+
+  /* Floating badges */
+  .amp-mock-badge {
+    position: absolute; display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.7rem 0.95rem; border-radius: 14px;
+    background: var(--amp-ink); color: var(--amp-paper);
+    box-shadow: 0 16px 36px -8px rgba(15,15,30,0.35);
+    z-index: 3;
+  }
+  .amp-mock-badge--top {
+    top: -16px; left: -22px;
+    animation: amp-float 4s ease-in-out infinite;
+  }
+  .amp-mock-badge--top svg {
+    width: 20px; height: 20px;
+    padding: 6px; border-radius: 8px;
+    background: var(--amp-mint); color: #fff; box-sizing: content-box;
+  }
+  .amp-mock-badge--bot {
+    bottom: -16px; right: -18px;
+    animation: amp-float 5.5s ease-in-out 0.5s infinite;
+  }
+  .amp-badge-icon {
+    font-family: var(--amp-mono); font-weight: 700;
+    background: linear-gradient(135deg, var(--amp-amber), var(--amp-violet));
+    color: var(--amp-ink);
+    width: 38px; height: 38px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; letter-spacing: 0.04em;
+  }
+  .amp-badge-num {
+    font-family: var(--amp-serif);
+    font-size: 1.05rem; line-height: 1; letter-spacing: -0.02em;
+  }
+  .amp-badge-cap {
+    font-size: 0.66rem; color: rgba(251,250,246,0.65);
+    margin-top: 3px; letter-spacing: 0.02em;
+  }
+
+  /* Trust strip */
+  .amp-trust {
+    position: relative; z-index: 2;
+    margin-top: 1rem; padding: 1.5rem 0 0.5rem;
+    border-top: 1px solid var(--amp-border);
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .amp-trust-label {
+    font-family: var(--amp-mono); font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--amp-mute);
+  }
+  .amp-trust-grid {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 2.5rem;
+    justify-content: center;
+  }
+  .amp-trust-item {
+    font-size: 0.85rem; font-weight: 500; color: var(--amp-ink-soft);
+    opacity: 0.8;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     BIG STATS
+     ═══════════════════════════════════════════════════════════ */
+  .amp-bigstats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+  }
+  .amp-bigstat {
+    background: var(--amp-card); border: 1px solid var(--amp-border-s);
+    border-radius: 16px; padding: 1.75rem;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .amp-bigstat:hover {
+    border-color: var(--amp-amber);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 50px -16px rgba(15,15,30,0.18);
+  }
+  .amp-bigstat-num {
+    font-family: var(--amp-serif);
+    font-size: 3rem; line-height: 1; letter-spacing: -0.03em;
+    color: var(--amp-ink); margin-bottom: 0.6rem;
+    background: linear-gradient(95deg, var(--amp-amber-d), var(--amp-violet));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .amp-bigstat p {
+    font-size: 0.9375rem; color: var(--amp-mid);
+    line-height: 1.55; margin: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     PLATFORMS
+     ═══════════════════════════════════════════════════════════ */
+  .amp-platforms {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    max-width: 880px; margin: 0 auto;
+  }
+  .amp-platform {
+    background: var(--amp-card); border: 1px solid var(--amp-border-s);
+    border-radius: 16px; padding: 1.75rem;
+    display: flex; align-items: center; gap: 1.15rem;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+    position: relative; overflow: hidden;
+  }
+  .amp-platform::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(245,158,11,0.08), transparent 60%);
+    opacity: 0; transition: opacity 300ms;
+  }
+  .amp-platform:hover { border-color: var(--amp-ink); transform: translateY(-3px); }
+  .amp-platform:hover::before { opacity: 1; }
+  .amp-platform-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: linear-gradient(135deg, #fef3c7, #ddd6fe);
+    color: var(--amp-ink-soft); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .amp-platform-icon svg { width: 26px; height: 26px; }
+  .amp-platform h3 {
+    font-family: var(--amp-serif); font-size: 1.4rem; font-weight: 400;
+    line-height: 1.2; margin: 0 0 0.25rem; color: var(--amp-ink);
+  }
+  .amp-platform p {
+    font-family: var(--amp-mono);
+    font-size: 0.78rem; color: var(--amp-mute); margin: 0;
+  }
+  .amp-platform-arrow {
+    margin-left: auto; color: var(--amp-mute);
+    transition: all 250ms;
+  }
+  .amp-platform-arrow svg { width: 18px; height: 18px; }
+  .amp-platform:hover .amp-platform-arrow { color: var(--amp-amber-d); transform: translateX(4px); }
+  .amp-platforms-note {
+    text-align: center; color: var(--amp-mute);
+    font-size: 0.9rem; margin-top: 1.75rem;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     FEATURES
+     ═══════════════════════════════════════════════════════════ */
+  .amp-features {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  }
+  .amp-feature {
+    background: var(--amp-card); border: 1px solid var(--amp-border-s);
+    border-radius: 16px; padding: 1.85rem;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .amp-feature:hover {
+    border-color: var(--amp-ink);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 50px -16px rgba(15,15,30,0.15);
+  }
+  .amp-feature h3 {
+    font-family: var(--amp-serif); font-size: 1.35rem; font-weight: 400;
+    line-height: 1.25; margin: 0 0 0.55rem; color: var(--amp-ink);
+  }
+  .amp-feature p {
+    font-size: 0.9375rem; color: var(--amp-mid);
+    line-height: 1.65; margin: 0;
+  }
+  .amp-feature-icon {
+    width: 46px; height: 46px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.1rem;
+  }
+  .amp-feature-icon svg { width: 22px; height: 22px; }
+  .amp-feature-icon--amber  { background: rgba(245,158,11,0.12); color: var(--amp-amber-d); }
+  .amp-feature-icon--blue   { background: rgba(59,130,246,0.10); color: var(--amp-blue); }
+  .amp-feature-icon--green  { background: rgba(16,185,129,0.10); color: var(--amp-mint); }
+  .amp-feature-icon--pink   { background: rgba(255,93,143,0.12); color: var(--amp-pink); }
+  .amp-feature-icon--violet { background: rgba(109,76,255,0.10); color: var(--amp-violet); }
+  .amp-feature-icon--cyan   { background: rgba(6,182,212,0.10);  color: var(--amp-cyan); }
+  .amp-feature-icon--red    { background: rgba(239,68,68,0.10);  color: var(--amp-red); }
+
+  /* ═══════════════════════════════════════════════════════════
+     COMPARE (before / after)
+     ═══════════════════════════════════════════════════════════ */
+  .amp-compare {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 1.25rem; align-items: stretch; max-width: 1080px; margin: 0 auto;
+  }
+  .amp-compare-card {
+    border-radius: 16px; padding: 1.75rem;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(8px);
+  }
+  .amp-compare-card--before { background: rgba(239,68,68,0.04); border-color: rgba(239,68,68,0.18); }
+  .amp-compare-card--after  {
+    background: linear-gradient(160deg, rgba(245,158,11,0.10), rgba(109,76,255,0.08));
+    border-color: rgba(245,158,11,0.28);
+  }
+  .amp-compare-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .amp-compare-tag {
+    font-family: var(--amp-mono);
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+  }
+  .amp-compare-tag--bad  { background: rgba(239,68,68,0.16);  color: #fca5a5; }
+  .amp-compare-tag--good { background: rgba(245,158,11,0.20); color: #fbbf24; }
+  .amp-compare-meta { font-family: var(--amp-mono); font-size: 0.72rem; color: rgba(251,250,246,0.5); }
+  .amp-compare-prod {
+    font-family: var(--amp-serif); font-size: 1.5rem;
+    font-weight: 400; color: var(--amp-paper); margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+  .amp-compare-text {
+    font-size: 0.9375rem; line-height: 1.65;
+    color: rgba(251,250,246,0.72); margin: 0 0 1.1rem;
+  }
+  .amp-compare-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;
+  }
+  .amp-compare-list li {
+    display: flex; align-items: center; gap: 0.55rem;
+    font-size: 0.875rem; color: rgba(251,250,246,0.78);
+  }
+  .amp-compare-list li span {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700;
+  }
+  .amp-compare-list--bad  li span { background: rgba(239,68,68,0.18); color: #fca5a5; }
+  .amp-compare-list--good li span { background: rgba(16,185,129,0.18); color: var(--amp-mint); }
+  .amp-compare-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--amp-amber);
+    background: rgba(245,158,11,0.10);
+    border-radius: 50%; width: 56px; height: 56px;
+    align-self: center; margin: 0 auto;
+    box-shadow: 0 0 0 8px rgba(245,158,11,0.06);
+  }
+  .amp-compare-arrow svg { width: 24px; height: 24px; }
+
+  /* ═══════════════════════════════════════════════════════════
+     STEPS
+     ═══════════════════════════════════════════════════════════ */
+  .amp-steps {
+    display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 1.25rem; align-items: stretch;
+  }
+  .amp-step {
+    background: var(--amp-card); border: 1px solid var(--amp-border);
+    border-radius: 16px; padding: 2rem;
+    display: flex; flex-direction: column;
+  }
+  .amp-step-num {
+    font-family: var(--amp-serif); font-size: 3rem;
+    line-height: 1; opacity: 0.85;
+    background: linear-gradient(95deg, var(--amp-amber-d), var(--amp-violet));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: 1rem;
+  }
+  .amp-step h3 {
+    font-family: var(--amp-serif); font-size: 1.35rem; font-weight: 400;
+    margin: 0 0 0.5rem; color: var(--amp-ink); line-height: 1.25;
+  }
+  .amp-step p {
+    font-size: 0.9375rem; color: var(--amp-mid);
+    line-height: 1.65; margin: 0;
+  }
+  .amp-step-arrow {
+    color: var(--amp-amber); display: flex; align-items: center;
+  }
+  .amp-step-arrow svg { width: 24px; height: 24px; }
+
+  /* ═══════════════════════════════════════════════════════════
+     USE CASES
+     ═══════════════════════════════════════════════════════════ */
+  .amp-uses {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  }
+  .amp-use {
+    background: var(--amp-card); border: 1px solid var(--amp-border-s);
+    border-radius: 16px; padding: 2rem;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .amp-use:hover { border-color: var(--amp-ink); transform: translateY(-4px); }
+  .amp-use-tag {
+    display: inline-block;
+    font-family: var(--amp-mono); font-size: 0.68rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--amp-amber-d); margin-bottom: 0.85rem;
+  }
+  .amp-use h3 {
+    font-family: var(--amp-serif); font-size: 1.45rem; font-weight: 400;
+    line-height: 1.2; margin: 0 0 0.7rem; color: var(--amp-ink);
+  }
+  .amp-use p {
+    font-size: 0.95rem; color: var(--amp-mid);
+    line-height: 1.65; margin: 0;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     INTEGRATIONS
+     ═══════════════════════════════════════════════════════════ */
+  .amp-integrations {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem; max-width: 880px; margin: 0 auto;
+  }
+  .amp-integration {
+    background: var(--amp-card); border: 1px solid var(--amp-border-s);
+    border-radius: 12px; padding: 0.95rem 1rem;
+    text-align: center; font-size: 0.875rem; font-weight: 500;
+    color: var(--amp-ink-soft);
+    transition: all 200ms ease;
+  }
+  .amp-integration:hover {
+    border-color: var(--amp-amber);
+    color: var(--amp-amber-d);
+    transform: translateY(-2px);
+    background: rgba(245,158,11,0.04);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     PRICING
+     ═══════════════════════════════════════════════════════════ */
+  .amp-plans {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem; max-width: 1100px; margin: 0 auto;
+    align-items: stretch;
+  }
+  .amp-plan {
+    background: var(--amp-card);
+    border: 1px solid var(--amp-border-s);
+    border-radius: 18px; padding: 2rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+    position: relative;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .amp-plan:hover { transform: translateY(-4px); }
+  .amp-plan--featured {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--amp-card), var(--amp-card)) padding-box,
+      linear-gradient(135deg, var(--amp-amber), var(--amp-violet)) border-box;
+    box-shadow: 0 30px 60px -20px rgba(109,76,255,0.25);
+    transform: translateY(-8px);
+  }
+  .amp-plan--featured:hover { transform: translateY(-12px); }
+  .amp-plan-banner {
+    position: absolute; top: -14px; left: 50%;
+    transform: translateX(-50%);
+    padding: 0.35rem 0.85rem; border-radius: 999px;
+    background: linear-gradient(135deg, var(--amp-amber), var(--amp-violet));
+    color: #fff;
+    font-family: var(--amp-mono); font-size: 0.68rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    box-shadow: 0 8px 18px -4px rgba(109,76,255,0.4);
+  }
+  .amp-plan-head { display: flex; flex-direction: column; gap: 0.35rem; }
+  .amp-plan-name {
+    font-family: var(--amp-serif); font-size: 1.65rem;
+    color: var(--amp-ink); line-height: 1;
+  }
+  .amp-plan-badge {
+    font-family: var(--amp-mono); font-size: 0.68rem;
+    color: var(--amp-mute); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .amp-plan-price {
+    display: flex; align-items: baseline; gap: 0.35rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--amp-border-s);
+  }
+  .amp-plan-num {
+    font-family: var(--amp-serif);
+    font-size: 3rem; line-height: 1;
+    letter-spacing: -0.03em; color: var(--amp-ink);
+  }
+  .amp-plan-period { color: var(--amp-mute); font-size: 1rem; }
+  .amp-plan-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.7rem; flex: 1;
+  }
+  .amp-plan-list li {
+    display: flex; gap: 0.7rem; align-items: flex-start;
+    font-size: 0.9rem; color: var(--amp-ink-soft); line-height: 1.5;
+  }
+  .amp-plan-list svg { width: 14px; height: 14px; color: var(--amp-amber); flex-shrink: 0; margin-top: 4px; }
+  .amp-plans-note {
+    text-align: center; color: var(--amp-mute);
+    font-size: 0.9rem; margin-top: 2rem;
+  }
+  .amp-plans-note a { color: var(--amp-amber-d); text-decoration: underline; font-weight: 500; }
+
+  /* ═══════════════════════════════════════════════════════════
+     QUOTE
+     ═══════════════════════════════════════════════════════════ */
+  .amp-quote {
+    background: var(--amp-card); border: 1px solid var(--amp-border-s);
+    border-radius: 20px; padding: 3rem 3.25rem;
+    position: relative; overflow: hidden;
+  }
+  .amp-quote::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: linear-gradient(180deg, var(--amp-amber), var(--amp-violet));
+  }
+  .amp-quote-mark {
+    position: absolute; top: 1.5rem; right: 1.75rem;
+    width: 56px; height: 56px;
+    color: rgba(245,158,11,0.18);
+  }
+  .amp-quote blockquote {
+    font-family: var(--amp-serif); font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+    line-height: 1.4; color: var(--amp-ink);
+    margin: 0 0 1.5rem; font-weight: 400; letter-spacing: -0.01em;
+    position: relative;
+  }
+  .amp-quote figcaption {
+    display: flex; flex-direction: column; gap: 0.15rem;
+    padding-top: 1rem; border-top: 1px solid var(--amp-border);
+  }
+  .amp-quote figcaption strong { font-weight: 700; color: var(--amp-ink); font-size: 0.95rem; }
+  .amp-quote figcaption span { font-size: 0.85rem; color: var(--amp-mute); }
+
+  /* ═══════════════════════════════════════════════════════════
+     FAQ
+     ═══════════════════════════════════════════════════════════ */
+  .amp-faq { border-top: 1px solid var(--amp-border-s); margin-top: 2.5rem; }
+  .amp-faq-item { border-bottom: 1px solid var(--amp-border-s); }
+  .amp-faq-item summary {
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; padding: 1.4rem 0; cursor: pointer;
+    font-family: var(--amp-serif); font-size: 1.2rem; font-weight: 400;
+    color: var(--amp-ink); transition: color 200ms;
+  }
+  .amp-faq-item summary::-webkit-details-marker { display: none; }
+  .amp-faq-item summary:hover { color: var(--amp-amber-d); }
+  .amp-faq-item summary svg {
+    width: 20px; height: 20px; flex-shrink: 0;
+    transition: transform 300ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .amp-faq-item[open] summary svg { transform: rotate(180deg); }
+  .amp-faq-ans {
+    padding: 0 0 1.5rem; color: var(--amp-mid);
+    font-size: 0.9375rem; line-height: 1.7; max-width: 720px;
+    animation: amp-fade-up 350ms ease both;
+  }
+  .amp-faq-ans p { margin: 0; }
+
+  /* ═══════════════════════════════════════════════════════════
+     FINAL CTA
+     ═══════════════════════════════════════════════════════════ */
+  .amp-cta {
+    position: relative; padding: 7rem 0;
+    background:
+      radial-gradient(900px 500px at 80% 100%, rgba(109,76,255,0.30), transparent 60%),
+      radial-gradient(900px 500px at 10% 0%, rgba(245,158,11,0.22), transparent 65%),
+      var(--amp-ink);
+    overflow: hidden;
+  }
+  .amp-cta-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 10%, transparent 70%);
+    opacity: 0.5;
+  }
+  .amp-cta-glow {
+    position: absolute; top: 50%; left: 50%;
+    width: 700px; height: 700px;
+    border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 60%);
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+    animation: amp-glow 18s ease-in-out infinite;
+  }
+  .amp-cta-inner {
+    position: relative; z-index: 2; text-align: center;
+    max-width: 760px; margin: 0 auto;
+  }
+  .amp-cta-inner .amp-pill { margin-bottom: 1.5rem; }
+  .amp-cta-desc {
+    margin: 1.25rem auto 2.25rem;
+    color: rgba(251,250,246,0.72);
+    font-size: 1.0625rem; line-height: 1.6;
+    max-width: 560px;
+  }
+  .amp-cta-actions {
+    display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 1.75rem;
+  }
+  .amp-cta-trust {
+    display: flex; flex-wrap: wrap; gap: 1.25rem 2rem;
+    justify-content: center;
+  }
+  .amp-cta-trust span {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.85rem; color: rgba(251,250,246,0.6);
+    font-family: var(--amp-mono);
+  }
+  .amp-cta-trust svg { color: var(--amp-mint); flex-shrink: 0; }
+
+  /* ═══════════════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .amp-hero-inner { grid-template-columns: 1fr; gap: 3rem; padding-bottom: 2.5rem; }
+    .amp-hero-aside { min-height: auto; order: 2; }
+    .amp-mock { max-width: 480px; margin: 0 auto; }
+    .amp-mock-badge--top { left: -10px; top: -14px; }
+    .amp-mock-badge--bot { right: -10px; bottom: -14px; }
+    .amp-bigstats { grid-template-columns: repeat(2, 1fr); }
+    .amp-platforms { grid-template-columns: 1fr; }
+    .amp-features { grid-template-columns: repeat(2, 1fr); }
+    .amp-uses { grid-template-columns: 1fr; }
+    .amp-integrations { grid-template-columns: repeat(3, 1fr); }
+    .amp-steps { grid-template-columns: 1fr; gap: 1rem; }
+    .amp-step-arrow { transform: rotate(90deg); margin: 0 auto; }
+    .amp-plans { grid-template-columns: 1fr; max-width: 480px; }
+    .amp-plan--featured { transform: none; }
+    .amp-plan--featured:hover { transform: translateY(-4px); }
+    .amp-compare { grid-template-columns: 1fr; }
+    .amp-compare-arrow { transform: rotate(90deg); margin: -0.5rem auto; }
+    .amp-hero-meta { gap: 1.5rem; }
+  }
+  @media (max-width: 640px) {
+    .amp-hero { padding: 3rem 0 2.5rem; }
+    .amp-section, .amp-cta { padding: 4rem 0; }
+    .amp-hero-meta { flex-wrap: wrap; gap: 1rem 1.75rem; }
+    .amp-features, .amp-bigstats { grid-template-columns: 1fr; }
+    .amp-integrations { grid-template-columns: repeat(2, 1fr); }
+    .amp-trust-grid { gap: 0.5rem 1.5rem; }
+    .amp-mock-meta-row { grid-template-columns: 1fr; gap: 0.2rem; }
+    .amp-quote { padding: 2rem 1.5rem; }
+    .amp-quote-mark { width: 40px; height: 40px; top: 1rem; right: 1rem; }
+    .amp-faq-item summary { font-size: 1.05rem; gap: 1rem; padding: 1.2rem 0; }
+    .amp-cta { padding: 5rem 0; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .amp-orb, .amp-hero-glow-a, .amp-hero-glow-b, .amp-cta-glow,
+    .amp-mock-badge, .amp-progress-bar, .amp-typewriter, .amp-caret,
+    .amp-mock-label svg, .amp-dot {
+      animation: none !important;
+    }
+    .amp-typewriter { max-height: none; }
+  }
+</style>
