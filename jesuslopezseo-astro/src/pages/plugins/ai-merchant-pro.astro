@@ -286,6 +286,12 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
             </a>
           </div>
 
+          <a href="https://wordpress.org/plugins/jesuslopez-gpt-merchant-feed/" target="_blank" rel="noopener" class="amp-hero-free">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            ¿Solo quieres probarlo? Versión <strong>gratuita oficial en WordPress.org</strong>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+
           <div class="amp-hero-badges">
             <span class="amp-hero-badge"><span class="amp-hero-badge-dot"></span>UCP v7.0 Ready</span>
             <span class="amp-hero-badge"><span class="amp-hero-badge-dot amp-hero-badge-dot--mint"></span>ChatGPT Shopping</span>
@@ -633,7 +639,32 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
           </p>
         </div>
 
-        <div class="amp-plans amp-plans--two">
+        <div class="amp-plans">
+          <!-- Free WordPress.org -->
+          <div class="amp-plan amp-plan--free">
+            <div class="amp-plan-head">
+              <div class="amp-plan-name">Free</div>
+              <div class="amp-plan-badge">WordPress.org · oficial</div>
+            </div>
+            <div class="amp-plan-price">
+              <span class="amp-plan-num">0€</span>
+              <span class="amp-plan-period">para siempre</span>
+            </div>
+            <ul class="amp-plan-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Productos ilimitados</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Feed JSON ACP 1.0 para ChatGPT Shopping</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Instalación oficial desde WordPress.org</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Soporte por foro de WordPress.org</li>
+              <li class="amp-plan-list-off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"/></svg>Sin XML Google Merchant ni UCP v7.0</li>
+              <li class="amp-plan-list-off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"/></svg>Sin validador completo ni dashboard</li>
+            </ul>
+            <a href="https://wordpress.org/plugins/jesuslopez-gpt-merchant-feed/" target="_blank" rel="noopener" class="amp-btn amp-btn--outline" style="width:100%;justify-content:center">
+              Instalar gratis en WordPress.org
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+            <p class="amp-plan-note">Ideal para probar el plugin antes de pagar la licencia o si solo necesitas el canal de ChatGPT.</p>
+          </div>
+
           <!-- WooCommerce 79€/año -->
           <div class="amp-plan amp-plan--featured">
             <div class="amp-plan-banner">El más vendido</div>
@@ -658,7 +689,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
               Comprar para WooCommerce
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <p class="amp-plan-note">¿Quieres probarlo gratis? <a href="https://www.aimerchantpro.com/free" target="_blank" rel="noopener">Versión Free de WordPress</a> — feed JSON, productos ilimitados, sin tarjeta.</p>
+            <p class="amp-plan-note">¿Antes de pagar quieres probar? Instala la <a href="https://wordpress.org/plugins/jesuslopez-gpt-merchant-feed/" target="_blank" rel="noopener">versión gratuita oficial de WordPress.org</a> y migra cuando quieras.</p>
           </div>
 
           <!-- PrestaShop 99€ pago único -->
@@ -738,6 +769,10 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
           <a href="https://shop.aimerchantpro.com" target="_blank" rel="noopener" class="amp-btn amp-btn--primary amp-btn--lg">
             Comprar WooCommerce · 79€/año
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://wordpress.org/plugins/jesuslopez-gpt-merchant-feed/" target="_blank" rel="noopener" class="amp-btn amp-btn--ghost-light amp-btn--lg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Instalar gratis en WordPress.org
           </a>
           <a href="https://woogptmerchant.com/demo/" target="_blank" rel="noopener" class="amp-btn amp-btn--ghost-light amp-btn--lg">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
@@ -974,8 +1009,29 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
 
   .amp-hero-actions {
     display: flex; gap: 0.75rem; flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
+
+  .amp-hero-free {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 0.85rem; margin-bottom: 1.5rem;
+    border: 1px dashed var(--amp-border-s);
+    border-radius: 999px;
+    font-size: 0.8125rem; color: var(--amp-mid);
+    text-decoration: none;
+    transition: all 200ms cubic-bezier(0.16,1,0.3,1);
+    background: rgba(255,255,255,0.4);
+  }
+  .amp-hero-free:hover {
+    border-color: var(--amp-amber);
+    color: var(--amp-amber-d);
+    background: rgba(245,158,11,0.06);
+    transform: translateY(-1px);
+  }
+  .amp-hero-free strong { color: var(--amp-ink); font-weight: 600; }
+  .amp-hero-free:hover strong { color: var(--amp-amber-d); }
+  .amp-hero-free svg:first-child { color: var(--amp-amber-d); flex-shrink: 0; }
+  .amp-hero-free svg:last-child  { opacity: 0.6; flex-shrink: 0; }
 
   .amp-hero-badges {
     display: flex; flex-wrap: wrap; gap: 0.5rem;
@@ -1546,6 +1602,23 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   }
   .amp-plan-list li strong { color: var(--amp-ink); font-weight: 600; }
   .amp-plan-list svg { width: 14px; height: 14px; color: var(--amp-amber); flex-shrink: 0; margin-top: 4px; }
+  .amp-plan-list-off {
+    color: var(--amp-mute) !important;
+    text-decoration: line-through;
+    text-decoration-color: rgba(125,131,152,0.4);
+  }
+  .amp-plan-list-off svg { color: var(--amp-mute) !important; }
+
+  .amp-plan--free {
+    background:
+      linear-gradient(180deg, rgba(245,158,11,0.04), rgba(245,158,11,0)),
+      var(--amp-card);
+  }
+  .amp-plan--free .amp-plan-name {
+    background: linear-gradient(95deg, var(--amp-amber-d), var(--amp-violet));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
   .amp-plan-note {
     font-size: 0.8125rem; color: var(--amp-mute);
     line-height: 1.55; margin: 0;
