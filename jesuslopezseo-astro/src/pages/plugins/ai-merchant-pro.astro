@@ -4,223 +4,201 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
 const canonical = 'https://www.jesuslopezseo.com/plugins/ai-merchant-pro/';
-const pageTitle = 'AI Merchant Pro — Plugin WordPress y módulo PrestaShop con IA | Jesús López';
-const pageDescription = 'Genera fichas de producto, SEO, traducciones y categorías con IA en WooCommerce y PrestaShop. Ahorra cientos de horas y multiplica tu catálogo. Compatible con OpenAI, Claude y Gemini. Prueba gratis.';
+const pageTitle = 'AI Merchant Pro — Plugin WordPress con UCP v7.0 para ChatGPT Shopping y Google AI Mode | Jesús López';
+const pageDescription = 'El primer plugin de WordPress con protocolo UCP v7.0. Lleva tu catálogo de WooCommerce a ChatGPT Shopping, Google AI Mode y Google Merchant Center con feeds JSON ACP 1.0 y XML validados. Desde 79€/año.';
 
-const platforms = [
+// ── Tres feeds que genera el plugin ──
+const feeds = [
   {
-    key: 'wp',
-    name: 'WordPress + WooCommerce',
-    sub: 'Plugin oficial · WP 6.0+ · WooCommerce 7+',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2.5 12h19M12 2.5c2.7 3 4.2 6.2 4.2 9.5s-1.5 6.5-4.2 9.5C9.3 18.5 7.8 15.3 7.8 12s1.5-6.5 4.2-9.5z"/></svg>`,
+    code: 'ACP 1.0',
+    name: 'Feed JSON ACP 1.0',
+    target: 'ChatGPT Shopping',
+    audience: '300M+ usuarios',
+    desc: 'Cumple el Agentic Commerce Protocol de OpenAI. Tu catálogo aparece dentro de las conversaciones de ChatGPT cuando el usuario pregunta por productos como los tuyos.',
+    iconColor: 'mint',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg>`,
+    bullets: [
+      'Formato JSON validado contra el spec de OpenAI',
+      'Initial push de 100 productos para aprobación inicial',
+      'Soporte para productos variables y atributos',
+    ],
   },
   {
-    key: 'ps',
-    name: 'PrestaShop',
-    sub: 'Módulo oficial · PrestaShop 1.7+ y 8.x',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>`,
+    code: 'XML',
+    name: 'Feed XML Google Merchant',
+    target: 'Google Shopping',
+    audience: 'Ads · Free Listings · Buy on Google',
+    desc: 'Genera un feed XML de Google Merchant Center listo para enviar. Validación previa para evitar rechazos por campos obligatorios o formato incorrecto.',
+    iconColor: 'amber',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m9 18 6-6-6-6"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>`,
+    bullets: [
+      'Mapeo automático a la taxonomía Google Product',
+      'Reglas de envío por país, región, peso y precio',
+      'Validador integrado antes de exportar',
+    ],
+  },
+  {
+    code: 'UCP 7',
+    name: 'Feed UCP v7.0',
+    target: 'Google AI Mode',
+    audience: 'AI Overviews · AI Agent Checkout',
+    desc: 'Universal Commerce Protocol v7.0, el estándar de Google para comercio con IA. Listo para que un agente complete la compra sin salir de la conversación.',
+    iconColor: 'violet',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6a6 6 0 0 0 0 12M12 6a6 6 0 0 1 0 12"/></svg>`,
+    bullets: [
+      'Primer plugin de WordPress que implementa UCP v7.0',
+      'Preparado para AI Agent Checkout (compra automática)',
+      'Spec oficial de Google · documentado y mantenido',
+    ],
   },
 ];
 
+// ── Funcionalidades reales ──
 const features = [
   {
     iconColor: 'amber',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>`,
-    title: 'Fichas de producto en segundos',
-    desc: 'Genera descripciones únicas, persuasivas y orientadas a conversión a partir del nombre, atributos o una simple imagen. Reescribe miles de fichas en lote con un clic.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>`,
+    title: 'Generación dual JSON + XML',
+    desc: 'Un único catálogo de WooCommerce o PrestaShop alimenta los tres feeds. Sin duplicar trabajo, sin instalar tres exportadores distintos.',
+  },
+  {
+    iconColor: 'mint',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="20 6 9 17 4 12"/></svg>`,
+    title: 'Validador ACP / Google Spec',
+    desc: 'Verifica el feed contra el spec oficial antes de enviar. Cero rechazos por GTIN ausente, formato incorrecto o campos obligatorios vacíos.',
   },
   {
     iconColor: 'blue',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 7v4l2.5 2.5"/></svg>`,
-    title: 'SEO on-page automatizado',
-    desc: 'Title tags, meta descriptions, H1 y datos estructurados Product/Offer optimizados para tus keywords objetivo. Sin canibalizar, sin duplicados, listo para Google.',
-  },
-  {
-    iconColor: 'green',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 8h14M5 12h14M5 16h9"/><path d="M3 4h18v16H3z"/></svg>`,
-    title: 'Traducciones nativas multi-idioma',
-    desc: 'Traduce todo tu catálogo a 40+ idiomas conservando tono, terminología técnica y SEO. Compatible con WPML, Polylang y la multi-tienda nativa de PrestaShop.',
-  },
-  {
-    iconColor: 'pink',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m9 12 2 2 4-4"/></svg>`,
-    title: 'Categorización inteligente',
-    desc: 'Asigna categorías, subcategorías, etiquetas y atributos analizando el producto. Limpia jerarquías heredadas y elimina duplicados sin romper tu navegación.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M2 10h20"/><path d="M9 18v3M15 18v3"/></svg>`,
+    title: 'Reglas de envío avanzadas',
+    desc: 'Configura tarifas por país, región, peso y umbrales de precio. Los costes de envío entran ya calculados en el feed que ven los agentes de IA.',
   },
   {
     iconColor: 'violet',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.5-3.5a2 2 0 0 0-2.8 0L4 22"/></svg>`,
-    title: 'ALT-text y reescritura de imágenes',
-    desc: 'Genera ALT descriptivo para cada imagen, optimiza el peso, renombra ficheros con slug-keyword y mejora la accesibilidad WCAG. Mejora tu SEO de imágenes en automático.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>`,
+    title: 'Dashboard con analítica',
+    desc: 'Estadísticas de productos sincronizados, errores de validación, evolución del catálogo y exportación a PDF para reporte interno o de cliente.',
+  },
+  {
+    iconColor: 'pink',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+    title: 'Streaming + caché para 50K productos',
+    desc: 'Arquitectura por streaming y caché diseñada para catálogos grandes. Probado con más de 50.000 productos sin timeouts ni errores de memoria.',
   },
   {
     iconColor: 'cyan',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>`,
-    title: 'Asistente de soporte en tu tienda',
-    desc: 'Chatbot embebido entrenado con tu catálogo y tus FAQs. Responde dudas de talla, envío o disponibilidad y deriva al humano cuando hace falta. 24/7.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>`,
+    title: 'Initial push a ChatGPT Merchant',
+    desc: 'Envío inicial de 100 productos representativos para acelerar la aprobación de catálogos grandes en el programa de ChatGPT Merchant.',
   },
   {
     iconColor: 'amber',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>`,
-    title: 'Insights y oportunidades',
-    desc: 'La IA detecta productos con baja conversión, fichas pobres, categorías vacías y oportunidades de cross-selling. Te entrega un plan accionable cada semana.',
-  },
-  {
-    iconColor: 'red',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>`,
-    title: 'Procesamiento masivo en lote',
-    desc: 'Procesa 10.000 productos sin bloquear tu tienda. Cola en segundo plano, control de tokens, reintentos automáticos y exportación CSV antes de aplicar cambios.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>`,
+    title: 'Vídeo y vídeo 3D nativo',
+    desc: 'Campos de vídeo y vídeo 3D directamente en el editor de producto de WooCommerce. Esos formatos viajan en el feed UCP v7.0 hasta los canales de IA.',
   },
   {
     iconColor: 'green',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-    title: 'Privacidad y control total',
-    desc: 'Tu API key, tu modelo, tus datos. Sin enviar tu catálogo a terceros, sin scraping, sin telemetría oculta. RGPD-friendly y registro de todas las acciones.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg>`,
+    title: 'Mapeo a Google Product Taxonomy',
+    desc: 'Asigna cada categoría de tu tienda a la taxonomía oficial de Google de forma asistida. Imprescindible para que el feed sea aceptado y bien clasificado.',
+  },
+  {
+    iconColor: 'red',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    title: 'Productos variables al 100%',
+    desc: 'Cada variación de WooCommerce viaja con sus atributos, precios, stock y GTIN propios. Sin perder información en el camino al feed.',
   },
 ];
 
+// ── Problemas que resuelve ──
+const problems = [
+  {
+    color: 'red',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>`,
+    title: 'Invisible para 300M+ usuarios de ChatGPT',
+    desc: 'La búsqueda con IA crece más rápido que la búsqueda en Google y tu catálogo no aparece. Cada día que pasas fuera, vendes menos en el canal que más rápido crece.',
+  },
+  {
+    color: 'amber',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: 'Pierdes la ventaja del primer en llegar',
+    desc: 'Los canales de IA están en fase de aprobación de catálogos. Quien entre ahora gana posicionamiento y data en los modelos antes de que se sature el espacio.',
+  },
+  {
+    color: 'blue',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: 'Rechazos en Google Merchant Center',
+    desc: 'Feeds mal formados, GTINs faltantes, taxonomía incorrecta. AI Merchant Pro valida contra el spec oficial antes de enviar y te dice exactamente qué corregir.',
+  },
+  {
+    color: 'violet',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>`,
+    title: 'Timeouts y errores de memoria',
+    desc: 'Los exportadores genéricos no aguantan catálogos grandes. La arquitectura streaming + caché de AI Merchant Pro está probada con más de 50.000 productos.',
+  },
+];
+
+// ── Cómo funciona ──
 const steps = [
   {
     num: '01',
-    title: 'Instala el plugin o módulo',
-    desc: 'Sube el ZIP a WordPress o PrestaShop, activa con tu licencia y conecta tu API key de OpenAI, Anthropic o Google. Listo en 3 minutos.',
+    title: 'Instala y activa',
+    desc: 'Subes el ZIP a WordPress o PrestaShop, activas con tu licencia y conectas tu cuenta de ChatGPT Merchant y Google Merchant Center. Listo en minutos.',
   },
   {
     num: '02',
-    title: 'Elige qué quieres mejorar',
-    desc: 'Selecciona productos por categoría, marca, stock o filtro custom. Define tono de voz, idiomas, estructura SEO y plantillas reutilizables.',
+    title: 'Configura los feeds',
+    desc: 'Mapea categorías a Google Product Taxonomy, define reglas de envío y elige qué productos entran en cada canal. Validador en tiempo real conforme guardas.',
   },
   {
     num: '03',
-    title: 'Revisa y publica con un clic',
-    desc: 'Previsualiza los cambios en una pantalla diff, edita lo que quieras y publica. Todo queda versionado: vuelves al original cuando quieras.',
+    title: 'Envía y monitoriza',
+    desc: 'Generas los tres feeds con un clic. Ves estadísticas, errores resueltos y crecimiento del catálogo en el dashboard. Exporta a PDF cuando lo necesites.',
   },
 ];
 
-const integrations = [
-  'OpenAI',
-  'Anthropic Claude',
-  'Google Gemini',
-  'Mistral',
-  'WooCommerce',
-  'PrestaShop',
-  'WPML',
-  'Polylang',
-  'Yoast SEO',
-  'Rank Math',
-  'Google Merchant',
-  'Meta Catalog',
-];
-
-const useCases = [
-  {
-    label: 'Tiendas de moda',
-    title: 'Catálogos masivos sin pereza',
-    desc: '5.000 referencias con ficha vacía heredadas del proveedor. AI Merchant Pro las reescribe respetando tu tono de marca y genera variantes SEO por talla y color en menos de una tarde.',
-  },
-  {
-    label: 'Marketplaces y dropshippers',
-    title: 'Diferenciación frente al feed',
-    desc: 'Si vendes lo mismo que otros 200 vendedores, copiar la descripción del proveedor te hunde en Google. Genera fichas únicas y optimizadas en cada importación automática.',
-  },
-  {
-    label: 'Tiendas multi-idioma',
-    title: 'Traducir 40 idiomas sin agencia',
-    desc: 'Localización profesional con terminología y fichas adaptadas a cada mercado. Olvídate de presupuestos de traducción y plazos de 6 semanas por cada nueva campaña.',
-  },
-];
-
-const plans = [
-  {
-    name: 'Starter',
-    badge: 'Para tiendas pequeñas',
-    price: '49€',
-    period: '/año',
-    cta: 'Empezar con Starter',
-    featured: false,
-    items: [
-      '1 dominio · WordPress o PrestaShop',
-      'Hasta 500 productos procesados/mes',
-      'SEO on-page + traducciones (5 idiomas)',
-      'Modelos OpenAI / Claude / Gemini',
-      'Soporte por email · 48h',
-      'Actualizaciones durante 1 año',
-    ],
-  },
-  {
-    name: 'Pro',
-    badge: 'El más vendido',
-    price: '129€',
-    period: '/año',
-    cta: 'Probar Pro 14 días gratis',
-    featured: true,
-    items: [
-      '3 dominios · WP + PrestaShop',
-      'Hasta 10.000 productos/mes',
-      'Idiomas ilimitados + WPML/Polylang',
-      'Asistente de soporte embebido',
-      'Insights semanales accionables',
-      'Soporte prioritario · 12h',
-      'Actualizaciones de por vida',
-    ],
-  },
-  {
-    name: 'Agency',
-    badge: 'Para agencias y marketplaces',
-    price: '349€',
-    period: '/año',
-    cta: 'Hablar con ventas',
-    featured: false,
-    items: [
-      'Hasta 25 dominios cliente',
-      'Productos ilimitados · API directa',
-      'White-label opcional (logo y dominio)',
-      'Workflows automatizados (n8n / Make)',
-      'Gestor de cuenta dedicado',
-      'SLA 4h · onboarding 1:1',
-    ],
-  },
-];
-
+// ── FAQ ──
 const faqs = [
   {
-    q: '¿Necesito saber programar para usarlo?',
-    a: 'No. AI Merchant Pro es plug-and-play: subes el ZIP, activas la licencia y trabajas desde un panel visual integrado en tu admin de WordPress o PrestaShop. Si sabes editar un producto, sabes usarlo.',
+    q: '¿Qué es UCP v7.0 y por qué importa?',
+    a: 'Universal Commerce Protocol v7.0 es el estándar abierto que Google ha publicado para que los agentes de IA puedan entender un catálogo y completar la compra dentro de la conversación. Sin un feed UCP, tu tienda no aparece en Google AI Mode ni en AI Overviews con intención de compra. AI Merchant Pro es el primer plugin de WordPress que lo implementa.',
   },
   {
-    q: '¿Quién paga el coste de los modelos de IA?',
-    a: 'Tú, con tu propia API key (OpenAI, Anthropic o Google). Esto te da control total: usas el modelo que prefieras, ves el coste exacto y no hay margen oculto. Para una tienda media, el coste suele ser de 5-20€/mes en tokens.',
+    q: '¿Qué es LLMO y en qué se diferencia del SEO?',
+    a: 'LLMO (Large Language Model Optimization) es la disciplina equivalente al SEO pero aplicada a los modelos de lenguaje: ChatGPT, Perplexity, Claude y Google AI Mode. El SEO te posiciona en la SERP de Google. El LLMO te posiciona en las respuestas de los asistentes de IA. AI Merchant Pro es la pieza de LLMO específica para e-commerce: convierte tu catálogo en datos legibles por agentes.',
   },
   {
-    q: '¿Funciona con mi versión de WooCommerce o PrestaShop?',
-    a: 'Sí: WordPress 6.0+ con WooCommerce 7+, y PrestaShop 1.7.6+ y toda la rama 8.x. Si tienes una versión más antigua, te ayudamos a actualizar antes de instalar.',
+    q: '¿AI Merchant Pro genera contenido o descripciones de producto?',
+    a: 'No. AI Merchant Pro no usa modelos de IA para crear texto. Lo que hace es tomar tu catálogo de WooCommerce o PrestaShop y generar tres feeds (JSON ACP 1.0, XML Google Merchant, UCP v7.0) que los canales de IA entienden. Es un puente entre tu tienda y los nuevos canales de descubrimiento.',
   },
   {
-    q: '¿Puede romper mi tienda en producción?',
-    a: 'No. Todo cambio se previsualiza primero en una pantalla diff, queda versionado y se puede revertir con un clic. Para procesos masivos exportamos un CSV antes para que revises offline si lo necesitas.',
+    q: '¿Qué diferencia hay entre la versión Free y la versión de pago?',
+    a: 'La Free es gratis, productos ilimitados, pero solo genera el feed JSON ACP 1.0 para ChatGPT Shopping. La versión de pago añade el feed XML de Google Merchant Center, el feed UCP v7.0, el validador completo, las reglas de envío avanzadas, el dashboard con analítica y soporte por email.',
   },
   {
-    q: '¿Es compatible con Yoast, Rank Math o el SEO nativo de PrestaShop?',
-    a: 'Totalmente. Detectamos el plugin SEO instalado y rellenamos los campos correctos (focus keyword, meta description, schema). En PrestaShop usamos los campos nativos de meta título, meta descripción y URL amigable.',
+    q: '¿Qué pasa cuando expira mi licencia anual de WooCommerce?',
+    a: 'En WooCommerce la licencia es de 79€/año: el plugin sigue funcionando con la última versión instalada, pero dejas de recibir actualizaciones y soporte. Puedes renovar cuando quieras. En PrestaShop la licencia es lifetime (99€ pago único): el plugin es tuyo para siempre y solo el primer año incluye actualizaciones; después puedes contratar updates por 49€/año si quieres seguir recibiéndolas.',
   },
   {
-    q: '¿Mis datos viajan a OpenAI/Anthropic/Google?',
-    a: 'Solo el contenido estrictamente necesario para generar la respuesta (nombre, atributos, descripción origen). Nunca enviamos clientes, pedidos ni precios sensibles. Tienes una whitelist clara y un log de todo lo enviado.',
+    q: '¿Con qué versiones de WordPress y PrestaShop es compatible?',
+    a: 'WordPress con WooCommerce instalado. En PrestaShop es compatible con las ramas 1.7, 8.x y 9.x. Si tienes una versión más antigua, es momento de actualizar antes de instalar.',
   },
   {
-    q: '¿Puedo reescribir todo mi catálogo de golpe?',
-    a: 'Sí. El motor de procesamiento masivo soporta hasta 10.000 productos por job en Pro y catálogo ilimitado en Agency. Funciona en cola en segundo plano, así que tu tienda no se ralentiza durante el proceso.',
+    q: '¿Cuántos productos soporta?',
+    a: 'Productos ilimitados. La arquitectura por streaming y caché está probada con más de 50.000 productos sin timeouts ni errores de memoria. Para catálogos grandes, el "initial push" de 100 productos representativos acelera la aprobación en ChatGPT Merchant.',
   },
   {
-    q: '¿Qué pasa cuando se acaba la licencia anual?',
-    a: 'El plugin sigue funcionando con la última versión. Solo dejas de recibir actualizaciones y soporte. Puedes renovar con un 30% de descuento durante los 30 días posteriores al vencimiento.',
+    q: '¿Hay garantía de devolución?',
+    a: 'Sí, 30 días desde la compra. Si en un mes no encajamos con tu negocio, te devolvemos el dinero íntegro sin preguntas.',
   },
   {
-    q: '¿Tenéis política de devolución?',
-    a: 'Sí. 14 días de garantía de devolución sin preguntas. Si en dos semanas no notas un antes y un después en tu catálogo, te devolvemos el dinero íntegro.',
+    q: '¿Puedo probarlo antes de comprar?',
+    a: 'Sí. Hay una demo en vivo de la versión WooCommerce en woogptmerchant.com/demo y la versión Free disponible en aimerchantpro.com/free. Te la puedes instalar hoy y ver el feed JSON funcionando antes de plantearte el pago.',
   },
 ];
 
+// ── Schema.org ──
 const schemaProduct = {
   '@type': 'SoftwareApplication',
   name: 'AI Merchant Pro',
@@ -229,15 +207,10 @@ const schemaProduct = {
   description: pageDescription,
   url: 'https://aimerchantpro.com',
   offers: [
-    { '@type': 'Offer', name: 'Starter',  price: '49',  priceCurrency: 'EUR' },
-    { '@type': 'Offer', name: 'Pro',      price: '129', priceCurrency: 'EUR' },
-    { '@type': 'Offer', name: 'Agency',   price: '349', priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'WooCommerce',  price: '79', priceCurrency: 'EUR', priceSpecification: { '@type': 'UnitPriceSpecification', price: '79', priceCurrency: 'EUR', unitCode: 'ANN' } },
+    { '@type': 'Offer', name: 'PrestaShop',   price: '99', priceCurrency: 'EUR' },
+    { '@type': 'Offer', name: 'Free',         price: '0',  priceCurrency: 'EUR' },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '127',
-  },
 };
 
 const schemaFaq = {
@@ -252,9 +225,9 @@ const schemaFaq = {
 const schemaBreadcrumb = {
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio',   item: 'https://www.jesuslopezseo.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Plugins',  item: 'https://www.jesuslopezseo.com/plugins/' },
-    { '@type': 'ListItem', position: 3, name: 'AI Merchant Pro', item: canonical },
+    { '@type': 'ListItem', position: 1, name: 'Inicio',           item: 'https://www.jesuslopezseo.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Plugins',          item: 'https://www.jesuslopezseo.com/plugins/' },
+    { '@type': 'ListItem', position: 3, name: 'AI Merchant Pro',  item: canonical },
   ],
 };
 
@@ -271,9 +244,9 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
 
   <main class="amp-page">
 
-    <!-- ═══════════════════════════════════════════════════════
-         HERO — premium · NO above-the-fold (sigue scrolleando)
-         ═══════════════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════════════════════
+         HERO
+         ════════════════════════════════════════════════════════ -->
     <section class="amp-hero">
       <div class="amp-hero-grid"   aria-hidden="true"></div>
       <div class="amp-hero-glow-a" aria-hidden="true"></div>
@@ -288,104 +261,106 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
         <div class="amp-hero-copy">
           <div class="amp-eyebrow">
             <span class="amp-dot"></span>
-            AI Merchant Pro · v3.4 disponible
+            Primer plugin de WordPress con UCP v7.0
           </div>
 
           <h1 class="amp-hero-title">
-            La IA que escribe<br/>
-            <em>tu catálogo entero</em><br/>
-            mientras tú duermes.
+            Tu tienda lista para<br/>
+            <em>ChatGPT Shopping</em><br/>
+            y <em>Google AI Mode.</em>
           </h1>
 
           <p class="amp-hero-desc">
-            Plugin para <strong>WordPress / WooCommerce</strong> y módulo para
-            <strong>PrestaShop</strong> que genera fichas de producto, SEO,
-            traducciones y categorías con IA generativa. Multiplica tu catálogo
-            sin contratar redactores y sin que tus posiciones se desplomen.
+            <strong>AI Merchant Pro</strong> es el plugin de <strong>WordPress / WooCommerce</strong>
+            y módulo de <strong>PrestaShop</strong> que genera los tres feeds que necesitan los
+            nuevos canales de comercio con IA — sin escribir una línea de código y desde un único catálogo.
           </p>
 
           <div class="amp-hero-actions">
-            <a href="#planes" class="amp-btn amp-btn--primary">
-              Probar 14 días gratis
+            <a href="https://shop.aimerchantpro.com" target="_blank" rel="noopener" class="amp-btn amp-btn--primary">
+              Comprar WooCommerce · 79€/año
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#demo" class="amp-btn amp-btn--ghost">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-              Ver demo en vivo
+            <a href="https://shop.aimerchantpro.com/prestashop" target="_blank" rel="noopener" class="amp-btn amp-btn--ghost">
+              PrestaShop · 99€ pago único
             </a>
+          </div>
+
+          <div class="amp-hero-badges">
+            <span class="amp-hero-badge"><span class="amp-hero-badge-dot"></span>UCP v7.0 Ready</span>
+            <span class="amp-hero-badge"><span class="amp-hero-badge-dot amp-hero-badge-dot--mint"></span>ChatGPT Shopping</span>
+            <span class="amp-hero-badge"><span class="amp-hero-badge-dot amp-hero-badge-dot--violet"></span>Google AI Mode</span>
+            <span class="amp-hero-badge"><span class="amp-hero-badge-dot amp-hero-badge-dot--blue"></span>ACP 1.0</span>
           </div>
 
           <div class="amp-hero-meta">
             <div class="amp-stat">
-              <div class="amp-stat-num">12k+</div>
-              <div class="amp-stat-cap">tiendas usándolo</div>
+              <div class="amp-stat-num">500+</div>
+              <div class="amp-stat-cap">tiendas activas</div>
             </div>
             <div class="amp-stat">
-              <div class="amp-stat-num">4.9 ★</div>
-              <div class="amp-stat-cap">127 reviews</div>
+              <div class="amp-stat-num">300M+</div>
+              <div class="amp-stat-cap">usuarios ChatGPT</div>
             </div>
             <div class="amp-stat">
-              <div class="amp-stat-num">3 min</div>
-              <div class="amp-stat-cap">para empezar</div>
+              <div class="amp-stat-num">50K+</div>
+              <div class="amp-stat-cap">productos probados</div>
             </div>
           </div>
         </div>
 
-        <!-- Visual mockup: panel admin generando ficha en vivo -->
+        <!-- Mockup: feed JSON generándose en vivo -->
         <div class="amp-hero-aside" aria-hidden="true">
           <div class="amp-mock">
             <div class="amp-mock-bar">
               <span class="amp-mock-dot amp-mock-dot--r"></span>
               <span class="amp-mock-dot amp-mock-dot--y"></span>
               <span class="amp-mock-dot amp-mock-dot--g"></span>
-              <span class="amp-mock-tab">/wp-admin/post.php?post=2847</span>
+              <span class="amp-mock-tab">/wp-admin/ai-merchant-pro/feeds</span>
             </div>
 
             <div class="amp-mock-body">
               <div class="amp-mock-head">
                 <div class="amp-mock-thumb">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.5"/><path d="m21 15-3.5-3.5a2 2 0 0 0-2.8 0L4 22"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>
                 </div>
                 <div>
-                  <div class="amp-mock-prod">Botines Chelsea piel napa</div>
-                  <div class="amp-mock-sku">SKU FW-CH-2847 · Sin descripción</div>
+                  <div class="amp-mock-prod">Generando feeds del catálogo</div>
+                  <div class="amp-mock-sku">12.847 productos · 3 canales activos</div>
                 </div>
-                <span class="amp-mock-pill">draft</span>
+                <span class="amp-mock-pill amp-mock-pill--live">live</span>
               </div>
 
-              <div class="amp-mock-section">
-                <div class="amp-mock-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                  Generando descripción con IA
+              <div class="amp-mock-feeds">
+                <div class="amp-mock-feed">
+                  <div class="amp-mock-feed-icon amp-mock-feed-icon--mint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div class="amp-mock-feed-body">
+                    <div class="amp-mock-feed-name">JSON · ACP 1.0</div>
+                    <div class="amp-mock-feed-tag">ChatGPT Shopping</div>
+                  </div>
+                  <div class="amp-mock-feed-status amp-mock-feed-status--ok">12.847</div>
                 </div>
-                <div class="amp-typewriter">
-                  Botines Chelsea de piel napa premium con elásticos laterales
-                  cosidos y suela de caucho antideslizante. Diseño atemporal
-                  hecho en España, listos para combinar con vaquero o traje.
-                  <span class="amp-caret"></span>
+                <div class="amp-mock-feed">
+                  <div class="amp-mock-feed-icon amp-mock-feed-icon--amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div class="amp-mock-feed-body">
+                    <div class="amp-mock-feed-name">XML · Google Merchant</div>
+                    <div class="amp-mock-feed-tag">Shopping Ads · Buy on Google</div>
+                  </div>
+                  <div class="amp-mock-feed-status amp-mock-feed-status--ok">12.847</div>
                 </div>
-              </div>
-
-              <div class="amp-mock-meta">
-                <div class="amp-mock-meta-row">
-                  <span class="amp-mock-key">Title SEO</span>
-                  <span class="amp-mock-val">Botines Chelsea piel napa hechos en España | Marca</span>
-                </div>
-                <div class="amp-mock-meta-row">
-                  <span class="amp-mock-key">Meta description</span>
-                  <span class="amp-mock-val">Chelsea de napa con suela de caucho. Hechos en España, envío 24h y devolución gratis…</span>
-                </div>
-                <div class="amp-mock-meta-row">
-                  <span class="amp-mock-key">ALT imagen</span>
-                  <span class="amp-mock-val">Botín Chelsea negro de piel napa con elástico lateral</span>
-                </div>
-                <div class="amp-mock-meta-row">
-                  <span class="amp-mock-key">Categorías</span>
-                  <span class="amp-mock-val">
-                    <span class="amp-tag">Hombre</span>
-                    <span class="amp-tag">Botines</span>
-                    <span class="amp-tag">Piel</span>
-                  </span>
+                <div class="amp-mock-feed">
+                  <div class="amp-mock-feed-icon amp-mock-feed-icon--violet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div class="amp-mock-feed-body">
+                    <div class="amp-mock-feed-name">UCP v7.0</div>
+                    <div class="amp-mock-feed-tag">Google AI Mode · AI Overviews</div>
+                  </div>
+                  <div class="amp-mock-feed-status amp-mock-feed-status--ok">12.847</div>
                 </div>
               </div>
 
@@ -393,7 +368,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
                 <div class="amp-progress">
                   <span class="amp-progress-bar"></span>
                 </div>
-                <span class="amp-mock-status">Generando 3 idiomas · 2 de 12 fichas</span>
+                <span class="amp-mock-status">Validando spec · 0 errores</span>
               </div>
             </div>
           </div>
@@ -401,101 +376,184 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
           <div class="amp-mock-badge amp-mock-badge--top">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <div class="amp-badge-num">12 fichas</div>
-              <div class="amp-badge-cap">en 38 segundos</div>
+              <div class="amp-badge-num">3 feeds</div>
+              <div class="amp-badge-cap">listos para enviar</div>
             </div>
           </div>
 
           <div class="amp-mock-badge amp-mock-badge--bot">
-            <span class="amp-badge-icon">SEO</span>
+            <span class="amp-badge-icon">UCP</span>
             <div>
-              <div class="amp-badge-num">+187%</div>
-              <div class="amp-badge-cap">tráfico orgánico</div>
+              <div class="amp-badge-num">v7.0</div>
+              <div class="amp-badge-cap">spec oficial Google</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Trust strip dentro del hero (ayuda a romper la fold) -->
+      <!-- Compatibilidad real -->
       <div class="container">
         <div class="amp-trust">
           <span class="amp-trust-label">Compatible con</span>
           <div class="amp-trust-grid">
-            <div class="amp-trust-item">WordPress · WooCommerce</div>
-            <div class="amp-trust-item">PrestaShop 1.7 / 8.x</div>
-            <div class="amp-trust-item">OpenAI · Claude · Gemini</div>
-            <div class="amp-trust-item">WPML · Polylang</div>
-            <div class="amp-trust-item">Yoast · Rank Math</div>
+            <div class="amp-trust-item">WordPress + WooCommerce</div>
+            <div class="amp-trust-item">PrestaShop 1.7 / 8.x / 9.x</div>
+            <div class="amp-trust-item">ChatGPT Merchant</div>
+            <div class="amp-trust-item">Google Merchant Center</div>
+            <div class="amp-trust-item">Google AI Mode</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ BENEFITS / VALUE PROP ═══ -->
+    <!-- ════════════════════════════════════════════════════════
+         WHAT IS UCP v7.0
+         ════════════════════════════════════════════════════════ -->
     <section class="amp-section">
       <div class="container">
         <div class="amp-section-header">
-          <div class="amp-pill">El cambio</div>
-          <h2 class="amp-h2">Tu equipo deja de copiar fichas<br/><em>y empieza a vender.</em></h2>
+          <div class="amp-pill">El protocolo</div>
+          <h2 class="amp-h2">¿Qué es <em>UCP v7.0</em><br/>y por qué te importa?</h2>
           <p class="amp-section-desc">
-            Tres horas escribiendo una ficha que va a leer un crawler. Multiplícalo por 5.000 productos.
-            Nadie en tu negocio merece eso. La IA no viene a reemplazar a tu equipo: viene a quitarles el trabajo plano.
+            Universal Commerce Protocol es el estándar abierto que Google publicó para que los
+            agentes de IA puedan leer un catálogo y completar la compra dentro de la conversación,
+            sin redirigir al usuario a tu web. Es a la IA lo que el sitemap.xml fue al SEO en 2005.
+          </p>
+        </div>
+
+        <div class="amp-compare">
+          <div class="amp-compare-card amp-compare-card--before">
+            <div class="amp-compare-head">
+              <span class="amp-compare-tag amp-compare-tag--bad">Sin UCP</span>
+              <span class="amp-compare-meta">visibilidad parcial</span>
+            </div>
+            <div class="amp-compare-prod">Tu tienda hoy</div>
+            <p class="amp-compare-text">
+              Tu catálogo solo existe en Google clásico. Cuando un usuario pregunta a ChatGPT o a
+              Google AI Mode "¿dónde puedo comprar X?", la IA recomienda a tus competidores
+              que ya tienen feed activo.
+            </p>
+            <ul class="amp-compare-list amp-compare-list--bad">
+              <li><span>✕</span>Invisible para 300M+ usuarios de ChatGPT</li>
+              <li><span>✕</span>No apareces en Google AI Mode</li>
+              <li><span>✕</span>Sin AI Agent Checkout</li>
+              <li><span>✕</span>Pierdes la ventaja de primer en llegar</li>
+            </ul>
+          </div>
+
+          <div class="amp-compare-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+
+          <div class="amp-compare-card amp-compare-card--after">
+            <div class="amp-compare-head">
+              <span class="amp-compare-tag amp-compare-tag--good">Con UCP v7.0</span>
+              <span class="amp-compare-meta">multi-canal IA</span>
+            </div>
+            <div class="amp-compare-prod">Tu tienda con AI Merchant Pro</div>
+            <p class="amp-compare-text">
+              Mismo catálogo, tres feeds simultáneos. Apareces en ChatGPT Shopping, en Google
+              Shopping clásico y en las respuestas de Google AI Mode. Listo para que la IA
+              cierre la venta dentro de la conversación cuando el AI Agent Checkout despliegue.
+            </p>
+            <ul class="amp-compare-list amp-compare-list--good">
+              <li><span>✓</span>Visible en ChatGPT (300M+ usuarios)</li>
+              <li><span>✓</span>Indexado en Google AI Mode</li>
+              <li><span>✓</span>Listo para AI Agent Checkout</li>
+              <li><span>✓</span>Posicionas antes de que se sature el espacio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SEO → LLMO
+         ════════════════════════════════════════════════════════ -->
+    <section class="amp-section amp-section--cream">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">El cambio de era</div>
+          <h2 class="amp-h2">Del SEO al <em>LLMO.</em></h2>
+          <p class="amp-section-desc">
+            Igual que el SEO te posicionó en Google durante 20 años, el LLMO
+            (Large Language Model Optimization) es la disciplina que te posiciona en los
+            asistentes que ya están reemplazando al buscador clásico.
           </p>
         </div>
 
         <div class="amp-bigstats">
           <div class="amp-bigstat">
-            <div class="amp-bigstat-num">94%</div>
-            <p>menos tiempo para publicar un nuevo producto en tu catálogo principal y secundarios.</p>
+            <div class="amp-bigstat-num">300M+</div>
+            <p>usuarios activos semanales en ChatGPT, ya por delante de muchas búsquedas en Google.</p>
           </div>
           <div class="amp-bigstat">
-            <div class="amp-bigstat-num">187%</div>
-            <p>de incremento medio en tráfico orgánico en los primeros 90 días tras reescribir el catálogo.</p>
+            <div class="amp-bigstat-num">40%</div>
+            <p>de la Generación Z prefiere preguntar a una IA antes que abrir un buscador clásico.</p>
           </div>
           <div class="amp-bigstat">
-            <div class="amp-bigstat-num">40+</div>
-            <p>idiomas listos sin traductores externos: lanzas mercado nuevo en una tarde, no en seis semanas.</p>
+            <div class="amp-bigstat-num">3</div>
+            <p>canales de IA con catálogo: ChatGPT Shopping, Google AI Mode y Google Merchant Center.</p>
           </div>
           <div class="amp-bigstat">
-            <div class="amp-bigstat-num">3 min</div>
-            <p>desde que descargas el ZIP hasta que generas tu primera ficha. Sin developer, sin agencia.</p>
+            <div class="amp-bigstat-num">1</div>
+            <p>plugin para llegar a los tres a la vez desde tu catálogo de WooCommerce o PrestaShop.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ PLATFORMS ═══ -->
+    <!-- ════════════════════════════════════════════════════════
+         LOS TRES FEEDS
+         ════════════════════════════════════════════════════════ -->
+    <section id="feeds" class="amp-section">
+      <div class="container">
+        <div class="amp-section-header">
+          <div class="amp-pill">Tres canales · tres feeds</div>
+          <h2 class="amp-h2">Un único catálogo,<br/><em>todos los canales de IA.</em></h2>
+          <p class="amp-section-desc">
+            AI Merchant Pro genera los tres formatos que necesitan los nuevos canales de comercio
+            con IA, validados contra el spec oficial y listos para enviar.
+          </p>
+        </div>
+
+        <div class="amp-feeds">
+          {feeds.map(f => (
+            <article class="amp-feed-card">
+              <div class={`amp-feed-card-icon amp-feed-card-icon--${f.iconColor}`} set:html={f.icon} />
+              <div class="amp-feed-card-code">{f.code}</div>
+              <h3>{f.name}</h3>
+              <div class="amp-feed-card-target">
+                <span>{f.target}</span>
+                <span class="amp-feed-card-audience">{f.audience}</span>
+              </div>
+              <p>{f.desc}</p>
+              <ul class="amp-feed-card-list">
+                {f.bullets.map(b => (
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         FUNCIONALIDADES REALES
+         ════════════════════════════════════════════════════════ -->
     <section class="amp-section amp-section--cream">
       <div class="container">
         <div class="amp-section-header">
-          <div class="amp-pill">Plataformas</div>
-          <h2 class="amp-h2">Un único producto.<br/><em>Dos motores nativos.</em></h2>
-        </div>
-        <div class="amp-platforms">
-          {platforms.map(p => (
-            <div class={`amp-platform amp-platform--${p.key}`}>
-              <div class="amp-platform-icon" set:html={p.icon} />
-              <div>
-                <h3>{p.name}</h3>
-                <p>{p.sub}</p>
-              </div>
-              <div class="amp-platform-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p class="amp-platforms-note">Una licencia te incluye los dos. Sin sobrecoste por plataforma.</p>
-      </div>
-    </section>
-
-    <!-- ═══ FEATURES GRID ═══ -->
-    <section id="features" class="amp-section">
-      <div class="container">
-        <div class="amp-section-header">
           <div class="amp-pill">Funcionalidades</div>
-          <h2 class="amp-h2">Todo lo que tu tienda necesita,<br/><em>sin diez plugins encadenados.</em></h2>
-          <p class="amp-section-desc">Un solo plugin sustituye al generador de descripciones, al traductor, al optimizador SEO, al gestor de imágenes y al chatbot. Menos plugins = más velocidad, menos conflictos, menos coste.</p>
+          <h2 class="amp-h2">Todo lo que necesitas<br/><em>para enviar feeds en serio.</em></h2>
+          <p class="amp-section-desc">
+            Validación, reglas de envío, dashboard, soporte para catálogos grandes, vídeo 3D,
+            productos variables. Diseñado por gente que ha peleado con feeds antes.
+          </p>
         </div>
 
         <div class="amp-features">
@@ -510,63 +568,38 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
       </div>
     </section>
 
-    <!-- ═══ DEMO / LIVE PREVIEW ═══ -->
-    <section id="demo" class="amp-section amp-section--dark">
+    <!-- ════════════════════════════════════════════════════════
+         PROBLEMAS QUE RESUELVE
+         ════════════════════════════════════════════════════════ -->
+    <section class="amp-section amp-section--dark">
       <div class="container">
         <div class="amp-section-header">
-          <div class="amp-pill amp-pill--light">Antes / Después</div>
-          <h2 class="amp-h2 amp-h2--light">Una ficha real,<br/><em>en 8 segundos.</em></h2>
-          <p class="amp-section-desc amp-section-desc--light">El mismo producto, antes y después de pasar por AI Merchant Pro. Datos reales, pulsa para alternar.</p>
+          <div class="amp-pill amp-pill--light">Problemas que resuelve</div>
+          <h2 class="amp-h2 amp-h2--light">Si te preocupa<br/><em>alguno de estos cuatro.</em></h2>
         </div>
 
-        <div class="amp-compare">
-          <div class="amp-compare-card amp-compare-card--before">
-            <div class="amp-compare-head">
-              <span class="amp-compare-tag amp-compare-tag--bad">Antes</span>
-              <span class="amp-compare-meta">SEO score 38 · 0 idiomas</span>
+        <div class="amp-problems">
+          {problems.map(p => (
+            <div class="amp-problem">
+              <div class={`amp-problem-icon amp-problem-icon--${p.color}`} set:html={p.icon} />
+              <div class="amp-problem-body">
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </div>
             </div>
-            <div class="amp-compare-prod">Reloj automático modelo 1812</div>
-            <p class="amp-compare-text">
-              Reloj automático con caja de acero inoxidable. Esfera negra. Movimiento mecánico. Cristal mineral. Correa de piel.
-            </p>
-            <ul class="amp-compare-list amp-compare-list--bad">
-              <li><span>✕</span>Sin meta description</li>
-              <li><span>✕</span>Sin schema Product/Offer</li>
-              <li><span>✕</span>ALT imagen vacío</li>
-              <li><span>✕</span>Categoría genérica "Otros"</li>
-            </ul>
-          </div>
-
-          <div class="amp-compare-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-
-          <div class="amp-compare-card amp-compare-card--after">
-            <div class="amp-compare-head">
-              <span class="amp-compare-tag amp-compare-tag--good">Después</span>
-              <span class="amp-compare-meta">SEO score 96 · 8 idiomas</span>
-            </div>
-            <div class="amp-compare-prod">Reloj automático 1812 · acero y cuero, 41 mm</div>
-            <p class="amp-compare-text">
-              Reloj mecánico de cuerda automática con caja de acero 316L pulido y satinado, esfera negra mate con índices aplicados y movimiento suizo de 38 horas de reserva. Cristal zafiro y correa de piel italiana cosida a mano. Pensado para llevarlo cada día y heredarlo en treinta años.
-            </p>
-            <ul class="amp-compare-list amp-compare-list--good">
-              <li><span>✓</span>Meta description orientada a CTR</li>
-              <li><span>✓</span>Schema Product + Offer + Brand</li>
-              <li><span>✓</span>ALT descriptivo en 8 idiomas</li>
-              <li><span>✓</span>Categoría "Relojes &gt; Automáticos &gt; Hombre"</li>
-            </ul>
-          </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- ═══ HOW IT WORKS ═══ -->
-    <section class="amp-section amp-section--cream">
+    <!-- ════════════════════════════════════════════════════════
+         CÓMO FUNCIONA
+         ════════════════════════════════════════════════════════ -->
+    <section class="amp-section">
       <div class="container">
         <div class="amp-section-header">
           <div class="amp-pill">Cómo funciona</div>
-          <h2 class="amp-h2">Tres pasos.<br/><em>Cero fricción.</em></h2>
+          <h2 class="amp-h2">Tres pasos.<br/><em>Cero fricción técnica.</em></h2>
         </div>
         <div class="amp-steps">
           {steps.map((s, i) => (
@@ -587,111 +620,88 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
       </div>
     </section>
 
-    <!-- ═══ USE CASES ═══ -->
-    <section class="amp-section">
-      <div class="container">
-        <div class="amp-section-header">
-          <div class="amp-pill">Para quién es</div>
-          <h2 class="amp-h2">Si gestionas un catálogo,<br/><em>esto es para ti.</em></h2>
-        </div>
-        <div class="amp-uses">
-          {useCases.map(u => (
-            <div class="amp-use">
-              <span class="amp-use-tag">{u.label}</span>
-              <h3>{u.title}</h3>
-              <p>{u.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ INTEGRATIONS ═══ -->
-    <section class="amp-section amp-section--cream">
-      <div class="container">
-        <div class="amp-section-header">
-          <div class="amp-pill">Integraciones</div>
-          <h2 class="amp-h2">Conecta con todo lo que<br/><em>ya tienes funcionando.</em></h2>
-        </div>
-        <div class="amp-integrations">
-          {integrations.map(i => (
-            <div class="amp-integration">{i}</div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ PRICING ═══ -->
-    <section id="planes" class="amp-section">
+    <!-- ════════════════════════════════════════════════════════
+         PRECIOS
+         ════════════════════════════════════════════════════════ -->
+    <section id="precios" class="amp-section amp-section--cream">
       <div class="container">
         <div class="amp-section-header">
           <div class="amp-pill">Precios</div>
-          <h2 class="amp-h2">Una licencia.<br/><em>Sin permanencia, sin sorpresas.</em></h2>
-          <p class="amp-section-desc">Pago único anual. Garantía de devolución de 14 días. Cancela cuando quieras y sigue usando la versión actual de por vida en Pro y Agency.</p>
+          <h2 class="amp-h2">Una licencia por plataforma.<br/><em>Sin sorpresas.</em></h2>
+          <p class="amp-section-desc">
+            Versión Free disponible para WordPress (solo feed JSON). Garantía de devolución de 30 días en las versiones de pago.
+          </p>
         </div>
 
-        <div class="amp-plans">
-          {plans.map(p => (
-            <div class={`amp-plan${p.featured ? ' amp-plan--featured' : ''}`}>
-              {p.featured && <div class="amp-plan-banner">Más popular</div>}
-              <div class="amp-plan-head">
-                <div class="amp-plan-name">{p.name}</div>
-                <div class="amp-plan-badge">{p.badge}</div>
-              </div>
-              <div class="amp-plan-price">
-                <span class="amp-plan-num">{p.price}</span>
-                <span class="amp-plan-period">{p.period}</span>
-              </div>
-              <ul class="amp-plan-list">
-                {p.items.map(it => (
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                    {it}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contacto" class={`amp-btn ${p.featured ? 'amp-btn--primary' : 'amp-btn--outline'}`} style="width:100%;justify-content:center">
-                {p.cta}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+        <div class="amp-plans amp-plans--two">
+          <!-- WooCommerce 79€/año -->
+          <div class="amp-plan amp-plan--featured">
+            <div class="amp-plan-banner">El más vendido</div>
+            <div class="amp-plan-head">
+              <div class="amp-plan-name">WooCommerce</div>
+              <div class="amp-plan-badge">Plugin WordPress + WooCommerce</div>
             </div>
-          ))}
+            <div class="amp-plan-price">
+              <span class="amp-plan-num">79€</span>
+              <span class="amp-plan-period">/ año</span>
+            </div>
+            <ul class="amp-plan-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1 sitio · productos ilimitados</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Los 3 feeds: JSON ACP 1.0 + XML Google Merchant + UCP v7.0</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Validador completo · cero rechazos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Reglas de envío avanzadas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Dashboard con analítica + export PDF</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Soporte email · respuesta en 48h</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Actualizaciones durante 1 año</li>
+            </ul>
+            <a href="https://shop.aimerchantpro.com" target="_blank" rel="noopener" class="amp-btn amp-btn--primary" style="width:100%;justify-content:center">
+              Comprar para WooCommerce
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <p class="amp-plan-note">¿Quieres probarlo gratis? <a href="https://www.aimerchantpro.com/free" target="_blank" rel="noopener">Versión Free de WordPress</a> — feed JSON, productos ilimitados, sin tarjeta.</p>
+          </div>
+
+          <!-- PrestaShop 99€ pago único -->
+          <div class="amp-plan">
+            <div class="amp-plan-head">
+              <div class="amp-plan-name">PrestaShop</div>
+              <div class="amp-plan-badge">Módulo PrestaShop · pago único</div>
+            </div>
+            <div class="amp-plan-price">
+              <span class="amp-plan-num">99€</span>
+              <span class="amp-plan-period">pago único</span>
+            </div>
+            <ul class="amp-plan-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Licencia <strong>lifetime</strong> · 1 dominio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Productos ilimitados</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Los 3 feeds: JSON ACP 1.0 + XML Google Merchant + UCP v7.0</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Compatible con PrestaShop 1.7 / 8.x / 9.x</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1 año de actualizaciones y soporte incluido</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Renovación opcional · 49€/año si quieres seguir con updates</li>
+            </ul>
+            <a href="https://shop.aimerchantpro.com/prestashop" target="_blank" rel="noopener" class="amp-btn amp-btn--outline" style="width:100%;justify-content:center">
+              Comprar para PrestaShop
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <p class="amp-plan-note">Pagas una vez, el módulo es tuyo para siempre. Solo decides si renuevas updates al año.</p>
+          </div>
         </div>
 
         <p class="amp-plans-note">
-          ¿Tienes una agencia con más de 25 clientes o necesitas integración custom?
-          <a href="#contacto">Hablemos</a>.
+          Todas las versiones de pago tienen <strong>garantía de devolución de 30 días</strong>.
+          ¿Dudas? <a href="https://www.aimerchantpro.com/docs" target="_blank" rel="noopener">Ver la documentación oficial</a>.
         </p>
       </div>
     </section>
 
-    <!-- ═══ TESTIMONIAL ═══ -->
-    <section class="amp-section amp-section--cream">
-      <div class="container" style="max-width:880px">
-        <figure class="amp-quote">
-          <svg class="amp-quote-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M3 21V11c0-4 2-7 7-8v3c-3 1-4 3-4 6h4v9H3zm12 0V11c0-4 2-7 7-8v3c-3 1-4 3-4 6h4v9h-7z"/>
-          </svg>
-          <blockquote>
-            En seis semanas reescribimos 8.400 fichas en cuatro idiomas. Antes lo
-            habríamos hecho en seis meses con dos redactores externos y un coste
-            de 14.000 €. Con AI Merchant Pro lo hicimos con una persona y la
-            licencia de 129 €.
-          </blockquote>
-          <figcaption>
-            <strong>Mario Vaquero</strong>
-            <span>Head of Ecommerce · Lapostigo Shoes</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ═══ FAQ ═══ -->
+    <!-- ════════════════════════════════════════════════════════
+         FAQ
+         ════════════════════════════════════════════════════════ -->
     <section class="amp-section">
       <div class="container" style="max-width:820px">
         <div class="amp-section-header">
           <div class="amp-pill">FAQ</div>
-          <h2 class="amp-h2">Lo que la gente nos pregunta<br/><em>antes de comprar.</em></h2>
+          <h2 class="amp-h2">Lo que la gente pregunta<br/><em>antes de comprar.</em></h2>
         </div>
         <div class="amp-faq">
           {faqs.map(item => (
@@ -707,32 +717,37 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
       </div>
     </section>
 
-    <!-- ═══ FINAL CTA ═══ -->
-    <section id="contacto" class="amp-cta">
+    <!-- ════════════════════════════════════════════════════════
+         CTA FINAL
+         ════════════════════════════════════════════════════════ -->
+    <section id="empezar" class="amp-cta">
       <div class="amp-cta-grid"  aria-hidden="true"></div>
       <div class="amp-cta-glow" aria-hidden="true"></div>
       <div class="container amp-cta-inner">
         <div class="amp-pill amp-pill--light">Empieza hoy</div>
         <h2 class="amp-h2 amp-h2--light">
-          Tu próximo redactor<br/>
-          <em>no necesita café.</em>
+          La búsqueda con IA<br/>
+          <em>no espera a nadie.</em>
         </h2>
         <p class="amp-cta-desc">
-          14 días gratis, sin tarjeta. Si no notas la diferencia en tu catálogo, no nos pagas. Tan simple como eso.
+          Cada día que tu catálogo sigue fuera de ChatGPT y Google AI Mode es ventaja
+          que regalas a un competidor que sí está dentro. Empieza hoy con la versión Free
+          o cómprala directamente.
         </p>
         <div class="amp-cta-actions">
-          <a href="https://aimerchantpro.com" target="_blank" rel="noopener" class="amp-btn amp-btn--primary amp-btn--lg">
-            Probar AI Merchant Pro
+          <a href="https://shop.aimerchantpro.com" target="_blank" rel="noopener" class="amp-btn amp-btn--primary amp-btn--lg">
+            Comprar WooCommerce · 79€/año
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="https://aimerchantpro.com/demo" target="_blank" rel="noopener" class="amp-btn amp-btn--ghost-light amp-btn--lg">
-            Reservar demo guiada
+          <a href="https://woogptmerchant.com/demo/" target="_blank" rel="noopener" class="amp-btn amp-btn--ghost-light amp-btn--lg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            Ver demo en vivo
           </a>
         </div>
         <div class="amp-cta-trust">
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 14 días gratis</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sin tarjeta de crédito</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Devolución 14 días</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Versión Free disponible</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Garantía de devolución 30 días</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Documentación oficial pública</span>
         </div>
       </div>
     </section>
@@ -766,6 +781,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     --amp-blue:     #3b82f6;
     --amp-cyan:     #06b6d4;
     --amp-red:      #ef4444;
+    --amp-green:    #22c55e;
 
     --amp-serif:    'Instrument Serif', Georgia, serif;
     --amp-mono:     'JetBrains Mono', monospace;
@@ -779,7 +795,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   .amp-section-header { text-align: center; margin-bottom: 4rem; }
   .amp-section-desc {
     color: var(--amp-mid); font-size: 1.0625rem;
-    margin: 1rem auto 0; max-width: 620px; line-height: 1.6;
+    margin: 1rem auto 0; max-width: 640px; line-height: 1.6;
   }
   .amp-section-desc--light { color: rgba(251,250,246,0.7); }
 
@@ -895,7 +911,6 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     50%      { transform: translate(40px,-30px) scale(1.08); }
   }
 
-  /* Floating orbs */
   .amp-orbit { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
   .amp-orb {
     position: absolute; border-radius: 50%;
@@ -903,9 +918,9 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     box-shadow: 0 16px 40px -10px rgba(109,76,255,0.45);
     opacity: 0.75;
   }
-  .amp-orb--1 { top: 14%;  left: 6%;  width: 14px; height: 14px; animation: amp-float 7s ease-in-out infinite; }
-  .amp-orb--2 { top: 60%;  left: 3%;  width: 8px;  height: 8px;  animation: amp-float 9s ease-in-out 1s infinite; opacity: 0.6; }
-  .amp-orb--3 { top: 30%;  right: 10%; width: 10px; height: 10px; animation: amp-float 11s ease-in-out 0.5s infinite; opacity: 0.7; }
+  .amp-orb--1 { top: 14%; left: 6%;   width: 14px; height: 14px; animation: amp-float 7s ease-in-out infinite; }
+  .amp-orb--2 { top: 60%; left: 3%;   width: 8px;  height: 8px;  animation: amp-float 9s ease-in-out 1s infinite; opacity: 0.6; }
+  .amp-orb--3 { top: 30%; right: 10%; width: 10px; height: 10px; animation: amp-float 11s ease-in-out 0.5s infinite; opacity: 0.7; }
   @keyframes amp-float {
     0%, 100% { transform: translate(0,0); }
     50%      { transform: translate(0,-22px); }
@@ -917,7 +932,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     gap: 4rem; align-items: center;
     padding-top: 1rem; padding-bottom: 3.5rem;
   }
-  .amp-hero-copy { max-width: 620px; animation: amp-fade-up 700ms ease-out both; }
+  .amp-hero-copy { max-width: 640px; animation: amp-fade-up 700ms ease-out both; }
 
   .amp-eyebrow {
     display: inline-flex; align-items: center; gap: 0.55rem;
@@ -942,7 +957,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
 
   .amp-hero-title {
     font-family: var(--amp-serif);
-    font-size: clamp(2.55rem, 5.4vw, 4.5rem);
+    font-size: clamp(2.45rem, 5.2vw, 4.3rem);
     font-weight: 400; line-height: 1.02; letter-spacing: -0.025em;
     margin: 0 0 1.4rem; color: var(--amp-ink);
   }
@@ -953,14 +968,37 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   }
   .amp-hero-desc {
     font-size: 1.0625rem; color: var(--amp-mid);
-    line-height: 1.65; margin: 0 0 2rem; max-width: 560px;
+    line-height: 1.65; margin: 0 0 2rem; max-width: 580px;
   }
   .amp-hero-desc strong { color: var(--amp-ink); font-weight: 600; }
 
   .amp-hero-actions {
     display: flex; gap: 0.75rem; flex-wrap: wrap;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
+
+  .amp-hero-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.25rem;
+  }
+  .amp-hero-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid var(--amp-border-s);
+    border-radius: 999px;
+    font-family: var(--amp-mono);
+    font-size: 0.7rem; color: var(--amp-ink-soft);
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(6px);
+  }
+  .amp-hero-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amp-amber);
+  }
+  .amp-hero-badge-dot--mint   { background: var(--amp-mint); }
+  .amp-hero-badge-dot--violet { background: var(--amp-violet); }
+  .amp-hero-badge-dot--blue   { background: var(--amp-blue); }
 
   .amp-hero-meta {
     display: flex; gap: 2.25rem;
@@ -1032,62 +1070,60 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   .amp-mock-sku  { font-family: var(--amp-mono); font-size: 0.7rem; color: var(--amp-mute); margin-top: 2px; }
   .amp-mock-pill {
     margin-left: auto;
-    background: rgba(239,68,68,0.10); color: var(--amp-red);
+    background: rgba(16,185,129,0.12); color: var(--amp-mint);
     font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
     padding: 0.2rem 0.55rem; border-radius: 6px; letter-spacing: 0.05em;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .amp-mock-pill--live::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amp-mint);
+    box-shadow: 0 0 0 2px rgba(16,185,129,0.25);
+    animation: amp-pulse-mint 1.6s ease-in-out infinite;
+  }
+  @keyframes amp-pulse-mint {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(16,185,129,0.25); }
+    50%      { box-shadow: 0 0 0 5px rgba(16,185,129,0); }
   }
 
-  .amp-mock-section {
-    background: linear-gradient(180deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
-    border: 1px solid rgba(245,158,11,0.20);
-    border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 1rem;
+  .amp-mock-feeds {
+    display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;
   }
-  .amp-mock-label {
-    display: flex; align-items: center; gap: 0.4rem;
-    font-family: var(--amp-mono); font-size: 0.68rem;
-    color: var(--amp-amber-d); text-transform: uppercase;
-    letter-spacing: 0.06em; margin-bottom: 0.55rem;
+  .amp-mock-feed {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.7rem 0.85rem;
+    background: linear-gradient(180deg, rgba(245,158,11,0.04), rgba(245,158,11,0));
+    border: 1px solid var(--amp-border);
+    border-radius: 11px;
   }
-  .amp-mock-label svg { width: 13px; height: 13px; animation: amp-spin 3s linear infinite; }
-  @keyframes amp-spin { to { transform: rotate(360deg); } }
-
-  .amp-typewriter {
-    font-size: 0.85rem; line-height: 1.55; color: var(--amp-ink-soft);
-    overflow: hidden; white-space: normal;
-    animation: amp-type 4s steps(60, end) 400ms both;
+  .amp-mock-feed-icon {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
-  @keyframes amp-type {
-    from { max-height: 0; }
-    to   { max-height: 200px; }
+  .amp-mock-feed-icon svg { width: 16px; height: 16px; color: #fff; }
+  .amp-mock-feed-icon--mint   { background: var(--amp-mint); }
+  .amp-mock-feed-icon--amber  { background: var(--amp-amber); }
+  .amp-mock-feed-icon--violet { background: var(--amp-violet); }
+  .amp-mock-feed-body { flex: 1; min-width: 0; }
+  .amp-mock-feed-name {
+    font-size: 0.82rem; font-weight: 600; color: var(--amp-ink);
+    line-height: 1.1;
   }
-  .amp-caret {
-    display: inline-block; width: 7px; height: 1em;
-    margin-left: 2px; vertical-align: -3px;
-    background: var(--amp-amber);
-    animation: amp-blink 1s step-end infinite;
+  .amp-mock-feed-tag {
+    font-family: var(--amp-mono); font-size: 0.66rem;
+    color: var(--amp-mute); margin-top: 3px;
   }
-  @keyframes amp-blink { 50% { opacity: 0; } }
-
-  .amp-mock-meta {
-    display: flex; flex-direction: column; gap: 0.55rem;
-    font-size: 0.78rem; padding-top: 0.5rem;
-    border-top: 1px dashed var(--amp-border);
+  .amp-mock-feed-status {
+    font-family: var(--amp-mono); font-size: 0.78rem;
+    font-weight: 600; color: var(--amp-ink);
+    padding: 0.2rem 0.55rem; border-radius: 6px;
+    background: rgba(16,185,129,0.10); border: 1px solid rgba(16,185,129,0.25);
   }
-  .amp-mock-meta-row {
-    display: grid; grid-template-columns: 105px 1fr; gap: 0.7rem; align-items: start;
-  }
-  .amp-mock-key { font-family: var(--amp-mono); color: var(--amp-mute); font-size: 0.68rem; text-transform: uppercase; padding-top: 2px; }
-  .amp-mock-val { color: var(--amp-ink-soft); line-height: 1.45; display: flex; flex-wrap: wrap; gap: 0.3rem; }
-
-  .amp-tag {
-    background: rgba(109,76,255,0.10); color: var(--amp-violet-d);
-    border: 1px solid rgba(109,76,255,0.18);
-    padding: 0.1rem 0.5rem; border-radius: 6px;
-    font-size: 0.7rem; font-weight: 500;
-  }
+  .amp-mock-feed-status--ok { color: var(--amp-mint); }
 
   .amp-mock-foot {
-    margin-top: 1rem; padding-top: 0.85rem;
+    margin-top: 0.5rem; padding-top: 0.85rem;
     border-top: 1px solid var(--amp-border);
     display: flex; align-items: center; gap: 0.85rem;
   }
@@ -1167,11 +1203,76 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   }
   .amp-trust-item {
     font-size: 0.85rem; font-weight: 500; color: var(--amp-ink-soft);
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
   /* ═══════════════════════════════════════════════════════════
-     BIG STATS
+     COMPARE
+     ═══════════════════════════════════════════════════════════ */
+  .amp-compare {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 1.25rem; align-items: stretch; max-width: 1080px; margin: 0 auto;
+  }
+  .amp-compare-card {
+    border-radius: 16px; padding: 1.75rem;
+    border: 1px solid var(--amp-border-s);
+  }
+  .amp-compare-card--before { background: rgba(239,68,68,0.04); border-color: rgba(239,68,68,0.18); }
+  .amp-compare-card--after  {
+    background: linear-gradient(160deg, rgba(245,158,11,0.10), rgba(109,76,255,0.08));
+    border-color: rgba(245,158,11,0.28);
+  }
+  .amp-compare-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .amp-compare-tag {
+    font-family: var(--amp-mono);
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+  }
+  .amp-compare-tag--bad  { background: rgba(239,68,68,0.16);  color: #b91c1c; }
+  .amp-compare-tag--good { background: rgba(245,158,11,0.20); color: var(--amp-amber-d); }
+  .amp-compare-meta { font-family: var(--amp-mono); font-size: 0.72rem; color: var(--amp-mute); }
+  .amp-compare-prod {
+    font-family: var(--amp-serif); font-size: 1.5rem;
+    font-weight: 400; color: var(--amp-ink); margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+  .amp-compare-text {
+    font-size: 0.9375rem; line-height: 1.65;
+    color: var(--amp-mid); margin: 0 0 1.1rem;
+  }
+  .amp-compare-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    border-top: 1px solid var(--amp-border); padding-top: 1rem;
+  }
+  .amp-compare-list li {
+    display: flex; align-items: center; gap: 0.55rem;
+    font-size: 0.875rem; color: var(--amp-ink-soft);
+  }
+  .amp-compare-list li span {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .amp-compare-list--bad  li span { background: rgba(239,68,68,0.14); color: #b91c1c; }
+  .amp-compare-list--good li span { background: rgba(16,185,129,0.16); color: var(--amp-mint); }
+  .amp-compare-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--amp-amber);
+    background: rgba(245,158,11,0.10);
+    border-radius: 50%; width: 56px; height: 56px;
+    align-self: center; margin: 0 auto;
+    box-shadow: 0 0 0 8px rgba(245,158,11,0.06);
+  }
+  .amp-compare-arrow svg { width: 24px; height: 24px; }
+
+  /* ═══════════════════════════════════════════════════════════
+     BIG STATS (SEO → LLMO)
      ═══════════════════════════════════════════════════════════ */
   .amp-bigstats {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
@@ -1189,7 +1290,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   .amp-bigstat-num {
     font-family: var(--amp-serif);
     font-size: 3rem; line-height: 1; letter-spacing: -0.03em;
-    color: var(--amp-ink); margin-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
     background: linear-gradient(95deg, var(--amp-amber-d), var(--amp-violet));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
@@ -1199,50 +1300,72 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   }
 
   /* ═══════════════════════════════════════════════════════════
-     PLATFORMS
+     FEED CARDS
      ═══════════════════════════════════════════════════════════ */
-  .amp-platforms {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-    max-width: 880px; margin: 0 auto;
+  .amp-feeds {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
   }
-  .amp-platform {
+  .amp-feed-card {
     background: var(--amp-card); border: 1px solid var(--amp-border-s);
-    border-radius: 16px; padding: 1.75rem;
-    display: flex; align-items: center; gap: 1.15rem;
-    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
+    border-radius: 18px; padding: 2rem;
+    display: flex; flex-direction: column;
     position: relative; overflow: hidden;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
   }
-  .amp-platform::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(245,158,11,0.08), transparent 60%);
-    opacity: 0; transition: opacity 300ms;
+  .amp-feed-card:hover {
+    border-color: var(--amp-ink);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 50px -16px rgba(15,15,30,0.18);
   }
-  .amp-platform:hover { border-color: var(--amp-ink); transform: translateY(-3px); }
-  .amp-platform:hover::before { opacity: 1; }
-  .amp-platform-icon {
-    width: 52px; height: 52px; border-radius: 12px;
-    background: linear-gradient(135deg, #fef3c7, #ddd6fe);
-    color: var(--amp-ink-soft); flex-shrink: 0;
+  .amp-feed-card-icon {
+    width: 52px; height: 52px; border-radius: 13px;
     display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
   }
-  .amp-platform-icon svg { width: 26px; height: 26px; }
-  .amp-platform h3 {
-    font-family: var(--amp-serif); font-size: 1.4rem; font-weight: 400;
-    line-height: 1.2; margin: 0 0 0.25rem; color: var(--amp-ink);
+  .amp-feed-card-icon svg { width: 26px; height: 26px; color: #fff; }
+  .amp-feed-card-icon--mint   { background: linear-gradient(135deg, var(--amp-mint), var(--amp-green)); }
+  .amp-feed-card-icon--amber  { background: linear-gradient(135deg, var(--amp-amber), var(--amp-amber-d)); }
+  .amp-feed-card-icon--violet { background: linear-gradient(135deg, var(--amp-violet), var(--amp-violet-d)); }
+
+  .amp-feed-card-code {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: var(--amp-mono); font-size: 0.68rem;
+    font-weight: 700; letter-spacing: 0.06em;
+    background: rgba(15,15,30,0.06); color: var(--amp-ink-soft);
+    padding: 0.25rem 0.55rem; border-radius: 6px;
   }
-  .amp-platform p {
-    font-family: var(--amp-mono);
-    font-size: 0.78rem; color: var(--amp-mute); margin: 0;
+  .amp-feed-card h3 {
+    font-family: var(--amp-serif); font-size: 1.5rem; font-weight: 400;
+    line-height: 1.2; margin: 0 0 0.5rem; color: var(--amp-ink);
   }
-  .amp-platform-arrow {
-    margin-left: auto; color: var(--amp-mute);
-    transition: all 250ms;
+  .amp-feed-card-target {
+    display: flex; flex-direction: column; gap: 0.1rem;
+    margin-bottom: 1rem;
   }
-  .amp-platform-arrow svg { width: 18px; height: 18px; }
-  .amp-platform:hover .amp-platform-arrow { color: var(--amp-amber-d); transform: translateX(4px); }
-  .amp-platforms-note {
-    text-align: center; color: var(--amp-mute);
-    font-size: 0.9rem; margin-top: 1.75rem;
+  .amp-feed-card-target > span:first-child {
+    font-weight: 600; font-size: 0.95rem; color: var(--amp-amber-d);
+  }
+  .amp-feed-card-audience {
+    font-family: var(--amp-mono); font-size: 0.75rem;
+    color: var(--amp-mute);
+  }
+  .amp-feed-card p {
+    font-size: 0.9375rem; color: var(--amp-mid);
+    line-height: 1.6; margin: 0 0 1.25rem;
+  }
+  .amp-feed-card-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.55rem;
+    padding-top: 1rem; border-top: 1px solid var(--amp-border);
+    margin-top: auto;
+  }
+  .amp-feed-card-list li {
+    display: flex; gap: 0.55rem; align-items: flex-start;
+    font-size: 0.85rem; color: var(--amp-ink-soft); line-height: 1.45;
+  }
+  .amp-feed-card-list svg {
+    width: 12px; height: 12px;
+    color: var(--amp-amber); flex-shrink: 0; margin-top: 4px;
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -1262,7 +1385,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     box-shadow: 0 22px 50px -16px rgba(15,15,30,0.15);
   }
   .amp-feature h3 {
-    font-family: var(--amp-serif); font-size: 1.35rem; font-weight: 400;
+    font-family: var(--amp-serif); font-size: 1.3rem; font-weight: 400;
     line-height: 1.25; margin: 0 0 0.55rem; color: var(--amp-ink);
   }
   .amp-feature p {
@@ -1277,77 +1400,51 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   .amp-feature-icon svg { width: 22px; height: 22px; }
   .amp-feature-icon--amber  { background: rgba(245,158,11,0.12); color: var(--amp-amber-d); }
   .amp-feature-icon--blue   { background: rgba(59,130,246,0.10); color: var(--amp-blue); }
-  .amp-feature-icon--green  { background: rgba(16,185,129,0.10); color: var(--amp-mint); }
+  .amp-feature-icon--green  { background: rgba(34,197,94,0.10);  color: var(--amp-green); }
+  .amp-feature-icon--mint   { background: rgba(16,185,129,0.10); color: var(--amp-mint); }
   .amp-feature-icon--pink   { background: rgba(255,93,143,0.12); color: var(--amp-pink); }
   .amp-feature-icon--violet { background: rgba(109,76,255,0.10); color: var(--amp-violet); }
   .amp-feature-icon--cyan   { background: rgba(6,182,212,0.10);  color: var(--amp-cyan); }
   .amp-feature-icon--red    { background: rgba(239,68,68,0.10);  color: var(--amp-red); }
 
   /* ═══════════════════════════════════════════════════════════
-     COMPARE (before / after)
+     PROBLEMS (dark)
      ═══════════════════════════════════════════════════════════ */
-  .amp-compare {
-    display: grid; grid-template-columns: 1fr auto 1fr;
-    gap: 1.25rem; align-items: stretch; max-width: 1080px; margin: 0 auto;
+  .amp-problems {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+    max-width: 940px; margin: 0 auto;
   }
-  .amp-compare-card {
-    border-radius: 16px; padding: 1.75rem;
+  .amp-problem {
+    display: flex; gap: 1.1rem; align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.10);
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
   }
-  .amp-compare-card--before { background: rgba(239,68,68,0.04); border-color: rgba(239,68,68,0.18); }
-  .amp-compare-card--after  {
-    background: linear-gradient(160deg, rgba(245,158,11,0.10), rgba(109,76,255,0.08));
-    border-color: rgba(245,158,11,0.28);
+  .amp-problem:hover {
+    border-color: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-3px);
   }
-  .amp-compare-head {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-  .amp-compare-tag {
-    font-family: var(--amp-mono);
-    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 0.25rem 0.6rem;
-    border-radius: 6px;
-  }
-  .amp-compare-tag--bad  { background: rgba(239,68,68,0.16);  color: #fca5a5; }
-  .amp-compare-tag--good { background: rgba(245,158,11,0.20); color: #fbbf24; }
-  .amp-compare-meta { font-family: var(--amp-mono); font-size: 0.72rem; color: rgba(251,250,246,0.5); }
-  .amp-compare-prod {
-    font-family: var(--amp-serif); font-size: 1.5rem;
-    font-weight: 400; color: var(--amp-paper); margin-bottom: 0.7rem;
-    line-height: 1.2;
-  }
-  .amp-compare-text {
-    font-size: 0.9375rem; line-height: 1.65;
-    color: rgba(251,250,246,0.72); margin: 0 0 1.1rem;
-  }
-  .amp-compare-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 0.5rem;
-    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem;
-  }
-  .amp-compare-list li {
-    display: flex; align-items: center; gap: 0.55rem;
-    font-size: 0.875rem; color: rgba(251,250,246,0.78);
-  }
-  .amp-compare-list li span {
-    width: 18px; height: 18px; border-radius: 50%;
+  .amp-problem-icon {
+    width: 44px; height: 44px; border-radius: 11px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 700;
   }
-  .amp-compare-list--bad  li span { background: rgba(239,68,68,0.18); color: #fca5a5; }
-  .amp-compare-list--good li span { background: rgba(16,185,129,0.18); color: var(--amp-mint); }
-  .amp-compare-arrow {
-    display: flex; align-items: center; justify-content: center;
-    color: var(--amp-amber);
-    background: rgba(245,158,11,0.10);
-    border-radius: 50%; width: 56px; height: 56px;
-    align-self: center; margin: 0 auto;
-    box-shadow: 0 0 0 8px rgba(245,158,11,0.06);
+  .amp-problem-icon svg { width: 22px; height: 22px; }
+  .amp-problem-icon--red    { background: rgba(239,68,68,0.18);  color: #fca5a5; }
+  .amp-problem-icon--amber  { background: rgba(245,158,11,0.18); color: #fbbf24; }
+  .amp-problem-icon--blue   { background: rgba(59,130,246,0.18); color: #93c5fd; }
+  .amp-problem-icon--violet { background: rgba(109,76,255,0.18); color: #a78bfa; }
+  .amp-problem-body h3 {
+    font-family: var(--amp-serif); font-size: 1.2rem; font-weight: 400;
+    line-height: 1.2; margin: 0 0 0.5rem;
+    color: var(--amp-paper);
   }
-  .amp-compare-arrow svg { width: 24px; height: 24px; }
+  .amp-problem-body p {
+    font-size: 0.9rem; color: rgba(251,250,246,0.7);
+    line-height: 1.6; margin: 0;
+  }
 
   /* ═══════════════════════════════════════════════════════════
      STEPS
@@ -1376,67 +1473,20 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     font-size: 0.9375rem; color: var(--amp-mid);
     line-height: 1.65; margin: 0;
   }
-  .amp-step-arrow {
-    color: var(--amp-amber); display: flex; align-items: center;
-  }
+  .amp-step-arrow { color: var(--amp-amber); display: flex; align-items: center; }
   .amp-step-arrow svg { width: 24px; height: 24px; }
-
-  /* ═══════════════════════════════════════════════════════════
-     USE CASES
-     ═══════════════════════════════════════════════════════════ */
-  .amp-uses {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-  }
-  .amp-use {
-    background: var(--amp-card); border: 1px solid var(--amp-border-s);
-    border-radius: 16px; padding: 2rem;
-    transition: all 250ms cubic-bezier(0.16,1,0.3,1);
-  }
-  .amp-use:hover { border-color: var(--amp-ink); transform: translateY(-4px); }
-  .amp-use-tag {
-    display: inline-block;
-    font-family: var(--amp-mono); font-size: 0.68rem;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em;
-    color: var(--amp-amber-d); margin-bottom: 0.85rem;
-  }
-  .amp-use h3 {
-    font-family: var(--amp-serif); font-size: 1.45rem; font-weight: 400;
-    line-height: 1.2; margin: 0 0 0.7rem; color: var(--amp-ink);
-  }
-  .amp-use p {
-    font-size: 0.95rem; color: var(--amp-mid);
-    line-height: 1.65; margin: 0;
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     INTEGRATIONS
-     ═══════════════════════════════════════════════════════════ */
-  .amp-integrations {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem; max-width: 880px; margin: 0 auto;
-  }
-  .amp-integration {
-    background: var(--amp-card); border: 1px solid var(--amp-border-s);
-    border-radius: 12px; padding: 0.95rem 1rem;
-    text-align: center; font-size: 0.875rem; font-weight: 500;
-    color: var(--amp-ink-soft);
-    transition: all 200ms ease;
-  }
-  .amp-integration:hover {
-    border-color: var(--amp-amber);
-    color: var(--amp-amber-d);
-    transform: translateY(-2px);
-    background: rgba(245,158,11,0.04);
-  }
 
   /* ═══════════════════════════════════════════════════════════
      PRICING
      ═══════════════════════════════════════════════════════════ */
   .amp-plans {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem; max-width: 1100px; margin: 0 auto;
+    gap: 1.5rem; max-width: 1100px; margin: 0 auto;
     align-items: stretch;
+  }
+  .amp-plans--two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 880px;
   }
   .amp-plan {
     background: var(--amp-card);
@@ -1476,7 +1526,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     color: var(--amp-mute); text-transform: uppercase; letter-spacing: 0.06em;
   }
   .amp-plan-price {
-    display: flex; align-items: baseline; gap: 0.35rem;
+    display: flex; align-items: baseline; gap: 0.45rem;
     padding: 0.5rem 0;
     border-bottom: 1px dashed var(--amp-border-s);
   }
@@ -1485,7 +1535,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     font-size: 3rem; line-height: 1;
     letter-spacing: -0.03em; color: var(--amp-ink);
   }
-  .amp-plan-period { color: var(--amp-mute); font-size: 1rem; }
+  .amp-plan-period { color: var(--amp-mute); font-size: 0.95rem; }
   .amp-plan-list {
     list-style: none; padding: 0; margin: 0;
     display: flex; flex-direction: column; gap: 0.7rem; flex: 1;
@@ -1494,43 +1544,19 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     display: flex; gap: 0.7rem; align-items: flex-start;
     font-size: 0.9rem; color: var(--amp-ink-soft); line-height: 1.5;
   }
+  .amp-plan-list li strong { color: var(--amp-ink); font-weight: 600; }
   .amp-plan-list svg { width: 14px; height: 14px; color: var(--amp-amber); flex-shrink: 0; margin-top: 4px; }
+  .amp-plan-note {
+    font-size: 0.8125rem; color: var(--amp-mute);
+    line-height: 1.55; margin: 0;
+  }
+  .amp-plan-note a { color: var(--amp-amber-d); text-decoration: underline; font-weight: 500; }
   .amp-plans-note {
     text-align: center; color: var(--amp-mute);
     font-size: 0.9rem; margin-top: 2rem;
   }
+  .amp-plans-note strong { color: var(--amp-ink); }
   .amp-plans-note a { color: var(--amp-amber-d); text-decoration: underline; font-weight: 500; }
-
-  /* ═══════════════════════════════════════════════════════════
-     QUOTE
-     ═══════════════════════════════════════════════════════════ */
-  .amp-quote {
-    background: var(--amp-card); border: 1px solid var(--amp-border-s);
-    border-radius: 20px; padding: 3rem 3.25rem;
-    position: relative; overflow: hidden;
-  }
-  .amp-quote::before {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 6px; height: 100%;
-    background: linear-gradient(180deg, var(--amp-amber), var(--amp-violet));
-  }
-  .amp-quote-mark {
-    position: absolute; top: 1.5rem; right: 1.75rem;
-    width: 56px; height: 56px;
-    color: rgba(245,158,11,0.18);
-  }
-  .amp-quote blockquote {
-    font-family: var(--amp-serif); font-size: clamp(1.4rem, 2.2vw, 1.75rem);
-    line-height: 1.4; color: var(--amp-ink);
-    margin: 0 0 1.5rem; font-weight: 400; letter-spacing: -0.01em;
-    position: relative;
-  }
-  .amp-quote figcaption {
-    display: flex; flex-direction: column; gap: 0.15rem;
-    padding-top: 1rem; border-top: 1px solid var(--amp-border);
-  }
-  .amp-quote figcaption strong { font-weight: 700; color: var(--amp-ink); font-size: 0.95rem; }
-  .amp-quote figcaption span { font-size: 0.85rem; color: var(--amp-mute); }
 
   /* ═══════════════════════════════════════════════════════════
      FAQ
@@ -1559,7 +1585,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
   .amp-faq-ans p { margin: 0; }
 
   /* ═══════════════════════════════════════════════════════════
-     FINAL CTA
+     CTA FINAL
      ═══════════════════════════════════════════════════════════ */
   .amp-cta {
     position: relative; padding: 7rem 0;
@@ -1597,7 +1623,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     margin: 1.25rem auto 2.25rem;
     color: rgba(251,250,246,0.72);
     font-size: 1.0625rem; line-height: 1.6;
-    max-width: 560px;
+    max-width: 580px;
   }
   .amp-cta-actions {
     display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
@@ -1624,13 +1650,12 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     .amp-mock-badge--top { left: -10px; top: -14px; }
     .amp-mock-badge--bot { right: -10px; bottom: -14px; }
     .amp-bigstats { grid-template-columns: repeat(2, 1fr); }
-    .amp-platforms { grid-template-columns: 1fr; }
+    .amp-feeds { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
     .amp-features { grid-template-columns: repeat(2, 1fr); }
-    .amp-uses { grid-template-columns: 1fr; }
-    .amp-integrations { grid-template-columns: repeat(3, 1fr); }
+    .amp-problems { grid-template-columns: 1fr; }
     .amp-steps { grid-template-columns: 1fr; gap: 1rem; }
     .amp-step-arrow { transform: rotate(90deg); margin: 0 auto; }
-    .amp-plans { grid-template-columns: 1fr; max-width: 480px; }
+    .amp-plans, .amp-plans--two { grid-template-columns: 1fr; max-width: 480px; }
     .amp-plan--featured { transform: none; }
     .amp-plan--featured:hover { transform: translateY(-4px); }
     .amp-compare { grid-template-columns: 1fr; }
@@ -1642,22 +1667,17 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [sch
     .amp-section, .amp-cta { padding: 4rem 0; }
     .amp-hero-meta { flex-wrap: wrap; gap: 1rem 1.75rem; }
     .amp-features, .amp-bigstats { grid-template-columns: 1fr; }
-    .amp-integrations { grid-template-columns: repeat(2, 1fr); }
     .amp-trust-grid { gap: 0.5rem 1.5rem; }
-    .amp-mock-meta-row { grid-template-columns: 1fr; gap: 0.2rem; }
-    .amp-quote { padding: 2rem 1.5rem; }
-    .amp-quote-mark { width: 40px; height: 40px; top: 1rem; right: 1rem; }
     .amp-faq-item summary { font-size: 1.05rem; gap: 1rem; padding: 1.2rem 0; }
     .amp-cta { padding: 5rem 0; }
+    .amp-feed-card-code { top: 1rem; right: 1rem; }
   }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     .amp-orb, .amp-hero-glow-a, .amp-hero-glow-b, .amp-cta-glow,
-    .amp-mock-badge, .amp-progress-bar, .amp-typewriter, .amp-caret,
-    .amp-mock-label svg, .amp-dot {
+    .amp-mock-badge, .amp-progress-bar, .amp-dot, .amp-mock-pill--live::before {
       animation: none !important;
     }
-    .amp-typewriter { max-height: none; }
   }
 </style>
